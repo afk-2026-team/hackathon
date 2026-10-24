@@ -65,6 +65,30 @@ cd web && npm run dev
 
 Google 제공자가 설정되지 않았거나 인증 서버 연결에 실패해도 게스트로 시작할 수 있습니다. 설정된 브라우저 주소를 일관되게 사용합니다. `localhost`와 `127.0.0.1`은 서로 다른 저장소와 로그인 세션을 사용합니다.
 
+## 배포 (Vercel: 프런트 + API)
+
+- **공개 주소:** 데모 https://jinseonmi.vercel.app · API 상태 https://jinseonmi-api.vercel.app/health
+- **프로젝트 2개(팀 geond):**
+  - 프런트 `jinseonmi`: `web/` 디렉터리, `web/.vercel` 연결
+  - API `jinseonmi-api`: 저장소 루트, 루트 `.vercel` 연결. 루트 `index.py`의 `app`이 단일 FastAPI 함수다.
+- **API 구성(`deploy/vercel_app.py`):** 공개 라우트는 discovery 앱 그대로다(catalog·recommendations·compare·explain·auth·maps·evidence·fx·`/health`).
+  - `/v1/responses`는 기존 프록시 규칙(기본 `kbeauty-sonnet`, 입력 검증, 60초, 503/504/502)을 같은 프로세스의 AI 앱으로 연결한다.
+  - AI 레지스트리는 첫 AI 요청에서 1회 만든다. AI 키가 없으면 AI만 503이고 나머지는 동작한다.
+- **업로드 범위·감지:** 루트 `vercel.json`의 `"framework": "fastapi"`로 FastAPI 함수를 빌드한다. CLI로 만든 프로젝트는 기본이 Other라 이 설정이 없으면 함수가 만들어지지 않는다. 루트 `.vercelignore`는 제외 목록이다. 남는 것은 `index.py`, `deploy/vercel_app.py`, `app/`, `Crawling_DB/`, `envs/agent_config.yaml`·`envs/models/`, `pyproject.toml`, `uv.lock`, `vercel.json`이다. 허용 목록식(`/*` + `!dir/`)은 Vercel에서 디렉터리를 다시 넣지 못해 쓰지 않는다. 문서·web·tests·`.env.local`은 올리지 않는다.
+- **순서:**
+  1. 서버 환경값: Infisical **prod** `/app`의 runtime 키 10개를 Vercel `jinseonmi-api` production에 sensitive로 넣는다. 값을 출력하거나 파일로 남기지 않는다.
+     - `ASH_ANTHROPIC_API_KEY`, `ASH_JEV_KEY`
+     - `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`
+     - `NAVER_CLIENT_ID`, `NAVER_CLIENT_SECRET`, `NAVER_API_BASE_URL`
+     - `NAVER_MAPS_CLIENT_ID`, `NAVER_MAPS_CLIENT_SECRET`
+     - `YOUTUBE_API_KEY`
+  2. API 배포: 저장소 루트에서 `vercel deploy --prod --yes`
+  3. 프런트 배포: `web/`에서 배포한다. `/v1/*`는 API 배포 URL로 rewrite한다(백엔드에 CORS 미들웨어가 없으므로 같은 origin 유지).
+  4. 키를 바꾸면 Infisical prod를 먼저 고친 뒤 Vercel 환경값을 다시 동기화하고 API를 재배포한다(실행 시 한 번 읽는다).
+- **함께 맞출 것:**
+  - Supabase Redirect URLs에 `<프런트 URL>/auth/callback`을 추가한다.
+  - NAVER Maps 웹서비스 URL에 프런트 도메인을 등록한다.
+
 ## 구성과 작업 경계
 
 | 경로 | 담당 |

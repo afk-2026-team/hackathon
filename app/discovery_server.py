@@ -32,7 +32,7 @@ WEB_DIST = Path(__file__).resolve().parents[1] / "web" / "dist"
 # httpx 는 INFO 로 요청 URL 을 남긴다 — 외부 키가 쿼리에 섞일 여지를 막기 위해 WARNING 이상만
 logging.getLogger("httpx").setLevel(logging.WARNING)
 logging.getLogger("httpcore").setLevel(logging.WARNING)
-REDACTED_QUERY_PATHS = ("/v1/maps/geocode",)  # 질의가 사용자 숙소 주소일 수 있는 경로 — 접근 로그에서 쿼리 문자열을 지운다
+REDACTED_QUERY_PATHS = ("/v1/maps/geocode", "/v1/maps/directions")  # 질의가 사용자 숙소 주소·좌표일 수 있는 경로 — 접근 로그에서 쿼리 문자열을 지운다
 
 
 class _RedactQueryFilter(logging.Filter):

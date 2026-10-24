@@ -7,6 +7,7 @@ import type { CatalogItem, ProfilePayload } from '../lib/types'
 import { LangContext, type Lang } from '../lib/i18n'
 import { resetFxCache } from '../lib/currency'
 import { resetVideoCache } from '../components/detail/VideoShelf'
+import { MiniMap } from '../components/detail/MiniMap'
 
 const product: CatalogItem = {
   id: 'p1',
@@ -208,5 +209,66 @@ describe('medical detail', () => {
     await user.click(screen.getByRole('button', { name: '내 여행에 있음' }))
     expect(props.onGoTrip).toHaveBeenCalled()
     expect(props.onAddTrip).not.toHaveBeenCalled()
+  })
+})
+
+describe('MiniMap directions', () => {
+  const official = { name: 'Gangnam Clinic', address: '서울특별시 강남구 테헤란로 1', lat: 37.4979, lng: 127.0276 }
+  const renderMini = (loc: Parameters<typeof MiniMap>[0]['location'], ns?: 'guest') =>
+    render(
+      <LangContext.Provider value="en">
+        <MiniMap location={loc} lang="en" ns={ns} />
+      </LangContext.Provider>,
+    )
+  afterEach(() => localStorage.clear())
+
+  it('uses official lat/lng without geocoding and labels the source', async () => {
+    stubFetch({ config: json({ provider: 'naver', enabled: true, client_id: 'abc' }) })
+    renderMini(official)
+    expect(await screen.findByText(/Coordinates: official data/)).toBeInTheDocument()
+    expect(calls.some((u) => u.startsWith('/v1/maps/geocode'))).toBe(false)
+    // 출발지 미선택 → 도착지만 넘기는 웹 길찾기
+    expect(screen.getByRole('link', { name: 'Transit directions in NAVER Map to Gangnam Clinic' })).toHaveAttribute(
+      'href',
+      'https://map.naver.com/p/directions/-/127.0276,37.4979,Gangnam%20Clinic,,/-/transit',
+    )
+  })
+
+  it('starts from the saved stay when a namespace is given', async () => {
+    localStorage.setItem('korea-locally/guest/start', JSON.stringify({ label: 'Hotel', address: 'Road 1', lat: 37.55, lng: 126.97, coords_source: 'naver_maps_geocode' }))
+    stubFetch({})
+    renderMini(official, 'guest')
+    expect(await screen.findByRole('radio', { name: 'My stay' })).toHaveAttribute('aria-checked', 'true')
+    expect(screen.getByRole('link', { name: 'Walk directions in NAVER Map to Gangnam Clinic' })).toHaveAttribute(
+      'href',
+      'https://map.naver.com/p/directions/126.97,37.55,Hotel,,/127.0276,37.4979,Gangnam%20Clinic,,/-/walk',
+    )
+  })
+
+  it('uses the current location only after the user asks, and falls back to destination-only when denied', async () => {
+    stubFetch({})
+    let mode: 'ok' | 'deny' = 'ok'
+    const getCurrentPosition = vi.fn((ok: PositionCallback, fail?: PositionErrorCallback | null) => {
+      if (mode === 'ok') ok({ coords: { latitude: 37.5665, longitude: 126.978 } } as GeolocationPosition)
+      else fail?.({ code: 1 } as GeolocationPositionError)
+    })
+    vi.stubGlobal('navigator', { ...navigator, geolocation: { getCurrentPosition } })
+    const user = userEvent.setup()
+    renderMini(official)
+    await screen.findByText(/Coordinates: official data/)
+    expect(getCurrentPosition).not.toHaveBeenCalled()
+    await user.click(screen.getByRole('radio', { name: 'My current location' }))
+    expect(getCurrentPosition).toHaveBeenCalledTimes(1)
+    expect(await screen.findByRole('link', { name: 'Car directions in NAVER Map to Gangnam Clinic' })).toHaveAttribute(
+      'href',
+      'https://map.naver.com/p/directions/126.978,37.5665,My%20current%20location,,/127.0276,37.4979,Gangnam%20Clinic,,/-/car',
+    )
+    expect(screen.getByText(/isn’t saved or sent to our server/)).toBeInTheDocument()
+    expect(calls.some((u) => u.includes('37.5665'))).toBe(false) // 위치는 서버로 가지 않는다
+    mode = 'deny'
+    await user.click(screen.getByRole('radio', { name: 'Choose in NAVER Map' }))
+    await user.click(screen.getByRole('radio', { name: 'My current location' }))
+    expect(await screen.findByText(/NAVER Map will ask where you start/)).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Car directions in NAVER Map to Gangnam Clinic' }).getAttribute('href')).toMatch(/^https:\/\/map\.naver\.com\/p\/directions\/-\//)
   })
 })

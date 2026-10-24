@@ -1,7 +1,8 @@
 import { CategoryBadge } from '../Common'
 import { fill, useT } from '../../lib/i18n'
 import { mapLinks } from '../../lib/format'
-import { naverDirectionsUrl, straightLineKm, type GeoPoint } from '../../lib/naverMaps'
+import { chunkRoute, naverDirectionsUrl, straightLineKm, type GeoPoint } from '../../lib/naverMaps'
+import { NaverRoute } from './NaverRoute'
 import type { StartPoint, TripEntry } from '../../lib/storage'
 
 export interface Stop {
@@ -55,6 +56,32 @@ function EntryControls({ entry, days, first, last, onMove, onDay, onRemove }: {
   )
 }
 
+/** Day 전체를 방문 순서대로(숙소가 있으면 숙소부터) 네이버 지도로 연다. 자동차·도보만(경유지 지원), 7곳 넘으면 구간을 나눈다. */
+export function DayRoute({ start, stops }: { start: GeoPoint | null; stops: Stop[] }) {
+  const t = useT()
+  const placed: GeoPoint[] = stops.filter((s) => s.coords).map((s) => ({ name: s.entry.location!.name, ...s.coords! }))
+  const points = start ? [start, ...placed] : placed
+  const skipped = stops.filter((s) => !s.coords && !s.pending).length
+  if (points.length < 2) return null
+  const legs = chunkRoute(points)
+  return (
+    <section className="trip-dayroute card" aria-labelledby="trip-dayroute-h">
+      <h3 id="trip-dayroute-h" className="trip-h3">{t('trip.dayRoute')}</h3>
+      <p className="trip-muted">{fill(t('trip.dayRouteLead'), { stay: start ? t('trip.dayRouteStay') : '' })}</p>
+      <ul className="trip-dayroute__legs">
+        {legs.map((leg, i) => (
+          <li key={i} className="trip-row">
+            {legs.length > 1 && <span className="badge badge--outline">{fill(t('trip.dayRouteLeg'), { n: i + 1 })}</span>}
+            <NaverRoute from={leg.from} to={leg.to} waypoints={leg.waypoints} modes={['car', 'walk']} />
+          </li>
+        ))}
+      </ul>
+      {skipped > 0 && <p className="trip-fine">{fill(t('trip.dayRouteSkipped'), { n: skipped })}</p>}
+      <p className="trip-fine">{t('trip.navHint')}</p>
+    </section>
+  )
+}
+
 export function DayPlan(p: Props) {
   const t = useT()
   const startGeo: GeoPoint | null = p.start ? { name: p.start.label, lat: p.start.lat, lng: p.start.lng } : null
@@ -79,6 +106,8 @@ export function DayPlan(p: Props) {
 
       {p.stops.length === 0 && p.checklist.length === 0 && <p className="trip-muted trip-pad">{t('trip.dayEmpty')}</p>}
 
+      {p.stops.length > 0 && <DayRoute start={startGeo} stops={p.stops} />}
+
       {p.stops.length > 0 && (
         <ol className="trip-stops">
           {p.stops.map((s, i) => {
@@ -93,9 +122,11 @@ export function DayPlan(p: Props) {
                 {fromName && (
                   <div className="trip-seg">
                     <span className="trip-seg__from">{fromName}</span>
-                    <a href={link.href} target="_blank" rel="noreferrer noopener" className="trip-seg__link">
-                      {t(link.kind === 'directions' ? 'trip.directions' : 'trip.searchMap')} ↗
-                    </a>
+                    {link.kind === 'directions' && from && s.coords ? (
+                      <NaverRoute from={from} to={{ name: loc.name, ...s.coords }} />
+                    ) : (
+                      <a href={link.href} target="_blank" rel="noreferrer noopener" className="trip-seg__link">{t('trip.searchMap')} ↗</a>
+                    )}
                     {km != null && <span className="trip-seg__km">{fill(t('trip.straight'), { km: km.toFixed(1) })}</span>}
                   </div>
                 )}
@@ -115,7 +146,10 @@ export function DayPlan(p: Props) {
                       </p>
                     )}
                     {!fromName && s.coords && (
-                      <a href={link.href} target="_blank" rel="noreferrer noopener" className="trip-seg__link">{t('trip.searchMap')} ↗</a>
+                      <div className="trip-row">
+                        <span className="trip-fine">{t('trip.navTitle')}</span>
+                        <NaverRoute from={null} to={{ name: loc.name, ...s.coords }} />
+                      </div>
                     )}
                     <EntryControls entry={s.entry} days={p.days} first={i === 0} last={i === p.stops.length - 1} onMove={p.onMove} onDay={p.onDay} onRemove={p.onRemove} />
                   </div>

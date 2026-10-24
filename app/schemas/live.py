@@ -37,6 +37,17 @@ class GeocodeResponse(_Strict):
     fetched_at: str
 
 
+class DirectionsResponse(_Strict):
+    """NAVER Directions 5(driving) 경로. 수치는 이 응답일 때만 화면에 보인다(추정 금지)."""
+
+    option: Literal["trafast", "tracomfort", "traoptimal"]
+    distance_m: int
+    duration_s: int
+    path: list[list[float]]  # [[lng, lat], ...] (NAVER 원 순서 그대로)
+    provenance: Literal["naver_maps_directions"] = "naver_maps_directions"
+    fetched_at: str
+
+
 # --- 근거 (블로그·숏폼) ---
 
 

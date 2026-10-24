@@ -1,5 +1,5 @@
 import type {
-  BlogResponse, CatalogItem, CategoryFilter, FxResponse, GeocodeResponse, MapsConfig, ProfilePayload,
+  BlogResponse, CatalogItem, CategoryFilter, DirectionsOption, DirectionsResponse, FxResponse, GeocodeResponse, MapsConfig, ProfilePayload,
   RecommendationResponse, VideosResponse,
 } from './types'
 import type { CompareResponse, ExplainResponse, ReferenceProduct } from './compare'
@@ -76,6 +76,13 @@ const q = (params: Record<string, string | number>) =>
 
 export const fetchMapsConfig = () => request<MapsConfig>('/v1/maps/config')
 export const geocode = (query: string) => request<GeocodeResponse>(`/v1/maps/geocode?${q({ query })}`)
+// 자동차 경로(서버 → NAVER Directions 5). 501 = 콘솔에서 Directions 미활성, 503 = 서버에 지도 키 없음.
+type LngLat = { lat: number; lng: number }
+const ll = (p: LngLat) => `${p.lng.toFixed(6)},${p.lat.toFixed(6)}`
+export const fetchDirections = (start: LngLat, goal: LngLat, waypoints: LngLat[] = [], option: DirectionsOption = 'trafast') =>
+  request<DirectionsResponse>(
+    `/v1/maps/directions?${q({ start: ll(start), goal: ll(goal), option, ...(waypoints.length ? { waypoints: waypoints.map(ll).join('|') } : {}) })}`,
+  )
 export const fetchBlogReviews = (query: string, display = 6) => request<BlogResponse>(`/v1/evidence/blog?${q({ query, display })}`)
 export const fetchVideos = (query: string, lang: 'en' | 'ko' = 'en', max = 6) =>
   request<VideosResponse>(`/v1/evidence/videos?${q({ query, lang, max })}`)

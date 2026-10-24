@@ -94,6 +94,17 @@ export interface GeocodeResponse {
   fetched_at: string
 }
 
+// NAVER Directions 5(driving) 프록시 응답. 시간·거리는 이 응답일 때만 화면에 보인다(추정 금지).
+export type DirectionsOption = 'trafast' | 'tracomfort' | 'traoptimal'
+export interface DirectionsResponse {
+  option: DirectionsOption
+  distance_m: number
+  duration_s: number
+  path: [number, number][] // [lng, lat]
+  provenance: 'naver_maps_directions'
+  fetched_at: string
+}
+
 export interface BlogReview {
   title: string
   url: string

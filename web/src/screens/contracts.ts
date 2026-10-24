@@ -27,6 +27,7 @@ export interface ExploreProps {
 
 export interface DetailProps {
   item: CatalogItem
+  ns?: Namespace // 내 숙소(My Trip 출발지)에서 길찾기를 열 때 쓴다
   profile: ProfilePayload
   onBack: () => void
   onAddCart: (item: CatalogItem) => void

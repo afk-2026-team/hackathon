@@ -203,7 +203,7 @@ describe('Explore with a large catalog', () => {
     const fields = screen.getByRole('group', { name: 'Specialty filters' })
     const nField = (f: string) => real(hospitals).filter((h) => h.tags.includes(f)).length
     expect(within(fields).getAllByRole('button').map((b) => b.textContent)).toEqual([
-      `Dermatology ${nField('dermatology')}`, `Dental ${nField('dental')}`, `Health checkup ${nField('checkup')}`, 'International clinic 1',
+      `Dermatology ${nField('dermatology')}`, `Dental ${nField('dental')}`, `Health checkup ${nField('checkup')}`, 'Registered for international patients 1',
     ])
     const areas = screen.getByRole('group', { name: 'Area filters' })
     expect(within(areas).getAllByRole('button')).toHaveLength(3)

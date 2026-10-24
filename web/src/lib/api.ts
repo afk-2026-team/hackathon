@@ -51,8 +51,9 @@ export function fetchRecommendations(profile: ProfilePayload, category: Category
   })
 }
 
-export function fetchCatalog() {
-  return request<{ items: CatalogItem[] }>('/v1/discovery/catalog')
+// lang 은 화면 언어. 서버가 해당 언어의 설명·근거 문장을 돌려준다(ko 외에는 영어).
+export function fetchCatalog(lang = 'en') {
+  return request<{ items: CatalogItem[] }>(`/v1/discovery/catalog?lang=${encodeURIComponent(lang)}`)
 }
 
 // ── 제품 비교·설명(discovery). ──

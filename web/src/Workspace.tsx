@@ -62,16 +62,18 @@ export function Workspace({ ns, uiLang, account, onSignIn, onSignOut, onResetDon
   const [toast, setToast] = useState<string | null>(null)
   // 담은 항목·여행 항목을 다시 열 때 쓰는 id → 항목 표. 실패해도 화면은 계속 쓴다(열기만 못 함).
   const [catalog, setCatalog] = useState<Map<string, CatalogItem>>(new Map())
+  const lang = toLang(profile?.language ?? uiLang)
 
+  // 화면 언어가 바뀌면 그 언어의 문장으로 다시 받는다
   useEffect(() => {
     let alive = true
-    fetchCatalog()
+    fetchCatalog(lang)
       .then((c) => alive && setCatalog(new Map(c.items.map((i) => [i.id, i]))))
       .catch(() => {})
     return () => {
       alive = false
     }
-  }, [])
+  }, [lang])
 
   useEffect(() => {
     if (!pendingId) return
@@ -113,7 +115,6 @@ export function Workspace({ ns, uiLang, account, onSignIn, onSignOut, onResetDon
   const tripIds = useMemo(() => new Set(trip.map((e) => e.item_id)), [trip])
   const cartQty = useMemo(() => Object.fromEntries(cart.map((l) => [l.item_id, l.qty])), [cart])
   const cartCount = cart.reduce((n, l) => n + l.qty, 0)
-  const lang = toLang(profile?.language ?? uiLang)
   const clearToast = useCallback(() => setToast(null), [])
 
   const setProfile = (p: Profile) => {

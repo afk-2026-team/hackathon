@@ -115,6 +115,9 @@ export function Workspace({ ns, uiLang, account, onSignIn, onSignOut, onResetDon
   const tripIds = useMemo(() => new Set(trip.map((e) => e.item_id)), [trip])
   const cartQty = useMemo(() => Object.fromEntries(cart.map((l) => [l.item_id, l.qty])), [cart])
   const cartCount = cart.reduce((n, l) => n + l.qty, 0)
+  // 담은 시점의 제목이 저장돼 있으므로, 표시할 때는 현재 화면 언어의 카탈로그 제목으로 바꾼다(없으면 저장된 제목)
+  const shownCart = useMemo(() => cart.map((l) => ({ ...l, title: catalog.get(l.item_id)?.title ?? l.title })), [cart, catalog])
+  const shownTrip = useMemo(() => trip.map((e) => ({ ...e, title: catalog.get(e.item_id)?.title ?? e.title })), [trip, catalog])
   const clearToast = useCallback(() => setToast(null), [])
 
   const setProfile = (p: Profile) => {
@@ -276,8 +279,8 @@ export function Workspace({ ns, uiLang, account, onSignIn, onSignOut, onResetDon
             <MyTrip
               ns={ns}
               profile={payload}
-              trip={trip}
-              cart={cart}
+              trip={shownTrip}
+              cart={shownCart}
               days={days}
               onMove={moveEntry}
               onDay={(id, day) => setTrip(trip.map((e) => (e.entry_id === id ? { ...e, day } : e)))}
@@ -301,7 +304,7 @@ export function Workspace({ ns, uiLang, account, onSignIn, onSignOut, onResetDon
         <BottomNav current={tab} onChange={goTab} badge={trip.length} />
         {cartOpen && (
           <CartSheet
-            cart={cart}
+            cart={shownCart}
             currency={payload.currency}
             onChangeQty={changeQty}
             onOpenItem={openItemId}

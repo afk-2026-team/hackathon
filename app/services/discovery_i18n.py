@@ -53,6 +53,7 @@ class KoCatalog(_Strict):
     facts: dict[str, KoBasis] = Field(default_factory=dict)
     references: dict[str, KoBasis] = Field(default_factory=dict)
     forms: dict[str, str] = Field(default_factory=dict)
+    list_price_basis: dict[str, str] = Field(default_factory=dict)  # 영어 원문 → 한국어(같은 문장이 여러 항목에 반복된다)
 
 
 def ko_path() -> Path:
@@ -87,15 +88,22 @@ def localize_item(item: CatalogItem, ko: KoCatalog | None) -> CatalogItem:
         return item
     entry = ko.items.get(item.id)
     sources = [localize_source(s, ko) for s in item.sources]
+    list_price = item.list_price
+    if list_price is not None:
+        list_price = list_price.model_copy(update={
+            "basis": ko.list_price_basis.get(list_price.basis, list_price.basis),
+            "source": localize_source(list_price.source, ko),
+        })
     if entry is None or len(entry.reasons) != len(item.reasons):
         # 표시 경로의 폴백: 영어를 그대로 쓰되 누락을 로그로 드러낸다(커버리지 테스트가 막는다)
         logger.warning(f"[Discovery] ⚠️ Korean text missing or out of date for {item.id}; showing English")
-        return item.model_copy(update={"sources": sources})
+        return item.model_copy(update={"sources": sources, "list_price": list_price})
     return item.model_copy(update={
         "title": entry.title or item.title,
         "description": entry.description,
         "reasons": list(entry.reasons),
         "sources": sources,
+        "list_price": list_price,
     })
 
 

@@ -153,6 +153,2139 @@
       "reasons": [
         "강남 병원 방문 전에 통역사가 있는 공공(구청) 안내데스크를 이용할 수 있어요"
       ]
+    },
+    "medical-cha-university-gangnam-cha-medical-center": {
+      "title": "차의과학대학교 강남차병원",
+      "description": "서울특별시 강남구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-01-02-0169, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 566, Nonhyeon-ro, Gangnam-gu, Seoul. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-gangnam-severance-hospital": {
+      "title": "연세대학교 의과대학 강남세브란스병원",
+      "description": "서울특별시 강남구에 있는 상급종합병원이에요(건강보험심사평가원 분류: 상급종합). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-01-01-0773, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 211, Eonju-ro, Gangnam-gu, Seoul. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-kangbuk-samsung-hospital": {
+      "title": "강북삼성병원",
+      "description": "서울특별시 종로구에 있는 상급종합병원이에요(건강보험심사평가원 분류: 상급종합). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2010-01-01-1560, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 29, Saemunan-ro, Jongno-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-national-medical-center": {
+      "title": "국립중앙의료원",
+      "description": "서울특별시 중구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-01-02-0881, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 245, Eulji-ro, Jung-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-seran-general-hospital": {
+      "title": "세란병원",
+      "description": "서울특별시 종로구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-02-7432, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 256, Tongil-ro, Jongno-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-soonchunhayng-university-hospital-seoul": {
+      "title": "순천향대학교 부속 서울병원",
+      "description": "서울특별시 용산구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-01-02-0156, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 59, Daesagwan-ro, Yongsan-gu, Seoul. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-samsung-medical-center": {
+      "title": "삼성서울병원",
+      "description": "서울특별시 강남구에 있는 상급종합병원이에요(건강보험심사평가원 분류: 상급종합). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-01-01-0078, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 81, Irwon-ro, Gangnam-gu, Seoul. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-seoul-national-university-hospital": {
+      "title": "서울대학교병원",
+      "description": "서울특별시 종로구에 있는 상급종합병원이에요(건강보험심사평가원 분류: 상급종합). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-01-01-0150, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 101, Daehak-ro, Jongno-gu, Seoul. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-the-catholic-university-of-korea-seoul-st-marys-hospital": {
+      "title": "가톨릭대학교 서울성모병원",
+      "description": "서울특별시 서초구에 있는 상급종합병원이에요(건강보험심사평가원 분류: 상급종합). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-01-01-0382, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 222, Banpo-daero, Seocho-gu, Seoul. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-gibbeumhospital": {
+      "title": "기쁨병원",
+      "description": "서울특별시 서초구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-02-7150, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 4, Seochojungang-ro, Seocho-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-asan-medical-center": {
+      "title": "서울아산병원",
+      "description": "서울특별시 송파구에 있는 상급종합병원이에요(건강보험심사평가원 분류: 상급종합). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-01-01-0357, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 88, Olympic-ro 43-gil, Songpa-gu, Seoul. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-bumin-hospital-seoul": {
+      "title": "부민병원",
+      "description": "서울특별시 강서구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2020-01-02-5788, 2026-07-21 목록 기준 '유지' 상태). 국민건강보험공단이 지정한 국가건강검진기관 목록에 있어요. Medical Korea 목록의 영문 주소: 389, Gonghang-daero, Gangseo-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "국가건강검진기관으로 지정돼 있어요(국민건강보험공단 목록)"
+      ]
+    },
+    "medical-bestian-seoul-hospital": {
+      "title": "재단법인 베스티안재단 베스티안서울병원",
+      "description": "서울특별시 성동구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2021-01-02-6213, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 382, Wangsimni-ro, Seongdong-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-chung-ang-university-hospital": {
+      "title": "중앙대학교병원",
+      "description": "서울특별시 동작구에 있는 상급종합병원이에요(건강보험심사평가원 분류: 상급종합). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-01-01-0832, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 102, Heukseok-ro, Dongjak-gu, Seoul. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-cm-choong-moo-general-hospital": {
+      "title": "씨엠병원",
+      "description": "서울특별시 영등포구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-01-02-0035, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 13, Yeongdeungpo-ro 36-gil, Yeongdeungpo-gu, Seoul. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-daerim-saint-mary-s-hospital": {
+      "title": "대림성모병원",
+      "description": "서울특별시 영등포구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2020-01-02-5900, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 657, Siheung-daero, Yeongdeungpo-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-eui-ryo-bebin-seoul-hyo-cheon-eui-ryo-jae-dan-h-plus-yangji-hospital": {
+      "title": "의료법인 서울효천의료재단 에이치플러스 양지병원",
+      "description": "서울특별시 관악구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2013-01-02-3113, 2026-07-21 목록 기준 '유지' 상태). 국민건강보험공단이 지정한 국가건강검진기관 목록에 있어요. Medical Korea 목록의 영문 주소: 1636, Nambusunhwan-ro, Gwanak-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "국가건강검진기관으로 지정돼 있어요(국민건강보험공단 목록)"
+      ]
+    },
+    "medical-ewha-womans-university-medical-center": {
+      "title": "이화여자대학교의과대학부속목동병원",
+      "description": "서울특별시 양천구에 있는 상급종합병원이에요(건강보험심사평가원 분류: 상급종합). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-01-01-0117, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 1071, Anyangcheon-ro, Yangcheon-gu, Seoul. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-hanyang-university-seoul-hospital": {
+      "title": "한양대학교병원",
+      "description": "서울특별시 성동구에 있는 상급종합병원이에요(건강보험심사평가원 분류: 상급종합). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-01-01-0328, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 222-1, Wangsimni-ro, Seongdong-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-hallym-university-kangnam-sacred-heart-hospital": {
+      "title": "한림대학교강남성심병원",
+      "description": "서울특별시 영등포구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-01-02-1305, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 1, Singil-ro, Yeongdeungpo-gu, Seoul. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-kangdong-sacred-heart-hospital": {
+      "title": "강동성심병원",
+      "description": "서울특별시 강동구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-01-02-1195, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 150, Seongan-ro, Gangdong-gu, Seoul. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-korea-institute-of-radiological-medical-sciences": {
+      "title": "한국원자력의학원원자력병원",
+      "description": "서울특별시 노원구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2020-01-02-5904, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 75, Nowon-ro, Nowon-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-konkuk-university-medical-center": {
+      "title": "건국대학교병원",
+      "description": "서울특별시 광진구에 있는 상급종합병원이에요(건강보험심사평가원 분류: 상급종합). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-01-01-0034, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. 국민건강보험공단이 지정한 국가건강검진기관 목록에 있어요. Medical Korea 목록의 영문 주소: 120-1, Neungdong-ro, Gwangjin-gu, Seoul. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "국가건강검진기관으로 지정돼 있어요(국민건강보험공단 목록)"
+      ]
+    },
+    "medical-korea-university-anam-hospital": {
+      "title": "고려대학교 의과대학 부속 안암병원",
+      "description": "서울특별시 성북구에 있는 상급종합병원이에요(건강보험심사평가원 분류: 상급종합). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-01-01-0809, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 73, Goryeodae-ro, Seongbuk-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-korea-university-guro-hospital": {
+      "title": "고려대학교의과대학부속 구로병원",
+      "description": "서울특별시 구로구에 있는 상급종합병원이에요(건강보험심사평가원 분류: 상급종합). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2010-01-01-1502, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 148, Gurodong-ro, Guro-gu, Seoul. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-myongji-st-mary-s-hospital": {
+      "title": "명지성모병원",
+      "description": "서울특별시 영등포구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2020-01-02-5868, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 156, Dorim-ro, Yeongdeungpo-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-sahmyook-medical-center": {
+      "title": "삼육서울병원",
+      "description": "서울특별시 동대문구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-01-02-0159, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 82, Mangu-ro, Dongdaemun-gu. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-seoul-sacred-heart-general-hospital": {
+      "title": "서울성심병원",
+      "description": "서울특별시 동대문구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-02-6945, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 259, Wangsan-ro, Dongdaemun-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-smg-snu-boramae-medical-center": {
+      "title": "서울특별시 보라매병원",
+      "description": "서울특별시 동작구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2017-01-02-4786, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. 국민건강보험공단이 지정한 국가건강검진기관 목록에 있어요. Medical Korea 목록의 영문 주소: 20, BORAMAE-RO 5-GIL, DONGJAK-GU, SEOUL, KOREA. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "국가건강검진기관으로 지정돼 있어요(국민건강보험공단 목록)"
+      ]
+    },
+    "medical-severance-hospital": {
+      "title": "연세대학교 의과대학 세브란스병원",
+      "description": "서울특별시 서대문구에 있는 상급종합병원이에요(건강보험심사평가원 분류: 상급종합). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-01-01-0356, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 50-1, Yonsei-ro, Seodaemun-gu, Seoul. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-sung-ae-medical-foundation": {
+      "title": "의료법인성애의료재단 성애병원",
+      "description": "서울특별시 영등포구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2020-01-02-5833, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 22, Yeouidaebang-ro 53-gil, Yeongdeungpo-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-sung-sam-medical-foundation-mizmedi-hospital": {
+      "title": "미즈메디병원",
+      "description": "서울특별시 강서구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-01-02-0752, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 295, Gangseo-ro, Gangseo-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-the-catholic-university-of-korea-eunpyeong-st-mary-s-hospital": {
+      "title": "가톨릭대학교 은평성모병원",
+      "description": "서울특별시 은평구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2021-01-02-6137, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 1021, Tongil-ro, Eunpyeong-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-bongseng-memorial-hospital": {
+      "title": "의료법인정화의료재단 봉생기념병원",
+      "description": "부산광역시 동구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-02-02-7273, 2026-07-21 목록 기준 '유지' 상태). 국민건강보험공단이 지정한 국가건강검진기관 목록에 있어요. Medical Korea 목록의 영문 주소: 401, Jungang-daero, Dong-gu, Busan, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "국가건강검진기관으로 지정돼 있어요(국민건강보험공단 목록)"
+      ]
+    },
+    "medical-belive-sewoong-hospital": {
+      "title": "빌리브세웅병원",
+      "description": "부산광역시 동래구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-02-03-7918, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 455, Chungnyeol-daero, Dongnae-gu, Busan, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-bumin-hospital-haeundae": {
+      "title": "해운대부민병원",
+      "description": "부산광역시 해운대구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2020-02-02-5758, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 584, Haeun-daero, Haeundae-gu, Busan, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-busan-adventist-hospital": {
+      "title": "삼육부산병원",
+      "description": "부산광역시 서구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-02-02-1056, 2026-07-21 목록 기준 '유지' 상태). Medical Korea의 KAHF 인증 병원 목록에 있어요. Medical Korea 목록의 영문 주소: 170, Daeti-ro, Seo-gu, Busan, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "KAHF 외국인환자 유치기관 평가인증을 받았어요(Medical Korea 목록)"
+      ]
+    },
+    "medical-busan-st-mary-hospital": {
+      "title": "부산성모병원",
+      "description": "부산광역시 남구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2011-02-02-2066, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 25-14, Yongho-ro 232beon-gil, Nam-gu, Busan. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-centum-general-hospital": {
+      "title": "센텀종합병원",
+      "description": "부산광역시 수영구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-02-02-7929, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 8, Suyeong-ro 679beon-gil, Suyeong-gu, Busan, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-daedong-hospital": {
+      "title": "대동병원",
+      "description": "부산광역시 동래구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2015-02-02-4015, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 187, Chungnyeol-daero, Dongnae-gu, Busan. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-dong-a-university-hospital": {
+      "title": "동아대학교병원",
+      "description": "부산광역시 서구에 있는 상급종합병원이에요(건강보험심사평가원 분류: 상급종합). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-02-01-0095, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 26, Daesingongwon-ro, Seo-gu, Busan. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-good-gang-an-hospital": {
+      "title": "좋은강안병원",
+      "description": "부산광역시 수영구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-02-02-0036, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 493, Suyeong-ro, Suyeong-gu, Busan. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-good-mooonhwa-hospital": {
+      "title": "좋은문화병원",
+      "description": "부산광역시 동구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-02-02-0014, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 119, Beomil-ro, Dong-gu, Busan. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-haedong-hospital": {
+      "title": "의료법인 행도의료재단 해동병원",
+      "description": "부산광역시 영도구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2018-02-02-5199, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 133, Taejong-ro, Yeongdo-gu, Busan, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-ilsin-christian-hospital": {
+      "title": "일신기독병원",
+      "description": "부산광역시 동구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2018-02-02-4970, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 27, Jeonggongdan-ro, Dong-gu, Busan, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-inje-university-busan-paik-hospital": {
+      "title": "인제대학교부산백병원",
+      "description": "부산광역시 부산진구에 있는 상급종합병원이에요(건강보험심사평가원 분류: 상급종합). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2020-02-01-6011, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 75, Bokji-ro, Busanjin-gu, Busan, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-inje-university-haeundae-paik-hospital": {
+      "title": "인제대학교 해운대백병원",
+      "description": "부산광역시 해운대구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2010-02-02-1640, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 875, Haeun-daero, Haeundae-gu, Busan, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-kosin-university-gospel-hospital": {
+      "title": "고신대학교 복음병원",
+      "description": "부산광역시 서구에 있는 상급종합병원이에요(건강보험심사평가원 분류: 상급종합). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-02-02-1333, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 전문의가 있는 진료과가 있어요. 국민건강보험공단이 지정한 국가건강검진기관 목록에 있어요. Medical Korea 목록의 영문 주소: 262, Gamcheon-ro, Seo-gu, Busan. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "국가건강검진기관으로 지정돼 있어요(국민건강보험공단 목록)"
+      ]
+    },
+    "medical-pusan-national-university-hospital": {
+      "title": "부산대학교병원",
+      "description": "부산광역시 서구에 있는 상급종합병원이에요(건강보험심사평가원 분류: 상급종합). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-02-01-1332, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. 국민건강보험공단이 지정한 국가건강검진기관 목록에 있어요. Medical Korea 목록의 영문 주소: 179, Gudeok-ro, Seo-gu, Busan. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "국가건강검진기관으로 지정돼 있어요(국민건강보험공단 목록)"
+      ]
+    },
+    "medical-goodsamsun-hospital": {
+      "title": "좋은삼선병원",
+      "description": "부산광역시 사상구에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-02-02-7699, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 326, Gaya-daero, Sasang-gu, Busan, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-cheju-halla-general-hospital": {
+      "title": "제주한라병원",
+      "description": "제주특별자치도 제주시에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-16-02-1251, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 65, Doryeong-ro, Jeju-si, Jeju-do. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-hankook-general-hospital": {
+      "title": "의료법인 혜인의료재단 한국병원",
+      "description": "제주특별자치도 제주시에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2013-16-02-3145, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 193, Seogwang-ro, Jeju-si, Jeju-do. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-jungang-hospital": {
+      "title": "의료법인 중앙의료재단 중앙병원",
+      "description": "제주특별자치도 제주시에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2013-16-02-2939, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 91 Wollang-ro, Jeju-si, Jeju-do, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-seogwipo-medical-center": {
+      "title": "제주특별자치도 서귀포 의료원",
+      "description": "제주특별자치도 서귀포시에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2010-16-02-1845, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 47, Jangsu-ro, Seogwipo-si, Jeju-do. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-jeju-national-university-hospital": {
+      "title": "제주대학교병원",
+      "description": "제주특별자치도 제주시에 있는 종합병원이에요(건강보험심사평가원 분류: 종합병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-16-02-7661, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과·치과 전문의가 있는 진료과가 있어요. Medical Korea 목록의 영문 주소: 15, Aran 13-gil, Jeju-si, Jeju-do, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요"
+      ]
+    },
+    "medical-365-all-care-dental-clinic": {
+      "title": "365올케어치과의원",
+      "description": "서울특별시 중구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-05-7613, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 171, Dongho-ro, Jung-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-allso-clinic": {
+      "title": "올소치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2016-01-05-4430, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 325, Bongeunsa-ro, Gangnam-gu, Seoul. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-ata-dental": {
+      "title": "에이티에이치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2018-01-05-5092, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: GLASS TOWER 10F, 406, Gangnam-daero, Gangnam-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-aceplant-dental-office": {
+      "title": "에이스플란트 치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-08-8571, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 203 Teheran-ro, Gangnam-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-apgujeong-oracle-dental-clinic": {
+      "title": "압구정오라클치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-05-8615, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 609-1 Sinsa-dong, Gangnam-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-bok-dental-clinic": {
+      "title": "비오케이김봉옥치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2017-01-05-4878, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 208, Apgujeong-ro, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-bansuk-dental-clinic-conservative-dentistry-and-endodontics": {
+      "title": "반석치과보존과치과의원",
+      "description": "서울특별시 중구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-05-8008, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 19, Mugyo-ro, Jung-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-blanche-dental-clinic": {
+      "title": "블랑쉬치과의원",
+      "description": "서울특별시 서초구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-05-7293, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 531 Gangnam-daero, Seocho-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-blanche-hyung-dental-clinic": {
+      "title": "블랑쉬형치과의원",
+      "description": "서울특별시 서초구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2020-01-05-5856, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 108, Seochojungang-ro, Seocho-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-center-dental-clinic": {
+      "title": "센터치과의원",
+      "description": "서울특별시 중구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-05-7977, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 14, Sowol-ro, Jung-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-d1-dental-clinic": {
+      "title": "디원치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-05-8300, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 111, Dosan-daero, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-darun-dental-clinic": {
+      "title": "다른치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-05-7438, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 652, Gangnam-daero, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-dfirst-dental-clinic": {
+      "title": "디퍼스트치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-05-7964, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 817, Seolleung-ro, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-doctor-heos-dental-clinic": {
+      "title": "닥터허치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2015-01-05-4214, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 701, Yeongdong-daero, Gangnam-gu, Seoul. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-dongdaemun-dental-clinic": {
+      "title": "동대문치과의원",
+      "description": "서울특별시 종로구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-05-8333, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 272 Jong-ro, Jongno-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-dr-han-s-dental-clinic": {
+      "title": "한순기치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-08-8803, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 57 Teheran-ro 87-gil, Gangnam-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-dream-dental-clinic": {
+      "title": "드림치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-05-7077, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 841, Nonhyeon-ro, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-eu-oral-maxillofacial-surgery": {
+      "title": "이유구강악안면외과치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2016-01-05-4585, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 108 Dosan-daero, Gangnam-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-fos-u-dental-clinic": {
+      "title": "포스유치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-05-7968, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 364, Gangnam-daero, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-gangnambrown-dental-clinic": {
+      "title": "강남브라운치과의원",
+      "description": "서울특별시 서초구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-05-8533, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 5 Gangnam-daero 85-gil, Seocho-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-guardians-dental-clinic": {
+      "title": "가디언즈치과의원",
+      "description": "서울특별시 중구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2022-01-05-6744, 2026-07-21 목록 기준 '유지' 상태). 국민건강보험공단이 지정한 국가건강검진기관 목록에 있어요. Medical Korea 목록의 영문 주소: 27, Myeongdong 8ga-gil, Jung-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-gangnam-dental-clinic": {
+      "title": "강남레옹치과의원",
+      "description": "서울특별시 서초구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-08-8616, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 415, Gangnam-daero, Seocho-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-gangnam-w-dental-clinic": {
+      "title": "강남더블유치과의원",
+      "description": "서울특별시 서초구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-05-7280, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 463, Gangnam-daero, Seocho-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-global-dental-clinic": {
+      "title": "글로벌치과의원",
+      "description": "서울특별시 용산구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-08-8450, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 142-1 Itaewon-ro, Yongsan-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-harue-dentalclinic": {
+      "title": "하루에치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-05-7222, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 41-11, Gangnam-daero 162-gil, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-knockknock-plant-dental-clinic": {
+      "title": "똑똑플란트치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2022-01-05-6661, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 107, Teheran-ro, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-lucid-dental-clinic": {
+      "title": "루시드치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-05-7183, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 3, Nonhyeon-ro 111-gil, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-lienjang-dental-clinic": {
+      "title": "리엔장치과의원",
+      "description": "서울특별시 서초구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-05-7832, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 403, Gangnam-daero, Seocho-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-limetree-dental-hospital": {
+      "title": "라임나무치과병원",
+      "description": "서울특별시 중구에 있는 치과병원이에요(건강보험심사평가원 분류: 치과병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-04-7101, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 43, Myeongdong-gil, Jung-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-make-dental-clinic": {
+      "title": "메이크치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-05-8165, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 122, Dosan-daero, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-myeongdong-combi-dental-clinic": {
+      "title": "명동콤비치과의원",
+      "description": "서울특별시 중구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-05-6912, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 84, Namdaemun-ro, Jung-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-newyork-yeonsei-dental-clinic": {
+      "title": "뉴욕연세치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2022-01-05-6703, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 825-9, Yeoksam-dong, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-perfect-dental-clinic": {
+      "title": "퍼펙트치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-05-6861, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 5, Teheran-ro 4-gil, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-plan-dental-implant-clinic": {
+      "title": "플란 치과 의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2022-01-05-6631, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 119, Dosan-daero, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-s-plant-dental-hospital": {
+      "title": "에스플란트치과병원",
+      "description": "서울특별시 강남구에 있는 치과병원이에요(건강보험심사평가원 분류: 치과병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-01-04-0179, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 410, Dosan-daero, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-seoultop-dental-hospital": {
+      "title": "서울탑치과병원",
+      "description": "서울특별시 서초구에 있는 치과병원이에요(건강보험심사평가원 분류: 치과병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2017-01-04-4828, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 261-1, Hyoryeong-ro, Seocho-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-smileview-dental-clinic": {
+      "title": "스마일뷰치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2019-01-05-5534, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 107, Bongeunsa-ro, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-seoul-reema-dental-clinic": {
+      "title": "서울리마치과의원",
+      "description": "서울특별시 서초구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2018-01-05-4944, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 396, Seocho-daero, Seocho-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-seoulface21-dental-hospital": {
+      "title": "서울페이스21 치과병원",
+      "description": "서울특별시 강남구에 있는 치과병원이에요(건강보험심사평가원 분류: 치과병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2021-01-04-6165, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 390, Gangnam-daero, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-the-bright-dental-clinic": {
+      "title": "더밝은치과의원",
+      "description": "서울특별시 서초구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-05-7522, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 16, Seochojungang-ro 24-gil, Seocho-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-tu-dental-clinic": {
+      "title": "티유치과의원",
+      "description": "서울특별시 서초구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2021-01-05-6343, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 54 Seocho-daero 77-gil, Seocho-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-talented-dentist-s-office": {
+      "title": "재주좋은치과의원",
+      "description": "서울특별시 서초구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-05-08985, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 332 Seocho-daero, Seocho-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-yonsei-baro-dental-clinic": {
+      "title": "연세바로치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-05-7529, 2026-07-21 목록 기준 '유지' 상태). 국민건강보험공단이 지정한 국가건강검진기관 목록에 있어요. Medical Korea 목록의 영문 주소: 873, Nonhyeon-ro, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-yonsei-jw-dental-clinic": {
+      "title": "연세정원치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-05-8279, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 541, Dogok-ro, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-yonsei-yegam-dental-clinic": {
+      "title": "연세예감치과의원",
+      "description": "서울특별시 중구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2018-01-05-5305, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 4 - 5F, 70, Sejong-daero, Jung-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-afterdental-dental-clinic": {
+      "title": "강남애프터치과의원",
+      "description": "서울특별시 서초구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2019-01-05-5596, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 441, Gangnam-daero, Seocho-gu, Seoul, Korea 11F. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-eplan-dental-clilnic": {
+      "title": "이플랜치과의원",
+      "description": "서울특별시 중구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-05-09045, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 120 Toegye-ro, Jung-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-new-n-dental-clinic": {
+      "title": "뉴엔치과의원",
+      "description": "서울특별시 서초구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-05-7642, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 405, Gangnam-daero, Seocho-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-seoraesun-dental-clinic": {
+      "title": "서래선치과의원",
+      "description": "서울특별시 서초구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-05-8009, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 48, Seorae-ro, Seocho-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-seouljawdentalclinic": {
+      "title": "서울턱치과의원",
+      "description": "서울특별시 서초구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-05-8605, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 5 Gangnam-daero 85-gil, Seocho-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-sistemdental": {
+      "title": "시스템치과의원",
+      "description": "서울특별시 중구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-05-8026, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 21, Myeongdong 7-gil, Jung-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-smiled-dental-clinic": {
+      "title": "스마일디 치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-05-7787, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 624 Gangnam-daero, Gangnam-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-thefacedental": {
+      "title": "더페이스치과의원",
+      "description": "서울특별시 강남구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2017-01-05-4774, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 840, 4 floors, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-wonchiyun-dental-clinic": {
+      "title": "원치윤치과의원",
+      "description": "서울특별시 마포구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-05-8654, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 46-1 Changjeon-ro, Mapo-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-yemian-dental-clinic": {
+      "title": "예미안치과의원",
+      "description": "서울특별시 서초구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-05-7459, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 280, Seocho-daero, Seocho-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-alive-dermatology": {
+      "title": "얼라이브 피부과의원",
+      "description": "서울특별시 서초구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-08-7700, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 2명 신고). Medical Korea 목록의 영문 주소: 291, Banpo-daero, Seocho-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-arno-dermatology": {
+      "title": "아르노피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-08-7298, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 807, Eonju-ro, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-aloha-skin-clinic": {
+      "title": "아로하피부과의원",
+      "description": "서울특별시 마포구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-08-7725, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 3명 신고). Medical Korea 목록의 영문 주소: 262, Sinchon-ro, Mapo-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-bomsskin": {
+      "title": "봄스피부과의원",
+      "description": "서울특별시 서초구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2020-01-08-5828, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 2명 신고). Medical Korea 목록의 영문 주소: 356, Seocho-daero, Seocho-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-banobagi-dermatology-clinic": {
+      "title": "바노바기피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-08-7694, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 3명 신고). Medical Korea 목록의 영문 주소: 219, Bongeunsa-ro, Gangnam-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-cheongcam-oaro-dermatology": {
+      "title": "청담오아로피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-08-8066, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 2명 신고). Medical Korea 목록의 영문 주소: 327, Dosan-daero, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-cellpark-clinic": {
+      "title": "셀파크피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2019-01-08-5565, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 10 Gangnam-daero 158-gil, Gangnam-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-cheongdam-gowoonsesang-dr-g-dermatology": {
+      "title": "청담고운세상닥터지피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-01-08-0642, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 2명 신고). Medical Korea 목록의 영문 주소: 806, Seolleung-ro, Gangnam-gu, Seoul. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-dain-skin-clinic": {
+      "title": "다인피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-08-7659, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 8, Apgujeong-ro 50-gil, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-define-dermatology-clinic": {
+      "title": "디파인 피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-08-8562, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 39 Eonju-ro 30-gil, Gangnam-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-ever-skin-clinic": {
+      "title": "에버피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-08-7187, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 2명 신고). Medical Korea 목록의 영문 주소: 222, Apgujeong-ro, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-eunskin-clinic": {
+      "title": "청담은피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-08-09027, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 17, Seolleung-ro 152-gil, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-greeny-dermatology-clinic": {
+      "title": "그리니피부과의원",
+      "description": "서울특별시 서초구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-08-8080, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 2명 신고). Medical Korea 목록의 영문 주소: 5, Bangbaecheon-ro 2-gil, Seocho-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-glassy-skin-clinic": {
+      "title": "청담글래시피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-08-7089, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 2명 신고). Medical Korea 목록의 영문 주소: 51, Dosan-daero 81-gil, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-heritique-dermatology-clinic": {
+      "title": "광화문헤리티크피부과의원",
+      "description": "서울특별시 종로구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-08-7749, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 91, Saemunan-ro, Jongno-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-huh-joon-won-m-d-dermatology": {
+      "title": "허준원엠디피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-08-7497, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 26, Eonju-ro 174-gil, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-jf-clinic": {
+      "title": "제이에프셀피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-08-7217, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 2명 신고). Medical Korea 목록의 영문 주소: 539, Bongeunsa-ro, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-jm-dermatology": {
+      "title": "제이엠 김정민 피부과의원",
+      "description": "서울특별시 서초구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-08-8417, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 158, Saimdang-ro, Seocho-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-lifton-dermatology": {
+      "title": "리프톤피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-08-7552, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 4명 신고). Medical Korea 목록의 영문 주소: 119, Dosan-daero, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-line-dermatology": {
+      "title": "라인피부과의원",
+      "description": "서울특별시 서초구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-08-8539, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 2명 신고). Medical Korea 목록의 영문 주소: 543 Gangnam-daero, Seocho-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-lumiin-dermatology-clinic": {
+      "title": "루미인 피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-08-8258, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 324, Seolleung-ro, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-mifamoon-dermatology": {
+      "title": "미파문피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-08-7706, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 808-5, Yeoksam-dong, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-mind-skin-clinic": {
+      "title": "마인드피부과의원",
+      "description": "서울특별시 마포구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-08-8087, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 2명 신고). Medical Korea 목록의 영문 주소: 3, Yanghwa-ro 18-gil, Mapo-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-monara-dermatology-clinic": {
+      "title": "모나라피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-08-7436, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 15, Nonhyeon-ro 171-gil, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-morganhumandermatology": {
+      "title": "모건휴먼피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2018-01-08-5229, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 583-3, Sinsa-dong, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-myeongdong-gowoonsesang-dermatology": {
+      "title": "명동고운세상피부과의원",
+      "description": "서울특별시 중구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2017-01-08-4801, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 308-311, 3F, 131, Toegye-ro, Jung-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-ohsujin-dermatology-clinic": {
+      "title": "오수진피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-08-8355, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 120, Dosan-daero, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-oasis-dermatologic-clinic": {
+      "title": "오아시스피부과의원",
+      "description": "서울특별시 서초구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-08-8578, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 2명 신고). Medical Korea 목록의 영문 주소: 27 Sinbanpo-ro 33-gil, Seocho-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-phd-dermatologic-clinic": {
+      "title": "피에이치디피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-08-6860, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 2명 신고). Medical Korea 목록의 영문 주소: 842, Nonhyeon-ro, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-pure-skin-clinic": {
+      "title": "퓨어피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2018-01-08-5001, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: PURE SKIN CLINIC, 3rd floor, Baekang Building, 801,Seolleung-ro,Gangnam-gu,Seoul,Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-reone-clinic": {
+      "title": "리원피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2017-01-08-4811, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 2명 신고). Medical Korea 목록의 영문 주소: 327 Dosan-daero, Gangnam-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-remind-dermatology": {
+      "title": "리마인드피부과의원",
+      "description": "서울특별시 서초구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-08-7961, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 206, Gangnam-daero, Seocho-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-seoultone-dermatology": {
+      "title": "서울톤피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-08-8552, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 3명 신고). Medical Korea 목록의 영문 주소: 48, Seolleung-ro, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-sinsain-dermatology-clinic": {
+      "title": "신사인피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2022-01-08-6692, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 107, Dosan-daero, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-soonsooan-dermatology-clinic": {
+      "title": "순수안피부과의원",
+      "description": "서울특별시 서초구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-08-08936, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 157 Saimdang-ro, Seocho-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-seoul-grace-dermatology": {
+      "title": "서울그레이스피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-08-08860, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 427 Dosan-daero, Gangnam-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-seoul-h-dermatology-clinic": {
+      "title": "서울에이치피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-08-8331, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 669 Seolleung-ro, Gangnam-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-skin-medi-dermatology-clinic": {
+      "title": "스킨메디피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-08-8301, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 4명 신고). Medical Korea 목록의 영문 주소: 413, Hakdong-ro, Gangnam-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-skyfeel-dermatologic-clinic": {
+      "title": "하늘느낌피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-08-7940, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 2명 신고). Medical Korea 목록의 영문 주소: 648-12, Sinsa-dong, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-stay-young-dermatology-skin-care": {
+      "title": "스테이영피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2018-01-08-5277, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 702, Eonju-ro, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-cheongdam-anz-dermatology-clinic": {
+      "title": "청담안즈피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-08-7112, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 3-2, Hakdong-ro 53-gil, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-delightdermatology": {
+      "title": "딜라이트피부과의원",
+      "description": "서울특별시 서초구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-08-8248, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 509, Gangnam-daero, Seocho-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-facedermatology": {
+      "title": "페이스피부과의원",
+      "description": "서울특별시 마포구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-08-6952, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 2명 신고). Medical Korea 목록의 영문 주소: 73, Mapo-daero, Mapo-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-forward-clinic": {
+      "title": "청담포워드피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-08-8730, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 415 Hakdong-ro, Gangnam-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-kudo-dermatology-clinic": {
+      "title": "구도피부과의원",
+      "description": "서울특별시 용산구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-08-08846, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 124 Dokseodang-ro, Yongsan-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-leaders-dematology-clinic": {
+      "title": "청담리더스피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-08-7038, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 445, Apgujeong-ro, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-mimodern-dermatology-clinic": {
+      "title": "미모던피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-08-6960, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 3명 신고). Medical Korea 목록의 영문 주소: 280, Gwangpyeong-ro, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-pind-dermatology-clinic": {
+      "title": "파인드피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2022-01-08-6709, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 826, Nonhyeon-ro, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-sejinskin": {
+      "title": "세진피부과의원",
+      "description": "서울특별시 강남구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-08-7453, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 30, Eonju-ro 172-gil, Gangnam-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-ne2-plant-dental-clinic": {
+      "title": "내이플란트치과의원",
+      "description": "서울특별시 영등포구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2014-01-05-3641, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 6, Yeongjung-ro, Yeongdeungpo-gu, Seoul. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-seoul-daru-dental-clinic": {
+      "title": "서울다루치과의원",
+      "description": "서울특별시 송파구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-05-8594, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 94 Seokchonhosu-ro, Songpa-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-sunshine-dental-clinic": {
+      "title": "서울선샤인치과의원",
+      "description": "서울특별시 영등포구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-05-8362, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 26, Uisadang-daero, Yeongdeungpo-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-seoulofdentalhospital": {
+      "title": "서울오브치과병원",
+      "description": "서울특별시 송파구에 있는 치과병원이에요(건강보험심사평가원 분류: 치과병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-04-8446, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 196 Baekjegobun-ro, Songpa-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-the-standard-dental-clinic": {
+      "title": "스탠다드치과의원",
+      "description": "서울특별시 송파구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-05-7910, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 562, Songpa-daero, Songpa-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-upenn-barun-dental-clinic": {
+      "title": "유펜바른치과의원",
+      "description": "서울특별시 송파구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2021-01-05-6291, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 119, Olympic-ro, Songpa-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-yonsei-the-first-dental-clinic": {
+      "title": "연세일등치과의원",
+      "description": "서울특별시 송파구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-05-09057, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 1 Munjeong-ro, Songpa-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-smilerdental": {
+      "title": "스마일러치과의원",
+      "description": "서울특별시 송파구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-05-6864, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 102, Dongnam-ro, Songpa-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-cnp-skin-and-laser-clinic-youi-do": {
+      "title": "CNP차앤박피부과의원",
+      "description": "서울특별시 영등포구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-08-7205, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 2명 신고). Medical Korea 목록의 영문 주소: 53-1, Yeouinaru-ro, Yeongdeungpo-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-iris-dermatology-clinic": {
+      "title": "아이리스피부과의원",
+      "description": "서울특별시 성동구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-08-8318, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 26 Sangwon-gil, Seongdong-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-irvine-dermatology": {
+      "title": "어바인피부과의원",
+      "description": "서울특별시 영등포구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2022-01-08-6552, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 2명 신고). Medical Korea 목록의 영문 주소: 97, Uisadang-daero, Yeongdeungpo-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-snu-dermatology-clinic": {
+      "title": "스누피부과의원",
+      "description": "서울특별시 성동구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2018-01-08-5088, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 7th floor, 42, Achasan-ro, Seongdong-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-space-dermatology-clinic": {
+      "title": "스페이스피부과의원",
+      "description": "서울특별시 성동구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-08-8813, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 202 Dokseodang-ro, Seongdong-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-the-river-dermatology-clinic": {
+      "title": "더리버피부과의원",
+      "description": "서울특별시 영등포구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-01-08-8501, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 68 Yangpyeong-ro, Yeongdeungpo-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-the-yoon-clinic": {
+      "title": "더윤피부과의원",
+      "description": "서울특별시 성동구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-08-8380, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 50 Wangsimni-ro, Seongdong-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-trie-dermatology-clinic": {
+      "title": "트리에피부과의원",
+      "description": "서울특별시 성동구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-01-08-7476, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 48, Maebong-gil, Seongdong-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-seoul-allup-dermatology": {
+      "title": "서울올업피부과의원",
+      "description": "서울특별시 성동구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-08-8385, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 92 Achasan-ro, Seongdong-gu, Seoul, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-vitchaewoon-dermatology-clinic": {
+      "title": "빛채운피부과의원",
+      "description": "서울특별시 영등포구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-01-08-7764, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 39, Gukjegeumyung-ro, Yeongdeungpo-gu, Seoul, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-digital-art-dental-clinic": {
+      "title": "디지털아트치과의원",
+      "description": "부산광역시 부산진구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-02-05-08901, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 79 Bujeon-ro, Busanjin-gu, Busan, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-dongnae-roden-dental-hospital": {
+      "title": "동래로덴치과병원",
+      "description": "부산광역시 동래구에 있는 치과병원이에요(건강보험심사평가원 분류: 치과병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-02-04-8238, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 3, Chungnyeol-daero 237beon-gil, Dongnae-gu, Busan, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-miju-dental-hoapital": {
+      "title": "미주치과병원",
+      "description": "부산광역시 동래구에 있는 치과병원이에요(건강보험심사평가원 분류: 치과병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2016-02-04-4456, 2026-07-21 목록 기준 '유지' 상태). 국민건강보험공단이 지정한 국가건강검진기관 목록에 있어요. Medical Korea 목록의 영문 주소: 114, Chungnyeol-daero, Dongnae-gu, Busan. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-new-york-the-one-dental-clinic": {
+      "title": "뉴욕더원치과의원",
+      "description": "부산광역시 수영구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-02-05-8075, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 710-1, Suyeong-ro, Suyeong-gu, Busan, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-ocean-city-dental-hospital": {
+      "title": "오션시티치과병원",
+      "description": "부산광역시 강서구에 있는 치과병원이에요(건강보험심사평가원 분류: 치과병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-02-04-7969, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 70, Myeongji ocean city 4-ro, Gangseo-gu, Busan, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-segyerodental": {
+      "title": "세계로치과병원",
+      "description": "부산광역시 해운대구에 있는 치과병원이에요(건강보험심사평가원 분류: 치과병원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-02-04-7468, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 102, Centum dong-ro, Haeundae-gu, Busan, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-seoulhighan-dental-clinic": {
+      "title": "서울하이안치과의원",
+      "description": "부산광역시 해운대구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-02-05-08840, 2026-07-21 목록 기준 '유지' 상태). 국민건강보험공단이 지정한 국가건강검진기관 목록에 있어요. Medical Korea 목록의 영문 주소: 814 Haeun-daero, Haeundae-gu, Busan, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-reset-dental-clinic": {
+      "title": "리셋치과의원",
+      "description": "부산광역시 부산진구에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2022-02-08-6656, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 753, Gaya-daero, Busanjin-gu, Busan, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-base-dermatologic-clinic": {
+      "title": "베이스피부과의원",
+      "description": "부산광역시 해운대구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-02-08-8179, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 24, Centum 2-ro, Haeundae-gu, Busan, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-derma-dermatology-clinic": {
+      "title": "데르마피부과의원",
+      "description": "부산광역시 해운대구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-02-08-08913, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 415 Haeun-daero, Haeundae-gu, Busan, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-gowoonsesang-kim-yang-che-jang-bong-seok-skin-clinic": {
+      "title": "고운세상 김양제장봉석피부과의원",
+      "description": "부산광역시 부산진구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2009-02-08-0641, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 2명 신고). Medical Korea 목록의 영문 주소: (?5F) 686, Jungang-daero, Busanjin-gu, Busan, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-leehyunjae-clinic": {
+      "title": "이현재피부과의원",
+      "description": "부산광역시 부산진구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-02-08-8191, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 1명 신고). Medical Korea 목록의 영문 주소: 74, Seomyeon-ro, Busanjin-gu, Busan, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-loar-dermatology-clinic": {
+      "title": "로아르피부과의원",
+      "description": "부산광역시 금정구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2025-02-08-08952, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 2명 신고). Medical Korea 목록의 영문 주소: 441 Geumgang-ro, Geumjeong-gu, Busan, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-miul-dermatology": {
+      "title": "뮬피부과의원",
+      "description": "부산광역시 해운대구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-02-08-8222, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 3명 신고). Medical Korea 목록의 영문 주소: 26, Centum dong-ro, Haeundae-gu, Busan, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-olive-skin-clinic": {
+      "title": "올리브피부과의원",
+      "description": "부산광역시 북구에 있는 의원이에요(건강보험심사평가원 분류: 의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-02-08-7995, 2026-07-21 목록 기준 '유지' 상태). 건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 3명 신고). Medical Korea 목록의 영문 주소: 3, Mandeok-daero 27beon-gil, Buk-gu, Busan, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요"
+      ]
+    },
+    "medical-barune-orthodontic-clinic": {
+      "title": "바른이치과교정과치과의원",
+      "description": "제주특별자치도 제주시에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2019-16-05-5334, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 14, Yeonbuk-ro, Jeju-si, Jeju-do, Republic of Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-dana-dental-clinic": {
+      "title": "다나치과의원",
+      "description": "제주특별자치도 서귀포시에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2018-16-05-5137, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 203-103, 189, Jungang-ro, Seogwipo-si, Jeju-do, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-jeju-anafn-dental-clinic": {
+      "title": "제주 아나픈치과의원",
+      "description": "제주특별자치도 제주시에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2023-16-05-7516, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 362, Nohyeong-ro, Jeju-si, Jeju-do, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "medical-kimsplant-dental-clinc": {
+      "title": "킴스플란트치과의원",
+      "description": "제주특별자치도 제주시에 있는 치과의원이에요(건강보험심사평가원 분류: 치과의원). 한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 M-2024-16-05-7973, 2026-07-21 목록 기준 '유지' 상태). Medical Korea 목록의 영문 주소: 10, Yeonbuk-ro, Jeju-si, Jeju-do, Korea. 진료 판단과 예약은 해당 의료기관이 해요.",
+      "reasons": [
+        "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
+        "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요"
+      ]
+    },
+    "beauty-anua-rice-70-glow-milky-toner-250ml": {
+      "title": "아누아 라이스 70 글로우 밀키 토너",
+      "description": "판매처 분류: 스킨케어 > 보습 > 토너. 판매 페이지 표기 용량: 250ml. 판매처 표기: 대한민국산, 제조·판매: The Founders Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 토너",
+        "성분 목록에 표기된 성분: Oryza Sativa (Rice) Bran Water (71%), Niacinamide (판매처 표기)"
+      ]
+    },
+    "beauty-cosrx-full-fit-propolis-synergy-toner-280ml": {
+      "title": "코스알엑스 풀핏 프로폴리스 시너지 토너",
+      "description": "판매처 분류: 스킨케어 > 보습 > 토너. 판매 페이지 표기 용량: 280ml. 판매처 표기: 대한민국산, 제조·판매: Corea Cosmedical Center Co., Ltd. / COSRX Inc.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 토너",
+        "성분 목록에 표기된 성분: Propolis Extract, Honey Extract (판매처 표기)"
+      ]
+    },
+    "beauty-beyond-angel-aqua-moisture-barrier-toner-500ml": {
+      "title": "비욘드 엔젤아쿠아 보습장벽 토너",
+      "description": "판매처 분류: 스킨케어 > 보습 > 토너. 판매 페이지 표기 용량: 500ml. 판매처 표기: 대한민국산, 제조·판매: Manufacturer: LG Household & Health Care Ltd. / Distributor: LG Household & Health Care Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 토너",
+        "성분 목록에 표기된 성분: Niacinamide, Glycerin (판매처 표기)"
+      ]
+    },
+    "beauty-celimax-dual-barrier-creamy-toner-150ml": {
+      "title": "셀리맥스 듀얼배리어 크리미 토너",
+      "description": "판매처 분류: 스킨케어 > 보습 > 토너. 판매 페이지 표기 용량: 150ml. 판매처 표기: 대한민국산, 제조·판매: NFC Co., Ltd. / Absorb Lab Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 토너",
+        "성분 목록에 표기된 성분: Panthenol, Glycerin (판매처 표기)"
+      ]
+    },
+    "beauty-numbuzin-no9-nad-pdrn-glow-boosting-toner-150ml": {
+      "title": "넘버즈인 9번 나드 피디알엔 글로우 트리트먼트 토너",
+      "description": "판매처 분류: 스킨케어 > 보습 > 토너. 판매 페이지 표기 용량: 150ml. 판매처 표기: 대한민국산, 제조·판매: CNF Cosmetics Factory Co., Ltd. / Benow Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 토너",
+        "성분 목록에 표기된 성분: Niacinamide (판매처 표기)"
+      ]
+    },
+    "beauty-dalba-vita-toning-serum-toner-180ml": {
+      "title": "달바 비타 토닝 세럼 토너",
+      "description": "판매처 분류: 스킨케어 > 보습 > 토너. 판매 페이지 표기 용량: 180ml. 판매처 표기: 대한민국산, 제조·판매: SAMSUNG MEDICOS Co., Ltd. / d’Alba Global Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 토너",
+        "성분 목록에 표기된 성분: Hippophae Rhamnoides Water, Niacinamide (판매처 표기)"
+      ]
+    },
+    "beauty-cosrx-bha-blackhead-power-liquid-100ml": {
+      "title": "코스알엑스 바하 블랙헤드 파워 리퀴드",
+      "description": "판매처 분류: 스킨케어 > 보습 > 토너. 판매 페이지 표기 용량: 100ml. 판매처 표기: 대한민국산, 제조·판매: Corea Cosmedical Center Co., Ltd. /COSRX Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 토너",
+        "성분 목록에 표기된 성분: White Willow Bark Water, Betaine Salicylate, Niacinamide (판매처 표기)"
+      ]
+    },
+    "beauty-tirtir-milk-skin-toner-150ml": {
+      "title": "티르티르 밀크 스킨 토너",
+      "description": "판매처 분류: 스킨케어 > 보습 > 토너. 판매 페이지 표기 용량: 150ml. 판매처 표기: 대한민국산, 제조·판매: 이에스코스메틱(주)/티르티르.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 토너",
+        "성분 목록에 표기된 성분: 캐모마일꽃추출물, 쌀겨추출물, 나이아신아마이드 (판매처 표기)",
+        "판매처 페이지의 성분 목록은 한국어로만 제공돼요"
+      ]
+    },
+    "beauty-cosrx-blue-peptide-bakuchiol-plump-glow-serum-50ml": {
+      "title": "코스알엑스 더 블루 펩타이드 바쿠치올 플럼프 글로우 세럼",
+      "description": "판매처 분류: 스킨케어 > 보습 > 에센스·세럼. 판매 페이지 표기 용량: 50ml. 판매처 표기: 대한민국산, 제조·판매: Amorepacific Corporation / COSRX Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 에센스·세럼",
+        "성분 목록에 표기된 성분: Niacinamide, Bakuchiol (판매처 표기)"
+      ]
+    },
+    "beauty-cosrx-advanced-vitamin-c-23-serum-20g": {
+      "title": "코스알엑스 어드밴스드 더 비타민C 23 세럼",
+      "description": "판매처 분류: 스킨케어 > 보습 > 에센스·세럼. 판매 페이지 표기 용량: 20g. 판매처 표기: 대한민국산, 제조·판매: Cosmetics Manufacturer: Amorepacific Corporation / Cosmetics Distributor: COSRX Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 에센스·세럼",
+        "성분 목록에 표기된 성분: Ascorbic Acid (23%), 3-O-Ethyl Ascorbic Acid (판매처 표기)"
+      ]
+    },
+    "beauty-arencia-vitamin-c-booster-shot-30ml": {
+      "title": "아렌시아 비타민 C 부스터 샷",
+      "description": "판매처 분류: 스킨케어 > 보습 > 크림. 판매 페이지 표기 용량: 30ml. 판매처 표기: 대한민국산, 제조·판매: MINU STORY Co., Ltd. / Arencia Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 크림",
+        "성분 목록에 표기된 성분: 3-O-Ethyl Ascorbic Acid (판매처 표기)"
+      ]
+    },
+    "beauty-dralthea-vitamin-c-boosting-serum-30ml": {
+      "title": "닥터엘시아 비타민C 부스팅 세럼",
+      "description": "판매처 분류: 스킨케어 > 보습 > 에센스·세럼. 판매 페이지 표기 용량: 30ml. 판매처 표기: 대한민국산, 제조·판매: Kolmar Korea Co., Ltd. / JD International Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 에센스·세럼",
+        "성분 목록에 표기된 성분: Hippophae Rhamnoides Water, Niacinamide (판매처 표기)"
+      ]
+    },
+    "beauty-dralthea-345-relief-serum-30ml": {
+      "title": "닥터엘시아 345 릴리프 세럼",
+      "description": "판매처 분류: 스킨케어 > 보습 > 에센스·세럼. 판매 페이지 표기 용량: 30ml. 판매처 표기: 대한민국산, 제조·판매: Cosmecca Korea Co., Ltd. / The Pure Lab Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 에센스·세럼",
+        "성분 목록에 표기된 성분: Betula Platyphylla Japonica Juice, Melaleuca Alternifolia (Tea Tree) Leaf Water (판매처 표기)"
+      ]
+    },
+    "beauty-skin1004-centella-poremizing-fresh-ampoule-100ml": {
+      "title": "스킨1004 마다가스카르 센텔라 포어마이징 프레쉬 앰플",
+      "description": "판매처 분류: 스킨케어 > 보습 > 에센스·세럼. 판매 페이지 표기 용량: 100ml. 판매처 표기: 대한민국산, 제조·판매: Hankook Cosmetics Co., Ltd. / Skin1004 Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 에센스·세럼",
+        "성분 목록에 표기된 성분: Centella Asiatica Extract, Aloe Vera Leaf Extract (판매처 표기)"
+      ]
+    },
+    "beauty-purito-retinol-retinal-2000-nad-serum-30ml": {
+      "title": "퓨리토 서울 레티놀 레티날 2000 엔에이디+ 세럼",
+      "description": "판매처 분류: 스킨케어 > 보습 > 에센스·세럼. 판매 페이지 표기 용량: 30ml. 판매처 표기: 대한민국산, 제조·판매: HINATURE Co., Ltd. / Kolmar Korea Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 에센스·세럼",
+        "성분 목록에 표기된 성분: Retinol, Retinal, Niacinamide (판매처 표기)"
+      ]
+    },
+    "beauty-celimax-vita-a-retinol-shot-tightening-serum-30ml": {
+      "title": "셀리맥스 더 비타 A 레티놀 샷 타이트닝 세럼",
+      "description": "판매처 분류: 스킨케어 > 보습 > 에센스·세럼. 판매 페이지 표기 용량: 30ml. 판매처 표기: 대한민국산, 제조·판매: ES COSMETIC Co., Ltd. / Absorb Lab Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 에센스·세럼",
+        "성분 목록에 표기된 성분: Retinol, Panthenol (판매처 표기)"
+      ]
+    },
+    "beauty-numbuzin-no9-nad-bio-lifting-sil-essence-50ml": {
+      "title": "넘버즈인 9번 나드 바이오 리프팅 원액 에센스",
+      "description": "판매처 분류: 스킨케어 > 보습 > 에센스·세럼. 판매 페이지 표기 용량: 50ml. 판매처 표기: 대한민국산, 제조·판매: COSMAX Co., Ltd. / Benow Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 에센스·세럼",
+        "성분 목록에 표기된 성분: Glycerin (판매처 표기)"
+      ]
+    },
+    "beauty-wellage-hyper-pdrn-glow-bubble-serum-90ml": {
+      "title": "웰라쥬 하이퍼 피디알엔 글로우 버블 세럼",
+      "description": "판매처 분류: 스킨케어 > 보습 > 에센스·세럼. 판매 페이지 표기 용량: 90ml. 판매처 표기: 대한민국산, 제조·판매: Cosmecca Korea Co., Ltd. / Hugel, Inc.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 에센스·세럼",
+        "성분 목록에 표기된 성분: Niacinamide (판매처 표기)"
+      ]
+    },
+    "beauty-vt-pdrn-reedle-shot-mist-100ml": {
+      "title": "VT 피디알엔 리들샷 미스트",
+      "description": "판매처 분류: 스킨케어 > 보습 > 페이스 미스트. 판매 페이지 표기 용량: 100ml. 판매처 표기: 대한민국산, 제조·판매: Distributor: VT Cosmetic Co., Ltd. / Manufacturer: Hanacos Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 페이스 미스트",
+        "성분 목록에 표기된 성분: Niacinamide, Limnanthes Alba (Meadowfoam) Seed Oil (판매처 표기)"
+      ]
+    },
+    "beauty-anua-pdrn-hyaluronic-acid-capsule-mist-100ml": {
+      "title": "아누아 피디알엔 히알루론산 수분 캡슐 미스트",
+      "description": "판매처 분류: 스킨케어 > 보습 > 페이스 미스트. 판매 페이지 표기 용량: 100ml. 판매처 표기: 대한민국산, 제조·판매: COSMAX Co., Ltd. / The Founders Inc.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 페이스 미스트",
+        "성분 목록에 표기된 성분: Sodium Hyaluronate (판매처 표기)"
+      ]
+    },
+    "beauty-aestura-atobarrier-365-cream-80ml": {
+      "title": "에스트라 아토베리어365 크림",
+      "description": "판매처 분류: 스킨케어 > 보습 > 크림. 판매 페이지 표기 용량: 80ml. 판매처 표기: 대한민국산, 제조·판매: Cosvision Corp. / Amorepacific Corporation.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 크림",
+        "성분 목록에 표기된 성분: Ceramide NP, Squalane (판매처 표기)"
+      ]
+    },
+    "beauty-dralthea-345-relief-cream-50ml": {
+      "title": "닥터엘시아 345 릴리프 크림",
+      "description": "판매처 분류: 스킨케어 > 보습 > 크림. 판매 페이지 표기 용량: 50ml. 판매처 표기: 대한민국산, 제조·판매: Kolmar Korea Co., Ltd. / The Pure Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 크림",
+        "성분 목록에 표기된 성분: Melaleuca Alternifolia (Tea Tree) Leaf Water (판매처 표기)"
+      ]
+    },
+    "beauty-beautyofjoseon-dynasty-cream-100ml": {
+      "title": "조선미녀 조선미녀크림",
+      "description": "판매처 분류: 스킨케어 > 보습 > 크림. 판매 페이지 표기 용량: 100ml. 판매처 표기: 대한민국산, 제조·판매: Manufacturer: Cosmecca Korea Co., Ltd. /Distributor: Goodai Global Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 크림",
+        "성분 목록에 표기된 성분: Oryza Sativa (Rice) Bran Water, Panax Ginseng Root Water (판매처 표기)"
+      ]
+    },
+    "beauty-cosrx-blue-peptide-bakuchiol-plump-bounce-cream-50g": {
+      "title": "코스알엑스 더 블루 펩타이드 바쿠치올 플럼프 바운스 크림",
+      "description": "판매처 분류: 스킨케어 > 보습 > 크림. 판매 페이지 표기 용량: 50g. 판매처 표기: 대한민국산, 제조·판매: Amorepacific Corporation / COSRX Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 크림",
+        "성분 목록에 표기된 성분: Niacinamide, Squalane, Bakuchiol (판매처 표기)"
+      ]
+    },
+    "beauty-skin1004-centella-probio-cica-enrich-cream-50ml": {
+      "title": "스킨1004 마다가스카르 센텔라 프로바이오시카 인리치 크림",
+      "description": "판매처 분류: 스킨케어 > 보습 > 에센스·세럼. 판매 페이지 표기 용량: 50ml. 판매처 표기: 대한민국산, 제조·판매: HANKOOK COSMETICS MANUFACTURING CO.,LTD. / Skin1004 Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 에센스·세럼",
+        "성분 목록에 표기된 성분: Centella asiatica extract, Niacinamide (판매처 표기)",
+        "판매처는 이 크림을 에센스·세럼으로 분류해요"
+      ]
+    },
+    "beauty-purito-oat-in-calming-gel-cream-100ml": {
+      "title": "퓨리토 서울 오트인 카밍 젤 크림",
+      "description": "판매처 분류: 스킨케어 > 보습 > 크림. 판매 페이지 표기 용량: 100ml. 판매처 표기: 대한민국산, 제조·판매: HINATURE Co., Ltd. / MLS Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 크림",
+        "성분 목록에 표기된 성분: Avena Sativa (Oat) Seed Water (77%) (판매처 표기)"
+      ]
+    },
+    "beauty-snature-aqua-squalane-moisturizing-cream-60ml": {
+      "title": "에스네이처 아쿠아 스쿠알란 수분크림",
+      "description": "판매처 분류: 스킨케어 > 보습 > 크림. 판매 페이지 표기 용량: 60ml. 판매처 표기: 대한민국산, 제조·판매: Biocostec Co., Ltd. / S.Nature.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 크림",
+        "성분 목록에 표기된 성분: Squalane ( 150,000 ppm ), Panthenol, Sodium Hyaluronate (판매처 표기)"
+      ]
+    },
+    "beauty-wellage-hyper-pdrn-glow-plumping-capsule-cream-50ml": {
+      "title": "웰라쥬 하이퍼 피디알엔 글로우 플럼핑 캡슐 크림",
+      "description": "판매처 분류: 스킨케어 > 보습 > 크림. 판매 페이지 표기 용량: 50ml. 판매처 표기: 대한민국산, 제조·판매: CIT Co., Ltd. / Hugel, Inc.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 크림",
+        "성분 목록에 표기된 성분: Niacinamide (판매처 표기)"
+      ]
+    },
+    "beauty-numbuzin-no9-nad-gold-3d-firming-cream-50ml": {
+      "title": "넘버즈인 9번 나드 골드실 리프팅 크림",
+      "description": "판매처 분류: 스킨케어 > 보습 > 크림. 판매 페이지 표기 용량: 50ml. 판매처 표기: 대한민국산, 제조·판매: BNB Korea Co., Ltd. / Benow Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 크림",
+        "성분 목록에 표기된 성분: Caprylic/Capric Triglyceride (판매처 표기)"
+      ]
+    },
+    "beauty-dralthea-melaclear-cream-20g": {
+      "title": "닥터엘시아 멜라클리어 크림",
+      "description": "판매처 분류: 스킨케어 > 보습 > 크림. 판매 페이지 표기 용량: 20g. 판매처 표기: 대한민국산, 제조·판매: Cosmecca Korea Co., Ltd. / The Pure Lab Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 크림",
+        "성분 목록에 표기된 성분: Glycyrrhiza Glabra (Licorice) Root Water, Niacinamide, Tranexamic Acid (판매처 표기)"
+      ]
+    },
+    "beauty-beautyofjoseon-revive-eye-serum-ginseng-retinal-30ml": {
+      "title": "조선미녀 인삼 아이크림",
+      "description": "판매처 분류: 스킨케어 > 보습 > 스팟 케어. 판매 페이지 표기 용량: 30ml. 판매처 표기: 대한민국산, 제조·판매: Manufacturer: Greencos Co., Ltd. /Distributor: Goodai Global Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 스팟 케어",
+        "성분 목록에 표기된 성분: Panax Ginseng Root Extract, Retinal (판매처 표기)",
+        "판매처 분류상 스킨케어 > 보습 > 스팟 케어에 속해요"
+      ]
+    },
+    "beauty-aestura-regederm365-retinoid-eye-serum-15ml": {
+      "title": "에스트라 리제덤365 레티노이드 아이세럼",
+      "description": "판매처 분류: 스킨케어 > 보습 > 스팟 케어. 판매 페이지 표기 용량: 15ml. 판매처 표기: 대한민국산, 제조·판매: Cosvision Corp. / Amorepacific Corporation.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 스팟 케어",
+        "성분 목록에 표기된 성분: Niacinamide, Hydroxypinacolone Retinoate (50ppm) (판매처 표기)",
+        "판매처 분류상 스킨케어 > 보습 > 스팟 케어에 속해요"
+      ]
+    },
+    "beauty-axisy-vegan-collagen-eye-serum-10ml": {
+      "title": "AXIS-Y 비건 콜라겐 아이 세럼",
+      "description": "판매처 분류: 스킨케어 > 보습 > 스팟 케어. 판매 페이지 표기 용량: 10ml. 판매처 표기: 대한민국산, 제조·판매: Kolmar Korea Co., Ltd. /Asis Master Trade Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 보습 > 스팟 케어",
+        "성분 목록에 표기된 성분: Collagen (450ppm), Niacinamide, Adenosine (판매처 표기)",
+        "판매처 분류상 스킨케어 > 보습 > 스팟 케어에 속해요"
+      ]
+    },
+    "beauty-aestura-atobarrier-365-foaming-cleanser-150ml": {
+      "title": "에스트라 아토베리어365 포밍 클렌저",
+      "description": "판매처 분류: 스킨케어 > 클렌저 > 클렌징 폼. 판매 페이지 표기 용량: 150ml. 판매처 표기: 대한민국산, 제조·판매: Amorepacific Corporation/Amorepacific Corporation.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 클렌저 > 클렌징 폼",
+        "성분 목록에 표기된 성분: Caprylyl/Capryl Glucoside, Glycerin (판매처 표기)"
+      ]
+    },
+    "beauty-roundlab-1025-dokdo-cleanser-150ml": {
+      "title": "라운드랩 1025 독도 클렌저",
+      "description": "판매처 분류: 스킨케어 > 클렌저 > 클렌징 폼. 판매 페이지 표기 용량: 150ml. 판매처 표기: 대한민국산, 제조·판매: Cosmetics Manufacturer: COSMAX Co., Ltd. | Cosmetics Manufacturer: SEORIN COMPANY Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 클렌저 > 클렌징 폼",
+        "성분 목록에 표기된 성분: Sodium Cocoyl Isethionate (판매처 표기)"
+      ]
+    },
+    "beauty-skin1004-centella-light-cleansing-oil-200ml": {
+      "title": "스킨1004 마다가스카르 센텔라 라이트 클렌징 오일",
+      "description": "판매처 분류: 스킨케어 > 클렌저 > 클렌징 밤·오일. 판매 페이지 표기 용량: 200ml. 판매처 표기: 대한민국산, 제조·판매: Hankook Cosmetics Co., Ltd. / Skin1004 Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 클렌저 > 클렌징 밤·오일",
+        "성분 목록에 표기된 성분: Centella Asiatica Extract (10,000ppm) (판매처 표기)"
+      ]
+    },
+    "beauty-skin1004-centella-poremizing-deep-cleansing-foam-125ml": {
+      "title": "스킨1004 마다가스카르 센텔라 포어마이징 딥 클렌징 폼",
+      "description": "판매처 분류: 스킨케어 > 클렌저 > 클렌징 폼. 판매 페이지 표기 용량: 125ml. 판매처 표기: 대한민국산, 제조·판매: Craver Corporation.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 클렌저 > 클렌징 폼",
+        "성분 목록에 표기된 성분: Myristic Acid, Centella Asiatica (판매처 표기)"
+      ]
+    },
+    "beauty-arencia-rice-lha-pore-control-rice-cake-cleanser-150ml": {
+      "title": "아렌시아 라이스 LHA 딥 포어 떡솝 클렌저",
+      "description": "판매처 분류: 스킨케어 > 클렌저 > 클렌징 폼. 판매 페이지 표기 용량: 150ml. 판매처 표기: 대한민국산, 제조·판매: MINU STORY Co., Ltd. / Arencia Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 클렌저 > 클렌징 폼",
+        "성분 목록에 표기된 성분: Sodium Cocoyl Isethionate, Prunus Amygdalus Dulcis (Sweet Almond) Oil (판매처 표기)"
+      ]
+    },
+    "beauty-roundlab-1025-dokdo-cleansing-milk-200ml": {
+      "title": "라운드랩 1025 독도 클렌징 밀크",
+      "description": "판매처 분류: 스킨케어 > 클렌저 > 클렌징 밀크. 판매 페이지 표기 용량: 200ml. 판매처 표기: 대한민국산, 제조·판매: Cosmetics Distributor: SEORIN COMPANY Co., Ltd. | Cosmetics Manufacturer: ENCOS Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 스킨케어 > 클렌저 > 클렌징 밀크",
+        "성분 목록에 표기된 성분: Ethylhexyl Palmitate, Decyl Glucoside (판매처 표기)"
+      ]
+    },
+    "beauty-roundlab-1025-dokdo-water-gel-mask-20ea": {
+      "title": "라운드랩 1025 독도 수분 워터겔 마스크",
+      "description": "판매처 분류: 페이스 마스크 > 시트 마스크. 판매 페이지 표기 용량: 20 sheets (30ml each). 판매처 표기: 대한민국산, 제조·판매: Cosmetics Manufacturer: ANCORS Co., Ltd. / Cosmetics Responsible Distributor: SEORIN COMPANY Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 페이스 마스크 > 시트 마스크",
+        "성분 목록에 표기된 성분: Sea Water, Glycerin (판매처 표기)"
+      ]
+    },
+    "beauty-biodance-real-deep-mask-16ea": {
+      "title": "바이오던스 바이오 콜라겐 리얼 딥 마스크",
+      "description": "판매처 분류: 페이스 마스크 > 시트 마스크. 판매 페이지 표기 용량: 16 sheets (34g each). 판매처 표기: 대한민국산, 제조·판매: ANCORS Co., Ltd. / Cosbasic Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 페이스 마스크 > 시트 마스크",
+        "성분 목록에 표기된 성분: Collagen Extract, Galactomyces Ferment Filtrate (판매처 표기)",
+        "판매 페이지에 옵션이 3개 있고, 표시된 성분 목록은 Bio Collagen 옵션 기준이에요"
+      ]
+    },
+    "beauty-rejuran-healer-skin-protection-mask-5ea": {
+      "title": "리쥬란힐러 스킨 프로텍션 마스크",
+      "description": "판매처 분류: 페이스 마스크 > 시트 마스크. 판매 페이지 표기 용량: 27ml x 5 sheets. 판매처 표기: 대한민국산, 제조·판매: iM1NE Co., Ltd. / Pharma-Research Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 페이스 마스크 > 시트 마스크",
+        "성분 목록에 표기된 성분: Niacinamide, Panthenol (판매처 표기)"
+      ]
+    },
+    "beauty-torriden-dive-in-hyaluronic-acid-mask-20ea": {
+      "title": "토리든 다이브인 저분자 히알루론산 마스크",
+      "description": "판매처 분류: 페이스 마스크 > 시트 마스크. 판매 페이지 표기 용량: 20 sheets (27ml each). 판매처 표기: 대한민국산, 제조·판매: Jcell Co., Ltd. / Torriden Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 페이스 마스크 > 시트 마스크",
+        "성분 목록에 표기된 성분: Sodium Hyaluronate Crosspolymer, Sodium Hyaluronate (판매처 표기)",
+        "판매처가 업그레이드 버전으로 표시해요"
+      ]
+    },
+    "beauty-purito-daily-soft-touch-sunscreen-60ml": {
+      "title": "퓨리토서울 데일리 소프트 터치 선크림 SPF50+ PA++++",
+      "description": "판매처 분류: 선케어 > 선크림. 판매 페이지 표기 용량: 60ml. 판매처 표기: 대한민국산, 제조·판매: HINATURE Inc. / Theone Cosmetic CO., LTD.",
+      "reasons": [
+        "판매처 분류: 선케어 > 선크림",
+        "성분 목록에 표기된 성분: Diethylamino Hydroxybenzoyl Hexyl Benzoate (판매처 표기)",
+        "판매처 상품명에 SPF50+ PA++++가 표기돼 있어요"
+      ]
+    },
+    "beauty-dalba-waterfull-tone-up-sun-cream-blue-50ml": {
+      "title": "달바 워터풀 블루 톤업 선크림",
+      "description": "판매처 분류: 선케어 > 선크림. 판매 페이지 표기 용량: 50ml. 판매처 표기: 대한민국산, 제조·판매: KOLMAR KOREA CO.,LTD. / d'Alba Global Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 선케어 > 선크림",
+        "성분 목록에 표기된 성분: Glacier Water(100,000ppm), Titanium Dioxide (판매처 표기)"
+      ]
+    },
+    "beauty-isntree-hyaluronic-acid-watery-sun-gel-50ml": {
+      "title": "이즈앤트리 히아루론산 워터리 선젤",
+      "description": "판매처 분류: 선케어 > 선크림. 판매 페이지 표기 용량: 50ml. 판매처 표기: 대한민국산, 제조·판매: ISNTREE Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 선케어 > 선크림",
+        "성분 목록에 표기된 성분: Ethylhexyl Salicylate, Niacinamide (판매처 표기)"
+      ]
+    },
+    "beauty-tirtir-mask-fit-red-cushion-18g": {
+      "title": "티르티르 마스크 핏 레드 쿠션",
+      "description": "판매처 분류: 메이크업 > 페이스 > 메이크업 쿠션. 판매 페이지 표기 용량: 18g. 판매처 표기: 대한민국산, 제조·판매: Marketer: TIRTIR Co., Ltd. / Manufacturer: COSMAX Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 메이크업 > 페이스 > 메이크업 쿠션",
+        "판매 페이지에 옵션이 25개 있어요(색상·타입·단품/세트). 매장에서 옵션을 확인하세요"
+      ]
+    },
+    "beauty-jungsaemmool-essential-skin-nuder-cushion-14g": {
+      "title": "정샘물 에센셜 스킨 누더 쿠션 (단품)",
+      "description": "판매처 분류: 메이크업 > 페이스 > 메이크업 쿠션. 판매 페이지 표기 용량: 14g. 판매처 표기: 대한민국산, 제조·판매: COSMAX Co., Ltd. / JUNGSAEMMOOL Beauty Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 메이크업 > 페이스 > 메이크업 쿠션",
+        "판매 페이지에 옵션이 30개 있어요(색상·타입·단품/세트). 매장에서 옵션을 확인하세요"
+      ]
+    },
+    "beauty-etude-double-lasting-vegan-cover-foundation-30g": {
+      "title": "에뛰드 더블 래스팅 비건 커버 파운데이션",
+      "description": "판매처 분류: 메이크업 > 페이스 > 파운데이션. 판매 페이지 표기 용량: 30g. 판매처 표기: 대한민국산, 제조·판매: Manufacturer: Cosvision Distributor: Etude.",
+      "reasons": [
+        "판매처 분류: 메이크업 > 페이스 > 파운데이션",
+        "판매 페이지에 옵션이 3개 있어요(색상·타입·단품/세트). 매장에서 옵션을 확인하세요"
+      ]
+    },
+    "beauty-tirtir-glide-hide-blurring-concealer-4g-4g": {
+      "title": "티르티르 글라이드앤하이드 블러링 컨실러 (리퀴드 4g + 스틱 4g)",
+      "description": "판매처 분류: 메이크업 > 페이스 > 컨실러. 판매 페이지 표기 용량: 4g + 4g. 판매처 표기: 대한민국산, 제조·판매: Manufacturer. Comax Inc / Distributor. TIRTIR Inc.",
+      "reasons": [
+        "판매처 분류: 메이크업 > 페이스 > 컨실러",
+        "판매 페이지에 옵션이 20개 있어요(색상·타입·단품/세트). 매장에서 옵션을 확인하세요"
+      ]
+    },
+    "beauty-laneige-neo-essential-blurring-finish-powder-7g": {
+      "title": "라네즈 네오 에센셜 블러링 피니시 파우더",
+      "description": "판매처 분류: 메이크업 > 페이스 > 파우더·팩트. 판매 페이지 표기 용량: 7g. 판매처 표기: 대한민국산, 제조·판매: Amorepacific Corporation.",
+      "reasons": [
+        "판매처 분류: 메이크업 > 페이스 > 파우더·팩트"
+      ]
+    },
+    "beauty-jungsaemmool-skin-setting-base-40ml": {
+      "title": "정샘물 스킨 세팅 베이스",
+      "description": "판매처 분류: 메이크업 > 페이스 > 페이스 프라이머. 판매 페이지 표기 용량: 40ml. 판매처 표기: 대한민국산, 제조·판매: Shinsegae Intercos Korea Inc. / JUNGSAEMMOOL Beauty Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 메이크업 > 페이스 > 페이스 프라이머",
+        "판매 페이지에 여러 베이스 타입이 있어요(Skin Correcting, Glowing, Filter, Smoothing)"
+      ]
+    },
+    "beauty-laneige-lip-sleeping-mask-ex-20g": {
+      "title": "라네즈 립 슬리핑 마스크 EX",
+      "description": "판매처 분류: 메이크업 > 립 > 립밤·트리트먼트. 판매 페이지 표기 용량: 20g. 판매처 표기: 대한민국산, 제조·판매: Amorepacific Corporation.",
+      "reasons": [
+        "판매처 분류: 메이크업 > 립 > 립밤·트리트먼트",
+        "판매처 분류상 메이크업 > 립 > 립밤·트리트먼트에 속해요"
+      ]
+    },
+    "beauty-fwee-pink-obsession-stay-fit-lip-tint-3-8g": {
+      "title": "퓌 핑크 옵세션 스테이핏 틴트",
+      "description": "판매처 분류: 메이크업 > 립 > 립글로스·립틴트. 판매 페이지 표기 용량: 3.8g. 판매처 표기: 대한민국산, 제조·판매: Semi Glow: COS & People Co., Ltd., Semi Matte: Hwasung Cosmetics Co., Ltd. / Benow Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 메이크업 > 립 > 립글로스·립틴트",
+        "판매 페이지에 옵션이 18개 있어요(색상·타입·단품/세트). 매장에서 옵션을 확인하세요"
+      ]
+    },
+    "beauty-aou-glowy-tint-balm-3-5g": {
+      "title": "에이오유 글로이 틴트 밤",
+      "description": "판매처 분류: 메이크업 > 립 > 립밤·트리트먼트. 판매 페이지 표기 용량: 3.5g. 판매처 표기: 대한민국산, 제조·판매: Cosmetics Manufacturer: COSMAX Co., Ltd. / Distributor: HEMEKO Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 메이크업 > 립 > 립밤·트리트먼트",
+        "판매 페이지에 옵션이 12개 있어요(색상·타입·단품/세트). 매장에서 옵션을 확인하세요"
+      ]
+    },
+    "beauty-etude-duo-fixing-tint-3-2ml": {
+      "title": "에뛰드 듀오 픽싱 틴트",
+      "description": "판매처 분류: 메이크업 > 립 > 립글로스·립틴트. 판매 페이지 표기 용량: 3.2ml. 판매처 표기: 대한민국산, 제조·판매: Main product: Cosmetics Manufacturer_C&C Co., Ltd. / Free gift stress ball: Supplier_CNS Global Co., Ltd. / Responsible Cosmetics Distributor: ETUDE Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 메이크업 > 립 > 립글로스·립틴트",
+        "판매 페이지에 옵션이 6개 있어요(색상·타입·단품/세트). 매장에서 옵션을 확인하세요"
+      ]
+    },
+    "beauty-romand-juicy-flash-lip-oil-4-5g": {
+      "title": "롬앤 쥬시 플래시 립 오일",
+      "description": "판매처 분류: 메이크업 > 립 > 립밤·트리트먼트. 판매 페이지 표기 용량: 4.5g. 판매처 표기: 대한민국산, 제조·판매: COSMAX Co., Ltd. / iFamilySC Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 메이크업 > 립 > 립밤·트리트먼트",
+        "판매 페이지에 옵션이 13개 있어요(색상·타입·단품/세트). 매장에서 옵션을 확인하세요"
+      ]
+    },
+    "beauty-losykim-pdrn-tinted-lip-ampoule-10ml": {
+      "title": "로지킴 PDRN 틴티드 립 앰플",
+      "description": "판매처 분류: 메이크업 > 립 > 립밤·트리트먼트. 판매 페이지 표기 용량: 10ml. 판매처 표기: 대한민국산, 제조·판매: New&New Co., Ltd. / Followme Cosmetic Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 메이크업 > 립 > 립밤·트리트먼트",
+        "판매 페이지에 옵션이 13개 있어요(색상·타입·단품/세트). 매장에서 옵션을 확인하세요"
+      ]
+    },
+    "beauty-romand-better-than-cheek-4g": {
+      "title": "롬앤 베러 댄 치크",
+      "description": "판매처 분류: 메이크업 > 페이스 > 블러셔. 판매 페이지 표기 용량: 4g. 판매처 표기: 대한민국산, 제조·판매: COSMAX Co., Ltd. / iFamilySC Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 메이크업 > 페이스 > 블러셔",
+        "판매 페이지에 옵션이 18개 있어요(색상·타입·단품/세트). 매장에서 옵션을 확인하세요"
+      ]
+    },
+    "beauty-clio-pro-eye-palette-air": {
+      "title": "클리오 프로 아이 팔레트 에어",
+      "description": "판매처 분류: 메이크업 > 아이 > 아이섀도. 판매 페이지 표기 용량: 0.6g x 12 (options 1-12). 판매처 표기: 대한민국산, 제조·판매: COSMAX Co., Ltd. / CLUBCLIO Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 메이크업 > 아이 > 아이섀도",
+        "판매 페이지에서 옵션마다 팬 크기가 달라요"
+      ]
+    },
+    "beauty-wakemake-any-proof-pen-eyeliner-0-5g": {
+      "title": "웨이크메이크 철벽 펜 아이라이너",
+      "description": "판매처 분류: 메이크업 > 아이 > 아이라이너. 판매 페이지 표기 용량: 0.5g. 판매처 표기: 대한민국산, 제조·판매: Distributor: CJ Olive Young Co., Ltd. / Manufacturer: NOWCOS Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 메이크업 > 아이 > 아이라이너",
+        "판매 페이지에 옵션이 7개 있어요(색상·타입·단품/세트). 매장에서 옵션을 확인하세요"
+      ]
+    },
+    "beauty-clio-sharp-so-simple-waterproof-pencil-liner-0-14g": {
+      "title": "클리오 샤프 쏘 심플 워터프루프 펜슬라이너",
+      "description": "판매처 분류: 메이크업 > 아이 > 아이라이너. 판매 페이지 표기 용량: 0.14g. 판매처 표기: 대한민국산, 제조·판매: Coco Co., Ltd. /CLUBCLIO Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 메이크업 > 아이 > 아이라이너",
+        "판매 페이지에 옵션이 13개 있어요(색상·타입·단품/세트). 매장에서 옵션을 확인하세요"
+      ]
+    },
+    "beauty-aou-all-day-mascara-3-3g": {
+      "title": "에이오유 올데이 마스카라",
+      "description": "판매처 분류: 메이크업 > 아이 > 속눈썹. 판매 페이지 표기 용량: 3.3g. 판매처 표기: 대한민국산, 제조·판매: Cosmetics Manufacturer - Kolmar Korea Co., Ltd. Distributor - HEMEKO Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 메이크업 > 아이 > 속눈썹",
+        "판매 페이지에 Volume, Long 타입이 있어요"
+      ]
+    },
+    "beauty-aromatica-rosemary-pdrn-scalp-serum-100ml": {
+      "title": "아로마티카 로즈마리 PDRN 스칼프 세럼",
+      "description": "판매처 분류: 헤어 > 트리트먼트 > 헤어 앰플·토닉. 판매 페이지 표기 용량: 100ml. 판매처 표기: 대한민국산, 제조·판매: Cosmetics Manufacturer: AROMATICA Co., Ltd. , Responsible Cosmetics Distributor: AROMATICA Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 헤어 > 트리트먼트 > 헤어 앰플·토닉",
+        "성분 목록에 표기된 성분: Rosmarinus Officinalis (Rosemary (판매처 표기)",
+        "판매처 분류상 헤어 > 트리트먼트 > 헤어 앰플·토닉에 속해요"
+      ]
+    },
+    "beauty-aromatica-rosemary-scalp-scrub-165g": {
+      "title": "아로마티카 로즈마리 스칼프 스크럽",
+      "description": "판매처 분류: 헤어 > 헤어 워시 > 샴푸. 판매 페이지 표기 용량: 165g. 판매처 표기: 대한민국산, 제조·판매: AROMATICA Co., Ltd. /AROMATICA Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 헤어 > 헤어 워시 > 샴푸",
+        "성분 목록에 표기된 성분: Sea Salt, Rosmarinus Officinalis (Rosemary) Leaf Extract (판매처 표기)",
+        "판매처 분류상 헤어 > 헤어 워시 > 샴푸에 속해요"
+      ]
+    },
+    "beauty-miseenscene-salon10-peptide-repair-hair-mask-300ml": {
+      "title": "미쟝센 살롱10 펩타이드 리페어 헤어마스크",
+      "description": "판매처 분류: 헤어 > 트리트먼트 > 헤어 트리트먼트. 판매 페이지 표기 용량: 300ml. 판매처 표기: 대한민국산, 제조·판매: Amorepacific Corporation.",
+      "reasons": [
+        "판매처 분류: 헤어 > 트리트먼트 > 헤어 트리트먼트",
+        "성분 목록에 표기된 성분: Behentrimonium Methosulfate, Dimethicone (판매처 표기)",
+        "판매 페이지에 옵션이 4개 있어요(색상·타입·단품/세트). 매장에서 옵션을 확인하세요"
+      ]
+    },
+    "beauty-miseenscene-perfect-magic-straight-serum-shampoo-530ml": {
+      "title": "미쟝센 퍼펙트 매직 스트레이트 세럼 샴푸",
+      "description": "판매처 분류: 헤어 > 헤어 워시 > 샴푸. 판매 페이지 표기 용량: 530ml. 판매처 표기: 대한민국산, 제조·판매: Amorepacific Corporation.",
+      "reasons": [
+        "판매처 분류: 헤어 > 헤어 워시 > 샴푸",
+        "성분 목록에 표기된 성분: Sodium Laureth Sulfate (판매처 표기)"
+      ]
+    },
+    "beauty-somebymi-cica-peptide-derma-scalp-care-tonic-150ml": {
+      "title": "썸바이미 시카 펩타이드 더마 스칼프 토닉",
+      "description": "판매처 분류: 헤어 > 트리트먼트 > 헤어 에센스·세럼. 판매 페이지 표기 용량: 150ml. 판매처 표기: 대한민국산, 제조·판매: Seoul Cosmetics Co., Ltd., / Perennebell Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 헤어 > 트리트먼트 > 헤어 에센스·세럼",
+        "성분 목록에 표기된 성분: Salicylic Acid, Dexpanthenol, Biotin (판매처 표기)"
+      ]
+    },
+    "beauty-aestura-atobarrier-365-body-lotion-400ml": {
+      "title": "에스트라 아토베리어365 바디로션",
+      "description": "판매처 분류: 바디 > 바디 보습 > 바디 크림. 판매 페이지 표기 용량: 400ml. 판매처 표기: 대한민국산, 제조·판매: Cosvision Corp. / Amorepacific Corporation.",
+      "reasons": [
+        "판매처 분류: 바디 > 바디 보습 > 바디 크림",
+        "성분 목록에 표기된 성분: Glycerin (판매처 표기)"
+      ]
+    },
+    "beauty-illiyoon-ceramide-ato-6-top-to-toe-wash-1000ml": {
+      "title": "일리윤 세라마이드 아토 6.0 탑투토워시",
+      "description": "판매처 분류: 바디 > 배스·샤워 > 바디워시. 판매 페이지 표기 용량: 1000ml. 판매처 표기: 대한민국산, 제조·판매: Amorepacific Corporation.",
+      "reasons": [
+        "판매처 분류: 바디 > 배스·샤워 > 바디워시",
+        "성분 목록에 표기된 성분: Cocamidopropyl Betaine (판매처 표기)"
+      ]
+    },
+    "beauty-purito-luminous-moisture-shea-butter-body-lotion-300ml": {
+      "title": "퓨리토 루미너스 모이스처 시어버터 바디 로션",
+      "description": "판매처 분류: 바디 > 바디 보습 > 바디 크림. 판매 페이지 표기 용량: 300ml. 판매처 표기: 대한민국산, 제조·판매: HINATURE Co., Ltd. / TheOne Cosmetics Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 바디 > 바디 보습 > 바디 크림",
+        "성분 목록에 표기된 성분: Butyrospermum Parkii (판매처 표기)",
+        "판매 페이지에 옵션이 3개 있어요(색상·타입·단품/세트). 매장에서 옵션을 확인하세요"
+      ]
+    },
+    "beauty-kundal-honey-macadamia-body-wash-ylang-ylang-500ml": {
+      "title": "쿤달 허니앤마카다미아 퓨어 바디워시 일랑일랑",
+      "description": "판매처 분류: 바디 > 배스·샤워 > 바디워시. 판매 페이지 표기 용량: 500ml. 판매처 표기: 대한민국산, 제조·판매: CNF Cosmetics Factory Co., Ltd. / The Skin Factory Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 바디 > 배스·샤워 > 바디워시",
+        "성분 목록에 표기된 성분: Sodium C14-16 Olefin Sulfonate (판매처 표기)"
+      ]
+    },
+    "beauty-beyond-classic-hand-cream-100ml": {
+      "title": "비욘드 클래식 핸드크림",
+      "description": "판매처 분류: 바디 > 핸드 케어 > 핸드크림·마스크. 판매 페이지 표기 용량: 100ml. 판매처 표기: 대한민국산, 제조·판매: Manufacturer: LG Household & Health Care Ltd. / Distributor: LG Household & Health Care Ltd.",
+      "reasons": [
+        "판매처 분류: 바디 > 핸드 케어 > 핸드크림·마스크",
+        "성분 목록에 표기된 성분: Butyrospermum Parkii (Shea) Butter (판매처 표기)",
+        "판매 페이지에 100ml 타입이 네 가지 있어요(예: Deep Moisture, Total Recovery, Gel Revital)"
+      ]
+    },
+    "beauty-aromatica-vitalizing-rosemary-all-in-one-wash-300ml": {
+      "title": "아로마티카 바이탈라이징 로즈마리 올인원 워시",
+      "description": "판매처 분류: 바디 > 배스·샤워 > 바디워시. 판매 페이지 표기 용량: 300ml. 판매처 표기: 대한민국산, 제조·판매: AROMATICA Co., Ltd. /AROMATICA Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 바디 > 배스·샤워 > 바디워시",
+        "성분 목록에 표기된 성분: Sodium Methyl Cocoyl Taurate (판매처 표기)"
+      ]
+    },
+    "beauty-somebymi-aha-bha-pha-miracle-acne-body-cleanser-400g": {
+      "title": "썸바이미 아하 바하 파하 30 데이즈 미라클 아크네 바디 클렌저",
+      "description": "판매처 분류: 바디 > 배스·샤워 > 바디워시. 판매 페이지 표기 용량: 400g. 판매처 표기: 대한민국산, 제조·판매: Marked separately on the product. Perennebell Co., Ltd.",
+      "reasons": [
+        "판매처 분류: 바디 > 배스·샤워 > 바디워시",
+        "성분 목록에 표기된 성분: Lauric Acid (판매처 표기)"
+      ]
     }
   },
   "source_labels": {
@@ -181,7 +2314,88 @@
     "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=31124": "대한민국 구석구석 – 하이커 그라운드 (한국어·영어 주소)",
     "https://www.gangnam.go.kr/contents/medicaltour/1/view.do?mid=ID02_010406": "강남구청 – 강남메디컬투어센터 (한국어)",
     "https://medicaltour.gangnam.go.kr/content/397/view.do?lang=ko&cid=397": "강남메디컬투어센터 공식 사이트 (한국어)",
-    "https://www.cerave.com/skincare/moisturizers/moisturizing-cream": "CeraVe 미국 공식 상품 페이지(성분, 가격)"
+    "https://www.cerave.com/skincare/moisturizers/moisturizing-cream": "CeraVe 미국 공식 상품 페이지(성분, 가격)",
+    "https://www.medicalkorea.or.kr/en/registeredhospitals": "Medical Korea – 등록 병원",
+    "https://www.data.go.kr/data/15152186/fileData.do": "한국보건산업진흥원 – Medical Korea 포털 등록 병원 목록(영문, 공공데이터포털, 2025-09-24)",
+    "https://www.data.go.kr/data/3050000/fileData.do": "한국보건산업진흥원 – 외국인환자 유치기관 목록(공공데이터포털, 2026-07-21 기준)",
+    "https://www.data.go.kr/data/15051059/fileData.do": "건강보험심사평가원 – 전국 병의원 및 약국 현황(공공데이터포털, 2026-09)",
+    "https://www.data.go.kr/data/15133044/fileData.do": "국민건강보험공단 – 국가건강검진기관(공공데이터포털)",
+    "https://www.medicalkorea.or.kr/en/kahfAccreditedHospitals": "Medical Korea – KAHF 인증 병원",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA250329702": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA210001964": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA230518710": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA250329699": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA250631811": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA250329640": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA231020721": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA250833116": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA260439833": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA251033901": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA251135082": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA250229056": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA260439584": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA250127890": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA260540629": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA250329696": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA250127641": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA261044070": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA250530839": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA251034089": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA240121573": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA251034528": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA240322503": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA260439835": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA240825329": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA250228767": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA210610734": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA260641395": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA260943974": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA260640820": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA220816048": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA240825324": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA240624225": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA260136613": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA211213057": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA220113369": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA250933317": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA250530625": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA220414582": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA260237591": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA230518544": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA220715307": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA260540331": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA240624170": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA260741493": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA220815815": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA260439633": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA250832765": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA250228999": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA250833121": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA230217651": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA210002911": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA210811541": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA241026155": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA230719718": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA260742250": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA260338998": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA251235982": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA220916123": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA250833127": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA250832648": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA240121726": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA250732322": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA260540414": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA220414486": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA260439641": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA240925899": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA240523583": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA220113281": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA250430401": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA250631337": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA250631251": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA240825503": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA210811510": "올리브영 글로벌 상품 페이지",
+    "https://global.oliveyoung.com/product/detail?prdtNo=GA240322660": "올리브영 글로벌 상품 페이지"
   },
   "facts": {
     "beauty-illiyoon-ceramide-ato-concentrate-cream-75ml": {
@@ -206,5 +2420,9 @@
     "cushion": "쿠션",
     "tint": "틴트",
     "sheet mask": "시트 마스크"
+  },
+  "list_price_basis": {
+    "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)": "2026-10-24 올리브영 글로벌 표시 판매가(바뀔 수 있음, 배송비·세금 제외)",
+    "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded); price is for the bundle listing, not a single item": "2026-10-24 올리브영 글로벌 표시 판매가(바뀔 수 있음, 배송비·세금 제외). 단품이 아니라 묶음 상품 가격이에요"
   }
 }

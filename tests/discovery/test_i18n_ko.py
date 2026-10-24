@@ -130,7 +130,9 @@ def coverage_problems(catalog: Catalog, facts: ProductFactsCatalog, refs: Refere
         korean_name = item.subtitle.split("·")[0].strip()
         if HANGUL.search(korean_name) and entry.title != korean_name:
             problems.append(f"{item.id}: title {entry.title!r} != official Korean name {korean_name!r}")
-    urls = {s.url for i in catalog.items for s in i.sources}
+        if item.list_price and item.list_price.basis not in ko.list_price_basis:
+            problems.append(f"{item.id}: list_price basis not translated")
+    urls = {s.url for i in catalog.items for s in i.sources} | {i.list_price.source.url for i in catalog.items if i.list_price}
     for f in facts.items:
         urls |= {s.url for s in f.sources} | ({f.price_source.url} if f.price_source else set())
         if f.id not in ko.facts:
@@ -162,3 +164,11 @@ def test_coverage_detects_missing_entry():
     first = catalog.items[0].id
     broken = ko.model_copy(update={"items": {k: v for k, v in ko.items.items() if k != first}})
     assert coverage_problems(catalog, facts, refs, broken) == [f"{first}: no Korean entry"]
+
+
+def test_every_catalog_tag_has_a_korean_label():
+    """web/src/lib/tagLabels.ts 의 한국어 표시 라벨이 실제 카탈로그 태그를 모두 덮는지 본다."""
+    labels_src = (DATA.parents[1] / "web" / "src" / "lib" / "tagLabels.ts").read_text(encoding="utf-8")
+    known = set(re.findall(r"^\s+(\w+): '", labels_src, re.M))
+    catalog, *_ = _real()
+    assert sorted({t for i in catalog.items for t in i.tags} - known) == []

@@ -64,7 +64,17 @@
         "moisturizer",
         "cream"
       ],
-      "provenance": "official_seller_page; price_krw=null (KRW price not verified)"
+      "provenance": "official_seller_page; price_krw=null (KRW price not verified)",
+      "list_price": {
+        "amount": 19.6,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260540587",
+          "checked_at": "2026-10-24"
+        }
+      }
     },
     {
       "id": "beauty-roundlab-birch-juice-moisturizing-cream-80ml",
@@ -95,7 +105,17 @@
         "cream",
         "bundle_sku"
       ],
-      "provenance": "official_seller_page; price_krw=null (bundle listing, single-item KRW price not verified); image shows the bundle"
+      "provenance": "official_seller_page; price_krw=null (bundle listing, single-item KRW price not verified); image shows the bundle",
+      "list_price": {
+        "amount": 30.21,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded); price is for the bundle listing, not a single item",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260943383",
+          "checked_at": "2026-10-24"
+        }
+      }
     },
     {
       "id": "beauty-beautyofjoseon-relief-sun-rice-probiotics-50ml",
@@ -125,7 +145,17 @@
         "suncare",
         "sunscreen"
       ],
-      "provenance": "official_seller_page (title, Korean name, category, size, ingredients from the listing); price_krw=null (only USD shown on Global, not converted); SPF/PA not stated on this single-item listing, so not shown"
+      "provenance": "official_seller_page (title, Korean name, category, size, ingredients from the listing); price_krw=null (only USD shown on Global, not converted); SPF/PA not stated on this single-item listing, so not shown",
+      "list_price": {
+        "amount": 14.99,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220816046",
+          "checked_at": "2026-10-24"
+        }
+      }
     },
     {
       "id": "beauty-anua-heartleaf-77-hyaluron-soothing-toner-350ml",
@@ -156,7 +186,17 @@
         "toner",
         "heartleaf"
       ],
-      "provenance": "official_seller_page (title, Korean name, category, size, ingredients from the listing); price_krw=null (only USD shown on Global, not converted)"
+      "provenance": "official_seller_page (title, Korean name, category, size, ingredients from the listing); price_krw=null (only USD shown on Global, not converted)",
+      "list_price": {
+        "amount": 24.0,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260439240",
+          "checked_at": "2026-10-24"
+        }
+      }
     },
     {
       "id": "beauty-cosrx-advanced-snail-96-mucin-power-essence-100ml",
@@ -186,7 +226,17 @@
         "essence",
         "snail_mucin"
       ],
-      "provenance": "official_seller_page (title, Korean name, category, size, ingredients from the listing); price_krw=null (only USD shown on Global, not converted)"
+      "provenance": "official_seller_page (title, Korean name, category, size, ingredients from the listing); price_krw=null (only USD shown on Global, not converted)",
+      "list_price": {
+        "amount": 18.8,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210000530",
+          "checked_at": "2026-10-24"
+        }
+      }
     },
     {
       "id": "beauty-romand-juicy-lasting-tint-mini-1g",
@@ -216,7 +266,17 @@
         "lip",
         "tint"
       ],
-      "provenance": "official_seller_page (title, Korean name, category, size, ingredients from the listing); price_krw=null (only USD shown on Global, not converted); shade count differs between the listing title and its option list, so not shown; image shows one shade"
+      "provenance": "official_seller_page (title, Korean name, category, size, ingredients from the listing); price_krw=null (only USD shown on Global, not converted); shade count differs between the listing title and its option list, so not shown; image shows one shade",
+      "list_price": {
+        "amount": 8.25,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260237616",
+          "checked_at": "2026-10-24"
+        }
+      }
     },
     {
       "id": "beauty-clio-kill-cover-founwear-cushion-the-original",
@@ -247,7 +307,17 @@
         "base",
         "bundle_sku"
       ],
-      "provenance": "official_seller_page (title, Korean name, category, size, ingredients from the listing); price_krw=null (only USD shown on Global, not converted); single shade option (19N) on the checked listing"
+      "provenance": "official_seller_page (title, Korean name, category, size, ingredients from the listing); price_krw=null (only USD shown on Global, not converted); single shade option (19N) on the checked listing",
+      "list_price": {
+        "amount": 25.5,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded); price is for the bundle listing, not a single item",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240825109",
+          "checked_at": "2026-10-24"
+        }
+      }
     },
     {
       "id": "beauty-miseenscene-perfect-serum-super-rich-80ml",
@@ -305,7 +375,17 @@
         "skincare",
         "sheet_mask"
       ],
-      "provenance": "official_seller_page (title, Korean name, category, size, ingredients from the listing); price_krw=null (only USD shown on Global, not converted)"
+      "provenance": "official_seller_page (title, Korean name, category, size, ingredients from the listing); price_krw=null (only USD shown on Global, not converted)",
+      "list_price": {
+        "amount": 30.0,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210000167",
+          "checked_at": "2026-10-24"
+        }
+      }
     },
     {
       "id": "beauty-roundlab-1025-dokdo-toner-500ml",
@@ -335,7 +415,17 @@
         "toner",
         "bundle_sku"
       ],
-      "provenance": "official_seller_page (title, Korean name, category, size, ingredients from the listing); price_krw=null (only USD shown on Global, not converted); bundle listing (500ml + 100ml)"
+      "provenance": "official_seller_page (title, Korean name, category, size, ingredients from the listing); price_krw=null (only USD shown on Global, not converted); bundle listing (500ml + 100ml)",
+      "list_price": {
+        "amount": 36.0,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded); price is for the bundle listing, not a single item",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210002626",
+          "checked_at": "2026-10-24"
+        }
+      }
     },
     {
       "id": "beauty-guide-tax-refund-visitkorea",
@@ -11005,6 +11095,2962 @@
         "jeju"
       ],
       "provenance": "official_public_datasets(KHIDI foreign-patient institution list 2026-07-21 + KHIDI Medical Korea English listing 2025-09-24: data.go.kr '이용허락범위 제한 없음'; HIRA 병원정보서비스 2026.9: KOGL type 1); title=Medical Korea English listing; subtitle=KHIDI Korean name; match: KHIDI Korean name->HIRA by exact name within province; HIRA->Medical Korea English listing by phone+district; lat/lng=HIRA 병원정보서비스 2026.9 좌표(Y)/좌표(X); address trimmed from '제주특별자치도 제주시 연북로 10, 신영빌딩 5층 (노형동)'; dept tags=HIRA 진료과목정보 2026.9; no ranking, prices or reviews"
+    },
+    {
+      "id": "beauty-anua-rice-70-glow-milky-toner-250ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Anua Rice 70 Glow Milky Toner 250ml",
+      "subtitle": "아누아 라이스 70 글로우 밀키 토너 · 250ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Toner. Size on the listing: 250ml. Seller label: made in South Korea; manufacturer/distributor: The Founders Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1259/a495e29c-dc03-4552-9d79-dc0e4641f901.png",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250329702",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Toner",
+        "Ingredient list names Oryza Sativa (Rice) Bran Water (71%), Niacinamide (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "toner",
+        "rice"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 17.94,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250329702",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-cosrx-full-fit-propolis-synergy-toner-280ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "COSRX Full Fit Propolis Synergy Toner 280ml",
+      "subtitle": "코스알엑스 풀핏 프로폴리스 시너지 토너 · 280ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Toner. Size on the listing: 280ml. Seller label: made in South Korea; manufacturer/distributor: Corea Cosmedical Center Co., Ltd. / COSRX Inc.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1176/a7130bb8-fc5d-4c48-88c8-9b28228e6317.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210001964",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Toner",
+        "Ingredient list names Propolis Extract, Honey Extract (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "toner",
+        "propolis"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 18.67,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210001964",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-beyond-angel-aqua-moisture-barrier-toner-500ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Beyond Ange Aqua Moisture Barrier Toner 500mL",
+      "subtitle": "비욘드 엔젤아쿠아 보습장벽 토너 · 500ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Toner. Size on the listing: 500ml. Seller label: made in South Korea; manufacturer/distributor: Manufacturer: LG Household & Health Care Ltd. / Distributor: LG Household & Health Care Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1036/33a79f61-2f6b-41e0-b624-36b79b947dc8.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA230518710",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Toner",
+        "Ingredient list names Niacinamide, Glycerin (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "toner"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 12.04,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA230518710",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-celimax-dual-barrier-creamy-toner-150ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "celimax Dual Barrier Creamy Toner 150ml",
+      "subtitle": "셀리맥스 듀얼배리어 크리미 토너 · 150ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Toner. Size on the listing: 150ml. Seller label: made in South Korea; manufacturer/distributor: NFC Co., Ltd. / Absorb Lab Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1873/6ee9f01a-63d1-4aa1-a518-049d4185556d.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250329699",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Toner",
+        "Ingredient list names Panthenol, Glycerin (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "toner"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 22.1,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250329699",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-numbuzin-no9-nad-pdrn-glow-boosting-toner-150ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "numbuzin No.9 NAD PDRN Glow Boosting Toner 150ml",
+      "subtitle": "넘버즈인 9번 나드 피디알엔 글로우 트리트먼트 토너 · 150ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Toner. Size on the listing: 150ml. Seller label: made in South Korea; manufacturer/distributor: CNF Cosmetics Factory Co., Ltd. / Benow Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1501/4f5d0c36-6085-4fc0-9466-c99c797522e2.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250631811",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Toner",
+        "Ingredient list names Niacinamide (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "toner",
+        "pdrn"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 17.6,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250631811",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-dalba-vita-toning-serum-toner-180ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "d'Alba Vita Toning Serum Toner 180ml",
+      "subtitle": "달바 비타 토닝 세럼 토너 · 180ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Toner. Size on the listing: 180ml. Seller label: made in South Korea; manufacturer/distributor: SAMSUNG MEDICOS Co., Ltd. / d’Alba Global Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1883/da2aea25-b850-453d-8906-fdf64b489f3a.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250329640",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Toner",
+        "Ingredient list names Hippophae Rhamnoides Water, Niacinamide (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "toner"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 24.46,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250329640",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-cosrx-bha-blackhead-power-liquid-100ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "COSRX BHA Blackhead Power Liquid 100mL",
+      "subtitle": "코스알엑스 바하 블랙헤드 파워 리퀴드 · 100ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Toner. Size on the listing: 100ml. Seller label: made in South Korea; manufacturer/distributor: Corea Cosmedical Center Co., Ltd. /COSRX Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1295/1a96777b-b734-4fac-baef-8ab7b6f82c48.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA231020721",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Toner",
+        "Ingredient list names White Willow Bark Water, Betaine Salicylate, Niacinamide (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "toner",
+        "bha"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 20.0,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA231020721",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-tirtir-milk-skin-toner-150ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "TIRTIR Milk Skin Toner 150ml",
+      "subtitle": "티르티르 밀크 스킨 토너 · 150ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Toner. Size on the listing: 150ml. Seller label: made in South Korea (manufacturer/distributor in Korean: 이에스코스메틱(주)/티르티르).",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1957/c7f6fa3d-4ca1-436c-bfa2-396b7f279561.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250833116",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Toner",
+        "Ingredient list names 캐모마일꽃추출물, 쌀겨추출물, 나이아신아마이드 (seller label)",
+        "Ingredient list on the seller page is given in Korean only"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "toner"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 27.2,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250833116",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-cosrx-blue-peptide-bakuchiol-plump-glow-serum-50ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "COSRX The Blue Peptide Bakuchiol Plump Glow Serum 50ml",
+      "subtitle": "코스알엑스 더 블루 펩타이드 바쿠치올 플럼프 글로우 세럼 · 50ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Essence & Serum. Size on the listing: 50ml. Seller label: made in South Korea; manufacturer/distributor: Amorepacific Corporation / COSRX Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1224/5e43119d-034f-4d50-b3b4-fa51f3fade09.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260439833",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Essence & Serum",
+        "Ingredient list names Niacinamide, Bakuchiol (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "serum",
+        "peptide"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 28.05,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260439833",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-cosrx-advanced-vitamin-c-23-serum-20g",
+      "kind": "product",
+      "category": "beauty",
+      "title": "COSRX Advanced The Vitamin C 23 Serum 20g",
+      "subtitle": "코스알엑스 어드밴스드 더 비타민C 23 세럼 · 20g",
+      "description": "Listed by the seller under Skincare > Moisturizers > Essence & Serum. Size on the listing: 20g. Seller label: made in South Korea; manufacturer/distributor: Cosmetics Manufacturer: Amorepacific Corporation / Cosmetics Distributor: COSRX Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1021/8a8b4cb5-ce8c-4e5a-b84b-4c018010de5e.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA251033901",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Essence & Serum",
+        "Ingredient list names Ascorbic Acid (23%), 3-O-Ethyl Ascorbic Acid (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "serum",
+        "vitamin_c"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 24.59,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA251033901",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-arencia-vitamin-c-booster-shot-30ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Arencia Vitamin C Booster Shot 30ml",
+      "subtitle": "아렌시아 비타민 C 부스터 샷 · 30ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Cream. Size on the listing: 30ml. Seller label: made in South Korea; manufacturer/distributor: MINU STORY Co., Ltd. / Arencia Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1258/c0d41966-ae0f-4ac2-a534-c2aa9c4060b4.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA251135082",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Cream",
+        "Ingredient list names 3-O-Ethyl Ascorbic Acid (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "serum",
+        "vitamin_c"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 19.2,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA251135082",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-dralthea-vitamin-c-boosting-serum-30ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Dr. Althea Vitamin C Boosting Serum 30ml",
+      "subtitle": "닥터엘시아 비타민C 부스팅 세럼 · 30ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Essence & Serum. Size on the listing: 30ml. Seller label: made in South Korea; manufacturer/distributor: Kolmar Korea Co., Ltd. / JD International Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1008/c03e0e12-e80c-4ba7-880c-20f4d819fb59.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250229056",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Essence & Serum",
+        "Ingredient list names Hippophae Rhamnoides Water, Niacinamide (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "serum",
+        "vitamin_c"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 20.27,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250229056",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-dralthea-345-relief-serum-30ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Dr. Althea 345 Relief Serum 30ml",
+      "subtitle": "닥터엘시아 345 릴리프 세럼 · 30ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Essence & Serum. Size on the listing: 30ml. Seller label: made in South Korea; manufacturer/distributor: Cosmecca Korea Co., Ltd. / The Pure Lab Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1948/a73c2896-4aa7-45e5-a4ce-bf690f906b72.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260439584",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Essence & Serum",
+        "Ingredient list names Betula Platyphylla Japonica Juice, Melaleuca Alternifolia (Tea Tree) Leaf Water (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "serum"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 20.0,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260439584",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-skin1004-centella-poremizing-fresh-ampoule-100ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "SKIN1004 Madagascar Centella Poremizing Fresh Ampoule 100ml",
+      "subtitle": "스킨1004 마다가스카르 센텔라 포어마이징 프레쉬 앰플 · 100ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Essence & Serum. Size on the listing: 100ml. Seller label: made in South Korea; manufacturer/distributor: Hankook Cosmetics Co., Ltd. / Skin1004 Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1671/64fc213c-7f02-46fb-890d-6663ab7d7190.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250127890",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Essence & Serum",
+        "Ingredient list names Centella Asiatica Extract, Aloe Vera Leaf Extract (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "ampoule",
+        "centella"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 19.55,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250127890",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-purito-retinol-retinal-2000-nad-serum-30ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Purito Seoul Retinol Retinal 2000 NAD+ Serum 30ml",
+      "subtitle": "퓨리토 서울 레티놀 레티날 2000 엔에이디+ 세럼 · 30ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Essence & Serum. Size on the listing: 30ml. Seller label: made in South Korea; manufacturer/distributor: HINATURE Co., Ltd. / Kolmar Korea Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1661/94322241-33bb-434f-ad42-a6a8b7729366.png",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260540629",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Essence & Serum",
+        "Ingredient list names Retinol, Retinal, Niacinamide (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "serum",
+        "retinol"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 20.0,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260540629",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-celimax-vita-a-retinol-shot-tightening-serum-30ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "celimax The Vita A Retinol Shot Tightening Serum 30ml",
+      "subtitle": "셀리맥스 더 비타 A 레티놀 샷 타이트닝 세럼 · 30ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Essence & Serum. Size on the listing: 30ml. Seller label: made in South Korea; manufacturer/distributor: ES COSMETIC Co., Ltd. / Absorb Lab Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1169/fea01b77-c632-406a-9f0c-d2a9639fb16a.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250329696",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Essence & Serum",
+        "Ingredient list names Retinol, Panthenol (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "serum",
+        "retinol"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 29.01,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250329696",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-numbuzin-no9-nad-bio-lifting-sil-essence-50ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "numbuzin No.9 NAD Bio Lifting-sil Essence 50ml",
+      "subtitle": "넘버즈인 9번 나드 바이오 리프팅 원액 에센스 · 50ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Essence & Serum. Size on the listing: 50ml. Seller label: made in South Korea; manufacturer/distributor: COSMAX Co., Ltd. / Benow Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1712/e6266e35-548c-4d70-ac51-bc69de4d85a0.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250127641",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Essence & Serum",
+        "Ingredient list names Glycerin (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "essence"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 24.65,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250127641",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-wellage-hyper-pdrn-glow-bubble-serum-90ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "WELLAGE Hyper PDRN Glow Bubble Serum 90ml",
+      "subtitle": "웰라쥬 하이퍼 피디알엔 글로우 버블 세럼 · 90ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Essence & Serum. Size on the listing: 90ml. Seller label: made in South Korea; manufacturer/distributor: Cosmecca Korea Co., Ltd. / Hugel, Inc.",
+      "image_url": "https://cdn-image.oliveyoung.com/catalog/product/GA261044070/thumbnail/79b9a4bdae3b44e08450380b863f1ea9.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA261044070",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Essence & Serum",
+        "Ingredient list names Niacinamide (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "serum",
+        "pdrn"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 23.14,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA261044070",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-vt-pdrn-reedle-shot-mist-100ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "VT PDRN Reedle Shot Mist 100ml",
+      "subtitle": "VT 피디알엔 리들샷 미스트 · 100ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Face Mist. Size on the listing: 100ml. Seller label: made in South Korea; manufacturer/distributor: Distributor: VT Cosmetic Co., Ltd. / Manufacturer: Hanacos Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1486/c9706c64-0d23-4722-a665-a65ebee74fc5.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250530839",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Face Mist",
+        "Ingredient list names Niacinamide, Limnanthes Alba (Meadowfoam) Seed Oil (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "mist",
+        "pdrn"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 27.6,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250530839",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-anua-pdrn-hyaluronic-acid-capsule-mist-100ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Anua PDRN Hyaluronic Acid Hydrating Capsule Mist 100ml",
+      "subtitle": "아누아 피디알엔 히알루론산 수분 캡슐 미스트 · 100ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Face Mist. Size on the listing: 100ml. Seller label: made in South Korea; manufacturer/distributor: COSMAX Co., Ltd. / The Founders Inc.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1688/a6ee1ca1-6dea-4389-92a7-177efeb3137a.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA251034089",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Face Mist",
+        "Ingredient list names Sodium Hyaluronate (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "mist",
+        "pdrn"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 25.18,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA251034089",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-aestura-atobarrier-365-cream-80ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "AESTURA Atobarrier 365 Cream 80mL",
+      "subtitle": "에스트라 아토베리어365 크림 · 80ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Cream. Size on the listing: 80ml. Seller label: made in South Korea; manufacturer/distributor: Cosvision Corp. / Amorepacific Corporation.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1048/80ed7799-c56a-4351-a814-16097ad1a702.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240121573",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Cream",
+        "Ingredient list names Ceramide NP, Squalane (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "moisturizer",
+        "cream",
+        "ceramide"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 39.6,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240121573",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-dralthea-345-relief-cream-50ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Dr. Althea 345 Relief Cream 50ml",
+      "subtitle": "닥터엘시아 345 릴리프 크림 · 50ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Cream. Size on the listing: 50ml. Seller label: made in South Korea; manufacturer/distributor: Kolmar Korea Co., Ltd. / The Pure Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1064/52627277-bb31-46a8-9671-2e6246b84455.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA251034528",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Cream",
+        "Ingredient list names Melaleuca Alternifolia (Tea Tree) Leaf Water (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "moisturizer",
+        "cream"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 22.8,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA251034528",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-beautyofjoseon-dynasty-cream-100ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Beauty of Joseon Dynasty Cream 100mL",
+      "subtitle": "조선미녀 조선미녀크림 · 100ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Cream. Size on the listing: 100ml. Seller label: made in South Korea; manufacturer/distributor: Manufacturer: Cosmecca Korea Co., Ltd. /Distributor: Goodai Global Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1980/b6945ae2-8c32-41f3-b65a-c9a5688833b0.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240322503",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Cream",
+        "Ingredient list names Oryza Sativa (Rice) Bran Water, Panax Ginseng Root Water (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "moisturizer",
+        "cream"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 27.2,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240322503",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-cosrx-blue-peptide-bakuchiol-plump-bounce-cream-50g",
+      "kind": "product",
+      "category": "beauty",
+      "title": "COSRX The Blue Peptide Bakuchiol Plump Bounce Cream 50g",
+      "subtitle": "코스알엑스 더 블루 펩타이드 바쿠치올 플럼프 바운스 크림 · 50g",
+      "description": "Listed by the seller under Skincare > Moisturizers > Cream. Size on the listing: 50g. Seller label: made in South Korea; manufacturer/distributor: Amorepacific Corporation / COSRX Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1123/81fcf65f-f4bb-4a2a-a394-6917f67849d5.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260439835",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Cream",
+        "Ingredient list names Niacinamide, Squalane, Bakuchiol (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "moisturizer",
+        "cream",
+        "peptide"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 28.83,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260439835",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-skin1004-centella-probio-cica-enrich-cream-50ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "SKIN1004 Madagascar Centella Probio-Cica Enrich Cream 50ml",
+      "subtitle": "스킨1004 마다가스카르 센텔라 프로바이오시카 인리치 크림 · 50ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Essence & Serum. Size on the listing: 50ml. Seller label: made in South Korea; manufacturer/distributor: HANKOOK COSMETICS MANUFACTURING CO.,LTD. / Skin1004 Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1215/d45c7599-b26a-4c05-b2bc-81f253960bcd.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240825329",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Essence & Serum",
+        "Ingredient list names Centella asiatica extract, Niacinamide (seller label)",
+        "The seller files this cream under Essence & Serum"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "moisturizer",
+        "cream",
+        "centella"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 20.4,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240825329",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-purito-oat-in-calming-gel-cream-100ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Purito Seoul Oat-In Calming Gel Cream 100ml",
+      "subtitle": "퓨리토 서울 오트인 카밍 젤 크림 · 100ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Cream. Size on the listing: 100ml. Seller label: made in South Korea; manufacturer/distributor: HINATURE Co., Ltd. / MLS Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1312/8c8fda9f-9351-486e-82af-59df9b00641e.png",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250228767",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Cream",
+        "Ingredient list names Avena Sativa (Oat) Seed Water (77%) (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "moisturizer",
+        "cream",
+        "oat"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 15.6,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250228767",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-snature-aqua-squalane-moisturizing-cream-60ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "S.NATURE Aqua Squalane Moisturizing Cream 60ml",
+      "subtitle": "에스네이처 아쿠아 스쿠알란 수분크림 · 60ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Cream. Size on the listing: 60ml. Seller label: made in South Korea; manufacturer/distributor: Biocostec Co., Ltd. / S.Nature.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1773/a0094630-962d-4bf9-94a2-d0db44ca414b.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210610734",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Cream",
+        "Ingredient list names Squalane ( 150,000 ppm ), Panthenol, Sodium Hyaluronate (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "moisturizer",
+        "cream",
+        "squalane"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 18.9,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210610734",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-wellage-hyper-pdrn-glow-plumping-capsule-cream-50ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "WELLAGE Hyper PDRN Glow Plumping Capsule Cream 50ml",
+      "subtitle": "웰라쥬 하이퍼 피디알엔 글로우 플럼핑 캡슐 크림 · 50ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Cream. Size on the listing: 50ml. Seller label: made in South Korea; manufacturer/distributor: CIT Co., Ltd. / Hugel, Inc.",
+      "image_url": "https://cdn-image.oliveyoung.com/catalog/product/GA260641395/thumbnail/22e6b2dfbc1a4e9f98cd151b613bb95e.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260641395",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Cream",
+        "Ingredient list names Niacinamide (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "moisturizer",
+        "cream",
+        "pdrn"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 26.05,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260641395",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-numbuzin-no9-nad-gold-3d-firming-cream-50ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "numbuzin No.9 NAD+ Gold 3D Firming Cream 50ml",
+      "subtitle": "넘버즈인 9번 나드 골드실 리프팅 크림 · 50ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Cream. Size on the listing: 50ml. Seller label: made in South Korea; manufacturer/distributor: BNB Korea Co., Ltd. / Benow Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/catalog/product/GA260943974/thumbnail/A00000026949001ko.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260943974",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Cream",
+        "Ingredient list names Caprylic/Capric Triglyceride (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "moisturizer",
+        "cream"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 24.8,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260943974",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-dralthea-melaclear-cream-20g",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Dr. Althea Melaclear Cream 20g",
+      "subtitle": "닥터엘시아 멜라클리어 크림 · 20g",
+      "description": "Listed by the seller under Skincare > Moisturizers > Cream. Size on the listing: 20g. Seller label: made in South Korea; manufacturer/distributor: Cosmecca Korea Co., Ltd. / The Pure Lab Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1289/a5708d53-d741-4632-b14f-8a80fef6419f.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260640820",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Cream",
+        "Ingredient list names Glycyrrhiza Glabra (Licorice) Root Water, Niacinamide, Tranexamic Acid (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "cream"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 35.75,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260640820",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-beautyofjoseon-revive-eye-serum-ginseng-retinal-30ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Beauty of Joseon Revive Eye Serum Ginseng + Retinal 30mL",
+      "subtitle": "조선미녀 인삼 아이크림 · 30ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Spot Care. Size on the listing: 30ml. Seller label: made in South Korea; manufacturer/distributor: Manufacturer: Greencos Co., Ltd. /Distributor: Goodai Global Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1799/32abf014-9f01-46d6-bcfd-86b89e1e08ca.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220816048",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Spot Care",
+        "Ingredient list names Panax Ginseng Root Extract, Retinal (seller label)",
+        "The seller files this under Skincare > Moisturizers > Spot Care"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "eye_cream",
+        "retinal"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 13.89,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220816048",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-aestura-regederm365-retinoid-eye-serum-15ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "AESTURA Regederm365 Retinoid Eye Serum 15ml",
+      "subtitle": "에스트라 리제덤365 레티노이드 아이세럼 · 15ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Spot Care. Size on the listing: 15ml. Seller label: made in South Korea; manufacturer/distributor: Cosvision Corp. / Amorepacific Corporation.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1377/a8724935-1838-44b3-94c7-d001ee87b7ad.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240825324",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Spot Care",
+        "Ingredient list names Niacinamide, Hydroxypinacolone Retinoate (50ppm) (seller label)",
+        "The seller files this under Skincare > Moisturizers > Spot Care"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "eye_cream",
+        "retinoid"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 41.4,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240825324",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-axisy-vegan-collagen-eye-serum-10ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "AXIS-Y Vegan Collagen Eye Serum 10ml",
+      "subtitle": "AXIS-Y 비건 콜라겐 아이 세럼 · 10ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Spot Care. Size on the listing: 10ml. Seller label: made in South Korea; manufacturer/distributor: Kolmar Korea Co., Ltd. /Asis Master Trade Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1785/15322ffc-5d01-4bca-89f5-871f2474a13d.png",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240624225",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Moisturizers > Spot Care",
+        "Ingredient list names Collagen (450ppm), Niacinamide, Adenosine (seller label)",
+        "The seller files this under Skincare > Moisturizers > Spot Care"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "eye_cream",
+        "collagen"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 17.68,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240624225",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-aestura-atobarrier-365-foaming-cleanser-150ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "AESTURA Atobarrier 365 Foaming Cleanser 150ml",
+      "subtitle": "에스트라 아토베리어365 포밍 클렌저 · 150ml",
+      "description": "Listed by the seller under Skincare > Cleansers > Cleansing Foams. Size on the listing: 150ml. Seller label: made in South Korea; manufacturer/distributor: Amorepacific Corporation/Amorepacific Corporation.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1014/9e5c6166-2533-4edf-9d28-27b6f1d52507.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260136613",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Cleansers > Cleansing Foams",
+        "Ingredient list names Caprylyl/Capryl Glucoside, Glycerin (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "cleanser"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 21.6,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260136613",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-roundlab-1025-dokdo-cleanser-150ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "ROUND LAB 1025 Dokdo Cleanser 150mL",
+      "subtitle": "라운드랩 1025 독도 클렌저 · 150ml",
+      "description": "Listed by the seller under Skincare > Cleansers > Cleansing Foams. Size on the listing: 150ml. Seller label: made in South Korea; manufacturer/distributor: Cosmetics Manufacturer: COSMAX Co., Ltd. | Cosmetics Manufacturer: SEORIN COMPANY Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1463/eb6b7841-6f92-41ab-ab4d-39caaa871fb0.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA211213057",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Cleansers > Cleansing Foams",
+        "Ingredient list names Sodium Cocoyl Isethionate (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "cleanser"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 14.4,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA211213057",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-skin1004-centella-light-cleansing-oil-200ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "SKIN1004 Madagascar Centella Light Cleansing Oil 200mL",
+      "subtitle": "스킨1004 마다가스카르 센텔라 라이트 클렌징 오일 · 200ml",
+      "description": "Listed by the seller under Skincare > Cleansers > Cleansing Balms&Oils. Size on the listing: 200ml. Seller label: made in South Korea; manufacturer/distributor: Hankook Cosmetics Co., Ltd. / Skin1004 Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/catalog/product/GA220113369/thumbnail/0cf65db0a19b428f82dfcb45f9381c55.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220113369",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Cleansers > Cleansing Balms&Oils",
+        "Ingredient list names Centella Asiatica Extract (10,000ppm) (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "cleanser",
+        "centella"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 18.04,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220113369",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-skin1004-centella-poremizing-deep-cleansing-foam-125ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "SKIN1004 Madagascar Centella Poremizing Deep Cleansing Foam 125ml",
+      "subtitle": "스킨1004 마다가스카르 센텔라 포어마이징 딥 클렌징 폼 · 125ml",
+      "description": "Listed by the seller under Skincare > Cleansers > Cleansing Foams. Size on the listing: 125ml. Seller label: made in South Korea; manufacturer/distributor: Craver Corporation.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1557/486ccb2f-4ae3-4c4a-8f53-ab0c42ea5e4a.png",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250933317",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Cleansers > Cleansing Foams",
+        "Ingredient list names Myristic Acid, Centella Asiatica (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "cleanser",
+        "centella"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 17.0,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250933317",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-arencia-rice-lha-pore-control-rice-cake-cleanser-150ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Arencia Rice + LHA Pore Control Rice Cake Cleanser 150ml",
+      "subtitle": "아렌시아 라이스 LHA 딥 포어 떡솝 클렌저 · 150ml",
+      "description": "Listed by the seller under Skincare > Cleansers > Cleansing Foams. Size on the listing: 150ml. Seller label: made in South Korea; manufacturer/distributor: MINU STORY Co., Ltd. / Arencia Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1643/f48d757d-fddc-4525-82a2-7fe50cb572c4.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250530625",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Cleansers > Cleansing Foams",
+        "Ingredient list names Sodium Cocoyl Isethionate, Prunus Amygdalus Dulcis (Sweet Almond) Oil (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "cleanser",
+        "rice"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 19.2,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250530625",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-roundlab-1025-dokdo-cleansing-milk-200ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "ROUND LAB 1025 Dokdo Cleansing Milk 200mL",
+      "subtitle": "라운드랩 1025 독도 클렌징 밀크 · 200ml",
+      "description": "Listed by the seller under Skincare > Cleansers > Cleansing Milk. Size on the listing: 200ml. Seller label: made in South Korea; manufacturer/distributor: Cosmetics Distributor: SEORIN COMPANY Co., Ltd. | Cosmetics Manufacturer: ENCOS Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1399/fc54a265-bda4-4b9c-a49e-a84e7df6b340.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220414582",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Skincare > Cleansers > Cleansing Milk",
+        "Ingredient list names Ethylhexyl Palmitate, Decyl Glucoside (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "cleanser"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 20.3,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220414582",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-roundlab-1025-dokdo-water-gel-mask-20ea",
+      "kind": "product",
+      "category": "beauty",
+      "title": "ROUND LAB 1025 Dokdo Hydrating Water Gel Mask Sheet 20ea",
+      "subtitle": "라운드랩 1025 독도 수분 워터겔 마스크 · 20매",
+      "description": "Listed by the seller under Face Masks > Sheet Masks. Size on the listing: 20 sheets (30ml each). Seller label: made in South Korea; manufacturer/distributor: Cosmetics Manufacturer: ANCORS Co., Ltd. / Cosmetics Responsible Distributor: SEORIN COMPANY Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1196/7d4d5a0e-55bf-49ef-804d-18f7c73155fb.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260237591",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Face Masks > Sheet Masks",
+        "Ingredient list names Sea Water, Glycerin (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "sheet_mask",
+        "mask"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 29.75,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260237591",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-biodance-real-deep-mask-16ea",
+      "kind": "product",
+      "category": "beauty",
+      "title": "BIODANCE Real Deep Mask 16 Sheets (3 Options)",
+      "subtitle": "바이오던스 바이오 콜라겐 리얼 딥 마스크 · 16매",
+      "description": "Listed by the seller under Face Masks > Sheet Masks. Size on the listing: 16 sheets (34g each). Seller label: made in South Korea; manufacturer/distributor: ANCORS Co., Ltd. / Cosbasic Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/catalog/product/GA230518544/thumbnail/6548ea5afa914b9bba4265dfca10097f.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA230518544",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Face Masks > Sheet Masks",
+        "Ingredient list names Collagen Extract, Galactomyces Ferment Filtrate (seller label)",
+        "Listing has 3 options; the ingredient list shown is for the Bio Collagen option"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "sheet_mask",
+        "mask",
+        "collagen"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 57.66,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA230518544",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-rejuran-healer-skin-protection-mask-5ea",
+      "kind": "product",
+      "category": "beauty",
+      "title": "REJURAN Healer Skin Protection Mask Sheet 5ea",
+      "subtitle": "리쥬란힐러 스킨 프로텍션 마스크 · 27ml × 5매",
+      "description": "Listed by the seller under Face Masks > Sheet Masks. Size on the listing: 27ml x 5 sheets. Seller label: made in South Korea; manufacturer/distributor: iM1NE Co., Ltd. / Pharma-Research Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1920/f713387a-3674-491c-98ff-31817faf6117.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220715307",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Face Masks > Sheet Masks",
+        "Ingredient list names Niacinamide, Panthenol (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "sheet_mask",
+        "mask"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 18.28,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220715307",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-torriden-dive-in-hyaluronic-acid-mask-20ea",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Torriden Dive In Low Molecular Hyaluronic Acid Mask 20ea",
+      "subtitle": "토리든 다이브인 저분자 히알루론산 마스크 · 20매",
+      "description": "Listed by the seller under Face Masks > Sheet Masks. Size on the listing: 20 sheets (27ml each). Seller label: made in South Korea; manufacturer/distributor: Jcell Co., Ltd. / Torriden Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1789/505039da-0202-4d3f-8b29-96ad48ecebd7.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260540331",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Face Masks > Sheet Masks",
+        "Ingredient list names Sodium Hyaluronate Crosspolymer, Sodium Hyaluronate (seller label)",
+        "The seller marks this as the upgraded version"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "sheet_mask",
+        "mask",
+        "hyaluronic_acid"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 35.0,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260540331",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-purito-daily-soft-touch-sunscreen-60ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Purito Seoul Daily Soft Touch Sunscreen SPF50+ PA++++ 60mL",
+      "subtitle": "퓨리토서울 데일리 소프트 터치 선크림 SPF50+ PA++++ · 60ml",
+      "description": "Listed by the seller under Suncare > Sunscreen. Size on the listing: 60ml. Seller label: made in South Korea; manufacturer/distributor: HINATURE Inc. / Theone Cosmetic CO., LTD.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1725/bfa0af5d-765b-451d-9cb9-7fd2ba86ff42.png",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240624170",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Suncare > Sunscreen",
+        "Ingredient list names Diethylamino Hydroxybenzoyl Hexyl Benzoate (seller label)",
+        "SPF50+ PA++++ appears in the seller's product name"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "suncare",
+        "sunscreen"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 16.72,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240624170",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-dalba-waterfull-tone-up-sun-cream-blue-50ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "d'Alba Waterfull Tone-Up Sun Cream Blue 50ml",
+      "subtitle": "달바 워터풀 블루 톤업 선크림 · 50ml",
+      "description": "Listed by the seller under Suncare > Sunscreen. Size on the listing: 50ml. Seller label: made in South Korea; manufacturer/distributor: KOLMAR KOREA CO.,LTD. / d'Alba Global Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1159/fab1fff8-5852-4222-a981-ef16c71bdc6c.png",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260741493",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Suncare > Sunscreen",
+        "Ingredient list names Glacier Water(100,000ppm), Titanium Dioxide (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "suncare",
+        "sunscreen"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 40.0,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260741493",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-isntree-hyaluronic-acid-watery-sun-gel-50ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Isntree Hyaluronic Acid Watery Sun Gel 50mL",
+      "subtitle": "이즈앤트리 히아루론산 워터리 선젤 · 50ml",
+      "description": "Listed by the seller under Suncare > Sunscreen. Size on the listing: 50ml. Seller label: made in South Korea; manufacturer/distributor: ISNTREE Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1216/1e5788fe-b236-4590-b1f4-933fcb56c793.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220815815",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Suncare > Sunscreen",
+        "Ingredient list names Ethylhexyl Salicylate, Niacinamide (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "suncare",
+        "sunscreen",
+        "hyaluronic_acid"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 18.3,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220815815",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-tirtir-mask-fit-red-cushion-18g",
+      "kind": "product",
+      "category": "beauty",
+      "title": "TIRTIR Mask Fit Red Cushion (Set/Single) (20 Shades)",
+      "subtitle": "티르티르 마스크 핏 레드 쿠션 · 18g",
+      "description": "Listed by the seller under Makeup > Face > Makeup Cushion. Size on the listing: 18g. Seller label: made in South Korea; manufacturer/distributor: Marketer: TIRTIR Co., Ltd. / Manufacturer: COSMAX Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1617/de5ef38e-24ff-451e-8215-bd68693edd72.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260439633",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Makeup > Face > Makeup Cushion",
+        "The listing has 25 options (shades, types or single/set); check the option in store"
+      ],
+      "country_codes": [],
+      "tags": [
+        "makeup",
+        "cushion",
+        "base"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 20.0,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260439633",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-jungsaemmool-essential-skin-nuder-cushion-14g",
+      "kind": "product",
+      "category": "beauty",
+      "title": "JUNGSAEMMOOL Essential Skin Nuder Cushion",
+      "subtitle": "정샘물 에센셜 스킨 누더 쿠션 (단품) · 14g",
+      "description": "Listed by the seller under Makeup > Face > Makeup Cushion. Size on the listing: 14g. Seller label: made in South Korea; manufacturer/distributor: COSMAX Co., Ltd. / JUNGSAEMMOOL Beauty Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1079/a81abc99-38fd-4cbb-a78f-c835d3aa170c.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250832765",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Makeup > Face > Makeup Cushion",
+        "The listing has 30 options (shades, types or single/set); check the option in store"
+      ],
+      "country_codes": [],
+      "tags": [
+        "makeup",
+        "cushion",
+        "base"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 25.6,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250832765",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-etude-double-lasting-vegan-cover-foundation-30g",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Etude Double Lasting Vegan Cover Foundation",
+      "subtitle": "에뛰드 더블 래스팅 비건 커버 파운데이션 · 30g",
+      "description": "Listed by the seller under Makeup > Face > Foundation. Size on the listing: 30g. Seller label: made in South Korea; manufacturer/distributor: Manufacturer: Cosvision Distributor: Etude.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1058/535dc423-b39f-49c8-a820-81af23dbcdf6.png",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250228999",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Makeup > Face > Foundation",
+        "The listing has 3 options (shades, types or single/set); check the option in store"
+      ],
+      "country_codes": [],
+      "tags": [
+        "makeup",
+        "foundation",
+        "base"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 34.0,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250228999",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-tirtir-glide-hide-blurring-concealer-4g-4g",
+      "kind": "product",
+      "category": "beauty",
+      "title": "TIRTIR GLIDE & HIDE BLURRING CONCEALER (Liquid 4g + Stick 4g)",
+      "subtitle": "티르티르 글라이드앤하이드 블러링 컨실러 (리퀴드 4g + 스틱 4g)",
+      "description": "Listed by the seller under Makeup > Face > Concealer. Size on the listing: 4g + 4g. Seller label: made in South Korea; manufacturer/distributor: Manufacturer. Comax Inc / Distributor. TIRTIR Inc.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1438/08ce1af2-2d79-4729-8724-570dc0da2808.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250833121",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Makeup > Face > Concealer",
+        "The listing has 20 options (shades, types or single/set); check the option in store"
+      ],
+      "country_codes": [],
+      "tags": [
+        "makeup",
+        "concealer",
+        "base"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 12.8,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250833121",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-laneige-neo-essential-blurring-finish-powder-7g",
+      "kind": "product",
+      "category": "beauty",
+      "title": "LANEIGE Neo Essential Blurring Finish Powder 7g",
+      "subtitle": "라네즈 네오 에센셜 블러링 피니시 파우더 · 7g",
+      "description": "Listed by the seller under Makeup > Face > Powder & Pact. Size on the listing: 7g. Seller label: made in South Korea; manufacturer/distributor: Amorepacific Corporation.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1385/db632405-b330-4ac7-8830-33cd86cf6300.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA230217651",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Makeup > Face > Powder & Pact"
+      ],
+      "country_codes": [],
+      "tags": [
+        "makeup",
+        "base",
+        "powder"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 21.2,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA230217651",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-jungsaemmool-skin-setting-base-40ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "JUNGSAEMMOOL Skin Setting Base 40ml (Skin Correcting / Glowing / Filter / Smoothing)",
+      "subtitle": "정샘물 스킨 세팅 베이스 · 40ml",
+      "description": "Listed by the seller under Makeup > Face > Face Primer. Size on the listing: 40ml. Seller label: made in South Korea; manufacturer/distributor: Shinsegae Intercos Korea Inc. / JUNGSAEMMOOL Beauty Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1059/e046f24b-bbec-4fe8-aef9-e15e6a8c1f1e.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210002911",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Makeup > Face > Face Primer",
+        "Listing has several base types (Skin Correcting, Glowing, Filter, Smoothing)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "makeup",
+        "primer",
+        "base"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 28.9,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210002911",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-laneige-lip-sleeping-mask-ex-20g",
+      "kind": "product",
+      "category": "beauty",
+      "title": "LANEIGE Lip Sleeping Mask EX 20g (11 Shades)",
+      "subtitle": "라네즈 립 슬리핑 마스크 EX · 20g",
+      "description": "Listed by the seller under Makeup > Lip > Lip Balm & Treatment. Size on the listing: 20g. Seller label: made in South Korea; manufacturer/distributor: Amorepacific Corporation.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1569/4731b7e6-6184-40f1-905d-cffa3f57b004.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210811541",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Makeup > Lip > Lip Balm & Treatment",
+        "The seller files this under Makeup > Lip > Lip Balm & Treatment"
+      ],
+      "country_codes": [],
+      "tags": [
+        "makeup",
+        "lip"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=omitted(option prices differ); price_krw=null(not verified, USD not converted)"
+    },
+    {
+      "id": "beauty-fwee-pink-obsession-stay-fit-lip-tint-3-8g",
+      "kind": "product",
+      "category": "beauty",
+      "title": "fwee Pink Obsession Stay-Fit Lip Tint (20 Colors)",
+      "subtitle": "퓌 핑크 옵세션 스테이핏 틴트 · 3.8g",
+      "description": "Listed by the seller under Makeup > Lip > Lip Gloss & Lip Tint. Size on the listing: 3.8g. Seller label: made in South Korea; manufacturer/distributor: Semi Glow: COS & People Co., Ltd., Semi Matte: Hwasung Cosmetics Co., Ltd. / Benow Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1589/4fea6316-1953-4f12-8c38-716f70d2df17.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA241026155",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Makeup > Lip > Lip Gloss & Lip Tint",
+        "The listing has 18 options (shades, types or single/set); check the option in store"
+      ],
+      "country_codes": [],
+      "tags": [
+        "makeup",
+        "lip",
+        "tint"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 9.35,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA241026155",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-aou-glowy-tint-balm-3-5g",
+      "kind": "product",
+      "category": "beauty",
+      "title": "AOU Glowy Tint Balm (14 Colors)",
+      "subtitle": "에이오유 글로이 틴트 밤 · 3.5g",
+      "description": "Listed by the seller under Makeup > Lip > Lip Balm & Treatment. Size on the listing: 3.5g. Seller label: made in South Korea; manufacturer/distributor: Cosmetics Manufacturer: COSMAX Co., Ltd. / Distributor: HEMEKO Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1749/d9d6d93f-5a3d-4cb4-9383-67d2640f807a.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA230719718",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Makeup > Lip > Lip Balm & Treatment",
+        "The listing has 12 options (shades, types or single/set); check the option in store"
+      ],
+      "country_codes": [],
+      "tags": [
+        "makeup",
+        "lip",
+        "tint"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 14.51,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA230719718",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-etude-duo-fixing-tint-3-2ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "ETUDE Duo Fixing Tint (6 Colors)",
+      "subtitle": "에뛰드 듀오 픽싱 틴트 · 3.2ml",
+      "description": "Listed by the seller under Makeup > Lip > Lip Gloss & Lip Tint. Size on the listing: 3.2ml. Seller label: made in South Korea; manufacturer/distributor: Main product: Cosmetics Manufacturer_C&C Co., Ltd. / Free gift stress ball: Supplier_CNS Global Co., Ltd. / Responsible Cosmetics Distributor: ETUDE Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1612/82d3a047-53c5-476f-bd4c-082377222602.png",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260742250",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Makeup > Lip > Lip Gloss & Lip Tint",
+        "The listing has 6 options (shades, types or single/set); check the option in store"
+      ],
+      "country_codes": [],
+      "tags": [
+        "makeup",
+        "lip",
+        "tint"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 14.4,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260742250",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-romand-juicy-flash-lip-oil-4-5g",
+      "kind": "product",
+      "category": "beauty",
+      "title": "rom&nd Juicy Flash Lip Oil (11 Colors)",
+      "subtitle": "롬앤 쥬시 플래시 립 오일 · 4.5g",
+      "description": "Listed by the seller under Makeup > Lip > Lip Balm & Treatment. Size on the listing: 4.5g. Seller label: made in South Korea; manufacturer/distributor: COSMAX Co., Ltd. / iFamilySC Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1107/28708fa3-8676-475e-8412-cd96c4344332.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260338998",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Makeup > Lip > Lip Balm & Treatment",
+        "The listing has 13 options (shades, types or single/set); check the option in store"
+      ],
+      "country_codes": [],
+      "tags": [
+        "makeup",
+        "lip"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 16.0,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260338998",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-losykim-pdrn-tinted-lip-ampoule-10ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Losy Kim PDRN Tinted Lip Ampoule (13 Colors)",
+      "subtitle": "로지킴 PDRN 틴티드 립 앰플 · 10ml",
+      "description": "Listed by the seller under Makeup > Lip > Lip Balm & Treatment. Size on the listing: 10ml. Seller label: made in South Korea; manufacturer/distributor: New&New Co., Ltd. / Followme Cosmetic Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1570/9e79b28b-572d-478d-9712-0fcc7ebb06c7.png",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA251235982",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Makeup > Lip > Lip Balm & Treatment",
+        "The listing has 13 options (shades, types or single/set); check the option in store"
+      ],
+      "country_codes": [],
+      "tags": [
+        "makeup",
+        "lip",
+        "tint"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 21.39,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA251235982",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-romand-better-than-cheek-4g",
+      "kind": "product",
+      "category": "beauty",
+      "title": "rom&nd Better Than Cheek (Set/Single) (17 Colors)",
+      "subtitle": "롬앤 베러 댄 치크 · 4g",
+      "description": "Listed by the seller under Makeup > Face > Blush. Size on the listing: 4g. Seller label: made in South Korea; manufacturer/distributor: COSMAX Co., Ltd. / iFamilySC Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/catalog/product/GA220916123/thumbnail/A000000172610103ko.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220916123",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Makeup > Face > Blush",
+        "The listing has 18 options (shades, types or single/set); check the option in store"
+      ],
+      "country_codes": [],
+      "tags": [
+        "makeup",
+        "blush"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 12.99,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220916123",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-clio-pro-eye-palette-air",
+      "kind": "product",
+      "category": "beauty",
+      "title": "CLIO Pro Eye Palette Air (Set/Single) (12 Options)",
+      "subtitle": "클리오 프로 아이 팔레트 에어",
+      "description": "Listed by the seller under Makeup > Eye > Eyeshadow. Size on the listing: 0.6g x 12 (options 1-12). Seller label: made in South Korea; manufacturer/distributor: COSMAX Co., Ltd. / CLUBCLIO Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/catalog/product/GA250833127/thumbnail/9c160a527bb44f3d85d790d34746f98c.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250833127",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Makeup > Eye > Eyeshadow",
+        "Pan sizes differ by option on the listing"
+      ],
+      "country_codes": [],
+      "tags": [
+        "makeup",
+        "eyeshadow"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 24.5,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250833127",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-wakemake-any-proof-pen-eyeliner-0-5g",
+      "kind": "product",
+      "category": "beauty",
+      "title": "WAKEMAKE Any-Proof Pen Eyeliner (Set/Single) (3 Colors)",
+      "subtitle": "웨이크메이크 철벽 펜 아이라이너 · 0.5g",
+      "description": "Listed by the seller under Makeup > Eye > Eyeliner. Size on the listing: 0.5g. Seller label: made in South Korea; manufacturer/distributor: Distributor: CJ Olive Young Co., Ltd. / Manufacturer: NOWCOS Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1557/72f6b249-f83a-4deb-9be4-d261e9dcaf4e.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250832648",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Makeup > Eye > Eyeliner",
+        "The listing has 7 options (shades, types or single/set); check the option in store"
+      ],
+      "country_codes": [],
+      "tags": [
+        "makeup",
+        "eyeliner"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=omitted(option prices differ); price_krw=null(not verified, USD not converted)"
+    },
+    {
+      "id": "beauty-clio-sharp-so-simple-waterproof-pencil-liner-0-14g",
+      "kind": "product",
+      "category": "beauty",
+      "title": "CLIO Sharp So Simple Waterproof Pencil Liner (Set/Single) (15 Colors)",
+      "subtitle": "클리오 샤프 쏘 심플 워터프루프 펜슬라이너 · 0.14g",
+      "description": "Listed by the seller under Makeup > Eye > Eyeliner. Size on the listing: 0.14g. Seller label: made in South Korea; manufacturer/distributor: Coco Co., Ltd. /CLUBCLIO Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1375/3c52b46a-f2ff-46d3-9b7f-b86ea56273df.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240121726",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Makeup > Eye > Eyeliner",
+        "The listing has 13 options (shades, types or single/set); check the option in store"
+      ],
+      "country_codes": [],
+      "tags": [
+        "makeup",
+        "eyeliner"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=omitted(option prices differ); price_krw=null(not verified, USD not converted)"
+    },
+    {
+      "id": "beauty-aou-all-day-mascara-3-3g",
+      "kind": "product",
+      "category": "beauty",
+      "title": "AOU All Day Mascara (Volume/Long) (2 Colors)",
+      "subtitle": "에이오유 올데이 마스카라 · 3.3g",
+      "description": "Listed by the seller under Makeup > Eye > Eyelashes. Size on the listing: 3.3g. Seller label: made in South Korea; manufacturer/distributor: Cosmetics Manufacturer - Kolmar Korea Co., Ltd. Distributor - HEMEKO Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1158/8af92cb9-bcd4-4f1e-977d-208d128d250e.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250732322",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Makeup > Eye > Eyelashes",
+        "Listing offers Volume and Long types"
+      ],
+      "country_codes": [],
+      "tags": [
+        "makeup",
+        "mascara"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 19.82,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250732322",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-aromatica-rosemary-pdrn-scalp-serum-100ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "AROMATICA Rosemary PDRN Scalp Serum 100ml",
+      "subtitle": "아로마티카 로즈마리 PDRN 스칼프 세럼 · 100ml",
+      "description": "Listed by the seller under Hair > Treatments > Hair Ampoule & Tonic. Size on the listing: 100ml. Seller label: made in South Korea; manufacturer/distributor: Cosmetics Manufacturer: AROMATICA Co., Ltd. , Responsible Cosmetics Distributor: AROMATICA Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1780/f1187f4f-4bfc-465c-a3fb-2143d4710e6f.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260540414",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Hair > Treatments > Hair Ampoule & Tonic",
+        "Ingredient list names Rosmarinus Officinalis (Rosemary (seller label)",
+        "The seller files this under Hair > Treatments > Hair Ampoule & Tonic"
+      ],
+      "country_codes": [],
+      "tags": [
+        "hair",
+        "hair_serum",
+        "scalp"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 31.2,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260540414",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-aromatica-rosemary-scalp-scrub-165g",
+      "kind": "product",
+      "category": "beauty",
+      "title": "AROMATICA Rosemary Scalp Scrub 165g",
+      "subtitle": "아로마티카 로즈마리 스칼프 스크럽 · 165g",
+      "description": "Listed by the seller under Hair > Hair Wash > Shampoo. Size on the listing: 165g. Seller label: made in South Korea; manufacturer/distributor: AROMATICA Co., Ltd. /AROMATICA Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1753/ba2cf1b0-fb01-4cd5-aa7f-c3df29e64b38.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220414486",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Hair > Hair Wash > Shampoo",
+        "Ingredient list names Sea Salt, Rosmarinus Officinalis (Rosemary) Leaf Extract (seller label)",
+        "The seller files this under Hair > Hair Wash > Shampoo"
+      ],
+      "country_codes": [],
+      "tags": [
+        "hair",
+        "shampoo",
+        "scalp"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 21.0,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220414486",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-miseenscene-salon10-peptide-repair-hair-mask-300ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Mise-en-Scene Salon 10 Peptide Repair Hair Mask 300ml (Set/Single)",
+      "subtitle": "미쟝센 살롱10 펩타이드 리페어 헤어마스크 · 300ml",
+      "description": "Listed by the seller under Hair > Treatments > Hair Treatments. Size on the listing: 300ml. Seller label: made in South Korea; manufacturer/distributor: Amorepacific Corporation.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1540/3ebfcf6f-5c15-4d70-88ba-50087b9b2bec.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260439641",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Hair > Treatments > Hair Treatments",
+        "Ingredient list names Behentrimonium Methosulfate, Dimethicone (seller label)",
+        "The listing has 4 options (shades, types or single/set); check the option in store"
+      ],
+      "country_codes": [],
+      "tags": [
+        "hair",
+        "hair_treatment"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=omitted(option prices differ); price_krw=null(not verified, USD not converted)"
+    },
+    {
+      "id": "beauty-miseenscene-perfect-magic-straight-serum-shampoo-530ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Mise-en-Scene Perfect Magic Straight Serum Shampoo 530ml",
+      "subtitle": "미쟝센 퍼펙트 매직 스트레이트 세럼 샴푸 · 530ml",
+      "description": "Listed by the seller under Hair > Hair Wash > Shampoo. Size on the listing: 530ml. Seller label: made in South Korea; manufacturer/distributor: Amorepacific Corporation.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1523/a049f8d0-a3ef-4819-9028-e7bf95ca7c1d.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240925899",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Hair > Hair Wash > Shampoo",
+        "Ingredient list names Sodium Laureth Sulfate (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "hair",
+        "shampoo"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 14.27,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240925899",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-somebymi-cica-peptide-derma-scalp-care-tonic-150ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "SOME BY MI Cica Peptide Derma Scalp Care Tonic 150ml",
+      "subtitle": "썸바이미 시카 펩타이드 더마 스칼프 토닉 · 150ml",
+      "description": "Listed by the seller under Hair > Treatments > Hair Essence & Serum. Size on the listing: 150ml. Seller label: made in South Korea; manufacturer/distributor: Seoul Cosmetics Co., Ltd., / Perennebell Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1102/4a861b11-55e7-4506-a22e-8ad930a6fc82.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240523583",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Hair > Treatments > Hair Essence & Serum",
+        "Ingredient list names Salicylic Acid, Dexpanthenol, Biotin (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "hair",
+        "hair_serum",
+        "scalp"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 12.91,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240523583",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-aestura-atobarrier-365-body-lotion-400ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "AESTURA Atobarrier 365 BODY LOTION 400mL",
+      "subtitle": "에스트라 아토베리어365 바디로션 · 400ml",
+      "description": "Listed by the seller under Bath & Body > Body Moisturizers > Body Cream. Size on the listing: 400ml. Seller label: made in South Korea; manufacturer/distributor: Cosvision Corp. / Amorepacific Corporation.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1157/8adee1b5-33fc-4be5-b6b3-01a973fab8ef.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220113281",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Bath & Body > Body Moisturizers > Body Cream",
+        "Ingredient list names Glycerin (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "body"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 37.32,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220113281",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-illiyoon-ceramide-ato-6-top-to-toe-wash-1000ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "ILLIYOON Ceramide Ato 6.0 Top To Toe Wash 1000ml",
+      "subtitle": "일리윤 세라마이드 아토 6.0 탑투토워시 · 1000ml",
+      "description": "Listed by the seller under Bath & Body > Bath & Shower > Body Wash. Size on the listing: 1000ml. Seller label: made in South Korea; manufacturer/distributor: Amorepacific Corporation.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1381/726b5c85-30a8-441b-8351-73f5742108bf.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250430401",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Bath & Body > Bath & Shower > Body Wash",
+        "Ingredient list names Cocamidopropyl Betaine (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "body"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 19.79,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250430401",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-purito-luminous-moisture-shea-butter-body-lotion-300ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Purito Seoul Luminous Moisture Shea Butter Body Lotion 300ml",
+      "subtitle": "퓨리토 루미너스 모이스처 시어버터 바디 로션 · 300ml",
+      "description": "Listed by the seller under Bath & Body > Body Moisturizers > Body Cream. Size on the listing: 300ml. Seller label: made in South Korea; manufacturer/distributor: HINATURE Co., Ltd. / TheOne Cosmetics Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1697/62e8a95d-063c-459b-9bf6-ab3c82d31339.png",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250631337",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Bath & Body > Body Moisturizers > Body Cream",
+        "Ingredient list names Butyrospermum Parkii (seller label)",
+        "The listing has 3 options (shades, types or single/set); check the option in store"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "body"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 17.5,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250631337",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-kundal-honey-macadamia-body-wash-ylang-ylang-500ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "KUNDAL Honey & Macadamia Pure Body Wash #Ylang Ylang 500ml",
+      "subtitle": "쿤달 허니앤마카다미아 퓨어 바디워시 일랑일랑 · 500ml",
+      "description": "Listed by the seller under Bath & Body > Bath & Shower > Body Wash. Size on the listing: 500ml. Seller label: made in South Korea; manufacturer/distributor: CNF Cosmetics Factory Co., Ltd. / The Skin Factory Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1398/a66eef4c-a6dc-483b-a75d-2c16d5d271ce.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250631251",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Bath & Body > Bath & Shower > Body Wash",
+        "Ingredient list names Sodium C14-16 Olefin Sulfonate (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "body"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 13.21,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250631251",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-beyond-classic-hand-cream-100ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "BEYOND Classic Hand Cream 100ml (4 Options)",
+      "subtitle": "비욘드 클래식 핸드크림 · 100ml",
+      "description": "Listed by the seller under Bath & Body > Hands Care > Hands Cream & Mask. Size on the listing: 100ml. Seller label: made in South Korea; manufacturer/distributor: Manufacturer: LG Household & Health Care Ltd. / Distributor: LG Household & Health Care Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1091/70aed065-f58a-4b17-acfe-f5b667d9b474.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240825503",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Bath & Body > Hands Care > Hands Cream & Mask",
+        "Ingredient list names Butyrospermum Parkii (Shea) Butter (seller label)",
+        "Listing has four 100ml types (e.g. Deep Moisture, Total Recovery, Gel Revital)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "cream",
+        "body"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 7.49,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240825503",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-aromatica-vitalizing-rosemary-all-in-one-wash-300ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "AROMATICA Vitalizing Rosemary All-In-One Wash 300mL",
+      "subtitle": "아로마티카 바이탈라이징 로즈마리 올인원 워시 · 300ml",
+      "description": "Listed by the seller under Bath & Body > Bath & Shower > Body Wash. Size on the listing: 300ml. Seller label: made in South Korea; manufacturer/distributor: AROMATICA Co., Ltd. /AROMATICA Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1356/e43e0d30-beb0-47a7-b2ef-92b7c46c26a4.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210811510",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Bath & Body > Bath & Shower > Body Wash",
+        "Ingredient list names Sodium Methyl Cocoyl Taurate (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "body"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 33.0,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210811510",
+          "checked_at": "2026-10-24"
+        }
+      }
+    },
+    {
+      "id": "beauty-somebymi-aha-bha-pha-miracle-acne-body-cleanser-400g",
+      "kind": "product",
+      "category": "beauty",
+      "title": "SOME BY MI AHA.BHA.PHA 30 Days Miracle Acne Body Cleanser 400g",
+      "subtitle": "썸바이미 아하 바하 파하 30 데이즈 미라클 아크네 바디 클렌저 · 400g",
+      "description": "Listed by the seller under Bath & Body > Bath & Shower > Body Wash. Size on the listing: 400g. Seller label: made in South Korea; manufacturer/distributor: Marked separately on the product. Perennebell Co., Ltd.",
+      "image_url": "https://cdn-image.oliveyoung.com/catalog/product/GA240322660/thumbnail/1838b299b0244eb4b267c91c1e2acd7b.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240322660",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: Bath & Body > Bath & Shower > Body Wash",
+        "Ingredient list names Lauric Acid (seller label)"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "body"
+      ],
+      "provenance": "official_seller_page(OLIVE YOUNG Global: title, Korean name, category, size, ingredients, maker from the listing); list_price=USD listed 2026-10-24; price_krw=null(not verified, USD not converted)",
+      "list_price": {
+        "amount": 15.09,
+        "currency": "USD",
+        "basis": "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)",
+        "source": {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240322660",
+          "checked_at": "2026-10-24"
+        }
+      }
     }
   ]
 }

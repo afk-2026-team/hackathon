@@ -1,0 +1,30 @@
+# 백엔드 단일 FastAPI 함수 업로드 범위. (허용 목록식 `/*` + `!dir/` 은 Vercel 에서 디렉터리를 다시 넣지 못해 제외 목록으로 쓴다)
+# 남는 것: index.py, deploy/vercel_app.py, app/, Crawling_DB/, envs/agent_config.yaml, envs/models/, pyproject.toml, uv.lock, vercel.json
+.env.local
+.env*
+*.env
+.git
+.gitignore
+.claude
+.playwright-mcp
+.pytest_cache
+.venv
+.vercel
+__pycache__
+**/__pycache__
+**/*.pyc
+__llm-wiki
+CLAUDE.md
+README.md
+crawler
+docs
+PPT_Kit
+scripts
+src
+tests
+tmp
+web
+workflow
+envs/infisical.config.json
+envs/README.md
+app/data/*.md

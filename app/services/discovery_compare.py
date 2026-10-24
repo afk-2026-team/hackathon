@@ -97,6 +97,9 @@ def _candidate(item: CatalogItem, facts: ProductFacts | None, lang: Lang = "en",
     if item.price_krw is not None and facts and facts.price_source and facts.price_basis:
         basis = tr.price_basis if tr and tr.price_basis else facts.price_basis
         price = PriceFact(amount=item.price_krw, currency="KRW", basis=basis, source=localize_source(facts.price_source, ko))
+    elif item.list_price is not None:
+        # 원화 확인가가 없으면 카탈로그의 공식 표시가(통화 그대로)를 쓴다. 통화가 다르면 _price 가 비교하지 않는다
+        price = _price_fact(item.list_price, None, ko)
     if facts:
         ingredients_basis = tr.ingredients_basis if tr and tr.ingredients_basis else facts.ingredients_basis
     else:

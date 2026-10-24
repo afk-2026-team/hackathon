@@ -34,9 +34,18 @@ async def get_catalog(lang: str = Query(default="en", max_length=35, description
 async def post_recommendations(body: RecommendationRequest) -> RecommendationResponse:
     # 프로필은 로그에 남기지 않는다(개인 조건). 결과 수와 국가 맥락 상태만 남긴다.
     catalog = _catalog()
-    result = _data(lambda: svc.recommend(body, catalog))
+    result = _data(lambda: svc.recommend(body, catalog, refs=_optional(cmp.load_references), facts=_optional(cmp.load_facts)))
     logger.info(f"[Discovery] ✅ items={len(result.items)} country_context={result.country_context.status}")
     return result
+
+
+def _optional(loader):
+    """추천 보조 근거(기준 제품·표시사항). 못 읽으면 그 근거 없이 추천하고 로그로 드러낸다 — 카탈로그 자체 실패와 구분."""
+    try:
+        return loader()
+    except svc.CatalogUnavailable as exc:
+        logger.warning(f"[Discovery] ⚠️ label facts unavailable for recommendations: {exc}")
+        return None
 
 
 def _data(loader):

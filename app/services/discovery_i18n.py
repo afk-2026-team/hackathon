@@ -129,6 +129,7 @@ MESSAGES: dict[Lang, dict[str, str]] = {
     "en": {
         # 추천(discovery.py)
         "reco.price_unlisted": "Price not listed in our sources, so it was not checked against your budget.",
+        "reco.list_price": "Seller lists {currency} {amount}. A Korean store price is not confirmed, so it was not compared with your KRW budget.",
         "reco.within_budget": "Listed price ₩{price} is within your budget of ₩{budget}.",
         "reco.interests": "Matches your interests: {hits}.",
         "reco.shares_words": "Shares words with your current product: {words}.",
@@ -178,6 +179,7 @@ MESSAGES: dict[Lang, dict[str, str]] = {
     },
     "ko": {
         "reco.price_unlisted": "출처에 가격이 없어 예산과 비교하지 않았어요.",
+        "reco.list_price": "판매처 표시가는 {currency} {amount}예요. 국내 원화 가격은 확인되지 않아 원화 예산과 비교하지 않았어요.",
         "reco.within_budget": "표시 가격(₩{price})이 예산(₩{budget}) 안이에요.",
         "reco.interests": "관심사와 일치해요: {hits}.",
         "reco.shares_words": "지금 쓰는 제품과 겹치는 단어가 있어요: {words}.",

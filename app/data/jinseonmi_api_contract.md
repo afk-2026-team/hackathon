@@ -36,6 +36,7 @@
 | 13 | POST | `/v1/chat/completions` | B | 없음 | 구현(OpenAI 호환) |
 | 14 | POST | `/v1/responses` | B 직접 · A 프록시 | 없음 | 구현(OpenAI Responses 호환). A는 `app/api/v1/assistant_proxy.py`가 검증 후 B로 전달 |
 | 15 | GET | `/v1/models` | B | 없음 | 구현 |
+| 16 | POST | `/v1/trips/plan` | A | 없음(좌표 없는 장소만 서버 naver_maps 키로 지오코딩) | 구현(직선거리 근접 순, §3.11) |
 | — | POST | `/v1/inputs/prepare` | — | — | **미구현.** `app/api/v1/inputs.py`는 라우트가 아니라 chat·responses 공용 입력 매핑 헬퍼다 |
 | — | — | session·state·질문-응답 저장 API | — | — | **미구현.** 별도 세션 엔드포인트나 서버 측 대화 저장소가 없다(§4) |
 
@@ -45,12 +46,12 @@
 |---|---|---|---|
 | `country` | `country`(필수, alpha-2, 예 `US`·`XX`) | `country`(대문자로 정규화) | 국가로 피부·취향·시술 적합성을 추정하지 않는다 |
 | `language` | `language`(필수, 2~35자) | `language`(소문자, `-` 앞만 사용) | |
-| `currency` | `currency`(필수, ISO 4217 3자) | B 직접: 선택 수신·검증(§2-1) · A 프록시: 받지 않음 | UI 경로에서는 보내지 않는다 |
+| `currency` | `currency`(필수, ISO 4217 3자) | `currency?`(영문 3자) — A 프록시·B 직접 모두 수신 | |
 | `gender` | `gender?`(받지만 계산에 미사용) | `gender`(프로필에 저장, Home 요청 문장에는 미사용) | |
 | `age_range` | `age_range?`(받지만 미사용) | **`age_band`** | **필드명 불일치.** 어댑터가 `age_range`를 `age_band`로 바꿔야 한다 |
-| `preferences.interests[]` | `preferences.interests` | B 직접: 평탄 `interests` 수신·검증 · A 프록시: 받지 않음 → UI는 Home `input` 문장으로 전달 | 태그·카테고리 정확 일치만 사용 |
-| `preferences.budget_krw` | `preferences.budget_krw`(≥0) | B 직접: 평탄 `budget_krw` 수신·검증 · A 프록시: 받지 않음 → UI는 Home `input` 문장으로 전달 | recommendations는 예산 초과를 제외, explain은 within/above |
-| `preferences.current_product` | `preferences.current_product`(≤200자, 단어 겹침) / compare·explain은 `current_product_id`(목록) 또는 `current_product_name` | B 직접: 평탄 `current_product` 수신·검증 · A 프록시: 받지 않음 → UI는 Home `input` 문장으로 전달 | 이름이 기준 제품명과 정확히 같으면 서버가 matched로 본다 |
+| `preferences.interests[]` | `preferences.interests` | 평탄 `interests`(≤10개·각 ≤40자) — A 프록시·B 직접 모두 수신 | 태그·카테고리 정확 일치만 사용 |
+| `preferences.budget_krw` | `preferences.budget_krw`(≥0) | 평탄 `budget_krw`(0 < n ≤ 100,000,000) — A 프록시·B 직접 모두 수신 | recommendations는 예산 초과를 제외, explain은 within/above |
+| `preferences.current_product` | `preferences.current_product`(≤200자, 단어 겹침) / compare·explain은 `current_product_id`(목록) 또는 `current_product_name` | 평탄 `current_product`(≤200자) — A 프록시·B 직접 모두 수신 | 이름이 기준 제품명과 정확히 같으면 서버가 matched로 본다 |
 | (session) | 없음 | `X-Thread-Id` 헤더 — `multi_turn.enabled=false`라 지금은 불필요. 켜면 필수(없으면 400) | 별도 session_id 필드는 없다 |
 
 - **discovery 요청은 extra 필드를 금지한다**(`extra="forbid"`). 모르는 키를 보내면 422다.
@@ -60,8 +61,8 @@
 
 | 경로 | `metadata.profile`에 실리는 것 | 관심사·예산·현재 제품 | 근거 |
 |---|---|---|---|
-| **UI (5173 → A 프록시 → B)** | `language`·`country`·`gender?`·`age_band?`(UI `age_range`를 변환) | 질문이 없을 때 `web/src/lib/assistant.ts` `homeQuestion`이 `input` 문장으로 보낸다: `[Home] I'm interested in … My budget is about KRW … I currently use … What K-beauty products or clinics should I look at first on my trip to Korea?` 선호가 없으면 `input: null`로 B의 Home 요청을 쓴다. 성별·연령은 문장에 넣지 않는다 | A 프록시의 `AssistantProfile`이 4필드 외에는 422로 막으므로 metadata와 문장에 이중으로 실리지 않는다 |
-| **B 직접 호출(서버 간·테스트)** | 위 4필드 + 선택 `currency`(ISO 4217 3자)·`interests`(문자열 ≤10개·각 ≤40자)·`budget_krw`(0 < n ≤ 100,000,000, 정수화)·`current_product`(≤200자). 형식이 틀리면 400(`param=metadata.profile.<field>`) | `input` 없이 오면 Home 요청 문장 끝에 ` Their stated preferences: interests …; budget about KRW …; currently uses ….`를 붙인다. respond 턴의 `[Profile]` 줄에도 표시된다 | `app/api/v1/inputs.py` `PREFERENCE_FIELDS`, `app/graph/nodes.py` `PROFILE_KEYS`. B에 반영되려면 8000 재시작이 필요하다 |
+| **UI (5173 → A 프록시 → B)** | `language`·`country`·`gender?`·`age_band?` + 선택 `currency`·`interests`·`budget_krw`·`current_product`. 형식은 `app/api/v1/inputs.py` 상한과 같고 틀리면 A가 422(`param=metadata.profile.<field>`) | A가 프로필 전체를 `metadata.profile`로 그대로 넘기고 `input`은 사용자 원문 그대로(없으면 `null`) 보낸다. 질문이 없으면 B가 Home 요청 문장(`home_request`)을 만든다. 질문이 있어도 선호는 metadata로 함께 간다. 성별·연령으로 적합성을 판단하지 않는다 | 선호를 문장과 metadata에 이중으로 싣지 않도록 UI는 `homeQuestion` 문장 대신 profile 필드를 보내면 된다 |
+| **B 직접 호출(서버 간·테스트)** | 위와 같은 필드. 형식이 틀리면 400(`param=metadata.profile.<field>`) | `input` 없이 오면 Home 요청 문장 끝에 ` Their stated preferences: interests …; budget about KRW …; currently uses ….`를 붙인다. respond 턴의 `[Profile]` 줄에도 표시된다 | `app/api/v1/inputs.py` `PREFERENCE_FIELDS`, `app/graph/nodes.py` `PROFILE_KEYS`. B에 반영되려면 8000 재시작이 필요하다 |
 
 ## 3. 상세
 
@@ -70,6 +71,7 @@
 - **CatalogItem:**
   - `id`, `kind`(product·place·guide), `category`(beauty·medical)
   - `title`, `subtitle`, `description`, `image_url|null`, `price_krw|null`, `location|null{name,lat?,lng?,address?}`
+  - `list_price|null{amount,currency,basis,source}` — 원화가 아닌 공식 표시가(통화 그대로, 환산 안 함)
   - `sources[{label,url,checked_at}]`(1개 이상)
   - `sponsorship`(sponsored·not_sponsored·unknown)
   - `reasons[]`, `country_codes[]`, `tags[]`, `provenance`
@@ -84,6 +86,12 @@
 - **요청:** `{profile: Profile, category?: "all"|"beauty"|"medical"}`
 - **응답:** `{items: CatalogItem[], country_context: {country, status: supported|insufficient, explanation}, generated_at}`
 - **정렬:** 일치 점수 순이고, sponsored는 항상 자연 후보 뒤다. **인기 순위가 아니다.**
+- **예산 문장:** 원화 확인가(`price_krw`)만 예산 필터에 쓴다. `price_krw`가 없고 `list_price`가 있으면 제외하지 않고 `Seller lists USD 19.60. A Korean store price is not confirmed, so it was not compared with your KRW budget.`처럼 표시가를 밝힌다. 둘 다 없으면 `Price not listed …`.
+- **현재 제품 근거:** `preferences.current_product`가 기준 제품(reference-products)의 제목·id와 정확히 같으면 표시사항을 비교한다.
+  - 후보의 `discovery_product_facts` 성분과 겹치면 +2, reason `Both labels list … (your current product: …). Amounts and formulas are not compared.`
+  - 제형이 같으면 +1, reason `Same product form (…) as your current product.`
+  - 기준 제품이 없거나 겹침이 없으면 이전처럼 단어 겹침(`Shares words with your current product: …`)으로 보충한다.
+- **국가 문맥:** 사용자 국가가 매칭된 기준 제품의 `market_codes`에 있을 때만 `country_context.explanation`에 공식 판매처 근거 문장을 덧붙인다. 순위는 바꾸지 않는다.
 - **오류:** 422(프로필 형식), 503(카탈로그)
 
 `200`
@@ -113,7 +121,8 @@
   - `common[]`, `differences[]`, `unverified[]` — 각 Point는 `{attribute: key_ingredients|volume_ml|form, current, candidate, basis, sources}`
   - `price{current,candidate,comparable,note}`, `country_context`, `notice`, `generated_at`
 - **판정 규칙:**
-  - `comparable`은 통화와 용량이 모두 같을 때만 true다.
+  - 후보 가격은 `price_krw`, 없으면 `list_price`(통화 그대로)다.
+  - `comparable`은 통화와 용량이 모두 같을 때만 true다. 통화가 다르면 빼기·환산하지 않는다.
   - 부분 목록에서는 '없음'을 차이로 만들지 않는다.
 - **오류:** 404(없는 id, product가 아닌 후보), 422, 503
 
@@ -225,12 +234,26 @@
 - **오류:** 없는 model은 404 `model_not_found`, 형식 오류는 400(OpenAI envelope)이다.
 - **A 프록시(`app/api/v1/assistant_proxy.py`) 규칙:**
   - 요청: `{model?: string(기본 JINSEONMI_AI_MODEL 또는 "kbeauty-sonnet"), input?: string|null(≤2000자, 앞뒤 공백 제거), stream?: false, metadata: {profile: {language(2~8자), country(2자), gender?(≤32자), age_band?(≤16자)}}}`
+  - 프로필 선택 필드: `currency?`(영문 3자), `interests?[]`(≤10·각 ≤40자), `budget_krw?`(0 < n ≤ 100,000,000), `current_product?`(≤200자). 그 밖의 키(예 `skin_type`)는 422다.
   - `stream=true`, extra 필드(프로필 안 포함), 2000자 초과, `metadata` 누락은 B 호출 전에 422로 막는다. 오류 형식은 A의 `{"error": {"message", "param"}}`다.
+  - **카탈로그 후보 연결:** A가 `recommend`(§3.2)로 후보를 고른다. 질문이 있으면 beauty ≤3 + medical ≤3, 없으면 상위 ≤5(자연 후보만).
+    - A → B 전달은 **id 목록만** `metadata.catalog_candidate_ids`로 보낸다. `input`은 원문 그대로라 Jev 분류기는 원문 질문(또는 Home 요청 문장)만 본다.
+    - B(`app/api/v1/inputs.py` `catalog_from_metadata`)가 자기 카탈로그로 id를 검증하고 `[Official catalog]` 블록(id·종류·제목·가격·표시 사실·출처·스폰서 여부)을 다시 만든다. 문장 주입은 불가능하다. 형식 오류·없는 id·7개 이상은 400(`param=metadata.catalog_candidate_ids`), 카탈로그를 못 읽으면 503.
+    - 블록은 그래프 state `catalog`로 respond 턴(`app/prompts/respond_turn.yaml`)에만 들어간다. 매 턴 덮어써서 멀티턴에서도 이전 턴 후보가 남지 않는다(히스토리에는 원문 질문과 답만 남는다).
+    - respond system(`app/prompts/respond_system.yaml`)은 `[Official catalog]`(공식 표시 사실)와 `[Retrieved evidence]`(블로그·영상 리뷰)를 둘 다 근거로 인정하고 구분해 쓰게 한다. 질문에 맞는 후보만 쓰고, id를 `[대괄호]`로 인용하며, 외화 가격은 환산·원화 예산 비교를 하지 않는다. 효능·순위·적합성·예약 주장은 금지한다.
+    - B 직접 호출도 같은 키를 쓸 수 있다(공개 카탈로그 id만 허용). A 프록시는 클라이언트가 이 키를 보내면 422다(extra 금지).
+  - **응답 `metadata` 추가 필드:**
+    - `candidates_basis: "server_recommendation"` — 모델 선택이 아니라 서버 규칙 추천이라는 표시
+    - `candidates_status: ok|unavailable` — 카탈로그를 못 읽으면 `unavailable`, 후보 `[]`, 문맥 없이 질문만 전달
+    - `candidates[]: {id, kind, category, title, subtitle, image_url, price_krw, list_price, reasons, sources}`
+    - `recommended_ids[]` — 답변에 `[정확한 id]`로 실제 인용된 후보 id만(첫 등장 순, 중복 제거). 후보 allowlist와 문자열 그대로 대조하며, 후보에 없는 id·리뷰 근거 id(`products/…`·`videos/…`)는 넣지 않는다. **UI는 텍스트에서 이름을 파싱하지 말고 이 목록으로 카드를 연결한다.** `candidates`는 '관련 옵션'(서버 추천), `recommended_ids`는 'AI가 답에서 고른 항목'으로 구분해 표시한다.
+    - 전달용 `catalog_candidate_ids`는 응답 metadata에서 뺀다.
+    - 실측(2026-10-24, 공개 앱 구성 `deploy/vercel_app.py` 같은 프로세스, 실제 모델): 크림·피부과 질문 200·14.0초, 후보 beauty 3·medical 3, `recommended_ids` 5개(모두 후보). Home 200·9.7초, `recommended_ids` 3개.
   - 업스트림은 `JINSEONMI_AI_UPSTREAM`(기본 `http://127.0.0.1:8000`), 시간 상한 60초다. `X-Thread-Id`가 오면 그대로 넘긴다.
   - 실패 매핑: B 미기동 503, 시간 초과 504, 읽을 수 없거나 `object≠"response"`인 응답 502. B의 4xx·5xx는 상태를 유지하고 B의 `error.message`를 담는다(UI는 이 문구를 `detail`로만 보관하고 사용자 문구는 따로 쓴다).
   - 실측(2026-10-24): `5173/v1/responses` → A → B 200, 8.6초, `status:"completed"`.
 - **chat/completions:** `{model, messages[], stream?, metadata?}`이며 응답은 OpenAI `chat.completion` 형식이다.
-- **출력 텍스트:** 모델 자유 문장이다. 구조화된 상품 카드·출처 필드는 **없다.** 화면 카드는 discovery 계열 응답으로 그려야 한다.
+- **출력 텍스트:** 모델 자유 문장이다. A 프록시 경유 시 카드는 `metadata.candidates`·`recommended_ids`로 그린다. B 직접 호출에는 이 필드가 없다.
 
 [형식 예시 — 코드 스키마 기준의 요청·응답 모양이다. 실제 호출 결과(5173 → A 프록시 → B, 200·8.6초·completed)는 위 "A 프록시 규칙"의 실측 항목에 적었다]
 
@@ -242,6 +265,19 @@
 {"id": "resp_…", "object": "response", "created_at": 1761285600, "status": "completed", "model": "kbeauty-sonnet", "output": [{"type": "message", "id": "msg_…", "status": "completed", "role": "assistant", "content": [{"type": "output_text", "text": "…", "annotations": []}]}], "incomplete_details": null, "metadata": {"profile": {"language": "en", "country": "US"}}}
 ```
 
+### 3.11 POST /v1/trips/plan (A만)
+- **요청:** `{item_ids: string[1..20](중복은 첫 등장만), origin?: {address(≤200자)} | {lat, lng}}`. extra 금지.
+  - origin 좌표는 lat·lng를 함께, 한국 범위(위도 33~39, 경도 124~132)여야 한다. 주소와 좌표를 같이 주면 422다.
+- **응답:** `{method:"proximity", distance_source:"straight_line", origin|null{label,lat,lng,source:input|geocode}, origin_status: none|ok|geocode_unavailable|geocode_no_result|geocode_failed, stops[], unlocated[], checklist[], notes[], generated_at}`
+  - `stops[]`: `{order, item_id, title, address, lat, lng, location_source: catalog|geocode, distance_from_previous_m|null, map_links{naver_search, google_directions}}`
+  - `unlocated[]`: `{item_id, title, reason: no_address|geocode_unavailable|geocode_no_result|geocode_failed}` — 가짜 좌표를 만들지 않는다.
+  - `checklist[]`: product·guide `{item_id, title, kind}`
+- **동작:**
+  - 카탈로그 좌표를 우선 쓰고, 없으면 공식 주소를 기존 maps 지오코딩으로 찾는다.
+  - 출발지에서 가장 가까운 곳부터 직선거리(haversine) greedy 순서. 동률은 요청 순서. 출발지가 없거나 못 찾으면 첫 위치 확인 장소부터.
+  - 이동 시간·도로 경로 최적화가 아니다. 영업시간·예약도 확인하지 않는다(`notes`에 명시). 기존 `/v1/maps/directions`와 별개다.
+- **오류:** 없는 id는 422 `{"error": {"message", "param": "item_ids", "unknown_ids": [...]}}`, 형식 오류 422, 카탈로그 503.
+
 ## 4. 미구현과 모호점
 
 1. **`/v1/inputs/prepare` 라우트 없음.** 입력 매핑은 서버 내부(`graph_input_from`)에서만 한다. UI가 필요하면 새 계약을 정해야 한다.
@@ -250,6 +286,6 @@
    - 대화 이어 가기가 필요하면 multi_turn 설정과 `X-Thread-Id`(서버 메모리, 재시작 시 소멸)가 필요하다.
 3. **호스트 분리는 A 프록시로 해결했다.** A의 `POST /v1/responses`가 B로 넘긴다(§3.10). B 라우터를 A에 직접 합치지 않은 이유는 `app.state.registry`·lifespan 의존 때문이다. chat/completions·models는 여전히 B에만 있다.
 4. **필드명 불일치:** UI·discovery는 `age_range`, responses는 `age_band`를 쓴다. `web/src/lib/assistant.ts` `toAssistantProfile`이 변환한다.
-5. **responses 출력은 자유 텍스트다.** 출처·카드 구조가 없으므로 사실 근거 UI는 compare·explain·evidence로 그린다.
+5. **responses 본문은 자유 텍스트다.** A 프록시는 `metadata.candidates`·`recommended_ids`로 카드를 연결한다(§3.10). B 직접 호출에는 이 구조가 없다.
 6. **geocode는 주소 검색이다.** 장소명은 빈 결과가 나올 수 있다.
 7. **카탈로그 건수:** 머지 작업 트리는 20건이다(beauty product 11, beauty place 3, beauty guide 1, medical guide 3, medical place 2). main `62e7291`은 7건이다. 예시의 recommendations는 beauty와 예산 30,000원 조건이라 15건이 나왔다. compare 대상 표시사항(성분·용량)은 ILLIYOON 1건만 있고, 나머지 product는 `unverified`로 나온다.

@@ -39,6 +39,93 @@
         }
       ],
       "provenance": "official_brand_page; volume_ml=null(size not stated in page text); key_ingredients=subset of listed full ingredients"
+    },
+    {
+      "id": "ref-cetaphil-moisturizing-cream",
+      "brand": "Cetaphil",
+      "title": "Cetaphil Moisturizing Cream",
+      "form": "cream",
+      "volume_ml": null,
+      "key_ingredients": [
+        "Water",
+        "Glycerin",
+        "Petrolatum",
+        "Dicaprylyl Ether",
+        "Dimethicone",
+        "Glyceryl Stearate",
+        "Cetyl Alcohol",
+        "Helianthus Annuus (Sunflower) Seed Oil",
+        "PEG-30 Stearate",
+        "Panthenol",
+        "Niacinamide",
+        "Prunus Amygdalus Dulcis (Sweet Almond) Oil",
+        "Tocopheryl Acetate",
+        "Pantolactone",
+        "Dimethiconol",
+        "Acrylates/C10-30 Alkyl Acrylate Crosspolymer",
+        "Carbomer",
+        "Propylene Glycol",
+        "Disodium EDTA",
+        "Benzyl Alcohol",
+        "Phenoxyethanol",
+        "Sodium Hydroxide",
+        "Citric Acid"
+      ],
+      "ingredients_complete": true,
+      "ingredients_basis": "Full ingredient list on the brand's official US product page, checked 2026-10-24. The page lists several sizes (oz), so no single size is recorded; the package is the most current list.",
+      "price": null,
+      "market_codes": [
+        "US"
+      ],
+      "sources": [
+        {
+          "label": "Cetaphil US official product page (ingredients, sizes)",
+          "url": "https://www.cetaphil.com/us/products/product-categories/all-moisturizers/moisturizing-cream/302993917564.html",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "provenance": "official_brand_page; volume_ml=null(multiple sizes, oz); price=null(not tied to a size in page text)"
+    },
+    {
+      "id": "ref-laroche-posay-toleriane-double-repair-face-moisturizer",
+      "brand": "La Roche-Posay",
+      "title": "La Roche-Posay Toleriane Double Repair Face Moisturizer",
+      "form": "cream",
+      "volume_ml": null,
+      "key_ingredients": [
+        "Water",
+        "Glycerin",
+        "Squalane",
+        "Dimethicone",
+        "Zea Mays Starch / Corn Starch",
+        "Niacinamide",
+        "Ammonium Polyacryloyldimethyl Taurate",
+        "Myristyl Myristate",
+        "Stearic Acid",
+        "Ceramide NP",
+        "Potassium Cetyl Phosphate",
+        "Glyceryl Stearate SE",
+        "Sodium Hydroxide",
+        "Myristic Acid",
+        "Palmitic Acid",
+        "Capryloyl Glycine",
+        "Caprylyl Glycol",
+        "Xanthan Gum"
+      ],
+      "ingredients_complete": true,
+      "ingredients_basis": "Full ingredient list on the brand's official US product page, checked 2026-10-24. Size is not stated with the list, so none is recorded; the package is the most current list.",
+      "price": null,
+      "market_codes": [
+        "US"
+      ],
+      "sources": [
+        {
+          "label": "La Roche-Posay US official product page (ingredients)",
+          "url": "https://www.laroche-posay.us/our-products/face/face-moisturizer/toleriane-double-repair-face-moisturizer-tolerianedoublerepair.html",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "provenance": "official_brand_page; volume_ml=null(size not shown with the list); price=null(size not confirmed for the shown price)"
     }
   ]
 }

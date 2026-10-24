@@ -6,6 +6,8 @@ from collections.abc import Mapping
 
 from langchain_core.messages import HumanMessage
 
+from app.services import catalog_context as catalog_ctx
+from app.services import discovery as discovery_svc
 from app.utils.errors import OpenAIError
 
 PROFILE_FIELDS = ("language", "country", "gender", "age_band")
@@ -81,6 +83,27 @@ def _preferences_from(raw: dict) -> dict:
     return out
 
 
+def catalog_from_metadata(metadata: dict | None) -> str:
+    """metadata.catalog_candidate_ids(공식 카탈로그 id 목록) → respond 턴의 [Official catalog] 본문.
+
+    id 만 받고 문장은 서버 카탈로그로 다시 만든다(임의 문맥 주입 차단). 키가 없으면 '후보 없음' 블록이다.
+    """
+    raw = (metadata or {}).get(catalog_ctx.CATALOG_IDS_KEY)
+    if raw in (None, []):
+        return catalog_ctx.NO_CATALOG
+    param = f"metadata.{catalog_ctx.CATALOG_IDS_KEY}"
+    if not isinstance(raw, list) or len(raw) > catalog_ctx.MAX_CATALOG_IDS or not all(isinstance(i, str) and i for i in raw) \
+            or len(set(raw)) != len(raw):
+        raise OpenAIError(400, f"{param} 는 중복 없는 카탈로그 id 문자열 목록(최대 {catalog_ctx.MAX_CATALOG_IDS}개)이어야 한다",
+                          "invalid_request_error", param)
+    try:
+        return catalog_ctx.catalog_block(raw, discovery_svc.load_catalog())
+    except catalog_ctx.UnknownCatalogIds as exc:
+        raise OpenAIError(400, f"{param} 에 카탈로그에 없는 id 가 있다: {exc.ids}", "invalid_request_error", param) from None
+    except discovery_svc.CatalogUnavailable as exc:
+        raise OpenAIError(503, f"공식 카탈로그를 읽을 수 없다: {exc}", "server_error", param) from None
+
+
 def home_request(profile: dict) -> str:
     text = HOME_REQUEST.format(country=profile.get("country", "not_given"), language=profile.get("language", "not_given"))
     prefs = []
@@ -94,9 +117,14 @@ def home_request(profile: dict) -> str:
 
 
 def graph_input_from(
-    text: str | None, profile: dict | None, headers: Mapping[str, str], *, multi_turn: bool, thread_header: str
+    text: str | None, profile: dict | None, headers: Mapping[str, str], *, multi_turn: bool, thread_header: str,
+    catalog: str = catalog_ctx.NO_CATALOG,
 ) -> tuple[dict, dict]:
-    """발화가 있으면 그 발화, 없고 프로필만 있으면 Home 요청 문장을 Jev·respond 의 질문으로 쓴다."""
+    """발화가 있으면 그 발화, 없고 프로필만 있으면 Home 요청 문장을 Jev·respond 의 질문으로 쓴다.
+
+    catalog 는 이번 턴 전용 [Official catalog] 본문이다. Jev 에는 넣지 않고(원문 질문만 분류) respond 턴에만 보인다.
+    멀티턴 checkpointer 가 이전 턴 값을 남기지 않도록 매 턴 덮어쓴다.
+    """
     if not text and not profile:
         raise OpenAIError(
             400,
@@ -105,7 +133,7 @@ def graph_input_from(
             "invalid_request_error",
             "messages",
         )
-    graph_input: dict = {"messages": [HumanMessage(text or home_request(profile))]}
+    graph_input: dict = {"messages": [HumanMessage(text or home_request(profile))], "catalog": catalog}
     if profile:
         graph_input["profile"] = profile
     if not multi_turn:

@@ -63,3 +63,17 @@
    - 외국인환자유치 정보시스템의 등록·평가인증 목록은 이번 조사에서 공개 전국 API를 확인하지 못했습니다. 지자체 공공데이터(일부 지역)를 우선 검토합니다.
    - 진단·시술 적합성·회복 일정은 데이터로 만들지 않고 의료기관 안내로 넘깁니다.
 5. **국가별 추천:** 국가별 배송 가능 여부(예: OLIVE YOUNG Global 배송 국가 목록)처럼 출처가 있는 사실부터 `country_codes`에 연결합니다. 상품 단위 판매 가능 여부는 별도로 확인해야 합니다.
+
+## 비교 표시사항·참고 제품 보강 (2026-10-24, 데이터 담당)
+
+- `discovery_product_facts.json`: 카탈로그 뷰티 상품 86개 전부에 항목이 있습니다.
+  - 출처: OLIVE YOUNG Global 상품 페이지의 'Specific Item Info'(제조판매업자 표기). 페이지가 스스로 부르는 공개 요청(`POST /product/description-info`)을 같은 페이지에서 상품마다 1회, 0.7초 간격으로 받았고, 우회는 없습니다.
+  - 전성분이 하나로 정해지는 67개는 `key_ingredients`에 전성분을 그대로 넣고 `ingredients_complete=true`로 둡니다. 처음 11개 중 일부는 공식 목록에서 고른 일부라 `false`입니다.
+  - 색상·세트별로 성분이 다른 제품은 `null`입니다.
+  - `volume_ml`은 표기가 ml 하나일 때만 채웁니다. g 단위·세트·묶음은 `null`이거나 단위 1개 기준이며, 어느 쪽인지 provenance에 적었습니다.
+  - `form`은 판매처 카테고리 마지막 단계를 소문자로 쓴 값입니다.
+  - 가격 근거(`price_basis`/`price_source`)는 ILLIYOON만 있습니다. 원화 가격을 새로 만들지 않습니다.
+- `discovery_reference_products.json`: 해외 참고 제품 3개입니다(CeraVe·Cetaphil·La Roche-Posay, 모두 브랜드 미국 공식 페이지).
+  - Cetaphil·LRP는 공식 페이지의 전성분을 그대로 넣었습니다. 페이지에서 크기와 가격이 연결되지 않아 `volume_ml`과 `price`는 `null`입니다.
+- 원본 응답 보존(저장소 밖): `tmp/data-pass1/`
+- 검증: `tests/discovery/test_catalog_coverage.py`

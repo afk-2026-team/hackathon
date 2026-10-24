@@ -1,0 +1,10 @@
+# --- SDD·서고 작업환경 ---
+# 문서 실물은 비추적, 양식(example.md)만 추적
+docs/*/*
+!docs/*/example.md
+# 서고: 계약·소유기록만 추적, 카드·색인·로그·캐시는 비추적
+__llm-wiki/*
+!__llm-wiki/contract.json
+!__llm-wiki/receipt.json
+# 시드(설치 명세 원본)는 비추적
+seed/

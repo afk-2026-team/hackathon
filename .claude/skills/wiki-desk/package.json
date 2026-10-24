@@ -1,0 +1,8 @@
+{
+  "name": "wiki-desk",
+  "version": "3.2.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "scripts": { "test": "node --test tests/" }
+}

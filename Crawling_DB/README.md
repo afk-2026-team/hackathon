@@ -115,7 +115,7 @@ stale_after: '2027-01-22T…'           # 이 시각 이후엔 '오래됨' 표�
    - 정렬: 신호 점수 → 최신순 → ID 순.
 4. Haiku 가 그 5건만 근거로 답하고, 항목마다 `[concept id]`·출처 URL·협찬 상태를 붙인다.
 
-자세한 요청·응답 규격은 [`app/docs/ai_workflow_manual.html`](../app/docs/ai_workflow_manual.html) 에 있다.
+자세한 요청·응답 규격은 [`workflow/ai_workflow_manual.html`](../workflow/ai_workflow_manual.html) 에 있다.
 
 ## 6. Supabase 스냅샷
 

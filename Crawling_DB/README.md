@@ -113,7 +113,7 @@ stale_after: '2027-01-22T…'           # 이 시각 이후엔 '오래됨' 표�
 3. `retrieve` 노드가 frontmatter 만으로 **결정론 필터**를 해서 상위 5건을 고른다(LLM 없음).
    - 필터: category 일치 → content_kind 일치(없으면 완화).
    - 정렬: 신호 점수 → 최신순 → ID 순.
-4. Haiku 가 그 5건만 근거로 답하고, 항목마다 `[concept id]`·출처 URL·협찬 상태를 붙인다.
+4. 응답 모델(Sonnet)이 그 5건만 근거로 답하고, 항목마다 `[concept id]`·출처 URL·협찬 상태를 붙인다.
 
 자세한 요청·응답 규격은 [`workflow/ai_workflow_manual.html`](../workflow/ai_workflow_manual.html) 에 있다.
 

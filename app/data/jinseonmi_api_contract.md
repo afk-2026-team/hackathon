@@ -217,7 +217,7 @@
 
 ### 3.10 POST /v1/responses (B 직접 · A 프록시) · POST /v1/chat/completions (B만)
 - **요청 `/v1/responses`:**
-  - `{model:"kbeauty-haiku", input?: string | ChatMessage[], stream?: bool, metadata?: {profile?: {language,country,gender,age_band}}}`
+  - `{model:"kbeauty-sonnet", input?: string | ChatMessage[], stream?: bool, metadata?: {profile?: {language,country,gender,age_band}}}`
   - extra 필드는 허용하고 무시한다. input이 목록이면 마지막 항목이 `role:"user"`여야 한다(아니면 400).
   - **input 없이 `metadata.profile`만 주면 서버가 Home 추천 요청 문장을 만든다.** input도 profile도 없으면 400이다.
 - **응답:** `{id:"resp_…", object:"response", created_at, status: completed|incomplete, model, output:[{type:"message", id, status, role:"assistant", content:[{type:"output_text", text, annotations:[]}]}], incomplete_details|null, metadata}`
@@ -235,11 +235,11 @@
 [형식 예시 — 코드 스키마 기준, 이번 작업에서 8000 서버 실호출은 하지 않음]
 
 ```json
-{"model": "kbeauty-haiku", "metadata": {"profile": {"language": "en", "country": "US"}}}
+{"model": "kbeauty-sonnet", "metadata": {"profile": {"language": "en", "country": "US"}}}
 ```
 
 ```json
-{"id": "resp_…", "object": "response", "created_at": 1761285600, "status": "completed", "model": "kbeauty-haiku", "output": [{"type": "message", "id": "msg_…", "status": "completed", "role": "assistant", "content": [{"type": "output_text", "text": "…", "annotations": []}]}], "incomplete_details": null, "metadata": {"profile": {"language": "en", "country": "US"}}}
+{"id": "resp_…", "object": "response", "created_at": 1761285600, "status": "completed", "model": "kbeauty-sonnet", "output": [{"type": "message", "id": "msg_…", "status": "completed", "role": "assistant", "content": [{"type": "output_text", "text": "…", "annotations": []}]}], "incomplete_details": null, "metadata": {"profile": {"language": "en", "country": "US"}}}
 ```
 
 ## 4. 미구현과 모호점

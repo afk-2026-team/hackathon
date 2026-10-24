@@ -162,7 +162,7 @@ const nodes = [
 
   { id: 'api', label: 'FastAPI 라이브서버', sub: '/v1/chat/completions (OpenAI 호환)', x: 700, y: 110, w: 300, h: 52, layer: 'workflow', status: 'built',
     path: 'app/api/v1/chat_completions.py',
-    desc: 'stream false/true, /v1/models, /health. 설정은 envs/agent_config.yaml. 프로필 1개(kbeauty-haiku).' },
+    desc: 'stream false/true, /v1/models, /health. 설정은 envs/agent_config.yaml. 프로필 1개(kbeauty-sonnet).' },
   { id: 'jev', label: 'jev_judge · Jev', sub: 'category(Choice) + purchase_intent(Noul)', x: 700, y: 195, w: 300, h: 56, layer: 'workflow', status: 'built',
     path: 'app/graph/nodes.py',
     desc: 'Decision API 계열 Jev(TypeSafe)가 질의를 skincare / makeup / suncare / haircare / k_medical / out_of_scope 로 판정. 실패는 폴백 없이 fail-fast 500.' },

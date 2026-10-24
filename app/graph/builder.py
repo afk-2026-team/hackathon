@@ -31,7 +31,13 @@ def build_graph(llm: BaseChatModel, classifier, config: dict, prompts: dict, con
     graph = StateGraph(AgentState)
     graph.add_node(
         N.JEV_JUDGE,
-        partial(N.jev_judge, classifier=classifier, questions=questions, decline_labels=router["decline_labels"]),
+        partial(
+            N.jev_judge,
+            classifier=classifier,
+            questions=questions,
+            decline_labels=router["decline_labels"],
+            judge=config["jev"]["mode"],
+        ),
     )
     graph.add_node(N.RETRIEVE, partial(N.retrieve, concepts=concepts, top_n=config["knowledge"]["top_n"]))
     graph.add_node(

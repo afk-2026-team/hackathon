@@ -42,5 +42,6 @@ def load_workflow_prompts(config: dict) -> dict:
         "respond_system": load_system(names["respond_system"]),
         "respond_turn": load_template(names["respond_turn"]),
         "decline_system": load_system(names["decline_system"]),
+        "pseudo_jev_system": load_system(names["pseudo_jev_system"]),
         "jev_questions": load_questions(config["jev"]["questions_prompt"]),
     }

@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>K-뷰티 Agent 아키텍처</title>
+<style>
+  :root {
+    --bg: #16171a; --panel: #1e2024; --panel2: #25282d; --line: #33363c;
+    --text: #e6e7ea; --muted: #9a9ea6; --accent: #f472b6;
+    --built: #22c55e; --planned: #f59e0b;
+    --c-data: #3b82f6; --c-call: #10b981; --c-stream: #f97316; --c-ctx: #a855f7;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text);
+    font: 14px/1.5 system-ui, -apple-system, "Segoe UI", "Noto Sans KR", sans-serif; }
+  code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  .app { display: grid; grid-template-columns: 300px 1fr; grid-template-rows: 1fr auto; height: 100vh; }
+  aside { grid-row: 1 / 3; background: var(--panel); border-right: 1px solid var(--line); overflow-y: auto; padding: 16px; }
+  aside h1 { font-size: 16px; margin: 0 0 4px; }
+  aside .sub { color: var(--muted); font-size: 12px; margin-bottom: 16px; }
+  aside h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 18px 0 8px; }
+  .steps button { display: block; width: 100%; text-align: left; margin-bottom: 4px; padding: 7px 10px;
+    background: var(--panel2); color: var(--text); border: 1px solid transparent; border-radius: 6px; cursor: pointer; font: inherit; font-size: 13px; }
+  .steps button:hover { border-color: var(--line); }
+  .steps button.on { border-color: var(--accent); background: #2d2229; }
+  .steps .n { color: var(--accent); font-weight: 600; margin-right: 6px; }
+  label.chk { display: flex; align-items: center; gap: 8px; font-size: 13px; padding: 3px 0; cursor: pointer; }
+  .sw { width: 22px; height: 0; border-top: 3px solid; display: inline-block; }
+  .sw.dash { border-top-style: dashed; }
+  .comment { background: var(--panel2); border-radius: 6px; padding: 8px 10px; margin-bottom: 6px; font-size: 12px; position: relative; }
+  .comment b { display: block; color: var(--accent); }
+  .comment .del { position: absolute; top: 4px; right: 6px; background: none; border: 0; color: var(--muted); cursor: pointer; font-size: 14px; }
+  .empty { color: var(--muted); font-size: 12px; }
+
+  main { display: grid; grid-template-rows: auto 1fr; min-height: 0; }
+  .narr { padding: 14px 20px; border-bottom: 1px solid var(--line); background: var(--panel); min-height: 118px; }
+  .narr .k { color: var(--accent); font-size: 12px; font-weight: 600; }
+  .narr h3 { margin: 2px 0 6px; font-size: 18px; }
+  .narr ul { margin: 0; padding-left: 18px; color: #cfd2d8; }
+  .narr li { margin: 2px 0; }
+  .navbtns { float: right; display: flex; gap: 6px; }
+  .navbtns button, .zoom button, .copy { background: var(--panel2); color: var(--text); border: 1px solid var(--line);
+    border-radius: 6px; padding: 5px 10px; cursor: pointer; font: inherit; font-size: 13px; }
+  .navbtns button:hover, .zoom button:hover, .copy:hover { border-color: var(--accent); }
+  .canvas { position: relative; overflow: hidden; min-height: 0; }
+  svg { width: 100%; height: 100%; display: block; }
+  .zoom { position: absolute; right: 12px; top: 12px; display: flex; gap: 4px; }
+  .legend { position: absolute; left: 12px; bottom: 10px; background: rgba(30,32,36,.92); border: 1px solid var(--line);
+    border-radius: 8px; padding: 8px 12px; font-size: 12px; display: grid; grid-template-columns: auto auto; gap: 4px 16px; }
+  .legend span { display: flex; align-items: center; gap: 6px; }
+  .badge { display: inline-block; width: 10px; height: 10px; border-radius: 2px; }
+
+  .node { cursor: pointer; transition: opacity .25s; }
+  .node rect { stroke-width: 1.5; }
+  .node:hover rect { stroke: var(--accent); }
+  .node text { pointer-events: none; }
+  .edge { transition: opacity .25s; }
+  .dim { opacity: .14; }
+
+  footer { grid-column: 2; border-top: 1px solid var(--line); background: var(--panel); padding: 10px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  #prompt { flex: 1; margin: 0; white-space: pre-wrap; font-size: 12px; color: #cfd2d8; max-height: 120px; overflow-y: auto; }
+  .modal { position: fixed; inset: 0; background: rgba(0,0,0,.55); display: none; align-items: center; justify-content: center; z-index: 10; }
+  .modal.on { display: flex; }
+  .modal .box { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; width: min(520px, 92vw); padding: 18px; }
+  .modal h4 { margin: 0 0 2px; font-size: 16px; }
+  .modal .meta { color: var(--muted); font-size: 12px; margin-bottom: 8px; }
+  .modal p { margin: 0 0 10px; color: #cfd2d8; font-size: 13px; }
+  .modal textarea { width: 100%; height: 90px; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 6px; padding: 8px; font: inherit; }
+  .modal .row { display: flex; justify-content: flex-end; gap: 8px; margin-top: 10px; }
+  .st { font-size: 11px; padding: 1px 6px; border-radius: 4px; font-weight: 600; }
+  .st.built { background: #14532d; color: #86efac; }
+  .st.planned { background: #4a3410; color: #fcd34d; }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside>
+    <h1>K-뷰티 Agent 아키텍처</h1>
+    <div class="sub">로컬 찐템을 찾는 외국인을 위한 플랫폼<br>Claude Code Agent × LangGraph AI workflow</div>
+
+    <h2>발표 순서 (← → 키)</h2>
+    <div class="steps" id="steps"></div>
+
+    <h2>레이어</h2>
+    <div id="layers"></div>
+
+    <h2>연결 유형</h2>
+    <div id="conns"></div>
+
+    <h2>표시</h2>
+    <label class="chk"><input type="checkbox" id="showStatus" checked> 구현 상태 배지 (구현 / 계획)</label>
+    <label class="chk"><input type="checkbox" id="showLabels" checked> 연결 라벨</label>
+
+    <h2>코멘트 (<span id="ccount">0</span>)</h2>
+    <div id="comments"><div class="empty">다이어그램의 블록을 클릭하면 코멘트를 남길 수 있습니다.</div></div>
+  </aside>
+
+  <main>
+    <div class="narr" id="narr"></div>
+    <div class="canvas">
+      <svg id="svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+        <defs id="defs"></defs>
+        <g id="world"></g>
+      </svg>
+      <div class="zoom"><button id="zin">＋</button><button id="zout">－</button><button id="zreset">맞춤</button></div>
+      <div class="legend">
+        <span><i class="badge" style="background:var(--built)"></i>구현됨 (라이브서버)</span>
+        <span><i class="badge" style="background:var(--planned)"></i>계획 · 미구현</span>
+        <span><i class="sw" style="color:var(--c-data)"></i>데이터 흐름</span>
+        <span><i class="sw dash" style="color:var(--c-call)"></i>Function 호출</span>
+        <span><i class="sw" style="color:var(--c-stream)"></i>LLM 응답(SSE)</span>
+        <span><i class="sw dash" style="color:var(--c-ctx)"></i>DB 근거 주입</span>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <pre id="prompt"></pre>
+    <button class="copy" id="copy">프롬프트 복사</button>
+  </footer>
+</div>
+
+<div class="modal" id="modal">
+  <div class="box">
+    <h4 id="mTitle"></h4>
+    <div class="meta" id="mMeta"></div>
+    <p id="mDesc"></p>
+    <textarea id="mText" placeholder="이 블록에 대한 의견·질문·변경 요청"></textarea>
+    <div class="row"><button class="copy" id="mCancel">취소</button><button class="copy" id="mSave">저장</button></div>
+  </div>
+</div>
+
+<script>
+const LAYERS = {
+  external: { label: '외부 데이터 출처', fill: '#3a2433', stroke: '#f9a8d4' },
+  claude:   { label: 'Claude Code Agent', fill: '#1f3328', stroke: '#4ade80' },
+  data:     { label: 'DB', fill: '#2a2440', stroke: '#c4b5fd' },
+  workflow: { label: 'AI workflow (LangGraph)', fill: '#3a301a', stroke: '#fbbf24' },
+  client:   { label: '사용자 · 화면', fill: '#1d2b40', stroke: '#93c5fd' },
+};
+const CONN = {
+  data:   { label: '데이터 흐름',   color: '#3b82f6', dash: '' },
+  call:   { label: 'Function 호출', color: '#10b981', dash: '6 3' },
+  stream: { label: 'LLM 응답(SSE)', color: '#f97316', dash: '' },
+  ctx:    { label: 'DB 근거 주입',  color: '#a855f7', dash: '8 4' },
+};
+
+// status: built = 현재 app/ 라이브서버에 있음 / planned = 아직 없음
+const nodes = [
+  { id: 'src_oy', label: '올리브영 상품·순위', sub: '수집처 후보', x: 30, y: 150, w: 170, h: 52, layer: 'external', status: 'planned',
+    desc: '팀 전략 문서에서 논의한 데이터 신호 후보. 수집처·API·산식은 아직 확정되지 않았다.' },
+  { id: 'src_blog', label: '네이버 블로그 언급', sub: '최근 언급량 · 광고표시', x: 30, y: 230, w: 170, h: 52, layer: 'external', status: 'planned',
+    desc: '‘금품 제공’ 같은 광고·협찬 표시를 제외하기 전후 게시글 수 비교가 제안됨. 실사용의 확정 근거로 표현하지 않는다.' },
+  { id: 'src_search', label: '검색량', sub: '트렌드 신호', x: 30, y: 310, w: 170, h: 52, layer: 'external', status: 'planned',
+    desc: '여러 신호를 비교해 ‘한국 로컬에서 실제로 인기 있는가’를 근거와 함께 보여주는 것이 차별점.' },
+
+  { id: 'cc_crawl', label: 'Claude Code · 수집기', sub: '크롤링 · 정제 · 광고신호 태깅', x: 255, y: 215, w: 190, h: 82, layer: 'claude', status: 'planned',
+    desc: 'Claude Code 가 외부 데이터를 크롤링하고 정제해 DB 를 구축한다. 값마다 provenance(measured / estimate 등)를 붙여 실측과 추정을 구분한다.' },
+  { id: 'db', label: '뷰티 DB', sub: '제품 · 랭킹 · 언급량 · provenance', x: 480, y: 215, w: 170, h: 82, layer: 'data', status: 'planned',
+    desc: 'workflow 가 조회할 단일 데이터 원천. 스키마·저장소(예: Supabase)는 interview 에서 확정한다.' },
+
+  { id: 'api', label: 'FastAPI 라이브서버', sub: '/v1/chat/completions (OpenAI 호환)', x: 700, y: 110, w: 300, h: 52, layer: 'workflow', status: 'built',
+    path: 'app/api/v1/chat_completions.py',
+    desc: 'stream false/true, /v1/models, /health. 설정은 envs/agent_config.yaml. 프로필 1개(kbeauty-haiku).' },
+  { id: 'jev', label: 'jev_judge · Jev', sub: 'category(Choice) + purchase_intent(Noul)', x: 700, y: 195, w: 300, h: 56, layer: 'workflow', status: 'built',
+    path: 'app/graph/nodes.py',
+    desc: 'Decision API 계열 Jev(TypeSafe)가 질의를 skincare / makeup / suncare / haircare / k_medical / out_of_scope 로 판정. 실패는 폴백 없이 fail-fast 500.' },
+  { id: 'router', label: 'router', sub: 'decline_labels 분기', x: 700, y: 285, w: 140, h: 52, layer: 'workflow', status: 'built',
+    path: 'app/graph/builder.py',
+    desc: 'category 가 router.decline_labels 에 있으면 decline, 아니면 respond. branching_enabled 로 켜고 끈다.' },
+  { id: 'retrieve', label: 'retrieve', sub: 'DB 조회 노드', x: 860, y: 285, w: 140, h: 52, layer: 'workflow', status: 'planned',
+    desc: 'DB 에서 판정 카테고리에 맞는 제품·근거를 가져와 respond 에 주입. 그래프 내 위치(Jev 앞/뒤)는 미정.' },
+  { id: 'respond', label: 'respond · Haiku', sub: '판단 근거 주입 · 스트리밍', x: 700, y: 385, w: 140, h: 60, layer: 'workflow', status: 'built',
+    path: 'app/graph/nodes.py',
+    desc: 'claude-haiku-5-5 가 Jev 판단 결과와 질문으로 응답을 생성(SSE).' },
+  { id: 'decline', label: 'decline · Haiku', sub: '범위 밖 안내', x: 860, y: 385, w: 140, h: 60, layer: 'workflow', status: 'built',
+    path: 'app/graph/nodes.py',
+    desc: 'out_of_scope 질의에 서비스 범위를 안내.' },
+
+  { id: 'user', label: '사용자', sub: '방한 관광객 · 해외 마케터', x: 1050, y: 110, w: 190, h: 52, layer: 'client', status: 'built',
+    desc: '1차 타깃: K-뷰티 관광 목적의 방한 외국인. 2차: 한국 트렌드를 보는 해외 뷰티 마케터.' },
+  { id: 'cc_ui', label: 'Claude Code · UI/UX 에이전트', sub: 'Function 호출 → 화면 배치 · 데이터 채움', x: 1050, y: 210, w: 190, h: 72, layer: 'claude', status: 'planned',
+    desc: 'workflow Function 을 호출하고, 그 결과(res)로 UI/UX 를 배치하거나 콘텐츠의 핵심 데이터를 채운다.' },
+  { id: 'res', label: 'res', sub: 'Function 결과 (구조화)', x: 1050, y: 385, w: 190, h: 60, layer: 'workflow', status: 'planned',
+    desc: '현재 응답은 표준 OpenAI 텍스트. UI 를 채우려면 제품·근거·광고신호를 담은 구조화 스키마가 필요(미정).' },
+  { id: 'ui', label: '서비스 화면', sub: '로컬 랭킹 · 인기 근거 · 영상', x: 1050, y: 520, w: 190, h: 60, layer: 'client', status: 'planned',
+    desc: '한국 인기 제품 랭킹과 관련 짧은 영상, 로컬 인기 근거와 광고성 신호를 함께 보여주는 탐색 화면.' },
+];
+
+const edges = [
+  { from: 'src_oy', to: 'cc_crawl', type: 'data', label: '크롤링' },
+  { from: 'src_blog', to: 'cc_crawl', type: 'data' },
+  { from: 'src_search', to: 'cc_crawl', type: 'data' },
+  { from: 'cc_crawl', to: 'db', type: 'data', label: '적재' },
+  { from: 'user', to: 'cc_ui', type: 'data', label: '요청' },
+  { from: 'cc_ui', to: 'api', type: 'call', label: 'Function 호출' },
+  { from: 'api', to: 'jev', type: 'data' },
+  { from: 'jev', to: 'router', type: 'data', label: '판정' },
+  { from: 'router', to: 'respond', type: 'data', label: 'respond' },
+  { from: 'router', to: 'decline', type: 'data', label: 'out_of_scope' },
+  { from: 'db', to: 'retrieve', type: 'ctx', label: '조회' },
+  { from: 'retrieve', to: 'respond', type: 'ctx', label: '근거' },
+  { from: 'respond', to: 'res', type: 'stream' },
+  { from: 'decline', to: 'res', type: 'stream' },
+  { from: 'res', to: 'cc_ui', type: 'data', label: 'res' },
+  { from: 'cc_ui', to: 'ui', type: 'data', label: '배치 · 채움' },
+];
+
+const STEPS = [
+  { key: '0', title: '전체 그림', focus: null,
+    points: ['Claude Code Agent 가 바깥 틀: 데이터를 모으고(DB), 결과로 화면을 채운다.',
+             '가운데 AI workflow 는 LangGraph 기반 Function: DB 근거 + Jev 판단 + Haiku 응답.',
+             '초록 배지는 이미 라이브서버로 돌아가는 부분, 주황 배지는 앞으로 만들 부분.'] },
+  { key: '1', title: '데이터 수집 — Claude Code 가 크롤링', focus: ['src_oy','src_blog','src_search','cc_crawl'],
+    points: ['후보 신호: 올리브영 상품·순위, 네이버 블로그 최근 언급량, 검색량.',
+             '광고·협찬 표시 전후 게시글 수 비교로 ‘광고성 노출’ 구분을 시도(정확도 미검증).',
+             '수집처·API·산식은 아직 확정 전 — 다음 interview 에서 결정.'] },
+  { key: '2', title: 'DB 구축 — 실측과 추정을 구분해 저장', focus: ['cc_crawl','db'],
+    points: ['workflow 가 읽을 단일 데이터 원천.',
+             '값마다 provenance(measured / estimate / mock)를 붙여 실측인 척하지 않는다.',
+             '저장소·스키마는 미정.'] },
+  { key: '3', title: 'AI workflow Function — Jev 판단과 분기', focus: ['api','jev','router','decline'],
+    points: ['FastAPI OpenAI 호환 서버(/v1/chat/completions) 위에 LangGraph 그래프.',
+             'Jev(Decision API)가 카테고리 6종 + 구매 의도를 판정, out_of_scope 면 decline 으로 분기.',
+             '현재 구현됨: devlog 기준 pytest 59 passed, 라이브 검증 기록 있음(checklist 는 미발행).'] },
+  { key: '4', title: 'DB 근거 + Haiku 응답 생성', focus: ['db','retrieve','respond'],
+    points: ['respond 노드: claude-haiku-5-5 가 판단 결과를 근거로 스트리밍 응답(구현됨).',
+             '추가할 것: retrieve 노드가 DB 에서 제품·로컬 인기 근거를 가져와 respond 에 주입.',
+             'retrieve 를 Jev 앞에 둘지 뒤에 둘지는 미정.'] },
+  { key: '5', title: 'res → Claude Code 가 UI/UX 를 채운다', focus: ['respond','decline','res','cc_ui','ui','user'],
+    points: ['Claude Code 가 Function 을 호출하고 결과(res)를 받아 화면을 배치·채운다.',
+             '그러려면 res 가 자유 텍스트가 아니라 구조화 데이터(제품·근거·광고신호)여야 한다.',
+             '화면 구상: 로컬 인기 랭킹 + 근거 + 짧은 영상 탐색.'] },
+  { key: '6', title: '남은 결정', focus: ['src_oy','db','retrieve','res','ui'],
+    points: ['수집처·접근 가능 범위(특히 영상) · 광고 판별 정확도',
+             'DB 저장소·스키마 · retrieve 위치 · res 구조화 스키마',
+             '첫 데모의 핵심 흐름: 로컬 인기 근거 vs 탐색 화면'] },
+];
+
+const DEFAULTS = { step: 0, layers: Object.fromEntries(Object.keys(LAYERS).map(k => [k, true])),
+  conns: Object.fromEntries(Object.keys(CONN).map(k => [k, true])), showStatus: true, showLabels: true };
+const state = JSON.parse(JSON.stringify(DEFAULTS));
+state.comments = [];
+state.zoom = 1;
+
+const $ = id => document.getElementById(id);
+const NS = 'http://www.w3.org/2000/svg';
+const el = (tag, attrs = {}, parent) => {
+  const e = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  if (parent) parent.appendChild(e);
+  return e;
+};
+const byId = Object.fromEntries(nodes.map(n => [n.id, n]));
+
+// arrow markers
+for (const [k, c] of Object.entries(CONN)) {
+  const m = el('marker', { id: 'arr-' + k, markerWidth: 9, markerHeight: 7, refX: 8, refY: 3.5, orient: 'auto' }, $('defs'));
+  el('polygon', { points: '0 0, 9 3.5, 0 7', fill: c.color }, m);
+}
+
+function anchors(a, b) {
+  const ac = { x: a.x + a.w / 2, y: a.y + a.h / 2 }, bc = { x: b.x + b.w / 2, y: b.y + b.h / 2 };
+  const dx = bc.x - ac.x, dy = bc.y - ac.y;
+  if (Math.abs(dx) > Math.abs(dy) * 1.2) {
+    const s = Math.sign(dx);
+    return { p1: { x: s > 0 ? a.x + a.w : a.x, y: ac.y }, p2: { x: s > 0 ? b.x : b.x + b.w, y: bc.y }, horiz: true };
+  }
+  const s = Math.sign(dy);
+  return { p1: { x: ac.x, y: s > 0 ? a.y + a.h : a.y }, p2: { x: bc.x, y: s > 0 ? b.y : b.y + b.h }, horiz: false };
+}
+
+function render() {
+  const w = $('world');
+  w.innerHTML = '';
+  w.setAttribute('transform', `translate(${640 - 640 * state.zoom} ${360 - 360 * state.zoom}) scale(${state.zoom})`);
+  const focus = STEPS[state.step].focus;
+  const inFocus = id => !focus || focus.includes(id);
+
+  // frames
+  const outer = el('rect', { x: 230, y: 40, width: 1030, height: 640, rx: 28, fill: 'none', stroke: '#16a34a', 'stroke-width': 2, 'stroke-dasharray': '10 6' }, w);
+  el('text', { x: 260, y: 78, fill: '#ef4444', 'font-size': 26, 'font-weight': 700 }, w).textContent = 'Claude Code Agent';
+  if (state.layers.workflow) {
+    el('rect', { x: 682, y: 70, width: 336, height: 400, rx: 18, fill: 'rgba(251,191,36,0.04)', stroke: '#16a34a', 'stroke-width': 1.5 }, w);
+    el('text', { x: 850, y: 494, fill: '#4ade80', 'font-size': 15, 'font-weight': 600, 'text-anchor': 'middle' }, w).textContent = 'AI workflow · LangGraph Function';
+    el('text', { x: 850, y: 512, fill: '#9a9ea6', 'font-size': 12, 'text-anchor': 'middle' }, w).textContent = 'Jev (판단) + Haiku (응답) · 라이브서버';
+  }
+  el('text', { x: 115, y: 132, fill: '#f9a8d4', 'font-size': 13, 'text-anchor': 'middle' }, w).textContent = '외부 데이터';
+
+  // edges
+  for (const e of edges) {
+    const a = byId[e.from], b = byId[e.to];
+    if (!state.layers[a.layer] || !state.layers[b.layer] || !state.conns[e.type]) continue;
+    const c = CONN[e.type];
+    const { p1, p2, horiz } = anchors(a, b);
+    const k = horiz ? Math.abs(p2.x - p1.x) * 0.45 : Math.abs(p2.y - p1.y) * 0.45;
+    const c1 = horiz ? { x: p1.x + Math.sign(p2.x - p1.x) * k, y: p1.y } : { x: p1.x, y: p1.y + Math.sign(p2.y - p1.y) * k };
+    const c2 = horiz ? { x: p2.x - Math.sign(p2.x - p1.x) * k, y: p2.y } : { x: p2.x, y: p2.y - Math.sign(p2.y - p1.y) * k };
+    const planned = a.status === 'planned' || b.status === 'planned';
+    const g = el('g', { class: 'edge' + (inFocus(e.from) && inFocus(e.to) ? '' : ' dim') }, w);
+    el('path', { d: `M${p1.x},${p1.y} C${c1.x},${c1.y} ${c2.x},${c2.y} ${p2.x},${p2.y}`, fill: 'none', stroke: c.color,
+      'stroke-width': 2, 'stroke-dasharray': c.dash || (planned && state.showStatus ? '' : ''), 'marker-end': `url(#arr-${e.type})`,
+      opacity: planned && state.showStatus ? 0.75 : 1 }, g);
+    if (e.label && state.showLabels) {
+      const mx = (p1.x + p2.x) / 2, my = (p1.y + p2.y) / 2;
+      const t = el('text', { x: mx, y: my - 6, fill: c.color, 'font-size': 11, 'text-anchor': 'middle', 'paint-order': 'stroke', stroke: '#16171a', 'stroke-width': 4 }, g);
+      t.textContent = e.label;
+    }
+  }
+
+  // nodes
+  for (const n of nodes) {
+    if (!state.layers[n.layer]) continue;
+    const L = LAYERS[n.layer];
+    const commented = state.comments.some(c => c.target === n.id);
+    const g = el('g', { class: 'node' + (inFocus(n.id) ? '' : ' dim') }, w);
+    el('rect', { x: n.x, y: n.y, width: n.w, height: n.h, rx: 10, fill: L.fill,
+      stroke: commented ? '#f472b6' : L.stroke, 'stroke-width': commented ? 3 : 1.5,
+      'stroke-dasharray': n.status === 'planned' && state.showStatus ? '5 4' : '' }, g);
+    el('text', { x: n.x + 12, y: n.y + 22, fill: '#f3f4f6', 'font-size': 14, 'font-weight': 600 }, g).textContent = n.label;
+    const sub = el('text', { x: n.x + 12, y: n.y + 40, fill: '#a1a5ad', 'font-size': 11 }, g);
+    sub.textContent = n.sub;
+    if (n.h > 62 || n.sub.length * 6.2 > n.w - 20) wrapText(sub, n.sub, n.w - 22, n.x + 12);
+    if (state.showStatus) {
+      const built = n.status === 'built';
+      el('circle', { cx: n.x + n.w - 12, cy: n.y + 12, r: 5, fill: built ? '#22c55e' : '#f59e0b' }, g);
+    }
+    g.addEventListener('click', () => openModal(n));
+  }
+}
+
+function wrapText(t, text, maxW, x) {
+  t.textContent = '';
+  const words = text.split(' ');
+  let line = '', dy = 0;
+  const lines = [];
+  for (const wd of words) {
+    const test = line ? line + ' ' + wd : wd;
+    if (test.length * 6.2 > maxW && line) { lines.push(line); line = wd; } else line = test;
+  }
+  lines.push(line);
+  lines.forEach((ln, i) => { const s = el('tspan', { x, dy: i ? 14 : 0 }, t); s.textContent = ln; });
+}
+
+function renderNarr() {
+  const s = STEPS[state.step];
+  $('narr').innerHTML = `<div class="navbtns"><button id="prev">← 이전</button><button id="next">다음 →</button></div>
+    <div class="k">${state.step === 0 ? '개요' : 'STEP ' + state.step + ' / ' + (STEPS.length - 1)}</div>
+    <h3>${s.title}</h3><ul>${s.points.map(p => `<li>${p}</li>`).join('')}</ul>`;
+  $('prev').onclick = () => go(-1);
+  $('next').onclick = () => go(1);
+  document.querySelectorAll('#steps button').forEach((b, i) => b.classList.toggle('on', i === state.step));
+}
+
+function renderComments() {
+  $('ccount').textContent = state.comments.length;
+  const box = $('comments');
+  if (!state.comments.length) { box.innerHTML = '<div class="empty">다이어그램의 블록을 클릭하면 코멘트를 남길 수 있습니다.</div>'; return; }
+  box.innerHTML = '';
+  for (const c of state.comments) {
+    const d = document.createElement('div');
+    d.className = 'comment';
+    d.innerHTML = `<b></b><span></span><button class="del" title="삭제">×</button>`;
+    d.querySelector('b').textContent = c.targetLabel;
+    d.querySelector('span').textContent = c.text;
+    d.querySelector('.del').onclick = () => { state.comments = state.comments.filter(x => x.id !== c.id); updateAll(); };
+    box.appendChild(d);
+  }
+}
+
+function updatePrompt() {
+  const parts = [];
+  parts.push('K-뷰티 Agent 아키텍처(heak 프로젝트)에 대한 피드백이다. 구조: Claude Code 가 외부 데이터를 크롤링해 뷰티 DB 를 구축하고, ' +
+    'LangGraph AI workflow Function(Jev 판단 → 분기 → Haiku 응답, DB 근거 주입)을 호출해 받은 res 로 UI/UX 를 배치·채운다. ' +
+    'FastAPI 라이브서버·jev_judge·router·respond·decline 은 구현됨, 수집기·DB·retrieve·res 스키마·UI 에이전트는 계획 단계다.');
+  const hidden = Object.keys(LAYERS).filter(k => !state.layers[k]).map(k => LAYERS[k].label);
+  if (hidden.length) parts.push(`(검토 시 ${hidden.join(', ')} 레이어는 제외하고 봤다.)`);
+  if (state.step !== 0) parts.push(`특히 「${STEPS[state.step].title}」 단계에 초점을 둔다.`);
+  if (state.comments.length) {
+    parts.push('\n블록별 의견:');
+    for (const c of state.comments) parts.push(`\n**${c.targetLabel}**${c.targetFile ? ' (' + c.targetFile + ')' : ''} [${c.status === 'built' ? '구현됨' : '계획'}]\n${c.text}`);
+    parts.push('\n위 의견을 다음 interview 의 결정 원장 후보로 정리해 줘.');
+  } else {
+    parts.push('\n(아직 블록별 코멘트가 없다 — 다이어그램 블록을 클릭해 의견을 남기면 여기에 반영된다.)');
+  }
+  $('prompt').textContent = parts.join(' ').replace(/ \n/g, '\n');
+}
+
+function updateAll() { render(); renderNarr(); renderComments(); updatePrompt(); }
+function go(d) { state.step = Math.max(0, Math.min(STEPS.length - 1, state.step + d)); updateAll(); }
+
+// controls
+STEPS.forEach((s, i) => {
+  const b = document.createElement('button');
+  b.innerHTML = `<span class="n">${i === 0 ? '◎' : i}</span>`;
+  b.append(s.title);
+  b.onclick = () => { state.step = i; updateAll(); };
+  $('steps').appendChild(b);
+});
+for (const [k, L] of Object.entries(LAYERS)) {
+  const lab = document.createElement('label'); lab.className = 'chk';
+  lab.innerHTML = `<input type="checkbox" checked><i class="badge" style="background:${L.stroke}"></i>`;
+  lab.append(L.label);
+  lab.querySelector('input').onchange = e => { state.layers[k] = e.target.checked; updateAll(); };
+  $('layers').appendChild(lab);
+}
+for (const [k, c] of Object.entries(CONN)) {
+  const lab = document.createElement('label'); lab.className = 'chk';
+  lab.innerHTML = `<input type="checkbox" checked><i class="sw${c.dash ? ' dash' : ''}" style="color:${c.color}"></i>`;
+  lab.append(c.label);
+  lab.querySelector('input').onchange = e => { state.conns[k] = e.target.checked; updateAll(); };
+  $('conns').appendChild(lab);
+}
+$('showStatus').onchange = e => { state.showStatus = e.target.checked; updateAll(); };
+$('showLabels').onchange = e => { state.showLabels = e.target.checked; updateAll(); };
+$('zin').onclick = () => { state.zoom = Math.min(2, state.zoom + 0.15); render(); };
+$('zout').onclick = () => { state.zoom = Math.max(0.6, state.zoom - 0.15); render(); };
+$('zreset').onclick = () => { state.zoom = 1; render(); };
+document.addEventListener('keydown', e => {
+  if ($('modal').classList.contains('on') || e.target.tagName === 'TEXTAREA') return;
+  if (e.key === 'ArrowRight') go(1);
+  if (e.key === 'ArrowLeft') go(-1);
+});
+
+// modal
+let current = null;
+function openModal(n) {
+  current = n;
+  $('mTitle').textContent = n.label;
+  $('mMeta').innerHTML = `<span class="st ${n.status}">${n.status === 'built' ? '구현됨' : '계획'}</span> ${LAYERS[n.layer].label}${n.path ? ' · <code></code>' : ''}`;
+  if (n.path) $('mMeta').querySelector('code').textContent = n.path;
+  $('mDesc').textContent = n.desc;
+  $('mText').value = (state.comments.find(c => c.target === n.id) || {}).text || '';
+  $('modal').classList.add('on');
+  $('mText').focus();
+}
+$('mCancel').onclick = () => $('modal').classList.remove('on');
+$('modal').onclick = e => { if (e.target.id === 'modal') $('modal').classList.remove('on'); };
+$('mSave').onclick = () => {
+  const text = $('mText').value.trim();
+  state.comments = state.comments.filter(c => c.target !== current.id);
+  if (text) state.comments.push({ id: Date.now(), target: current.id, targetLabel: current.label, targetFile: current.path || '', status: current.status, text });
+  $('modal').classList.remove('on');
+  updateAll();
+};
+
+$('copy').onclick = async () => {
+  try { await navigator.clipboard.writeText($('prompt').textContent); }
+  catch { const r = document.createRange(); r.selectNode($('prompt')); getSelection().removeAllRanges(); getSelection().addRange(r); document.execCommand('copy'); }
+  const b = $('copy'); b.textContent = 'Copied!'; setTimeout(() => (b.textContent = '프롬프트 복사'), 1200);
+};
+
+updateAll();
+</script>
+</body>
+</html>

@@ -127,6 +127,5 @@ export interface FxResponse {
   date: string
   rates: Record<string, number> // 1 KRW 당 해당 통화 금액
   source: { label: string; url: string }
-  fetched_at: string
-  unsupported: string[]
+  fetched_at: string // 응답에 없는 통화는 환율 출처가 없는 것 → 원화만 표시
 }

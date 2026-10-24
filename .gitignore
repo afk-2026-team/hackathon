@@ -38,6 +38,7 @@ tests/*
 !tests/discovery/
 !tests/auth/
 !tests/live/
+!tests/assistant/
 temp/
 tmp/
 .venv/

@@ -5,10 +5,18 @@ import type {
 import type { CompareResponse, ExplainResponse, ReferenceProduct } from './compare'
 
 // status 는 HTTP 상태(네트워크·파싱 실패는 0). 503 은 서버에 해당 키가 주입되지 않은 상태다.
+// message 는 화면에 그대로 보여 줄 사용자 문구(상태 코드·내부 원인 없음, INTEGRATION_SPEC §3). 서버 원문은 detail 에만 둔다.
 export class ApiError extends Error {
-  constructor(message: string, readonly status = 0) {
+  constructor(message: string, readonly status = 0, readonly detail = '') {
     super(message)
   }
+}
+
+export function userMessageFor(status: number): string {
+  if (status === 503) return "This feature isn't available right now."
+  if (status === 404) return "We couldn't find that."
+  if (status === 422 || status === 400) return 'Something in this request looks off. Please check and try again.'
+  return "This couldn't be loaded right now. Please try again."
 }
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
@@ -26,7 +34,7 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
     } catch {
       /* 오류 본문이 JSON 이 아니면 상태 코드만 쓴다 */
     }
-    throw new ApiError(detail || `The server couldn't load this right now (error ${res.status}).`, res.status)
+    throw new ApiError(userMessageFor(res.status), res.status, detail)
   }
   try {
     return (await res.json()) as T

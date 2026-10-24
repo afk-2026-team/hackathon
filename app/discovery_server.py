@@ -19,6 +19,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import FileResponse, JSONResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
+from app.api.v1.assistant_proxy import router as assistant_router
 from app.api.v1.auth import router as auth_router
 from app.api.v1.discovery import router as discovery_router
 from app.api.v1.evidence import router as evidence_router
@@ -75,6 +76,7 @@ def create_discovery_app(web_dist: Path | None = WEB_DIST) -> FastAPI:
     app.include_router(maps_router, prefix="/v1")  # 지도 공개 설정·지오코딩(naver_maps)
     app.include_router(evidence_router, prefix="/v1")  # 블로그(naver)·숏폼(youtube) 근거
     app.include_router(fx_router, prefix="/v1")  # ECB 기준율, 키 불필요
+    app.include_router(assistant_router, prefix="/v1")  # /v1/responses → app.serve(JINSEONMI_AI_UPSTREAM) 명시적 프록시, 키는 8000 쪽에만
 
     if web_dist is not None:
         root = web_dist.resolve()

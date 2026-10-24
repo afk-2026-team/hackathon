@@ -22,6 +22,10 @@ envs/**/*.env.*
 !*.env.example
 !.env.template
 node_modules/
+# 프론트 빌드·검증 산출물
+web/dist/
+web/test-results/
+web/playwright-report/
 # 팀 공유 문서(전략·외부 조사)는 실물도 추적
 !docs/strategy/
 !docs/strategy/**
@@ -31,6 +35,8 @@ node_modules/
 # tests/ 전체가 아니라 그 안을 막는다 — 팀 공유 시크릿 테스트(tests/secrets/)는 추적한다
 tests/*
 !tests/secrets/
+!tests/discovery/
+!tests/auth/
 temp/
 tmp/
 .venv/

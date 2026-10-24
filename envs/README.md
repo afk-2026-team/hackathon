@@ -18,17 +18,21 @@ node scripts/secrets.mjs check --env dev
 ## 앱 실행
 
 ```sh
-# Node 앱: 앱의 package.json에 dev 스크립트가 생긴 뒤 사용
-node scripts/secrets.mjs run --env dev --services claude,supabase -- node --run dev
+# 탐색 화면과 API: 외부 키 없이 실행(각각 별도 터미널)
+uv run python -m app.discovery_server
+npm --prefix web run dev
 
-# Python 앱: 실제 앱 파일에 맞게 명령 변경
-node scripts/secrets.mjs run --env dev --services claude,naver,youtube -- python app.py
+# Google 로그인을 포함하는 탐색 API
+node scripts/secrets.mjs run --env dev --services supabase -- uv run python -m app.discovery_server
+
+# 기존 Claude·Jev 채팅 서버
+node scripts/secrets.mjs run --env dev --services ash_workflow -- uv run python -m app.serve
 
 # 특정 서비스만 확인
 node scripts/secrets.mjs check --env dev --services nebius
 ```
 
-`--services`를 생략하면 등록 서비스 전체를 사용합니다. 선택한 서비스의 필수 설정이 없거나 잘못됐으면 앱을 시작하지 않습니다. 이 저장소에는 아직 앱 실행 스크립트가 없으므로 위 앱 명령은 실제 구현에 맞춰 지정합니다. Windows에서는 셸 배치 파일인 `npm.cmd` 대신 `node --run dev`처럼 직접 실행할 수 있는 명령을 사용합니다.
+`--services`를 생략하면 등록 서비스 전체를 사용합니다. 선택한 서비스의 필수 설정이 없거나 잘못됐으면 앱을 시작하지 않습니다. 설치·전체 실행은 [저장소 안내](../README.md)를 따릅니다. Windows에서 공통 시크릿 실행기로 Node 앱을 시작할 때는 `npm.cmd` 대신 `node --run dev`처럼 직접 실행할 수 있는 명령을 사용합니다.
 
 | 서비스 | 등록 설정 |
 | --- | --- |
@@ -37,6 +41,7 @@ node scripts/secrets.mjs check --env dev --services nebius
 | `nebius` | `NEBIUS_API_KEY`, `NEBIUS_BASE_URL`, `NEBIUS_EMBEDDING_MODEL`, `NEBIUS_EMBEDDING_DIMENSIONS` |
 | `naver` | `NAVER_CLIENT_ID`, `NAVER_CLIENT_SECRET`, `NAVER_API_BASE_URL` |
 | `youtube` | `YOUTUBE_API_KEY` |
+| `ash_workflow` | `ASH_ANTHROPIC_API_KEY`, `ASH_JEV_KEY` |
 
 키를 수정하면 앱을 재시작합니다. 개인 키 override는 사용하지 않으며 네 명 모두 공유 값을 읽습니다. `dev`와 `prod`는 현재 같은 외부 자원·크레딧·할당량을 공유합니다.
 

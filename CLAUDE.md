@@ -5,6 +5,7 @@
 
 ## 목표
 
+- 제품명: **진선미 / Jinseonmi**. 한국어 화면은 `진선미`, 영어 화면·Google 로그인 앱 이름은 `Jinseonmi`로 표시한다. 브라우저 제목도 현재 화면 언어에 맞춘다.
 - 주제: K-뷰티·K-의료를 찾는 전 세계 소비자를 위한 서비스.
 - 해결방법론: 한국을 찾는 외국인이 K-뷰티와 K-의료를 한곳에서 탐색하고, 근거를 보며 고른 뒤, 방문 경로·일정까지 잇는 통합 플랫폼.
 - 타깃: 한국을 방문해 뷰티 쇼핑과 의료 방문을 함께 고려하는 외국인(의료 세부 범위는 미정).
@@ -33,7 +34,9 @@
 ## 명령
 
 - 시크릿 점검(값 미출력): `node scripts/secrets.mjs check --env dev`
-- 앱 실행: `node scripts/secrets.mjs run --env dev --services claude,supabase -- node --run dev` (실제 앱 명령에 맞게 변경)
+- 탐색 앱: `uv run python -m app.discovery_server`와 `npm --prefix web run dev` (외부 키 없이 실행). 상세 실행·구현 경계는 `README.md`를 따른다.
+- Google 로그인 포함: API를 `node scripts/secrets.mjs run --env dev --services supabase -- uv run python -m app.discovery_server`로 실행한다.
+- 기존 AI 채팅: `node scripts/secrets.mjs run --env dev --services ash_workflow -- uv run python -m app.serve`
 - 시크릿 테스트: `node --test tests/secrets/*.test.mjs`
 - 지식 조회: `node .claude/skills/wiki-desk/src/cli.ts query --terms "<핵심어>" --terms "<동의어>"`
 - 문서 이름: `node .claude/skills/wiki-desk/src/cli.ts name --type <interview|plan|devlog|checklist> --topic <주제>`

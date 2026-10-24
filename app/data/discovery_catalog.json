@@ -1,0 +1,224 @@
+{
+  "items": [
+    {
+      "id": "beauty-illiyoon-ceramide-ato-concentrate-cream-75ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "ILLIYOON Ceramide Ato Concentrate Cream 75ml",
+      "subtitle": "일리윤 세라마이드 아토 집중 크림 · 75ml",
+      "description": "A moisturizing cream the seller describes for dry areas of the face and body. Seller label: made in South Korea by Amorepacific Corporation.",
+      "image_url": "https://image.oliveyoung.co.kr/cfimages/cf-goods/uploads/images/thumbnails/10/0000/0023/A00000023323706ko.png?l=ko",
+      "price_krw": 6900,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product info (ingredients, size)",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA251034628",
+          "checked_at": "2026-10-24"
+        },
+        {
+          "label": "OLIVE YOUNG Korea listing (KRW 6,900, seen in browser)",
+          "url": "https://www.oliveyoung.co.kr/store/goods/getGoodsDetail.do?goodsNo=A000000233237",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Ingredient list includes Ceramide NP, Cholesterol and Phytosphingosine (seller label)",
+        "Described as a cream for dry face and body areas"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "moisturizer",
+        "cream",
+        "ceramide"
+      ],
+      "provenance": "official_seller_page; price_krw=browser_observed_2026-10-24 (Korean store price, may change)"
+    },
+    {
+      "id": "beauty-torriden-dive-in-soothing-cream-100ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Torriden Dive-In Low Molecular Hyaluronic Acid Soothing Cream 100ml",
+      "subtitle": "토리든 다이브인 수딩크림 · 100ml · 리뉴얼",
+      "description": "Listed by the seller under Skincare > Moisturizers > Cream, to apply on the face. The seller marks this 100ml item as the upgraded (renewed) version.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1850/1389eac3-f542-424b-99eb-d9c5d31bf226.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260540587",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: moisturizing cream",
+        "Renewed 100ml version; ingredients may differ from the older 80ml version"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "moisturizer",
+        "cream"
+      ],
+      "provenance": "official_seller_page; price_krw=null (KRW price not verified)"
+    },
+    {
+      "id": "beauty-roundlab-birch-juice-moisturizing-cream-80ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "ROUND LAB Birch Juice Moisturizing Cream 80ml",
+      "subtitle": "라운드랩 자작나무 수분크림 · 80ml (2개 묶음 판매)",
+      "description": "Listed by the seller under Skincare > Moisturizers > Cream, for the last step of a routine. The checked listing is a double pack of 80ml tubes with a 20ml serum.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1753/eef46486-4e29-4690-904b-23e3f68d0b01.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page (Double Pack)",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260943383",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Seller category: moisturizing cream",
+        "Sold as a bundle, so no single-item price is shown"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "moisturizer",
+        "cream",
+        "bundle_sku"
+      ],
+      "provenance": "official_seller_page; price_krw=null (bundle listing, single-item KRW price not verified); image shows the bundle"
+    },
+    {
+      "id": "beauty-guide-tax-refund-visitkorea",
+      "kind": "guide",
+      "category": "beauty",
+      "title": "Tax refund for foreign visitors",
+      "subtitle": "외국인 관광객 세금 환급 안내",
+      "description": "Purchases of KRW 15,000 or more at Tax Free stores may qualify for VAT and excise tax refunds. Immediate and later refund options exist; the actual refund depends on the store and method.",
+      "image_url": null,
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "VISITKOREA Comprehensive Tax Refund Guide",
+          "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=248765",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Check refund conditions (amount, length of stay, export deadline) before shopping"
+      ],
+      "country_codes": [],
+      "tags": [
+        "shopping",
+        "tax_refund",
+        "official_guide"
+      ],
+      "provenance": "official_public_guide"
+    },
+    {
+      "id": "medical-guide-medicalkorea-portal",
+      "kind": "guide",
+      "category": "medical",
+      "title": "Medical Korea official portal",
+      "subtitle": "Medical Korea 공식 포털",
+      "description": "A public portal for international patients. It lists registered and accredited hospitals and registered facilitators, with each hospital's specialties and interpretation languages, plus medical visa information. Medical decisions and bookings are made by each hospital.",
+      "image_url": null,
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "Medical Korea (site footer: Copyright KTO & KHIDI)",
+          "url": "https://www.medicalkorea.or.kr/en/index",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Check a hospital's registration, accreditation and interpretation languages in the official list before visiting"
+      ],
+      "country_codes": [],
+      "tags": [
+        "official_guide",
+        "hospital_list",
+        "interpretation"
+      ],
+      "provenance": "official_public_portal"
+    },
+    {
+      "id": "medical-guide-registered-facilitator-lookup",
+      "kind": "guide",
+      "category": "medical",
+      "title": "Registered facilitator lookup",
+      "subtitle": "외국인환자 유치기관 등록 조회 (KHIDI)",
+      "description": "The official system for the facilitator registration program, with a menu to look up registered organizations. Only registered organizations may arrange foreign patients, so use it to check an agency before it helps with consultation or booking.",
+      "image_url": null,
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "Facilitator registration program (Korean)",
+          "url": "https://www.medicalkorea.or.kr/korp/intro/registration.do",
+          "checked_at": "2026-10-24"
+        },
+        {
+          "label": "Foreign patient facilitation system – registered organization lookup (Korean)",
+          "url": "https://www.medicalkorea.or.kr/korp/main.do",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Confirm that an agency arranging medical visits is registered"
+      ],
+      "country_codes": [],
+      "tags": [
+        "official_guide",
+        "registration_check"
+      ],
+      "provenance": "official_public_portal"
+    },
+    {
+      "id": "medical-place-medicalkorea-info-center-seoul",
+      "kind": "place",
+      "category": "medical",
+      "title": "Medical Korea Information Center (Seoul)",
+      "subtitle": "메디컬코리아 안내센터 · 서울역 공항철도 B2",
+      "description": "A public information desk for international patients. Daily 09:00–18:00; English, Chinese, Japanese and Korean; +82-2-1577-7129. The Incheon Airport T1 desk (Gate 7, 1F) is open daily 09:00–21:00, +82-32-743-3506/3507. Hours as posted on the official page.",
+      "image_url": null,
+      "price_krw": null,
+      "location": {
+        "name": "Medical Korea Information Center (Seoul)",
+        "address": "B2, Seoul Station Airport Railroad, 378 Cheongpa-ro, Yongsan-gu, Seoul"
+      },
+      "sources": [
+        {
+          "label": "Medical Korea – Information Center (Seoul / Incheon Airport)",
+          "url": "https://www.medicalkorea.or.kr/en/convenient",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Official help desk for questions about medical visits; also covers consultation on illegal brokerage"
+      ],
+      "country_codes": [],
+      "tags": [
+        "official_guide",
+        "help_desk",
+        "seoul"
+      ],
+      "provenance": "official_public_portal; location.address=official_page_2026-10-24; lat/lng omitted (not verified)"
+    }
+  ]
+}

@@ -9,6 +9,12 @@ from langchain_core.messages import HumanMessage
 from app.utils.errors import OpenAIError
 
 PROFILE_FIELDS = ("language", "country", "gender", "age_band")
+# 온보딩 선호(선택). 명시적으로 검증해 받는다 — 의료 적합성 추론에는 쓰지 않는다(국적·성별로 추론하는 지침 없음)
+PREFERENCE_FIELDS = ("currency", "interests", "budget_krw", "current_product")
+MAX_INTERESTS = 10
+MAX_INTEREST_CHARS = 40
+MAX_PRODUCT_CHARS = 200
+MAX_BUDGET_KRW = 100_000_000
 TEXT_PART_TYPES = ("text", "input_text")  # chat content part · responses input part
 PART_SEPARATOR = "\n"  # content parts 의 text 를 이어 붙이는 구분자
 # 발화 없는 Home 요청을 Jev 가 판단할 문장으로 바꾼다. 성별·연령은 넣지 않는다(interview Q5·SC-7)
@@ -16,6 +22,8 @@ HOME_REQUEST = (
     "[Home feed] A traveler visiting Korea (country: {country}, language: {language}) just finished onboarding. "
     "Recommend K-beauty products, skin clinics, and review videos for the top of their home screen."
 )
+# 사용자가 직접 고른 선호가 있을 때만 Home 요청 끝에 붙인다(없으면 위 문장 그대로)
+HOME_PREFERENCES = " Their stated preferences: {preferences}."
 
 
 def join_parts(content) -> str:
@@ -30,6 +38,7 @@ def profile_from_metadata(metadata: dict | None) -> dict | None:
         return None
     raw = metadata.get("profile") if isinstance(metadata.get("profile"), dict) else metadata
     profile = {k: str(raw[k]).strip() for k in PROFILE_FIELDS if raw.get(k) not in (None, "")}
+    profile.update(_preferences_from(raw))
     if not profile:
         return None
     if "country" in profile:
@@ -39,8 +48,49 @@ def profile_from_metadata(metadata: dict | None) -> dict | None:
     return profile
 
 
+def _bad(field: str, rule: str) -> OpenAIError:
+    return OpenAIError(400, f"metadata.profile.{field} 이(가) 올바르지 않다: {rule}", "invalid_request_error", f"metadata.profile.{field}")
+
+
+def _preferences_from(raw: dict) -> dict:
+    """currency(ISO 4217 3자)·interests(문자열 목록)·budget_krw(양의 정수)·current_product(문자열). 형식이 틀리면 400."""
+    out: dict = {}
+    cur = raw.get("currency")
+    if cur not in (None, ""):
+        if not isinstance(cur, str) or len(cur.strip()) != 3 or not cur.strip().isalpha():
+            raise _bad("currency", "ISO 4217 세 글자(예: USD)")
+        out["currency"] = cur.strip().upper()
+    interests = raw.get("interests")
+    if interests not in (None, []):
+        if not isinstance(interests, list) or len(interests) > MAX_INTERESTS or not all(
+            isinstance(i, str) and 0 < len(i.strip()) <= MAX_INTEREST_CHARS for i in interests
+        ):
+            raise _bad("interests", f"문자열 목록, 최대 {MAX_INTERESTS}개·각 {MAX_INTEREST_CHARS}자")
+        out["interests"] = [i.strip() for i in interests]
+    budget = raw.get("budget_krw")
+    if budget not in (None, ""):
+        if isinstance(budget, bool) or not isinstance(budget, (int, float)) or not 0 < budget <= MAX_BUDGET_KRW:
+            raise _bad("budget_krw", f"0 보다 크고 {MAX_BUDGET_KRW} 이하인 숫자")
+        out["budget_krw"] = int(budget)
+    product = raw.get("current_product")
+    if product not in (None, ""):
+        if not isinstance(product, str) or len(product.strip()) > MAX_PRODUCT_CHARS:
+            raise _bad("current_product", f"{MAX_PRODUCT_CHARS}자 이하 문자열")
+        if product.strip():
+            out["current_product"] = product.strip()
+    return out
+
+
 def home_request(profile: dict) -> str:
-    return HOME_REQUEST.format(country=profile.get("country", "not_given"), language=profile.get("language", "not_given"))
+    text = HOME_REQUEST.format(country=profile.get("country", "not_given"), language=profile.get("language", "not_given"))
+    prefs = []
+    if profile.get("interests"):
+        prefs.append("interests " + ", ".join(profile["interests"]))
+    if profile.get("budget_krw"):
+        prefs.append(f"budget about KRW {profile['budget_krw']:,}")
+    if profile.get("current_product"):
+        prefs.append(f"currently uses {profile['current_product']}")
+    return text + (HOME_PREFERENCES.format(preferences="; ".join(prefs)) if prefs else "")
 
 
 def graph_input_from(

@@ -3,7 +3,7 @@ import { LANGUAGES } from '../lib/options'
 import { useLang, useT, type Key } from '../lib/i18n'
 import { SubBar } from '../components/Common'
 import { localCountry } from '../components/CountryNote'
-import { GoogleMark } from './Entry'
+import { GoogleMark } from '../components/GoogleMark'
 import '../styles/shell.css'
 
 export interface AccountView {

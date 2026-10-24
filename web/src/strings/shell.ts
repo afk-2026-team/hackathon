@@ -106,6 +106,20 @@ export const en = {
   'shell.country.insufficient': 'We don’t have enough evidence specific to visitors from {country} yet, so these picks rely on general sources for all visitors.',
   'shell.country.supported': 'Picks and reasons are adjusted for visitors from {country}. Your country never decides what suits your skin.',
   'shell.country.original': 'Server note',
+  // Home AI
+  'shell.ai.title': 'Ask about your trip',
+  'shell.ai.lead': 'Get suggestions based on your basics, or ask a question.',
+  'shell.ai.suggest': 'Suggest for me',
+  'shell.ai.label': 'Your question',
+  'shell.ai.placeholder': 'e.g. a gentle moisturizer for dry skin',
+  'shell.ai.send': 'Ask',
+  'shell.ai.you': 'You',
+  'shell.ai.forYou': 'Suggestions for my profile',
+  'shell.ai.thinking': 'Thinking…',
+  'shell.ai.cancel': 'Cancel',
+  'shell.ai.retry': 'Try again',
+  'shell.ai.browse': 'Browse beauty and medical picks',
+  'shell.ai.note': 'AI answer. Check each item’s sources before you decide.',
 }
 
 export const ko: Record<keyof typeof en, string> = {
@@ -207,4 +221,18 @@ export const ko: Record<keyof typeof en, string> = {
   'shell.country.insufficient': '{country} 방문자에게 특화된 근거가 아직 충분하지 않아, 모든 방문자에게 공통인 근거를 기반으로 추천했어요.',
   'shell.country.supported': '{country} 방문자에 맞춰 추천과 이유를 조정했어요. 국가로 피부 적합성을 판단하지는 않아요.',
   'shell.country.original': '서버 설명 원문',
+  // Home AI
+  'shell.ai.title': '여행에 대해 물어보세요',
+  'shell.ai.lead': '기본 정보로 추천을 받거나 궁금한 점을 물어보세요.',
+  'shell.ai.suggest': '나에게 맞게 추천받기',
+  'shell.ai.label': '질문',
+  'shell.ai.placeholder': '예: 건성 피부에 순한 보습 크림',
+  'shell.ai.send': '묻기',
+  'shell.ai.you': '나',
+  'shell.ai.forYou': '내 프로필로 추천',
+  'shell.ai.thinking': '답을 정리하는 중…',
+  'shell.ai.cancel': '취소',
+  'shell.ai.retry': '다시 시도',
+  'shell.ai.browse': '뷰티·의료 추천 둘러보기',
+  'shell.ai.note': 'AI 답변이에요. 결정하기 전에 각 항목의 출처를 확인하세요.',
 }

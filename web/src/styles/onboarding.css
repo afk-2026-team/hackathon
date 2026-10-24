@@ -1,0 +1,52 @@
+/*
+ * 보호 온보딩(62e7291: Entry·Onboarding·AuthCallback·App 대기 화면) 전용 스타일.
+ * 새 셸(styles.css)의 같은 이름 클래스(.btn, .note, .field 등)와 섞이지 않도록 모두 .onboarding 아래로 범위를 제한한다.
+ */
+.onboarding {
+  --line: #e6e7ea;
+  --ink-2: #3c3f45;
+  --muted: #6b6f76;
+  --soft: #f5f6f7;
+  --blue: #2864f0;
+  --blue-soft: #eaf0fe;
+  --green: #14533f;
+  color: var(--ink); background: #fff;
+}
+/* 새 셸(styles/shell.css)의 .onboarding{display:grid; place-items:center} 보다 우선하도록 main.onboarding 으로 지정 */
+main.onboarding { max-width: 480px; margin: 0 auto; padding: 20px 20px 40px; min-height: 100dvh; display: flex; flex-direction: column; place-items: normal; }
+.onboarding h1 { font-size: 30px; line-height: 1.2; letter-spacing: -0.02em; font-weight: 700; margin: 0; }
+.onboarding .brand { border: 0; background: none; padding: 0; font-weight: 700; font-size: 17px; letter-spacing: -0.01em; margin: 0; }
+.onboarding .lead { color: var(--ink-2); font-size: 16px; line-height: 1.5; margin: 8px 0 20px; }
+.onboarding .note { display: block; padding: 0; background: none; border-radius: 0; color: var(--green); font-size: 13px; line-height: 1.45; }
+.onboarding .note--error { color: var(--danger); }
+.onboarding__head { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; }
+.onboarding__head .brand { flex: none; }
+.onboarding.entry .onboarding__head { justify-content: space-between; }
+.onboarding .progress { flex: 1; display: flex; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.onboarding .progress li { flex: 1; height: 4px; border-radius: 2px; background: var(--line); }
+.onboarding .progress li.is-done { background: var(--blue); }
+.onboarding__step { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.onboarding__actions { display: flex; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 28px; }
+.onboarding .field { display: flex; flex-direction: column; gap: 8px; border: 0; padding: 0; margin: 0 0 18px; }
+.onboarding .field > span, .onboarding .field > legend { font-size: 14px; font-weight: 600; color: var(--ink-2); padding: 0; margin-bottom: 8px; }
+.onboarding .field select, .onboarding .field input { appearance: none; font: inherit; font-size: 16px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: #fff; color: var(--ink); }
+.onboarding .field select { background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%; background-size: 5px 5px; background-repeat: no-repeat; }
+.onboarding .choices { display: flex; flex-wrap: wrap; gap: 8px; }
+.onboarding .choice { border: 1px solid var(--line); background: #fff; border-radius: 999px; padding: 10px 16px; font-size: 14px; font-weight: 500; cursor: pointer; }
+.onboarding .choice.is-on { border-color: var(--blue); background: var(--blue-soft); color: var(--blue); font-weight: 600; }
+.onboarding .btn { height: auto; border: 1px solid transparent; border-radius: 999px; padding: 12px 20px; font-weight: 600; font-size: 15px; }
+.onboarding .btn--primary { background: var(--blue); color: #fff; }
+.onboarding .btn--primary:hover:not(:disabled) { background: #1f55d6; }
+.onboarding .btn--ghost { border-color: var(--line); background: #fff; color: var(--ink); }
+.onboarding .btn--small { padding: 8px 14px; font-size: 14px; }
+.onboarding .btn--block { width: 100%; }
+.onboarding .btn:disabled { opacity: 0.45; cursor: default; }
+.onboarding .btn--google { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border-color: var(--line); background: #fff; color: var(--ink); }
+.onboarding .btn--google:hover:not(:disabled) { background: var(--soft); }
+.onboarding .entry__actions { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+.onboarding .segmented { display: inline-flex; padding: 3px; border-radius: 999px; background: var(--soft); }
+.onboarding .segmented button { border: 0; background: none; padding: 8px 16px; border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--ink-2); cursor: pointer; }
+.onboarding .segmented button.is-on { background: #fff; color: var(--blue); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); }
+.onboarding .state { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; padding: 40px 16px; color: var(--ink-2); }
+.onboarding .spinner { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--line); border-top-color: var(--blue); animation: onb-spin 0.8s linear infinite; }
+@keyframes onb-spin { to { transform: rotate(360deg); } }

@@ -59,11 +59,15 @@ export function ProductDetail({ item, profile, onBack, onAddCart, onAddTrip, onO
         </section>
       )}
       <Reasons reasons={item.reasons} />
-      <div className="divider" />
-      {/* 지금 쓰는 제품과 표시사항(성분·용량·가격) 비교 — 팀 비교 API(/v1/discovery/compare·explain) */}
-      <div className="compare-wrap">
-        <ComparePanel profile={profile} item={item} currentName={currentProduct} onSetCurrent={onSetCurrent} />
-      </div>
+      {onSetCurrent && (
+        <>
+          <div className="divider" />
+          <section className="dt-sec">
+            {/* 지금 쓰는 제품 → 한국 후보: 서버가 확인한 공통점·차이·가격·비교 요약만 보여준다 */}
+            <ComparePanel profile={profile} item={item} currentName={currentProduct} onSetCurrent={onSetCurrent} />
+          </section>
+        </>
+      )}
       <div className="divider" />
       <VideoShelf query={lang === 'en' ? `${item.title} review` : ko} lang={lang} />
       <div className="divider" />

@@ -212,3 +212,20 @@
   .home-grid { row-gap: 12px; }
   .entry__title { font-size: 24px; }
 }
+
+/* Home AI */
+.home-ai { margin: 8px 16px 20px; padding: 16px; border: 1px solid var(--g2); border-radius: var(--r); background: #fff; display: flex; flex-direction: column; gap: 10px; }
+.home-ai__title { font-size: 17px; font-weight: 800; margin: 0; }
+.home-ai__lead { font-size: 13px; color: var(--g6); margin: 0; }
+.home-ai__turns { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.home-ai__turn { display: flex; flex-direction: column; gap: 8px; }
+.home-ai__q { margin: 0; font-size: 14px; font-weight: 600; color: var(--g8); display: flex; gap: 8px; align-items: baseline; }
+.home-ai__q span { font-size: 11px; color: var(--g5); text-transform: uppercase; letter-spacing: 0.04em; }
+.home-ai__a { background: var(--g05); border-radius: var(--r-sm); padding: 12px 14px; }
+.home-ai__text { margin: 0; font-size: 14px; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; }
+.home-ai__error { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; font-size: 14px; color: var(--danger); }
+.home-ai__error p { margin: 0; }
+.home-ai__thinking { margin: 0; font-size: 14px; color: var(--g6); }
+.home-ai__form { display: flex; gap: 8px; }
+.home-ai__form input { flex: 1; min-width: 0; font: inherit; font-size: 16px; height: 44px; padding: 0 14px; border: 1px solid var(--g2); border-radius: var(--r-sm); }
+.home-ai__note { margin: 0; font-size: 12px; color: var(--g5); }

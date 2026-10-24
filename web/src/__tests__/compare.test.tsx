@@ -5,7 +5,6 @@ import App from '../App'
 import type { Auth, AuthStatus } from '../auth/core'
 import { fromApi, matchReference, type CompareResponse, type ReferenceProduct } from '../lib/compare'
 import { resetReferenceCache } from '../lib/useCompare'
-import { parseHash } from '../Workspace'
 import { keyFor, saveEntry } from '../lib/storage'
 
 // 테스트 평면 격리용 응답(실제 화면 데이터 아님)
@@ -47,17 +46,17 @@ describe('compare adapter', () => {
     expect(matchReference('Other', [ref])).toBeUndefined()
   })
 
-  it('parses screen hashes', () => {
-    expect(parseHash('#explore/cand-1')).toEqual({ tab: 'explore', itemId: 'cand-1' })
-    expect(parseHash('#trip')).toEqual({ tab: 'trip', itemId: null })
-    expect(parseHash('#nope/x')).toEqual({ tab: 'home', itemId: null })
-    expect(parseHash('#explore/%E0%A4%A')).toEqual({ tab: 'explore', itemId: null })
-  })
 })
 
 function fakeAuth(): Auth {
   const st: AuthStatus = { state: 'disabled', reason: 'x' }
   return { initializeAuth: vi.fn(async () => st), getStatus: () => st, getSession: vi.fn(async () => null), subscribeAuth: () => () => {}, signInWithGoogle: vi.fn(), handleAuthCallback: vi.fn(), signOut: vi.fn(), fetchMe: vi.fn() } as unknown as Auth
+}
+
+async function openCandidate(user: ReturnType<typeof userEvent.setup>) {
+  const cards = await screen.findAllByText('Candidate Cream 75ml')
+  await user.click(cards[0])
+  return (await screen.findAllByRole('heading', { level: 1, name: 'Candidate Cream 75ml' }))[0]
 }
 
 describe('compare → evidence → save flow', () => {
@@ -73,10 +72,10 @@ describe('compare → evidence → save flow', () => {
     failCompare = false
     saveEntry('guest')
     localStorage.setItem(keyFor('guest', 'profile'), JSON.stringify({ version: 1, country: 'US', language: 'en', currency: 'USD', tutorial_done: true }))
-    window.history.replaceState(null, '', '/#explore/cand-1')
+    window.history.replaceState(null, '', '/')
     vi.stubGlobal('fetch', vi.fn(async (url: string, init?: RequestInit) => {
+      if (url === '/v1/discovery/catalog') return new Response(JSON.stringify({ items: [item] }))
       if (url === '/v1/discovery/recommendations') return new Response(JSON.stringify({ items: [item], country_context: compareRes.country_context, generated_at: 'x' }))
-      if (url === '/v1/discovery/catalog') return new Response(JSON.stringify({ items: [item] })) // 주소의 항목 id 를 상세로 여는 데 쓴다
       if (url === '/v1/discovery/reference-products') return new Response(JSON.stringify({ items: [ref] }))
       if (url === '/v1/discovery/compare') {
         compareCalls.push(JSON.parse(init!.body as string))
@@ -92,10 +91,10 @@ describe('compare → evidence → save flow', () => {
     }))
   })
 
-  it('opens the deep-linked item, compares with the typed product, then adds it to the shopping list', async () => {
+  it('opens the item from Home, compares with the typed product, then adds it to the cart', async () => {
     const user = userEvent.setup()
     render(<App auth={fakeAuth()} />)
-    expect((await screen.findAllByRole('heading', { name: 'Candidate Cream 75ml' }))[0]).toBeInTheDocument()
+    expect(await openCandidate(user)).toBeInTheDocument()
     await user.type(screen.getByLabelText('A product you use now'), 'daily cream')
     await user.click(screen.getByRole('button', { name: 'Compare' }))
     expect(await screen.findByText('In common')).toBeInTheDocument()
@@ -109,8 +108,8 @@ describe('compare → evidence → save flow', () => {
     // 입력한 현재 제품은 프로필에 남는다
     expect(JSON.parse(localStorage.getItem(keyFor('guest', 'profile'))!).preferences.current_product).toBe('daily cream')
 
-    await user.click(screen.getByRole('button', { name: /^\+ Add to cart/ }))
-    await user.click(screen.getByRole('button', { name: /^\+ Add to cart/ }))
+    await user.click(screen.getByRole('button', { name: /Add to cart/ }))
+    await user.click(screen.getByRole('button', { name: /Add to cart/ }))
     expect(JSON.parse(localStorage.getItem(keyFor('guest', 'cart'))!)[0].qty).toBe(2)
   })
 
@@ -119,10 +118,11 @@ describe('compare → evidence → save flow', () => {
     localStorage.setItem(keyFor('guest', 'profile'), JSON.stringify({ version: 1, country: 'US', language: 'en', currency: 'USD', tutorial_done: true, preferences: { current_product: 'Unlisted serum' } }))
     const user = userEvent.setup()
     render(<App auth={fakeAuth()} />)
-    // 상세에는 숏폼·후기 오류도 함께 뜰 수 있어 비교 영역 안의 알림만 본다
-    const panel = await screen.findByRole('region', { name: 'Side by side' })
-    const alert = await within(panel).findByRole('alert')
-    expect(alert).toHaveTextContent('couldn’t be loaded right now')
+    await openCandidate(user)
+    const region = await screen.findByRole('region', { name: 'Side by side' })
+    const alert = await within(region).findByRole('alert')
+    expect(within(alert).getByRole('button', { name: 'Try again' })).toBeInTheDocument()
+    expect(alert).not.toHaveTextContent(/503/)
     expect(compareCalls[0]).toMatchObject({ current_product_name: 'Unlisted serum' })
     failCompare = false
     await user.click(within(alert).getByRole('button', { name: 'Try again' }))
@@ -133,6 +133,7 @@ describe('compare → evidence → save flow', () => {
     explainMode = 'slow'
     localStorage.setItem(keyFor('guest', 'profile'), JSON.stringify({ version: 1, country: 'US', language: 'en', currency: 'USD', tutorial_done: true, preferences: { current_product: 'Daily Cream' } }))
     render(<App auth={fakeAuth()} />)
+    await openCandidate(userEvent.setup())
     expect(await screen.findByText('Writing a short summary…')).toBeInTheDocument()
     expect(screen.getByText('In common')).toBeInTheDocument()
     releaseExplain()
@@ -145,9 +146,10 @@ describe('compare → evidence → save flow', () => {
     explainMode = 'fail'
     localStorage.setItem(keyFor('guest', 'profile'), JSON.stringify({ version: 1, country: 'US', language: 'en', currency: 'USD', tutorial_done: true, preferences: { current_product: 'Daily Cream' } }))
     render(<App auth={fakeAuth()} />)
+    await openCandidate(userEvent.setup())
     expect(await screen.findByText('In common')).toBeInTheDocument()
     await new Promise((r) => setTimeout(r, 20))
     expect(screen.queryByText('Compare summary')).toBeNull()
-    expect(within(screen.getByRole('region', { name: 'Side by side' })).queryByRole('alert')).toBeNull()
+    expect(screen.queryByRole('alert')).toBeNull()
   })
 })

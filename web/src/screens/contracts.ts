@@ -35,8 +35,8 @@ export interface DetailProps {
   onGoTrip: () => void
   cartQty: number
   inTrip: boolean
-  currentProduct?: string // 프로필의 '지금 쓰는 제품' — 제품 비교에 쓴다
-  onSetCurrent: (name: string) => void
+  currentProduct?: string // 사용자가 지금 쓰는 제품(프로필 preferences.current_product)
+  onSetCurrent?: (name: string) => void // 비교 패널에서 입력하면 프로필에 저장
 }
 
 export interface SearchProps {

@@ -1,6 +1,8 @@
 # envs/agent_config.yaml — K-뷰티 Jev 분류·분기 + Haiku 스트리밍 workflow 설정
 # 편집 규칙: 값만 조정한다. 키 추가·삭제·rename 은 계약 변경이다(spec §6.5) — app/utils/config.py 의 키 목록과 함께 바꾼다.
 # 정본 설계: docs/plan/plan_26102412_LangGraph_Jev_라이브서버_설계.md §6·§7
+# 키는 이 파일이 아니라 팀 Infisical 이 주입한다(.claude/rules/secrets.md):
+#   node scripts/secrets.mjs run --env dev --services ash_workflow -- uv run python -m app.serve
 AGENT_NAME: KBeauty_Jev_Agent      # 로그 포맷·/v1/models owned_by
 log_level: "INFO"                  # DEBUG|INFO|WARNING|ERROR — init_logging()·uvicorn log_level
 
@@ -13,9 +15,6 @@ profiles:                          # 행 1개 = 서빙할 모델 1개. id = 요�
   - {id: kbeauty-haiku, llm: {path: envs/models/claude-haiku-5-5_anthropic.yaml, override: {}}}
 
 # ── 이 아래는 workflow 전용 블록 ──
-
-# 기동 시 1회 로드할 키 파일(비추적). 모델 선언 yaml 의 api_key_env 가 여기서 들어온 변수 이름을 읽는다.
-env_files: [envs/ash_antropic.env, envs/jev.env]
 
 jev:
   model_path: envs/models/jev-1.14.0_typesafe.yaml   # Jev(TypeSafe) 분류기 선언

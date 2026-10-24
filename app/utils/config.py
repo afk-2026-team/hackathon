@@ -14,7 +14,7 @@ LOG_LEVELS = ("DEBUG", "INFO", "WARNING", "ERROR")
 PORT_RANGE = range(1, 65536)
 
 # 키 계약(spec §4.1·§6.5) — 여기와 envs/agent_config.yaml 을 함께 바꾼다. 모르는 키는 기동 거부(K3).
-TOP_KEYS = {"AGENT_NAME", "log_level", "server", "profiles", "env_files", "jev", "router", "prompt", "multi_turn"}
+TOP_KEYS = {"AGENT_NAME", "log_level", "server", "profiles", "jev", "router", "prompt", "multi_turn"}
 BLOCK_KEYS = {
     "server": {"host", "port", "serving_type"},
     "jev": {"model_path", "questions_prompt"},
@@ -78,8 +78,6 @@ def validate_config(config: dict) -> None:
     if len(ids) != len(set(ids)):
         raise ValueError(f"profiles id 중복: {ids}")
 
-    if not isinstance(config["env_files"], list):
-        raise ValueError("env_files 는 경로 목록이어야 한다")
     _is_bool("router.branching_enabled", config["router"]["branching_enabled"])
     if not isinstance(config["router"]["decline_labels"], list):
         raise ValueError("router.decline_labels 는 라벨 목록이어야 한다(비우려면 [])")

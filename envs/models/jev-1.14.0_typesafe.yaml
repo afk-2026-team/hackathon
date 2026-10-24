@@ -3,6 +3,6 @@
 model_name: jev-1.14.0
 provider: typesafe                 # app/models/classifier_loader.py 분기 키
 base_url: "https://api.typesafe.ai"
-api_key_env: JEV_API_KEY           # langchain-typesafe 기본값(TYPESAFE_API_KEY) 대신 이 이름을 읽어 생성자에 넘긴다
+api_key_env: ASH_JEV_KEY           # 팀 Infisical dev /app (서비스 ash_workflow). langchain-typesafe 기본값(TYPESAFE_API_KEY) 대신 이 이름을 읽어 생성자에 넘긴다
 limits:
   timeout_seconds: 30

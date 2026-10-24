@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import type { CatalogItem, CategoryFilter } from './lib/types'
 import { fetchCatalog } from './lib/api'
+import { refreshCartFromCatalog } from './lib/cartTotals'
+import { reorderDay } from './lib/tripOrder'
 import {
   clearAll, loadCart, loadProfile, loadTrip, saveCart, saveProfile, saveTrip, toPayload,
   type CartLine, type Namespace, type Profile, type TripEntry,
@@ -74,6 +76,17 @@ export function Workspace({ ns, uiLang, account, onSignIn, onSignOut, onResetDon
       alive = false
     }
   }, [lang])
+
+  // 저장된 카트를 최신 카탈로그 가격(원화 판매가·판매처 표시가격)으로 보강한다. 수량·선택은 바꾸지 않는다.
+  useEffect(() => {
+    if (catalog.size === 0) return
+    const r = refreshCartFromCatalog(cart, catalog)
+    if (r.changed) {
+      saveCart(ns, r.cart)
+      setCartState(r.cart)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [catalog])
 
   useEffect(() => {
     if (!pendingId) return
@@ -172,7 +185,7 @@ export function Workspace({ ns, uiLang, account, onSignIn, onSignOut, onResetDon
     setCart(
       existing
         ? cart.map((l) => (l.item_id === i.id ? { ...l, qty: l.qty + 1 } : l))
-        : [...cart, { item_id: i.id, title: i.title, category: i.category, price_krw: i.price_krw, qty: 1 }],
+        : [...cart, { item_id: i.id, title: i.title, category: i.category, price_krw: i.price_krw, list_price: i.list_price ?? null, qty: 1 }],
     )
     setToast(lang === 'ko' ? '카트에 담았어요' : 'Added to cart')
   }
@@ -255,6 +268,7 @@ export function Workspace({ ns, uiLang, account, onSignIn, onSignOut, onResetDon
             <Home
               profile={payload}
               onOpen={openItem}
+              onOpenId={openItemId}
               onBrowse={(c) => {
                 setCategory(c)
                 goTab('explore')
@@ -277,6 +291,7 @@ export function Workspace({ ns, uiLang, account, onSignIn, onSignOut, onResetDon
             />
           ) : (
             <MyTrip
+              onReorderDay={(d, ids) => setTrip(reorderDay(trip, d, ids))}
               ns={ns}
               profile={payload}
               trip={shownTrip}

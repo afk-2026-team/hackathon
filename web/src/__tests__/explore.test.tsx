@@ -362,7 +362,7 @@ describe('CartSheet', () => {
   it('totals priced lines in KRW, converts with the ECB source line and flags unpriced items', async () => {
     const user = userEvent.setup()
     const props = renderCart('USD')
-    expect(screen.getByTestId('cart-total')).toHaveTextContent('₩20,000')
+    expect(screen.getByTestId('cart-total-KRW')).toHaveTextContent('₩20,000')
     expect(await screen.findByText('ECB reference rate · 2026-10-23')).toBeInTheDocument()
     expect(screen.getByText('≈ $14.00 in USD')).toBeInTheDocument()
     expect(screen.getByText(/1 item\(s\) without a listed price are not included/)).toBeInTheDocument()

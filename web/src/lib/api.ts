@@ -88,3 +88,37 @@ export const fetchBlogReviews = (query: string, display = 6) => request<BlogResp
 export const fetchVideos = (query: string, lang: 'en' | 'ko' = 'en', max = 6) =>
   request<VideosResponse>(`/v1/evidence/videos?${q({ query, lang, max })}`)
 export const fetchFx = () => request<FxResponse>('/v1/fx?base=KRW')
+
+// ── My Trip 방문 순서 제안(POST /v1/trips/plan). 근접 순서 휴리스틱이며 최적 경로·소요 시간이 아니다. ──
+export interface TripPlanStop {
+  order: number
+  item_id: string
+  title: string
+  address: string | null
+  lat: number
+  lng: number
+  location_source: 'catalog' | 'geocode'
+  distance_from_previous_m: number | null
+  map_links: { naver_search: string; google_directions: string }
+}
+export interface TripPlanResponse {
+  method: 'proximity'
+  distance_source: 'straight_line'
+  origin: { label: string; lat: number; lng: number; source: 'input' | 'geocode' } | null
+  origin_status: 'none' | 'ok' | 'geocode_unavailable' | 'geocode_no_result' | 'geocode_failed'
+  stops: TripPlanStop[]
+  unlocated: { item_id: string; title: string; reason: 'no_address' | 'geocode_unavailable' | 'geocode_no_result' | 'geocode_failed' }[]
+  checklist: { item_id: string; title: string; kind: 'product' | 'guide' }[]
+  notes: string[]
+  generated_at: string
+}
+export type TripOriginInput = { address: string } | { lat: number; lng: number }
+export const TRIP_PLAN_MAX_ITEMS = 20
+
+export function planTrip(itemIds: string[], origin?: TripOriginInput | null) {
+  const ids = [...new Set(itemIds.filter((i) => i && i.trim()))].slice(0, TRIP_PLAN_MAX_ITEMS)
+  return request<TripPlanResponse>('/v1/trips/plan', {
+    method: 'POST',
+    body: JSON.stringify(origin ? { item_ids: ids, origin } : { item_ids: ids }),
+  })
+}

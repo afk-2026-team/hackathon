@@ -77,6 +77,7 @@ export function DayRoute({ start, stops }: { start: GeoPoint | null; stops: Stop
         ))}
       </ul>
       {skipped > 0 && <p className="trip-fine">{fill(t('trip.dayRouteSkipped'), { n: skipped })}</p>}
+      <p className="trip-fine">{t('trip.transitHint')}</p>
       <p className="trip-fine">{t('trip.navHint')}</p>
     </section>
   )

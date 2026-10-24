@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { MyTripProps } from './contracts'
 import { geocode } from '../lib/api'
-import { fill, useT } from '../lib/i18n'
+import { fill, useLang, useT } from '../lib/i18n'
+import { cartTotals } from '../lib/cartTotals'
+import { formatMoney } from '../lib/currency'
 import { useNaverMaps } from '../lib/naverMaps'
 import { clearStart, loadStart, saveStart, type StartPoint as Start } from '../lib/storage'
 import type { ItemLocation } from '../lib/types'
@@ -10,6 +12,7 @@ import { Price } from '../components/Common'
 import { StartPoint } from '../components/trip/StartPoint'
 import { TripMap, type MapPoint } from '../components/trip/TripMap'
 import { DayPlan, type Stop } from '../components/trip/DayPlan'
+import { TripPlan } from '../components/trip/TripPlan'
 import '../styles/trip.css'
 
 // 담당: My Trip·지도(F). 이동 시간·경로는 추정하지 않는다 — 지도 선은 방문 순서 직선이고 길찾기는 네이버 지도로 넘긴다.
@@ -39,10 +42,11 @@ const hasCoords = (loc: ItemLocation): loc is ItemLocation & Coords =>
 
 function ShoppingSummary({ cart, currency, onOpenCart }: Pick<MyTripProps, 'cart' | 'onOpenCart'> & { currency: string }) {
   const t = useT()
+  const lang = useLang()
   const count = cart.reduce((n, l) => n + l.qty, 0)
-  const priced = cart.filter((l) => l.price_krw != null)
-  const total = priced.reduce((s, l) => s + (l.price_krw ?? 0) * l.qty, 0)
-  const unpriced = cart.length - priced.length
+  const { totals, unpriced } = cartTotals(cart)
+  const krw = totals.find((x) => x.currency === 'KRW' && !x.listed)
+  const others = totals.filter((x) => x !== krw)
   return (
     <section className="trip-shop card" aria-labelledby="trip-shop-h">
       <div className="trip-shop__head">
@@ -50,8 +54,13 @@ function ShoppingSummary({ cart, currency, onOpenCart }: Pick<MyTripProps, 'cart
           <h2 id="trip-shop-h" className="trip-h3">{t('trip.shopTitle')}</h2>
           <p className="trip-muted">{fill(t('trip.shopCount'), { n: count })}</p>
         </div>
-        <Price krw={priced.length ? total : null} currency={currency} size="lg" />
+        {krw ? <Price krw={krw.amount} currency={currency} size="lg" /> : others.length === 0 ? <Price krw={null} currency={currency} size="lg" /> : null}
       </div>
+      {others.map((x) => (
+        <p key={`${x.currency}-${x.listed}`} className="trip-fine" data-testid={`trip-total-${x.currency}`}>
+          {fill(t(x.listed ? 'explore.totalListed' : 'explore.totalIn'), { currency: x.currency })}: <strong>{formatMoney(x.amount, x.currency, lang)}</strong>
+        </p>
+      ))}
       {unpriced > 0 && <p className="trip-fine">{fill(t('trip.shopUnpriced'), { n: unpriced })}</p>}
       <p className="trip-note">{t('trip.shopStock')}</p>
       <button type="button" className="btn btn--ghost btn--block" onClick={onOpenCart}>{t('trip.openCart')}</button>
@@ -59,7 +68,7 @@ function ShoppingSummary({ cart, currency, onOpenCart }: Pick<MyTripProps, 'cart
   )
 }
 
-export function MyTrip({ ns, profile, trip, cart, days, onMove, onDay, onRemove, onAddDay, onExplore, onOpenItem, onOpenCart }: MyTripProps) {
+export function MyTrip({ ns, profile, trip, cart, days, onMove, onDay, onRemove, onAddDay, onExplore, onOpenItem, onOpenCart, onReorderDay }: MyTripProps) {
   const t = useT()
   const maps = useNaverMaps()
   const [start, setStart] = useState<Start | null>(() => loadStart(ns))
@@ -141,6 +150,7 @@ export function MyTrip({ ns, profile, trip, cart, days, onMove, onDay, onRemove,
       <div className="trip-pad trip-stack">
         <StartPoint key={start ? `${start.lat},${start.lng}` : 'none'} value={start} onChange={changeStart} />
         <TripMap status={maps.status} points={points} day={sel} />
+        {onReorderDay && <TripPlan key={sel} day={sel} entries={dayEntries} start={start} onApply={(ids) => onReorderDay(sel, ids)} />}
         <DayPlan
           days={days}
           day={sel}

@@ -7,6 +7,7 @@ import type { CartLine, Namespace, TripEntry } from '../lib/storage'
 export interface HomeProps {
   profile: ProfilePayload
   onOpen: (item: CatalogItem) => void
+  onOpenId?: (id: string) => void // 카탈로그 id 로 상세 열기(AI 후보 카드)
   onBrowse: (category: CategoryFilter) => void // Explore 탭으로 이동
   onSearch: () => void
   onGoTrip: () => void
@@ -68,6 +69,7 @@ export interface MyTripProps {
   onExplore: () => void
   onOpenItem: (itemId: string) => void
   onOpenCart: () => void
+  onReorderDay?: (day: number, orderedItemIds: string[]) => void // 서버 방문 순서 제안을 그날에 적용
 }
 
 export interface TopbarProps {

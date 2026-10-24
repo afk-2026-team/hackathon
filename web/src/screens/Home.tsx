@@ -135,7 +135,7 @@ const ICONS = {
 }
 
 // 통합 Home: 검색 → 히어로 → 바로가기 → (여행 요약) → 국가 근거 → 뷰티 추천 → 의료·안내 → 장소 → 협찬(분리).
-export function Home({ profile, onOpen, onBrowse, onSearch, onGoTrip, tripCount, cartCount }: HomeProps) {
+export function Home({ profile, onOpen, onOpenId, onBrowse, onSearch, onGoTrip, tripCount, cartCount }: HomeProps) {
   const t = useT()
   const { state, retry } = useRecommendations(profile, 'all')
   const items = state.status === 'ready' ? state.data.items : null
@@ -193,7 +193,7 @@ export function Home({ profile, onOpen, onBrowse, onSearch, onGoTrip, tripCount,
         ))}
       </nav>
 
-      <HomeAssistant profile={profile} onBrowse={() => onBrowse('all')} />
+      <HomeAssistant profile={profile} onBrowse={() => onBrowse('all')} onOpenId={onOpenId} />
 
       {(tripCount > 0 || cartCount > 0) && (
         <button type="button" className="home-trip" onClick={onGoTrip}>

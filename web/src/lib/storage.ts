@@ -1,4 +1,4 @@
-import type { CatalogItem, Preferences, ProfilePayload } from './types'
+import type { CatalogItem, ListPrice, Preferences, ProfilePayload } from './types'
 
 // 기기에만 저장한다. 손상되거나 모르는 형태는 버리고 온보딩을 다시 연다(fail-closed).
 // 저장 공간은 계정별로 나뉜다: 'guest' 또는 'user:<id>'. 서로의 프로필·카트·여행이 섞이지 않는다.
@@ -51,6 +51,8 @@ export interface CartLine {
   title: string
   category: CatalogItem['category']
   price_krw: number | null
+  // 원화 가격이 없을 때 판매처 표시가격(통화 그대로). 오래된 저장본에는 없을 수 있다(카탈로그로 보강).
+  list_price?: ListPrice | null
   qty: number
 }
 

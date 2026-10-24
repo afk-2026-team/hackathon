@@ -1,9 +1,9 @@
 // Home AI 연결 — 같은 origin 의 POST /v1/responses(discovery_server 프록시 → app.serve).
-// 백엔드 계약: metadata.profile = { language, country, gender?, age_band? }. 질문이 없으면 Home 추천 요청이 된다.
-// 통화·관심사·사용 제품은 metadata 로 읽히지 않는다. Home 요청에서는 사용자가 고른 관심사·예산·사용 제품을
-// 백엔드가 실제로 읽는 input 문장(homeQuestion)으로만 전달한다. 성별·연령은 문장에 넣지 않는다.
+// 백엔드 계약: metadata.profile = { language, country, gender?, age_band?, currency?, interests?, budget_krw?, current_product? }.
+// 질문이 없으면 Home 추천 요청이 된다. 응답 metadata 의 candidates(서버가 고른 실제 카탈로그 후보)와
+// recommended_ids(모델이 답에 실제 인용한 후보 id)만 화면 링크에 쓴다 — 답 본문의 이름으로 상품을 추정하지 않는다.
 import { ApiError } from './api'
-import type { CatalogItem, ProfilePayload } from './types'
+import type { ListPrice, ProfilePayload, Source } from './types'
 
 export const ASSISTANT_PATH = '/v1/responses'
 export const ASSISTANT_TIMEOUT_MS = 65_000 // 서버 프록시 상한(60s)보다 조금 길게
@@ -14,7 +14,32 @@ export interface AssistantProfile {
   country: string
   gender?: string
   age_band?: string
+  currency?: string
+  interests?: string[]
+  budget_krw?: number
+  current_product?: string
 }
+
+// 서버 검증 한도와 같은 값(app/api/v1/inputs.py). 넘는 값은 보내기 전에 잘라 422 를 피한다.
+export const MAX_INTERESTS = 10
+export const MAX_INTEREST_CHARS = 40
+export const MAX_BUDGET_KRW = 100_000_000
+export const MAX_PRODUCT_CHARS = 200
+
+/** 서버가 고른 실제 카탈로그 후보(필요한 필드만). */
+export interface AssistantCandidate {
+  id: string
+  kind: string
+  category: 'beauty' | 'medical'
+  title: string
+  subtitle: string
+  image_url: string | null
+  price_krw: number | null
+  list_price: ListPrice | null
+  reasons: string[]
+  sources: Source[]
+}
+export type CandidatesStatus = 'ok' | 'unavailable' | 'none'
 
 export type AssistantErrorKind = 'invalid_input' | 'network' | 'timeout' | 'unavailable' | 'http' | 'parse' | 'aborted'
 
@@ -37,6 +62,9 @@ export interface AssistantAnswer {
   responseId: string
   status: 'completed' | 'incomplete'
   text: string
+  candidates: AssistantCandidate[]
+  candidatesStatus: CandidatesStatus // none = 서버가 후보 정보를 보내지 않음
+  recommendedIds: string[] // 모델이 답에 인용한 후보 id(후보 목록에 있는 것만)
 }
 
 /** 온보딩 결과(ProfilePayload) → /v1/responses metadata.profile. age_range 는 백엔드 이름 age_band 로 옮긴다. */
@@ -44,7 +72,45 @@ export function toAssistantProfile(p: ProfilePayload): AssistantProfile {
   const out: AssistantProfile = { language: p.language.toLowerCase().split('-')[0], country: p.country.toUpperCase() }
   if (p.gender) out.gender = p.gender
   if (p.age_range) out.age_band = p.age_range
+  if (p.currency && /^[A-Za-z]{3}$/.test(p.currency)) out.currency = p.currency.toUpperCase()
+  const pref = p.preferences
+  const interests = (pref?.interests ?? []).map((i) => i.trim()).filter((i) => i && i.length <= MAX_INTEREST_CHARS).slice(0, MAX_INTERESTS)
+  if (interests.length) out.interests = interests
+  if (typeof pref?.budget_krw === 'number' && pref.budget_krw > 0 && pref.budget_krw <= MAX_BUDGET_KRW) out.budget_krw = Math.round(pref.budget_krw)
+  const product = pref?.current_product?.trim()
+  if (product) out.current_product = product.slice(0, MAX_PRODUCT_CHARS)
   return out
+}
+
+const isStr = (v: unknown): v is string => typeof v === 'string' && v.length > 0
+
+function parseCandidate(v: unknown): AssistantCandidate | null {
+  const c = v as Record<string, unknown>
+  if (!c || !isStr(c.id) || !isStr(c.title) || (c.category !== 'beauty' && c.category !== 'medical')) return null
+  const lp = c.list_price as ListPrice | null | undefined
+  return {
+    id: c.id,
+    kind: isStr(c.kind) ? c.kind : 'product',
+    category: c.category,
+    title: c.title,
+    subtitle: typeof c.subtitle === 'string' ? c.subtitle : '',
+    image_url: isStr(c.image_url) ? c.image_url : null,
+    price_krw: typeof c.price_krw === 'number' ? c.price_krw : null,
+    list_price: lp && typeof lp.amount === 'number' && isStr(lp.currency) ? lp : null,
+    reasons: Array.isArray(c.reasons) ? c.reasons.filter(isStr) : [],
+    sources: Array.isArray(c.sources) ? (c.sources as Source[]).filter((s) => s && isStr(s.url) && isStr(s.label)) : [],
+  }
+}
+
+/** 응답 metadata 의 후보 정보. 형식이 다르거나 없으면 빈 목록(가짜 후보를 만들지 않는다). */
+export function parseCandidates(metadata: unknown): Pick<AssistantAnswer, 'candidates' | 'candidatesStatus' | 'recommendedIds'> {
+  const m = metadata as Record<string, unknown> | null | undefined
+  if (!m || m.candidates_basis !== 'server_recommendation') return { candidates: [], candidatesStatus: 'none', recommendedIds: [] }
+  const candidates = (Array.isArray(m.candidates) ? m.candidates : []).map(parseCandidate).filter((c): c is AssistantCandidate => !!c)
+  const ids = new Set(candidates.map((c) => c.id))
+  const recommendedIds = (Array.isArray(m.recommended_ids) ? m.recommended_ids : []).filter((x): x is string => isStr(x) && ids.has(x))
+  const candidatesStatus: CandidatesStatus = m.candidates_status === 'ok' ? 'ok' : 'unavailable'
+  return { candidates, candidatesStatus, recommendedIds: [...new Set(recommendedIds)] }
 }
 
 export function validateQuestion(question: string | undefined): string | undefined {
@@ -118,7 +184,7 @@ export async function requestAssistant(profile: ProfilePayload, opts: AskOptions
 
 /** OpenAI Responses 객체에서 output_text 를 모은다. 형식이 다르면 parse 오류(빈 답을 성공으로 위장하지 않는다). */
 export function parseAnswer(data: unknown): AssistantAnswer {
-  const d = data as { id?: unknown; object?: unknown; status?: unknown; output?: unknown }
+  const d = data as { id?: unknown; object?: unknown; status?: unknown; output?: unknown; metadata?: unknown }
   if (!d || d.object !== 'response' || typeof d.id !== 'string' || !Array.isArray(d.output)) {
     throw new AssistantError('The assistant sent an unexpected response.', 'parse')
   }
@@ -130,59 +196,32 @@ export function parseAnswer(data: unknown): AssistantAnswer {
     .flatMap((m) => m.content!.filter((c) => c?.type === 'output_text' && typeof c.text === 'string').map((c) => c.text as string))
     .join('')
   if (!text.trim()) throw new AssistantError('The assistant returned an empty answer.', 'parse')
-  return { responseId: d.id, status: d.status, text }
+  return { responseId: d.id, status: d.status, text, ...parseCandidates(d.metadata) }
 }
 
 // ── 화면용 호출(INTEGRATION 화면 세션 요청 형태) ──
 export interface AskAssistantInput {
   profile: ProfilePayload
-  input?: string // 없으면 Home 추천 요청(homeQuestion 이 있으면 그 문장, 없으면 백엔드 Home 요청)
+  input?: string // 없으면 Home 추천 요청(선호는 metadata.profile 로 전달)
   signal?: AbortSignal
-  catalog?: CatalogItem[] // 답 본문에 나온 실제 제품명을 상세 열기 id 로 잇는 데만 쓴다
   threadId?: string
 }
 
 export interface AssistantResult extends AssistantAnswer {
-  itemIds: string[] // 답 본문에 이름이 그대로 나온 카탈로그 항목만(추정 매칭 없음)
-  followUps?: string[] // 백엔드가 주지 않으므로 지금은 항상 undefined — 만들어 내지 않는다
   question: string | null // 실제로 보낸 input(null = 백엔드 Home 요청)
 }
 
-const formatKrw = (n: number) => `KRW ${Math.round(n).toLocaleString('en-US')}`
-
-/** 질문 없는 Home 요청에 사용자가 직접 고른 선호만 문장으로 담는다. 선호가 없으면 undefined(백엔드 Home 요청 사용). */
-export function homeQuestion(profile: ProfilePayload): string | undefined {
-  const pref = profile.preferences
-  const parts: string[] = []
-  if (pref?.interests?.length) parts.push(`I'm interested in ${pref.interests.join(', ')}.`)
-  if (typeof pref?.budget_krw === 'number' && pref.budget_krw > 0) parts.push(`My budget is about ${formatKrw(pref.budget_krw)}.`)
-  if (pref?.current_product?.trim()) parts.push(`I currently use ${pref.current_product.trim()}.`)
-  if (!parts.length) return undefined
-  return `[Home] ${parts.join(' ')} What K-beauty products or clinics should I look at first on my trip to Korea?`
-}
-
-/** 답 본문에 title 또는 subtitle 의 앞부분(· 앞 이름)이 그대로 들어 있는 카탈로그 id. 대소문자만 무시한다. */
-export function matchCatalogItems(text: string, catalog: CatalogItem[] = []): string[] {
-  const hay = text.toLowerCase()
-  return catalog
-    .filter((it) => {
-      const names = [it.title, it.subtitle?.split('·')[0]].map((n) => n?.trim().toLowerCase()).filter((n): n is string => !!n && n.length >= 4)
-      return names.some((n) => hay.includes(n))
-    })
-    .map((it) => it.id)
-}
-
-export async function askAssistant({ profile, input, signal, catalog, threadId }: AskAssistantInput): Promise<AssistantResult> {
-  const question = validateQuestion(input) ?? (profile ? homeQuestion(profile) : undefined) ?? null
+export async function askAssistant({ profile, input, signal, threadId }: AskAssistantInput): Promise<AssistantResult> {
+  const question = validateQuestion(input) ?? null
   const answer = await requestAssistant(profile, { question: question ?? undefined, signal, threadId })
-  return { ...answer, question, itemIds: matchCatalogItems(answer.text, catalog), followUps: undefined }
+  return { ...answer, question }
 }
 
 // ── 질문-응답 상태(화면은 이 상태만 그린다) ──
 export interface AssistantTurn {
   id: string
   question: string | null // null = 질문 없는 Home 추천 요청
-  answer?: AssistantAnswer & { itemIds?: string[]; question?: string | null }
+  answer?: AssistantAnswer & { question?: string | null }
   error?: { message: string; kind: AssistantErrorKind }
 }
 
@@ -193,7 +232,7 @@ export interface AssistantState {
 
 export type AssistantAction =
   | { type: 'ask'; id: string; question: string | null }
-  | { type: 'answer'; id: string; answer: AssistantAnswer & { itemIds?: string[]; question?: string | null } }
+  | { type: 'answer'; id: string; answer: AssistantAnswer & { question?: string | null } }
   | { type: 'fail'; id: string; error: { message: string; kind: AssistantErrorKind } }
   | { type: 'reset' }
 

@@ -2,7 +2,8 @@ import type { CartSheetProps } from '../screens/contracts'
 import { CategoryBadge, Price, Sheet } from './Common'
 import { EmptyState } from './States'
 import { fill, useLang, useT } from '../lib/i18n'
-import { convertKrw, formatKrw, formatMoney, fxSourceLine, useFx } from '../lib/currency'
+import { convertKrw, formatMoney, fxSourceLine, useFx } from '../lib/currency'
+import { cartTotals, linePrice } from '../lib/cartTotals'
 import '../styles/explore.css'
 
 // 담당: 탐색·검색·카트(D). 원화 합계 + 선택 통화 환산(ECB 기준율, 출처·기준일 표시).
@@ -12,12 +13,12 @@ export function CartSheet({ cart, currency, onChangeQty, onOpenItem, onGoTrip, o
   const lang = useLang()
   const fx = useFx()
 
-  const priced = cart.filter((l) => l.price_krw != null)
-  const unpriced = cart.filter((l) => l.price_krw == null)
-  const total = priced.reduce((sum, l) => sum + (l.price_krw ?? 0) * l.qty, 0)
+  // 통화별 소계(원화 판매가, 판매처 표시가격). 서로 더하지 않는다.
+  const { totals, unpriced } = cartTotals(cart)
+  const krw = totals.find((x) => x.currency === 'KRW' && !x.listed)
   const ready = fx.status === 'ready' ? fx.fx : null
-  const converted = priced.length > 0 ? convertKrw(total, currency, ready) : null
-  const noRate = currency !== 'KRW' && ready != null && converted == null && priced.length > 0
+  const converted = krw ? convertKrw(krw.amount, currency, ready) : null
+  const noRate = currency !== 'KRW' && ready != null && converted == null && !!krw
 
   return (
     <Sheet title={t('explore.cartTitle')} onClose={onClose}>
@@ -40,7 +41,7 @@ export function CartSheet({ cart, currency, onChangeQty, onOpenItem, onGoTrip, o
                   </div>
                   <span className="ex-cart__sub">
                     <span className="sr-only">{t('explore.subtotal')} </span>
-                    <Price krw={l.price_krw == null ? null : l.price_krw * l.qty} currency={currency} size="sm" />
+                    <LineSubtotal line={l} currency={currency} />
                   </span>
                 </div>
               </li>
@@ -48,10 +49,19 @@ export function CartSheet({ cart, currency, onChangeQty, onOpenItem, onGoTrip, o
           </ul>
 
           <div className="ex-cart__total">
-            <div className="ex-cart__sum">
-              <span>{t('explore.total')}</span>
-              <strong data-testid="cart-total">{formatKrw(total)}</strong>
-            </div>
+            {totals.length === 0 && (
+              <div className="ex-cart__sum">
+                <span>{t('explore.total')}</span>
+                <strong data-testid="cart-total">—</strong>
+              </div>
+            )}
+            {totals.map((x) => (
+              <div key={`${x.currency}-${x.listed}`} className="ex-cart__sum">
+                <span>{fill(t(x.listed ? 'explore.totalListed' : 'explore.totalIn'), { currency: x.currency })}</span>
+                <strong data-testid={`cart-total-${x.currency}${x.listed ? '-listed' : ''}`}>{formatMoney(x.amount, x.currency, lang)}</strong>
+              </div>
+            ))}
+            {totals.length > 1 && <p className="note">{t('explore.perCurrency')}</p>}
             {converted != null && ready && (
               <div className="ex-cart__fx">
                 <span>{fill(t('explore.totalFx'), { amount: formatMoney(converted, currency, lang), currency })}</span>
@@ -60,7 +70,7 @@ export function CartSheet({ cart, currency, onChangeQty, onOpenItem, onGoTrip, o
             )}
             {noRate && <p className="note">{fill(t('explore.noRate'), { currency })}</p>}
             {fx.status === 'error' && currency !== 'KRW' && <p className="note">{t('explore.fxError')}</p>}
-            {unpriced.length > 0 && <p className="note note--warn">{fill(t('explore.unpriced'), { n: unpriced.length })}</p>}
+            {unpriced > 0 && <p className="note note--warn">{fill(t('explore.unpriced'), { n: unpriced })}</p>}
             <p className="ex-cart__fine">{t('explore.priceNote')}</p>
           </div>
 
@@ -71,4 +81,12 @@ export function CartSheet({ cart, currency, onChangeQty, onOpenItem, onGoTrip, o
       )}
     </Sheet>
   )
+}
+
+/** 줄 소계: 원화 판매가가 있으면 원화(+선택 통화 환산), 없으면 판매처 표시가격(통화 그대로) × 수량. 둘 다 없으면 미표기. */
+function LineSubtotal({ line, currency }: { line: CartSheetProps['cart'][number]; currency: string }) {
+  const p = linePrice(line)
+  if (!p) return <Price krw={null} currency={currency} size="sm" />
+  if (!p.listed) return <Price krw={p.amount * line.qty} currency={currency} size="sm" />
+  return <Price krw={null} list={{ ...line.list_price!, amount: p.amount * line.qty }} currency={currency} size="sm" />
 }

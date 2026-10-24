@@ -309,16 +309,24 @@ describe('My Trip navigation', () => {
     expect(url).toContain(`goal=${encodeURIComponent('127.020000,37.520000')}`)
   })
 
-  it('keeps the dashed straight line without times, and stops asking once Directions is not enabled', async () => {
+  it('keeps the dashed straight line without times when Directions is off, says so, and lets the user retry', async () => {
     const f = mockFetch({ config: { provider: 'naver', enabled: true, client_id: 'public-id' } })
     const made = installFakeNaver()
+    const user = userEvent.setup()
     const { rerender } = render(<MyTrip {...props({ trip: [place('1'), place('2')] })} />)
     expect(await screen.findByText(/not an actual travel route/)).toBeInTheDocument()
     await act(async () => { await new Promise((r) => setTimeout(r, 20)) })
     expect(made.polylines.every((p) => p.strokeStyle === 'shortdash')).toBe(true)
     expect(screen.queryByText(/By car about/)).toBeNull()
+    expect(await screen.findByTestId('route-status')).toHaveTextContent(/aren’t available|couldn’t be loaded/)
+    const calls = () => f.mock.calls.filter(([u]) => String(u).startsWith('/v1/maps/directions')).length
+    expect(calls()).toBe(1)
+    await user.click(screen.getByRole('button', { name: 'Retry route' }))
+    await act(async () => { await new Promise((r) => setTimeout(r, 20)) })
+    expect(calls()).toBe(2) // 한 번 실패해도 영구 차단하지 않는다
     rerender(<MyTrip {...props({ trip: [place('1'), place('2'), place('3')] })} />)
     await act(async () => { await new Promise((r) => setTimeout(r, 20)) })
-    expect(f.mock.calls.filter(([u]) => String(u).startsWith('/v1/maps/directions'))).toHaveLength(1)
+    expect(calls()).toBe(3) // 순서·장소가 바뀌면 다시 묻는다
   })
+
 })

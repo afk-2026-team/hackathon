@@ -93,3 +93,10 @@ class ApiError extends Error { status?: number }  // 실패 시 사용자 문구
 | Home AI | `components/HomeAssistant`(연결 세션의 `useAssistant` 사용). 사용자가 누를 때만 요청하고(자동 호출 없음), 서버 텍스트를 그대로 보여준다. 자유 텍스트를 상품 카드나 출처로 파싱하지 않는다. 오류·재시도·취소를 지원하고, 답이 나오면 Explore로 가는 버튼을 보여준다 |
 | 내비게이션 | 바다의 화면 스택 방식을 쓴다. 이전 main의 hash 딥링크(`#explore/<id>`)는 **제거됐다**. 새로고침해도 사용자 데이터(프로필·카트·여행)는 localStorage로 유지된다 |
 | 실행 서버 | 확인 시점의 8001은 병합 전 코드라 `/v1/maps/config`·`/v1/fx`가 404, `/v1/responses`가 405였다. 지도·환율·Home AI는 화면에서 오류/대체 상태로 보였고, 재시작 후 live 확인이 필요하다 |
+
+## 7. 바다 최신 반영 (53a9e27 병합, 2026-10-24)
+
+- 바다의 hash 화면 주소 복원(`#home`, `#explore`, `#trip`, `#explore/<itemId>`), 공용 지도 로더, 관심사 라벨 단일화, 튜토리얼 z-index 수정을 반영했다. 6절의 "hash 딥링크 제거"는 이 병합으로 해소됐다.
+- 연결 세션의 `lib/api.ts`(오류 문구에 상태 코드 없음, `detail` 보존)와 `assistant*.ts`는 그대로 유지했다. Home AI(`HomeAssistant`)도 유지한다.
+- 상세의 비교 패널은 바다의 `compare-wrap` 위치 하나만 남겼다(자동 병합으로 생긴 중복을 제거).
+- Home AI를 쓰려면 8001과 8000을 모두 실행해야 한다(README 참고).

@@ -217,14 +217,14 @@
 
 ### 3.10 POST /v1/responses (B 직접 · A 프록시) · POST /v1/chat/completions (B만)
 - **요청 `/v1/responses`:**
-  - `{model:"kbeauty-haiku", input?: string | ChatMessage[], stream?: bool, metadata?: {profile?: {language,country,gender,age_band}}}`
+  - `{model:"kbeauty-sonnet", input?: string | ChatMessage[], stream?: bool, metadata?: {profile?: {language,country,gender,age_band}}}`
   - extra 필드는 허용하고 무시한다. input이 목록이면 마지막 항목이 `role:"user"`여야 한다(아니면 400).
   - **input 없이 `metadata.profile`만 주면 서버가 Home 추천 요청 문장을 만든다.** input도 profile도 없으면 400이다.
 - **응답:** `{id:"resp_…", object:"response", created_at, status: completed|incomplete, model, output:[{type:"message", id, status, role:"assistant", content:[{type:"output_text", text, annotations:[]}]}], incomplete_details|null, metadata}`
   - `stream=true`면 SSE로 `response.created` → `response.output_item.added`·`content_part.added`·`output_text.delta`… → `response.completed|incomplete`를 보낸다.
 - **오류:** 없는 model은 404 `model_not_found`, 형식 오류는 400(OpenAI envelope)이다.
 - **A 프록시(`app/api/v1/assistant_proxy.py`) 규칙:**
-  - 요청: `{model?: string(기본 JINSEONMI_AI_MODEL 또는 "kbeauty-haiku"), input?: string|null(≤2000자, 앞뒤 공백 제거), stream?: false, metadata: {profile: {language(2~8자), country(2자), gender?(≤32자), age_band?(≤16자)}}}`
+  - 요청: `{model?: string(기본 JINSEONMI_AI_MODEL 또는 "kbeauty-sonnet"), input?: string|null(≤2000자, 앞뒤 공백 제거), stream?: false, metadata: {profile: {language(2~8자), country(2자), gender?(≤32자), age_band?(≤16자)}}}`
   - `stream=true`, extra 필드(프로필 안 포함), 2000자 초과, `metadata` 누락은 B 호출 전에 422로 막는다. 오류 형식은 A의 `{"error": {"message", "param"}}`다.
   - 업스트림은 `JINSEONMI_AI_UPSTREAM`(기본 `http://127.0.0.1:8000`), 시간 상한 60초다. `X-Thread-Id`가 오면 그대로 넘긴다.
   - 실패 매핑: B 미기동 503, 시간 초과 504, 읽을 수 없거나 `object≠"response"`인 응답 502. B의 4xx·5xx는 상태를 유지하고 B의 `error.message`를 담는다(UI는 이 문구를 `detail`로만 보관하고 사용자 문구는 따로 쓴다).
@@ -232,14 +232,14 @@
 - **chat/completions:** `{model, messages[], stream?, metadata?}`이며 응답은 OpenAI `chat.completion` 형식이다.
 - **출력 텍스트:** 모델 자유 문장이다. 구조화된 상품 카드·출처 필드는 **없다.** 화면 카드는 discovery 계열 응답으로 그려야 한다.
 
-[형식 예시 — 코드 스키마 기준, 이번 작업에서 8000 서버 실호출은 하지 않음]
+[형식 예시 — 코드 스키마 기준의 요청·응답 모양이다. 실제 호출 결과(5173 → A 프록시 → B, 200·8.6초·completed)는 위 "A 프록시 규칙"의 실측 항목에 적었다]
 
 ```json
-{"model": "kbeauty-haiku", "metadata": {"profile": {"language": "en", "country": "US"}}}
+{"model": "kbeauty-sonnet", "metadata": {"profile": {"language": "en", "country": "US"}}}
 ```
 
 ```json
-{"id": "resp_…", "object": "response", "created_at": 1761285600, "status": "completed", "model": "kbeauty-haiku", "output": [{"type": "message", "id": "msg_…", "status": "completed", "role": "assistant", "content": [{"type": "output_text", "text": "…", "annotations": []}]}], "incomplete_details": null, "metadata": {"profile": {"language": "en", "country": "US"}}}
+{"id": "resp_…", "object": "response", "created_at": 1761285600, "status": "completed", "model": "kbeauty-sonnet", "output": [{"type": "message", "id": "msg_…", "status": "completed", "role": "assistant", "content": [{"type": "output_text", "text": "…", "annotations": []}]}], "incomplete_details": null, "metadata": {"profile": {"language": "en", "country": "US"}}}
 ```
 
 ## 4. 미구현과 모호점

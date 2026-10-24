@@ -127,15 +127,15 @@ footer { margin-top: 60px; color: var(--muted); font-size: 13px; border-top: 1px
 <!-- 1 -->
 <section id="overview">
   <h2><span class="num">1</span>한눈에 보기</h2>
-  <p class="section-lede">요청 하나가 서버 안에서 거치는 길입니다. LLM은 마지막 단계(Haiku)에서만 씁니다.</p>
+  <p class="section-lede">요청 하나가 서버 안에서 거치는 길입니다. LLM은 마지막 단계(Sonnet)에서만 씁니다. 단, Jev를 못 쓸 때 켜는 Pseudo_JEV 모드에서는 ① 판단도 Sonnet이 합니다.</p>
   <div class="flow" role="img" aria-label="요청 처리 흐름">
     <div class="node"><b>요청</b><span>질문 또는 프로필<br><code>/v1/chat/completions</code><br><code>/v1/responses</code></span></div>
     <div class="arrow">→</div>
-    <div class="node hl"><b>① Jev 판단</b><span>무슨 주제인가(category)<br>어떤 콘텐츠인가(content_kind)<br>의료 관심(medical_intent)</span></div>
+    <div class="node hl"><b>① Jev 판단</b><small>(또는 Pseudo_JEV)</small><span>무슨 주제인가(category)<br>어떤 콘텐츠인가(content_kind)<br>의료 관심(medical_intent)</span></div>
     <div class="arrow">→</div>
     <div class="node hl"><b>② retrieve</b><span>Crawling_DB에서 조건에 맞는 근거 <b>최대 5건</b>을 규칙으로 고름(LLM 없음)</span></div>
     <div class="arrow">→</div>
-    <div class="node hl"><b>③ Haiku 응답</b><span>고른 근거만 써서 답하고 항목마다 <code>[근거 ID]</code>를 붙임</span></div>
+    <div class="node hl"><b>③ Sonnet 응답</b><span>고른 근거만 써서 답하고 항목마다 <code>[근거 ID]</code>를 붙임</span></div>
   </div>
   <p style="color:var(--muted);font-size:14px;margin-top:4px">범위 밖 질문(주식·날씨 등)은 ①에서 바로 <b>decline</b>(정중한 거절)으로 가고 ②는 건너뜁니다.</p>
 
@@ -154,7 +154,7 @@ footer { margin-top: 60px; color: var(--muted); font-size: 13px; border-top: 1px
     <thead><tr><th>메서드</th><th>경로</th><th>하는 일</th><th>언제 쓰나</th></tr></thead>
     <tbody>
       <tr><td><span class="method">GET</span></td><td><code>/health</code></td><td>서버 상태, 그래프 노드, 읽어 들인 근거 수</td><td>서버가 떴는지 확인할 때</td></tr>
-      <tr><td><span class="method">GET</span></td><td><code>/v1/models</code></td><td>사용 가능한 model 목록(현재 <code>kbeauty-haiku</code>)</td><td>요청에 넣을 model 이름을 확인할 때</td></tr>
+      <tr><td><span class="method">GET</span></td><td><code>/v1/models</code></td><td>사용 가능한 model 목록(현재 <code>kbeauty-sonnet</code>)</td><td>요청에 넣을 model 이름을 확인할 때</td></tr>
       <tr><td><span class="method post">POST</span></td><td><code>/v1/chat/completions</code></td><td>OpenAI Chat Completions 형식. 일반·스트리밍</td><td><b>기본으로 이것을 쓰세요</b></td></tr>
       <tr><td><span class="method post">POST</span></td><td><code>/v1/responses</code></td><td>OpenAI Responses API 형식. 일반·스트리밍. 그래프는 위와 같음</td><td>Responses 형식 클라이언트를 쓸 때</td></tr>
     </tbody>
@@ -187,7 +187,7 @@ footer { margin-top: 60px; color: var(--muted); font-size: 13px; border-top: 1px
       <tr><td><code>age_band</code></td><td>자유 문자열</td><td><code>20s</code></td><td><b>말투에만</b> 사용</td></tr>
     </tbody>
   </table>
-  <div class="callout key"><strong>성별·연령은 판단에 쓰지 않습니다</strong>Jev(판단 모델)에는 아예 전달되지 않고, 근거 고르기에도 쓰지 않습니다. Haiku가 말투를 맞출 때만 봅니다. 국가만으로 피부 타입이나 시술 적합성을 단정하지도 않습니다(기획안 §5-1).</div>
+  <div class="callout key"><strong>성별·연령은 판단에 쓰지 않습니다</strong>Jev(판단 모델)에는 아예 전달되지 않고, 근거 고르기에도 쓰지 않습니다. Sonnet이 말투를 맞출 때만 봅니다. 국가만으로 피부 타입이나 시술 적합성을 단정하지도 않습니다(기획안 §5-1).</div>
 
   <p>프로필은 두 가지 방법 중 편한 쪽으로 보내면 됩니다.</p>
   <div class="grid2">
@@ -209,7 +209,7 @@ footer { margin-top: 60px; color: var(--muted); font-size: 13px; border-top: 1px
   <table>
     <thead><tr><th>필드</th><th>필수</th><th>설명</th></tr></thead>
     <tbody>
-      <tr><td><code>model</code></td><td>✅</td><td><code>"kbeauty-haiku"</code> (목록은 <code>/v1/models</code>)</td></tr>
+      <tr><td><code>model</code></td><td>✅</td><td><code>"kbeauty-sonnet"</code> (목록은 <code>/v1/models</code>)</td></tr>
       <tr><td><code>messages</code></td><td></td><td>배열. <b>마지막 메시지만</b> 질문으로 씁니다. 마지막은 <code>role: "user"</code>여야 합니다. <code>system</code> 메시지는 무시합니다. content는 문자열 또는 <code>[{"type":"text","text":"…"}]</code>. Home 모드는 <code>[]</code></td></tr>
       <tr><td><code>stream</code></td><td></td><td><code>true</code>면 SSE 스트리밍(기본 <code>false</code>)</td></tr>
       <tr><td><code>metadata</code></td><td></td><td>프로필(위 3-2)</td></tr>
@@ -221,7 +221,7 @@ footer { margin-top: 60px; color: var(--muted); font-size: 13px; border-top: 1px
   <table>
     <thead><tr><th>필드</th><th>필수</th><th>설명</th></tr></thead>
     <tbody>
-      <tr><td><code>model</code></td><td>✅</td><td><code>"kbeauty-haiku"</code></td></tr>
+      <tr><td><code>model</code></td><td>✅</td><td><code>"kbeauty-sonnet"</code></td></tr>
       <tr><td><code>input</code></td><td></td><td>문자열(질문) 또는 메시지 배열(마지막 user 메시지만 사용, 내용 파트 <code>input_text</code> 지원). 생략하면 Home 모드</td></tr>
       <tr><td><code>stream</code></td><td></td><td><code>true</code>면 Responses 이벤트 스트림</td></tr>
       <tr><td><code>metadata</code></td><td></td><td>프로필. 응답의 <code>metadata</code>로 그대로 돌려줍니다</td></tr>
@@ -243,7 +243,7 @@ footer { margin-top: 60px; color: var(--muted); font-size: 13px; border-top: 1px
   "id": "chatcmpl-…",
   "object": "chat.completion",
   "created": 1792820904,
-  "model": "kbeauty-haiku",
+  "model": "kbeauty-sonnet",
   "choices": [{
     "index": 0,
     "message": {"role": "assistant",
@@ -257,7 +257,7 @@ footer { margin-top: 60px; color: var(--muted); font-size: 13px; border-top: 1px
   "object": "response",
   "created_at": 1792820912,
   "status": "completed",     // 또는 "incomplete"
-  "model": "kbeauty-haiku",
+  "model": "kbeauty-sonnet",
   "output": [{
     "type": "message", "role": "assistant",
     "content": [{"type": "output_text",
@@ -306,7 +306,7 @@ footer { margin-top: 60px; color: var(--muted); font-size: 13px; border-top: 1px
     <tbody>
       <tr><td><code>400</code></td><td>질문도 프로필도 없음, 마지막 메시지가 user가 아님, 본문 형식 오류</td><td><code>invalid_request_error</code></td></tr>
       <tr><td><code>404</code></td><td>없는 model 이름</td><td><code>invalid_request_error</code> / <code>model_not_found</code></td></tr>
-      <tr><td><code>500</code></td><td>Jev·Haiku 호출 실패 등. 스트리밍이어도 첫 토큰 전에 실패하면 SSE 대신 500 JSON</td><td><code>server_error</code></td></tr>
+      <tr><td><code>500</code></td><td>Jev·Sonnet 호출 실패 등. 스트리밍이어도 첫 토큰 전에 실패하면 SSE 대신 500 JSON</td><td><code>server_error</code></td></tr>
     </tbody>
   </table>
 </section>
@@ -315,6 +315,7 @@ footer { margin-top: 60px; color: var(--muted); font-size: 13px; border-top: 1px
 <section id="examples">
   <h2><span class="num">5</span>실제 예제</h2>
   <p class="section-lede">아래 응답은 <b>2026-10-24T14:48:24+09:00</b>에 로컬 서버에 실제로 보내 받은 것입니다. 본문 문장은 호출마다 달라집니다.</p>
+  <div class="callout"><strong>변경 전 실측입니다</strong>이 응답들은 응답 모델이 Haiku이고 model 이름이 <code>kbeauty-haiku</code>이던 때 받은 것입니다. 지금은 <code>kbeauty-sonnet</code>(Sonnet)이며, 요청 예시는 새 이름으로 고쳤습니다. 응답 형식은 같습니다.</div>
 
   <h3>① 서버 확인</h3>
 <pre><code>curl -s http://localhost:8000/health</code></pre>
@@ -344,7 +345,7 @@ footer { margin-top: 60px; color: var(--muted); font-size: 13px; border-top: 1px
   <h3>② Home 모드 — 온보딩 직후, 질문 없이 프로필만</h3>
 <pre><code>curl -s http://localhost:8000/v1/chat/completions \
   -H 'Content-Type: application/json' \
-  -d '{"model":"kbeauty-haiku","messages":[],
+  -d '{"model":"kbeauty-sonnet","messages":[],
        "metadata":{"profile":{"language":"en","country":"US","gender":"female","age_band":"20s"}}}'</code></pre>
   <details open><summary>실측 응답 보기</summary>
 <pre><code>{
@@ -368,7 +369,7 @@ footer { margin-top: 60px; color: var(--muted); font-size: 13px; border-top: 1px
   <h3>③ Responses API — 질문 + 평탄한 metadata</h3>
 <pre><code>curl -s http://localhost:8000/v1/responses \
   -H 'Content-Type: application/json' \
-  -d '{"model":"kbeauty-haiku","input":"Which sunscreen do Koreans actually use?",
+  -d '{"model":"kbeauty-sonnet","input":"Which sunscreen do Koreans actually use?",
        "metadata":{"language":"en","country":"JP"}}'</code></pre>
   <details><summary>실측 응답 보기</summary>
 <pre><code>{
@@ -402,7 +403,7 @@ footer { margin-top: 60px; color: var(--muted); font-size: 13px; border-top: 1px
   <h3>④ 스트리밍 (chat/completions)</h3>
 <pre><code>curl -sN http://localhost:8000/v1/chat/completions \
   -H 'Content-Type: application/json' \
-  -d '{"model":"kbeauty-haiku","messages":[{"role":"user","content":"Recommend a toner pad"}],"stream":true}'</code></pre>
+  -d '{"model":"kbeauty-sonnet","messages":[{"role":"user","content":"Recommend a toner pad"}],"stream":true}'</code></pre>
   <details><summary>실측 스트림(앞·뒤 일부)</summary>
 <pre><code>data: {"id": "chatcmpl-c81eba06672445a4bf752cb4f3329a32", "object": "chat.completion.chunk", "created": 1792820929, "model": "kbeauty-haiku", "choices": [{"index": 0, "delta": {"role": "assistant", "content": "Here"}, "finish_reason": null}]}
 
@@ -419,7 +420,7 @@ data: [DONE]</code></pre></details>
   <h3>⑤ 범위 밖 질문 → decline</h3>
 <pre><code>curl -s http://localhost:8000/v1/chat/completions \
   -H 'Content-Type: application/json' \
-  -d '{"model":"kbeauty-haiku","messages":[{"role":"user","content":"오늘 주식 뭐 사?"}]}'</code></pre>
+  -d '{"model":"kbeauty-sonnet","messages":[{"role":"user","content":"오늘 주식 뭐 사?"}]}'</code></pre>
 <pre><code>{
   "id": "chatcmpl-ed399b53594b48c1846b600adbb48b51",
   "object": "chat.completion",
@@ -468,7 +469,7 @@ CONCEPT_ID = re.compile(r"\[((?:products|clinics|videos)/[A-Za-z0-9_.\-]+)\]")
 
 def ask(profile: dict, question: str | None = None) -&gt; dict:
     body = {
-        "model": "kbeauty-haiku",
+        "model": "kbeauty-sonnet",
         "messages": [{"role": "user", "content": question}] if question else [],
         "metadata": {"profile": profile},
     }
@@ -496,18 +497,18 @@ cited concept ids: ['clinics/naver-blog-khshi001-224435086306', 'clinics/naver-b
 client = OpenAI(base_url="http://localhost:8000/v1", api_key="unused")  # 로컬 서버는 키를 보지 않음
 
 chat = client.chat.completions.create(
-    model="kbeauty-haiku",
+    model="kbeauty-sonnet",
     messages=[{"role": "user", "content": "Best cushion foundation in Korea?"}],
     metadata={"language": "en", "country": "SG"},
 )
 print(chat.choices[0].message.content)
 
-resp = client.responses.create(model="kbeauty-haiku", input="Toner pad picks?", metadata={"language": "en"})
+resp = client.responses.create(model="kbeauty-sonnet", input="Toner pad picks?", metadata={"language": "en"})
 print(resp.output_text)</code></pre>
 
   <div class="callout ok"><strong>Claude Code가 호출할 때 요약 계약</strong>
   ① <code>GET /health</code>로 <code>knowledge_count &gt; 0</code>인지 확인합니다.
-  ② <code>POST /v1/chat/completions</code>에 <code>model: "kbeauty-haiku"</code>와 <code>metadata.profile</code>을 보냅니다(질문이 없으면 <code>messages: []</code>).
+  ② <code>POST /v1/chat/completions</code>에 <code>model: "kbeauty-sonnet"</code>와 <code>metadata.profile</code>을 보냅니다(질문이 없으면 <code>messages: []</code>).
   ③ <code>choices[0].message.content</code>를 받습니다.
   ④ 정규식으로 근거 ID를 뽑고 <code>Crawling_DB/&lt;ID&gt;.md</code> frontmatter로 카드를 구성합니다.
   ⑤ <code>finish_reason == "length"</code>면 잘린 응답이므로 다시 요청합니다.
@@ -564,13 +565,29 @@ curl -s http://localhost:8000/health</code></pre></li>
     </tbody>
   </table>
 
+  <h3>Jev를 못 쓸 때 — Pseudo_JEV 스위치</h3>
+  <p>① 판단 단계는 기본적으로 Jev(TypeSafe 결정 모델)가 맡습니다. Jev를 쓸 수 없으면 <code>envs/agent_config.yaml</code>에서 한 줄을 바꾸고 서버를 재시작합니다. 자동으로 바뀌지 않습니다. Jev 호출이 실패하면 지금처럼 500 오류가 납니다.</p>
+<pre><code>jev:
+  mode: pseudo_jev   # 기본값 jev ↔ pseudo_jev</code></pre>
+  <table>
+    <thead><tr><th></th><th><code>mode: jev</code> (기본)</th><th><code>mode: pseudo_jev</code></th></tr></thead>
+    <tbody>
+      <tr><td>판단하는 모델</td><td>Jev <code>jev-1.14.0</code></td><td>Sonnet <code>claude-sonnet-5-5</code> + 시스템 프롬프트 + 구조화 출력</td></tr>
+      <tr><td>필요한 키</td><td><code>ASH_JEV_KEY</code>, <code>ASH_ANTHROPIC_API_KEY</code></td><td><code>ASH_ANTHROPIC_API_KEY</code>만</td></tr>
+      <tr><td>판단 질문</td><td colspan="2"><code>app/prompts/jev_questions.yaml</code> 하나를 같이 씀</td></tr>
+      <tr><td>확률·confidence</td><td>모델이 계산한 값</td><td>Sonnet이 <b>추정</b>한 값(보정 안 됨)</td></tr>
+      <tr><td>확인 방법</td><td colspan="2"><code>/health</code>의 <code>"judge"</code>, 서버 로그 <code>[JevJudge] judge=…</code></td></tr>
+      <tr><td>API 입출력</td><td colspan="2">바뀌지 않음 — 클라이언트는 할 일이 없음</td></tr>
+    </tbody>
+  </table>
+
   <h3>설정 파일 — 바꿀 일이 있을 때</h3>
   <table>
     <thead><tr><th>파일</th><th>내용</th></tr></thead>
     <tbody>
       <tr><td><code>envs/agent_config.yaml</code></td><td>포트(8000), model id, 근거 폴더(<code>knowledge.bundle_path</code>)·개수(<code>top_n: 5</code>), decline 분기, 멀티턴</td></tr>
-      <tr><td><code>envs/models/*.yaml</code></td><td>Haiku·Jev 모델 선언. 키는 <b>이름만</b> 적혀 있음</td></tr>
-      <tr><td><code>app/prompts/*.yaml</code></td><td>Jev 판단 질문, Haiku 시스템 프롬프트</td></tr>
+      <tr><td><code>envs/models/*.yaml</code></td><td>모델 선언: Haiku·Sonnet·Opus(<code>max_tokens</code> 모두 4096)와 Jev. 지금 응답과 Pseudo_JEV는 Sonnet 파일을 씀. 키는 <b>이름만</b> 적혀 있음</td></tr>
+      <tr><td><code>app/prompts/*.yaml</code></td><td>Jev 판단 질문(두 판정 모드 공용), 응답·거절·Pseudo_JEV 시스템 프롬프트</td></tr>
       <tr><td><code>envs/infisical.config.json</code></td><td>Infisical 프로젝트·서비스·키 이름 정본</td></tr>
     </tbody>
   </table>
@@ -584,7 +601,7 @@ curl -s http://localhost:8000/health</code></pre></li>
     <tbody>
       <tr><td><code>check</code>에서 <code>MISSING</code> 또는 인증 실패</td><td>로그인 안 됨 · 초대 미수락 · 토큰 만료</td><td><code>infisical login</code> 다시 하기, 관리자에게 접근권 확인. 로컬 키로 대체하지 마세요</td></tr>
       <tr><td>서버가 뜨자마자 종료: "knowledge.bundle_path 에 concept 이 없다"</td><td><code>Crawling_DB</code>가 비었거나 경로가 다름</td><td>저장소 루트에서 실행하는지 확인, <code>git status</code>로 폴더 확인</td></tr>
-      <tr><td><code>404 model_not_found</code></td><td>model 이름 오타</td><td><code>GET /v1/models</code>로 확인(<code>kbeauty-haiku</code>)</td></tr>
+      <tr><td><code>404 model_not_found</code></td><td>model 이름 오타</td><td><code>GET /v1/models</code>로 확인(<code>kbeauty-sonnet</code>)</td></tr>
       <tr><td><code>400</code> "사용자 발화나 metadata.profile 중 하나는 있어야 한다"</td><td>Home 모드인데 프로필이 비었음</td><td><code>metadata.profile</code>에 language·country 중 하나 이상</td></tr>
       <tr><td><code>500 server_error</code></td><td>Jev·Anthropic 호출 실패(네트워크·키·할당량)</td><td>서버 터미널의 Traceback 확인. <code>dev</code>와 <code>prod</code>는 같은 크레딧을 공유합니다</td></tr>
       <tr><td>응답이 중간에 끊김(<code>finish_reason: "length"</code>)</td><td>토큰 한도</td><td><code>agent_config.yaml</code> 프로필 <code>override.max_tokens</code>(현재 2048)</td></tr>

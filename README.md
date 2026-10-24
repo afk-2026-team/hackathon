@@ -37,6 +37,21 @@ Google 로그인과 Claude 비교 요약을 함께 사용할 때는 `--services 
 node scripts/secrets.mjs run --env dev --services supabase,naver,naver_maps,youtube,ash_workflow -- uv run python -m app.discovery_server
 ```
 
+### Home AI 조언(8001 + 8000)
+
+Home의 "Ask about your trip / 여행에 대해 물어보세요"는 브라우저가 같은 origin의 `POST /v1/responses`를 부릅니다. 탐색 서버(8001)가 이 요청을 AI 서버(`app.serve`, 기본 `http://127.0.0.1:8000`, `JINSEONMI_AI_UPSTREAM`으로 변경 가능)로 전달합니다. 따라서 **두 서버를 모두 실행해야** AI 답변이 나옵니다. 모델 키는 8000 쪽에만 주입합니다.
+
+```sh
+# 터미널 1 — 탐색 서버(8001, Vite /v1 프록시 대상)
+node scripts/secrets.mjs run --env dev --services supabase,naver,naver_maps,youtube,ash_workflow -- uv run python -m app.discovery_server
+# 터미널 2 — AI 서버(8000)
+node scripts/secrets.mjs run --env dev --services ash_workflow -- uv run python -m app.serve
+# 터미널 3 — 화면(5173)
+cd web && npm run dev
+```
+
+8000이 꺼져 있으면 Home AI 영역은 오류 문구와 "다시 시도"를 보여줍니다. 탐색·비교·저장 기능은 그대로 쓸 수 있습니다.
+
 | 서비스 | 화면에서 쓰는 곳 | 없을 때 |
 |---|---|---|
 | `naver_maps` | 의료·장소 상세 지도, My Trip 지도·숙소 주소 찾기(`/v1/maps/*`) | 지도 대신 안내와 네이버·구글 지도 링크 |

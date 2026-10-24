@@ -1,4 +1,4 @@
-# envs/agent_config.yaml — K-뷰티 Jev 분류·분기 + Haiku 스트리밍 workflow 설정
+# envs/agent_config.yaml — K-뷰티 Jev(또는 Pseudo_JEV) 분류·분기 + Sonnet 스트리밍 workflow 설정
 # 편집 규칙: 값만 조정한다. 키 추가·삭제·rename 은 계약 변경이다(spec §6.5) — app/utils/config.py 의 키 목록과 함께 바꾼다.
 # 정본 설계: docs/plan/plan_26102412_LangGraph_Jev_라이브서버_설계.md §6·§7
 # 키는 이 파일이 아니라 팀 Infisical 이 주입한다(.claude/rules/secrets.md):
@@ -12,13 +12,20 @@ server:
   serving_type: "chat/completions" # 허용값은 이것 하나 — 다른 값이면 기동 거부
 
 profiles:                          # 행 1개 = 서빙할 모델 1개. id = 요청의 model 값. 0행이면 기동 거부
-  - {id: kbeauty-haiku, llm: {path: envs/models/claude-haiku-5-5_anthropic.yaml, override: {max_tokens: 2048}}}  # Home 피드 3~5건이 1024 에서 잘림(2026-10-24 실측)
+  - {id: kbeauty-sonnet, llm: {path: envs/models/claude-sonnet-5-5_anthropic.yaml, override: {}}}  # max_tokens 는 모델 yaml 의 4096(Haiku 1024 는 Home 피드에서 잘렸다, 2026-10-24 실측)
+  # 다른 선언: envs/models/claude-haiku-5-5_anthropic.yaml · claude-opus-5-5_anthropic.yaml — 행을 더하면 요청 model 값으로 고를 수 있다
 
 # ── 이 아래는 workflow 전용 블록 ──
 
 jev:
-  model_path: envs/models/jev-1.14.0_typesafe.yaml   # Jev(TypeSafe) 분류기 선언
-  questions_prompt: jev_questions.yaml               # app/prompts/ 의 판단 질문 파일(category Choice + purchase_intent Noul)
+  # 판정기 스위치(수동 — 바꾸면 서버 재시작). Jev 호출이 실패해도 자동으로 바꾸지 않는다(오류는 그대로 드러난다).
+  #   jev        → Jev(TypeSafe) 결정 모델. 키 ASH_JEV_KEY 필요 (기본값)
+  #   pseudo_jev → Sonnet 이 시스템 프롬프트(prompt.pseudo_jev_system) + 구조화 출력으로 Jev 출력을 모사. ASH_JEV_KEY 불필요
+  #                확률·confidence 는 LLM 추정값이다 — 로그 judge=pseudo_jev, /health judge 로 구분한다
+  mode: jev
+  model_path: envs/models/jev-1.14.0_typesafe.yaml           # mode: jev 일 때 읽는 Jev(TypeSafe) 분류기 선언
+  pseudo_model_path: envs/models/claude-sonnet-5-5_anthropic.yaml  # mode: pseudo_jev 일 때 읽는 LLM 선언(응답 모델과 같은 파일 재사용)
+  questions_prompt: jev_questions.yaml                       # app/prompts/ 의 판단 질문 파일 — 두 모드가 같은 질문을 쓴다
 
 router:
   # true  → jev_judge 뒤 조건 분기: category 가 decline_labels 에 있으면 decline, 아니면 respond
@@ -32,6 +39,7 @@ prompt:                            # app/prompts/ 파일명 — 노드는 파일
   respond_system: respond_system.yaml   # respond 노드 system (C 형식)
   respond_turn: respond_turn.yaml       # respond 노드 현재 턴 human 템플릿 (T 형식: 판단 결과 + 질문)
   decline_system: decline_system.yaml   # decline 노드 system (C 형식)
+  pseudo_jev_system: pseudo_jev_system.yaml  # jev.mode: pseudo_jev 판정기 system (C 형식). jev 모드에서도 읽어 검증한다
 
 multi_turn:                        # on/off 토글 블록 — 꺼도 남겨 두고 값은 검증한다(K4)
   enabled: false                   # true → InMemorySaver checkpointer 부착, 요청마다 thread_header 필수(없으면 400)

@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jinseonmi</title>
+<style>
+:root{
+  --bg:#faf6f4;--card:#fff;--text:#231c1f;--muted:#7d7275;--border:#eee3df;
+  --primary:#d9467a;--primary-soft:#fde8ef;
+  --med:#0f9d7a;--med-soft:#e0f5ef;
+  --sponsor:#e8590c;--sponsor-soft:#fff0e6;
+  --warn:#8a6d00;--warn-soft:#fff6d6;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI","Malgun Gothic","Apple SD Gothic Neo",sans-serif;background:#e9e3e0;color:var(--text)}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;padding:0}
+input,select{font:inherit;color:inherit}
+.phone{position:relative;max-width:420px;height:100vh;margin:0 auto;background:var(--bg);display:flex;flex-direction:column;overflow:hidden}
+@media(min-width:500px){body{padding:24px 0}.phone{height:min(880px,calc(100vh - 48px));border-radius:32px;box-shadow:0 20px 60px rgba(0,0,0,.18)}}
+
+/* header */
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:16px 16px 10px;background:var(--bg)}
+.logo{font-size:22px;font-weight:800;letter-spacing:-.02em}
+.logo b{color:var(--primary)}
+.hdr-r{display:flex;gap:8px;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--border);background:var(--card);border-radius:999px;padding:5px 10px;font-size:12px}
+.icon-btn{position:relative;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--card);font-size:15px}
+.badge-n{position:absolute;top:-3px;right:-3px;min-width:16px;height:16px;border-radius:8px;background:var(--primary);color:#fff;font-size:9px;font-weight:700;display:grid;place-items:center;padding:0 3px}
+
+/* layout */
+.content{flex:1;overflow-y:auto;padding:0 14px 18px}
+.sample{display:flex;gap:6px;align-items:center;background:var(--warn-soft);color:var(--warn);font-size:11px;border-radius:10px;padding:6px 10px;margin-bottom:12px}
+.sec-t{font-size:15px;font-weight:700;margin:18px 2px 8px;display:flex;justify-content:space-between;align-items:baseline}
+.sec-t small{font-weight:400;color:var(--muted);font-size:11px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:12px}
+.muted{color:var(--muted)}
+.tiny{font-size:11px}
+.row{display:flex;gap:8px;align-items:center}
+.grow{flex:1;min-width:0}
+.trunc{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* nav */
+.nav{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);background:var(--card);padding:6px 6px 10px}
+.nav button{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;border-radius:12px;font-size:11px;color:var(--muted);position:relative}
+.nav button svg{width:22px;height:22px}
+.nav button.on{color:var(--primary);font-weight:700}
+.nav button.on::before{content:"";position:absolute;top:-7px;left:30%;right:30%;height:3px;border-radius:2px;background:var(--primary)}
+
+/* buttons */
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:6px;border-radius:14px;padding:11px 14px;font-weight:600;font-size:14px;background:var(--primary);color:#fff}
+.btn.ghost{background:transparent;color:var(--muted)}
+.btn.line{background:var(--card);border:1px solid var(--border);color:var(--text)}
+.btn.med{background:var(--med)}
+.btn.sm{padding:6px 10px;font-size:11px;border-radius:999px}
+.btn:disabled{opacity:.4;cursor:default}
+.btn.block{width:100%}
+
+/* tags */
+.tag{display:inline-flex;align-items:center;gap:3px;border-radius:999px;padding:2px 8px;font-size:10px;font-weight:600;white-space:nowrap}
+.tag.sp-yes{background:var(--sponsor-soft);color:var(--sponsor)}
+.tag.sp-none{background:#eef2f0;color:#4b6358}
+.tag.sp-unknown{background:#f1eff6;color:#6a5f86}
+.tag.med{background:var(--med-soft);color:var(--med)}
+.tag.beauty{background:var(--primary-soft);color:var(--primary)}
+.tag.warn{background:var(--warn-soft);color:var(--warn)}
+.tag.ok{background:#e3f6e8;color:#2b8a3e}
+
+/* onboarding */
+.ob{flex:1;display:flex;flex-direction:column;padding:28px 22px 22px;overflow-y:auto}
+.ob-steps{display:flex;gap:6px;margin-bottom:26px}
+.ob-steps i{flex:1;height:4px;border-radius:2px;background:var(--border)}
+.ob-steps i.on{background:var(--primary)}
+.ob h2{font-size:22px;margin:0 0 6px;letter-spacing:-.02em}
+.ob p.hint{margin:0 0 18px;color:var(--muted);font-size:13px;line-height:1.45}
+.opt-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opt{border:1.5px solid var(--border);background:var(--card);border-radius:14px;padding:12px;text-align:left;font-size:14px}
+.opt.on{border-color:var(--primary);background:var(--primary-soft);font-weight:600}
+.opt.big{padding:18px;font-size:17px}
+.lbl{font-size:12px;font-weight:600;color:var(--muted);margin:16px 0 8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.pill{border:1.5px solid var(--border);background:var(--card);border-radius:999px;padding:7px 12px;font-size:13px}
+.pill.on{border-color:var(--primary);background:var(--primary-soft);color:var(--primary);font-weight:600}
+.pill.med.on{border-color:var(--med);background:var(--med-soft);color:var(--med)}
+.field{width:100%;border:1.5px solid var(--border);background:var(--card);border-radius:12px;padding:10px 12px;font-size:14px;outline:none}
+.field:focus{border-color:var(--primary)}
+.ob-foot{margin-top:auto;padding-top:22px;display:flex;gap:8px}
+.ob-foot .btn{flex:1}
+
+/* home */
+.ad{position:relative;border-radius:20px;padding:14px;background:linear-gradient(135deg,#ffb26b,#ff7b54);color:#fff;overflow:hidden}
+.ad .ad-l{display:inline-block;background:rgba(0,0,0,.25);border-radius:6px;padding:2px 6px;font-size:10px;font-weight:700;letter-spacing:.05em}
+.ad h3{margin:8px 0 2px;font-size:17px}
+.ad p{margin:0;font-size:11px;opacity:.95}
+.hscroll{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;scroll-snap-type:x mandatory}
+.rec{flex:0 0 72%;scroll-snap-align:start}
+.thumb{border-radius:14px;flex-shrink:0;display:grid;place-items:center;font-size:20px}
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cat{text-align:left;border-radius:18px;padding:14px;min-height:92px;display:flex;flex-direction:column;justify-content:space-between}
+.cat b{font-size:14px}
+.cat span{font-size:11px;opacity:.8}
+.note{display:flex;gap:6px;align-items:flex-start;font-size:11px;color:var(--muted);background:#f3eeec;border-radius:10px;padding:8px 10px;margin-top:8px;line-height:1.4}
+
+/* explore */
+.seg{display:grid;grid-template-columns:1fr 1fr;background:#efe8e5;border-radius:14px;padding:3px;margin-bottom:10px}
+.seg button{padding:8px;border-radius:11px;font-size:13px;font-weight:600;color:var(--muted)}
+.seg button.on{background:var(--card);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.tabs{display:flex;gap:6px;margin-bottom:10px}
+.tabs button{padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600;border:1px solid var(--border);background:var(--card)}
+.tabs button.on{background:var(--text);color:#fff;border-color:var(--text)}
+.tabs button.sp.on{background:var(--sponsor);border-color:var(--sponsor)}
+.split{display:grid;grid-template-columns:40% minmax(0,1fr);gap:8px}
+.rank-item{display:flex;gap:7px;align-items:center;width:100%;text-align:left;border:1.5px solid var(--border);background:var(--card);border-radius:14px;padding:7px;margin-bottom:6px}
+.rank-item.on{border-color:var(--primary);background:var(--primary-soft)}
+.rank-item.medi.on{border-color:var(--med);background:var(--med-soft)}
+.rank-item.spi.on{border-color:var(--sponsor);background:var(--sponsor-soft)}
+.rk{font-size:11px;font-weight:800;color:var(--primary)}
+.medi .rk{color:var(--med)}
+.spi .rk{color:var(--sponsor)}
+.detail h3{margin:0;font-size:15px;line-height:1.25}
+.ev{list-style:none;margin:8px 0 0;padding:0}
+.ev li{display:flex;justify-content:space-between;gap:6px;font-size:11px;padding:5px 0;border-top:1px dashed var(--border)}
+.ev li b{font-weight:700}
+.shorts{height:250px;overflow-y:auto;scroll-snap-type:y mandatory;border-radius:16px;margin-top:8px}
+.short{height:230px;margin-bottom:8px;scroll-snap-align:start;border-radius:16px;padding:10px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;position:relative}
+.short .play{position:absolute;inset:0;margin:auto;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.3);display:grid;place-items:center;font-size:18px}
+.price{font-weight:800;font-size:15px}
+.conv{font-size:11px;color:var(--muted)}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.cmp > *{border-radius:12px;padding:8px;font-size:11px;background:#f6f2f0;min-width:0}
+.alt{background:linear-gradient(135deg,#fff,#fdf0f4);margin-bottom:10px}
+
+/* overlay & sheets */
+.scrim{position:absolute;inset:0;background:rgba(35,28,31,.45);z-index:30}
+.drawer{position:absolute;top:0;right:0;bottom:0;width:86%;background:var(--card);border-radius:24px 0 0 24px;z-index:31;display:flex;flex-direction:column}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:var(--card);border-radius:24px 24px 0 0;z-index:31;padding:18px;max-height:85%;overflow-y:auto}
+.d-h{display:flex;justify-content:space-between;align-items:center;padding:16px;border-bottom:1px solid var(--border)}
+.d-b{flex:1;overflow-y:auto;padding:14px}
+.d-f{border-top:1px solid var(--border);padding:14px}
+.qty{display:flex;align-items:center;gap:6px}
+.qty button{width:24px;height:24px;border-radius:50%;background:#f1ebe8;font-size:13px}
+
+/* tutorial */
+.tut-scrim{position:absolute;inset:0;background:rgba(20,14,17,.6);z-index:40}
+.tut-bubble{position:absolute;left:16px;right:16px;bottom:96px;background:var(--card);border-radius:18px;padding:16px;z-index:42}
+.tut-bubble::after{content:"";position:absolute;bottom:-8px;width:16px;height:16px;background:var(--card);transform:rotate(45deg);left:var(--arrow-x,15%)}
+.nav.tut{position:relative;z-index:41}
+.nav.tut button{opacity:.35}
+.nav.tut button.hl{opacity:1;background:var(--primary-soft);color:var(--primary);font-weight:700}
+.tut-num{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--primary);color:#fff;font-size:12px;font-weight:800;margin-right:6px}
+
+/* trip */
+.stop{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--border)}
+.stop:first-child{border-top:0}
+.pin{width:24px;height:24px;border-radius:50%;color:#fff;font-size:11px;font-weight:800;display:grid;place-items:center;flex-shrink:0}
+.time{font-size:12px;font-weight:700;width:44px;flex-shrink:0;padding-top:3px}
+.map{border-radius:16px;overflow:hidden;background:#eef3ef;border:1px solid var(--border)}
+.empty{text-align:center;padding:30px 10px;color:var(--muted);font-size:13px}
+.toast{position:absolute;left:50%;bottom:90px;transform:translateX(-50%);background:var(--text);color:#fff;padding:8px 14px;border-radius:999px;font-size:12px;z-index:50;white-space:nowrap}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+/* ============================================================
+   Jinseonmi / 진선미 — UI prototype (static, sample data only)
+   Based on docs/strategy/strategy_26102413_통합플랫폼_최종기획안.md
+   All products, clinics, counts, rates and videos are SAMPLE values.
+   ============================================================ */
+
+const I18N = {
+  en: {
+    appName:'Jinseonmi', sample:'Sample data — not real rankings, reviews or prices',
+    home:'Home', explore:'Explore', trip:'My Trip',
+    ob_lang:'Choose your language', ob_lang_hint:'You can change this later in Settings.',
+    ob_country:'Where are you visiting from?', ob_country_hint:'Used for currency and country-aware picks. Change it anytime.',
+    currency:'Currency', ob_basic:'A few basics', ob_basic_hint:'Optional. Never used to judge medical suitability.',
+    gender:'Gender', age:'Age group', g_f:'Female', g_m:'Male', g_o:'Other', g_n:'Prefer not to say',
+    a_10:'Under 20', a_20:'20s', a_30:'30s', a_40:'40s', a_50:'50+', a_n:'Prefer not to say',
+    ob_pref:'Personalize (optional)', ob_pref_hint:'Skip this and we will show common evidence-based picks.',
+    beautyInt:'Beauty interests', medicalInt:'Medical interests', scopeTbd:'Medical scope is still being decided',
+    usingNow:'A product you use now', usingNowPh:'e.g. my usual sunscreen',
+    next:'Next', back:'Back', skip:'Skip', start:'Start',
+    i_skin:'Skincare', i_makeup:'Makeup', i_sun:'Sun care', i_hair:'Hair',
+    k_derm:'Dermatology', k_checkup:'Health check-up', k_dental:'Dental',
+    c_cleanser:'Cleanser', c_toner:'Toner', c_serum:'Serum', c_sun:'Sun care', c_lip:'Lip', c_cream:'Cream',
+    tut1:'Home — picks for you, beauty and medical together.',
+    tut2:'Explore — real rankings with evidence. Sponsored is kept separate.',
+    tut3:'My Trip — turn saved places into a route and a schedule.',
+    tutSkip:'Skip tutorial', tutNext:'Next', tutDone:'Got it',
+    ad:'AD · SPONSORED', adNote:'Promoted by the brand — not part of the real ranking',
+    picked:'Picked for you', why:'Why', basedPref:'Matches your interest: {x}', basedCommon:'Common evidence (no preferences entered)',
+    countryNote:'Not enough {c}-specific evidence yet — showing common evidence-based picks.',
+    categories:'Popular categories', cat_med:'Seoul medical tourism', cat_med_s:'Clinics & check-ups',
+    cat_real:'Real ranking', cat_real_s:'What Koreans really use', cat_rising:'Rising now', cat_rising_s:'Fast-climbing items',
+    cat_alt:'Korean alternatives', cat_alt_s:'Swap your usual product', tripTeaser:'My Trip', tripStops:'{n} stops planned',
+    beauty:'Beauty', medical:'Medical', real:'Real ranking', sponsored:'Sponsored', overall:'Overall', rising:'Rising',
+    rankedBy:'Ranked by blog mentions · drugstore rank · search trends', rankedByMed:'Ordered by review count — not a quality judgement', sponsoredBy:'Paid placements — never mixed into the real ranking',
+    sp:'Sponsored?', sp_none:'No disclosure found', sp_yes:'Yes — sponsored', sp_unknown:"Couldn't verify",
+    evidence:'Why it ranks', ev_blog:'Blog mentions', ev_store:'Drugstore rank', ev_trend:'Search-trend rank', ev_promo:'Placement', ev_promo_v:'Paid by brand',
+    shorts:'Short videos', shortPh:'Video placeholder — real links after data rights are confirmed',
+    addCart:'+ Cart', added:'Added to cart',
+    cmpTitle:'Next to real-ranking pick in {cat}', notDiscount:'Different products — this is not a discount.',
+    altTitle:'Find the Korean alternative', altYour:'What you use now', altCat:'Category', altResult:"Koreans' #1 {cat} in this ranking", altEmpty:'Type a product and pick a category',
+    reviews:'Reviews', langs:'Languages', from:'From', area:'Area',
+    addTrip:'+ My Trip', inTrip:'In My Trip ✓', addedTrip:'Added to My Trip', removedTrip:'Removed from My Trip',
+    medDisc:'Information only. Medical decisions and booking confirmation are made by the clinic.',
+    cart:'Your cart', items:'{n} items', cartEmpty:'Your cart is empty. Tap “+ Cart” on a product.', total:'Total',
+    approx:'≈ {v}', rateNote:'Converted with a sample rate — not live', cartToTrip:'Plan store visits in My Trip',
+    personalize:'Personalize (optional)', personalizeOff:'No preferences — using country context and common evidence.', edit:'Edit', done:'Done',
+    stops:'Places to visit', emptyTrip:'Nothing yet. Add products to your cart or clinics in Explore.', goExplore:'Go to Explore',
+    buildRoute:'Build route', mapNote:'Map placeholder — provider not decided (NAVER Maps is a candidate)',
+    schedule:'Suggested schedule · Day 1', st_sug:'Suggested', st_ok:'You approved', approve:'Approve',
+    clinicPending:'Clinic confirmation: pending', forItems:'For: {x}', shopStop:'Store', medStop:'Clinic',
+    settings:'Settings', language:'Language', country:'Country', redoOb:'Redo onboarding', replayTut:'Replay tutorial', reset:'Reset demo', close:'Close',
+  },
+  ko: {
+    appName:'진선미', sample:'샘플 데이터 — 실제 순위·리뷰·가격이 아닙니다',
+    home:'홈', explore:'탐색', trip:'내 여행',
+    ob_lang:'언어를 선택하세요', ob_lang_hint:'나중에 설정에서 바꿀 수 있어요.',
+    ob_country:'어느 나라에서 오시나요?', ob_country_hint:'통화와 국가별 추천에 사용해요. 언제든 바꿀 수 있어요.',
+    currency:'통화', ob_basic:'기본 정보', ob_basic_hint:'선택 사항이에요. 의료 적합성 판단에는 쓰지 않아요.',
+    gender:'성별', age:'연령대', g_f:'여성', g_m:'남성', g_o:'기타', g_n:'응답 안 함',
+    a_10:'20세 미만', a_20:'20대', a_30:'30대', a_40:'40대', a_50:'50대 이상', a_n:'응답 안 함',
+    ob_pref:'취향 설정 (선택)', ob_pref_hint:'건너뛰면 공통 근거 기반 추천을 보여드려요.',
+    beautyInt:'뷰티 관심사', medicalInt:'의료 관심사', scopeTbd:'의료 세부 범위는 아직 정해지지 않았어요',
+    usingNow:'지금 쓰는 제품', usingNowPh:'예: 평소 쓰는 선크림',
+    next:'다음', back:'이전', skip:'건너뛰기', start:'시작하기',
+    i_skin:'스킨케어', i_makeup:'메이크업', i_sun:'선케어', i_hair:'헤어',
+    k_derm:'피부과', k_checkup:'건강검진', k_dental:'치과',
+    c_cleanser:'클렌저', c_toner:'토너', c_serum:'세럼', c_sun:'선케어', c_lip:'립', c_cream:'크림',
+    tut1:'홈 — 뷰티와 의료 추천을 한 화면에서 봐요.',
+    tut2:'탐색 — 근거가 보이는 실제 랭킹. 스폰서는 따로 분리돼요.',
+    tut3:'내 여행 — 담아 둔 장소로 경로와 일정을 만들어요.',
+    tutSkip:'튜토리얼 건너뛰기', tutNext:'다음', tutDone:'알겠어요',
+    ad:'광고 · 스폰서', adNote:'브랜드가 홍보 중인 제품 — 실제 랭킹과 무관',
+    picked:'나를 위한 추천', why:'추천 이유', basedPref:'관심사와 일치: {x}', basedCommon:'공통 근거 (취향 미입력)',
+    countryNote:'{c} 국가 근거가 아직 부족해요 — 공통 근거 기반 추천을 보여드려요.',
+    categories:'자주 찾는 카테고리', cat_med:'서울 의료관광', cat_med_s:'클리닉·건강검진',
+    cat_real:'리얼 랭킹', cat_real_s:'한국인이 진짜 쓰는 제품', cat_rising:'떠오르는 랭킹', cat_rising_s:'빠르게 오르는 제품',
+    cat_alt:'한국 대안 찾기', cat_alt_s:'내 제품과 비슷한 한국 제품', tripTeaser:'내 여행', tripStops:'방문지 {n}곳',
+    beauty:'뷰티', medical:'의료', real:'리얼 랭킹', sponsored:'스폰서', overall:'종합', rising:'급상승',
+    rankedBy:'블로그 언급 · 드럭스토어 순위 · 검색 트렌드 기준', rankedByMed:'리뷰 수 기준 정렬 — 의료 품질 판단이 아니에요', sponsoredBy:'유료 노출 — 실제 랭킹과 섞지 않아요',
+    sp:'협찬 여부', sp_none:'협찬 표시 없음', sp_yes:'협찬 있음', sp_unknown:'확인 못 함',
+    evidence:'순위 근거', ev_blog:'블로그 언급', ev_store:'드럭스토어 순위', ev_trend:'검색 트렌드 순위', ev_promo:'노출 방식', ev_promo_v:'브랜드 유료 노출',
+    shorts:'숏폼 영상', shortPh:'영상 자리 — 데이터 이용 권리 확인 후 실제 링크 연결',
+    addCart:'+ 담기', added:'카트에 담았어요',
+    cmpTitle:'{cat} 리얼 랭킹 제품과 나란히 보기', notDiscount:'서로 다른 제품이에요 — 할인이 아닙니다.',
+    altTitle:'한국 대안 제품 찾기', altYour:'지금 쓰는 제품', altCat:'카테고리', altResult:'이 랭킹의 {cat} 1위', altEmpty:'제품명을 적고 카테고리를 고르세요',
+    reviews:'리뷰', langs:'지원 언어', from:'최저', area:'지역',
+    addTrip:'+ 내 여행', inTrip:'내 여행에 있음 ✓', addedTrip:'내 여행에 추가했어요', removedTrip:'내 여행에서 뺐어요',
+    medDisc:'정보 제공용입니다. 의료 판단과 예약 확정은 의료기관이 합니다.',
+    cart:'카트', items:'{n}개', cartEmpty:'카트가 비어 있어요. 제품의 “+ 담기”를 누르세요.', total:'합계',
+    approx:'≈ {v}', rateNote:'샘플 환율로 환산 — 실시간 아님', cartToTrip:'내 여행에서 매장 방문 계획하기',
+    personalize:'취향 설정 (선택)', personalizeOff:'취향 미입력 — 국가 맥락과 공통 근거로 추천해요.', edit:'수정', done:'완료',
+    stops:'방문할 곳', emptyTrip:'아직 없어요. 탐색에서 제품을 담거나 클리닉을 추가하세요.', goExplore:'탐색으로 가기',
+    buildRoute:'경로 만들기', mapNote:'지도 자리 — 지도 제공자 미정 (NAVER Maps 후보)',
+    schedule:'추천 일정 · 1일차', st_sug:'제안', st_ok:'내가 승인', approve:'승인',
+    clinicPending:'의료기관 확인: 대기 중', forItems:'구매 예정: {x}', shopStop:'매장', medStop:'클리닉',
+    settings:'설정', language:'언어', country:'국가', redoOb:'온보딩 다시 하기', replayTut:'튜토리얼 다시 보기', reset:'데모 초기화', close:'닫기',
+  }
+};
+
+const COUNTRIES = [
+  {code:'US', en:'United States', ko:'미국', cur:'USD', flag:'🇺🇸'},
+  {code:'JP', en:'Japan', ko:'일본', cur:'JPY', flag:'🇯🇵'},
+  {code:'CN', en:'China', ko:'중국', cur:'CNY', flag:'🇨🇳'},
+  {code:'TW', en:'Taiwan', ko:'대만', cur:'TWD', flag:'🇹🇼'},
+  {code:'TH', en:'Thailand', ko:'태국', cur:'THB', flag:'🇹🇭'},
+  {code:'VN', en:'Vietnam', ko:'베트남', cur:'VND', flag:'🇻🇳'},
+  {code:'SG', en:'Singapore', ko:'싱가포르', cur:'SGD', flag:'🇸🇬'},
+  {code:'OT', en:'Other', ko:'기타', cur:'USD', flag:'🌐'},
+];
+// SAMPLE conversion rates (KRW -> currency). Not live; for layout only.
+const SAMPLE_RATES = {KRW:1, USD:0.00072, JPY:0.11, CNY:0.0052, TWD:0.023, THB:0.025, VND:18.5, SGD:0.00095};
+
+const HUES = ['#f4a7b9','#a5d8ff','#b2f2bb','#ffe066','#ffc9c9','#d0bfff','#ffd8a8','#99e9f2'];
+const BEAUTY = [
+  {id:'b1', name:'Cloud Foam Cleanser', brand:'MOONSOO', cat:'cleanser', interest:'skin', price:14000, blog:18420, store:1, trend:2, rising:3, sponsor:'none', shop:'s1', hue:0, emoji:'🫧'},
+  {id:'b2', name:'Rice Water Toner', brand:'HANBIT', cat:'toner', interest:'skin', price:18000, blog:15210, store:3, trend:1, rising:1, sponsor:'none', shop:'s1', hue:1, emoji:'💧'},
+  {id:'b3', name:'Cica Calm Serum', brand:'SOOP LAB', cat:'serum', interest:'skin', price:25000, blog:12980, store:2, trend:4, rising:4, sponsor:'unknown', shop:'s2', hue:2, emoji:'🌿'},
+  {id:'b4', name:'Dewy Sun Essence', brand:'HAEVIT', cat:'sun', interest:'sun', price:22000, blog:11040, store:5, trend:3, rising:2, sponsor:'none', shop:'s2', hue:3, emoji:'☀️'},
+  {id:'b5', name:'Peach Lip Tint', brand:'DAL', cat:'lip', interest:'makeup', price:12000, blog:9870, store:4, trend:6, rising:6, sponsor:'unknown', shop:'s1', hue:4, emoji:'💄'},
+  {id:'b6', name:'Barrier Cream', brand:'ONDO', cat:'cream', interest:'skin', price:19000, blog:8320, store:7, trend:5, rising:5, sponsor:'none', shop:'s3', hue:5, emoji:'🧴'},
+];
+const BEAUTY_SP = [
+  {id:'bs1', name:'Aurora Glow Ampoule', brand:'LUMI', cat:'serum', interest:'skin', price:32000, sponsor:'yes', shop:'s3', hue:6, emoji:'✨', sponsored:true},
+  {id:'bs2', name:'Velvet Cushion SPF', brand:'MIRAE', cat:'sun', interest:'sun', price:28000, sponsor:'yes', shop:'s2', hue:7, emoji:'🌤️', sponsored:true},
+];
+const SHOPS = {
+  s1:{name:'Drugstore · Myeong-dong', area:'Myeong-dong', x:52, y:34},
+  s2:{name:'Beauty store · Gangnam', area:'Gangnam', x:78, y:78},
+  s3:{name:'Pop-up street · Seongsu', area:'Seongsu', x:80, y:46},
+};
+const MEDICAL = [
+  {id:'m1', name:'Skin Clinic A · Laser toning', kind:'derm', area:'Gangnam', priceFrom:80000, reviews:1240, langs:['EN','JA','ZH'], sponsor:'unknown', x:62, y:90, emoji:'🩺'},
+  {id:'m2', name:'Check-up Center B', kind:'checkup', area:'Jongno', priceFrom:350000, reviews:860, langs:['EN','ZH'], sponsor:'none', x:46, y:26, emoji:'🏥'},
+  {id:'m3', name:'Dental Clinic C · Scaling', kind:'dental', area:'Sinchon', priceFrom:60000, reviews:430, langs:['EN'], sponsor:'none', x:28, y:38, emoji:'🦷'},
+  {id:'m4', name:'Derm Consult D', kind:'derm', area:'Apgujeong', priceFrom:30000, reviews:510, langs:['EN','JA'], sponsor:'unknown', x:74, y:62, emoji:'💆'},
+];
+const MEDICAL_SP = [
+  {id:'ms1', name:'Glow Package E', kind:'derm', area:'Gangnam', priceFrom:150000, reviews:0, langs:['EN','ZH','TH'], sponsor:'yes', x:60, y:84, emoji:'🎁', sponsored:true},
+];
+const ALL_BEAUTY = [...BEAUTY, ...BEAUTY_SP];
+const ALL_MED = [...MEDICAL, ...MEDICAL_SP];
+const findB = id => ALL_BEAUTY.find(p => p.id === id);
+const findM = id => ALL_MED.find(p => p.id === id);
+
+/* ---------------- state ---------------- */
+const KEY = 'jinseonmi-proto-v1';
+const saved = (() => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch { return {}; } })();
+const S = {
+  profile: saved.profile || null,
+  tutorialDone: !!saved.tutorialDone,
+  cart: saved.cart || {},
+  trip: saved.trip || [],
+  approvals: saved.approvals || {},
+  routeBuilt: !!saved.routeBuilt,
+  tab: 'home', domain: 'beauty', list: 'real', sort: 'overall', selected: null,
+  ob: {step:0, lang:'en', country:'', currency:'', gender:'', age:'', beauty:[], medical:[], usingNow:''},
+  tutStep: 0, cartOpen: false, settingsOpen: false, prefsOpen: false, toast: '',
+};
+function persist() {
+  localStorage.setItem(KEY, JSON.stringify({profile:S.profile, tutorialDone:S.tutorialDone, cart:S.cart, trip:S.trip, approvals:S.approvals, routeBuilt:S.routeBuilt}));
+}
+
+// Demo shortcuts for screenshots: ?demo&tab=explore&domain=medical&lang=ko&cart&tutorial  /  ?fresh=0..3
+const qp = new URLSearchParams(location.search);
+if (qp.has('demo')) {
+  S.profile = {lang: qp.get('lang') || 'en', country:'JP', currency:'JPY', gender:'', age:'', prefs:{beauty:['sun'], medical:['derm']}, usingNow:'My usual sunscreen', usingCat:'sun'};
+  S.tutorialDone = !qp.has('tutorial');
+  S.tutStep = +(qp.get('tutorial') || 0);
+  S.cart = {b4:1, b2:2}; S.trip = ['m1']; S.routeBuilt = true;
+  S.tab = qp.get('tab') || 'home';
+  if (qp.get('domain')) S.domain = qp.get('domain');
+  if (qp.get('list')) S.list = qp.get('list');
+  if (qp.has('cart')) S.cartOpen = true;
+}
+if (qp.has('fresh')) {
+  S.profile = null; S.tutorialDone = false;
+  S.ob.step = +qp.get('fresh') || 0; S.ob.lang = qp.get('lang') || 'en';
+  if (S.ob.step > 1) { S.ob.country = 'JP'; S.ob.currency = 'JPY'; }
+}
+
+/* ---------------- helpers ---------------- */
+const L = () => (S.profile ? S.profile.lang : S.ob.lang);
+const t = (k, vars) => {
+  let s = (I18N[L()] && I18N[L()][k]) ?? I18N.en[k] ?? k;
+  if (vars) for (const [a, b] of Object.entries(vars)) s = s.replace('{' + a + '}', b);
+  return s;
+};
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const countryOf = code => COUNTRIES.find(c => c.code === code);
+const countryName = code => { const c = countryOf(code); return c ? c[L()] : ''; };
+const nf = (cur, v) => new Intl.NumberFormat(L() === 'ko' ? 'ko-KR' : 'en-US',
+  {style:'currency', currency:cur, maximumFractionDigits: ['KRW','JPY','VND'].includes(cur) ? 0 : 2}).format(v);
+const won = v => nf('KRW', v);
+const userCur = () => (S.profile && S.profile.currency) || 'KRW';
+const conv = v => userCur() === 'KRW' ? '' : t('approx', {v: nf(userCur(), v * SAMPLE_RATES[userCur()])});
+const thumb = (p, size) => `<div class="thumb" style="width:${size}px;height:${size}px;background:${p.kind ? 'var(--med-soft)' : HUES[p.hue]};font-size:${Math.round(size*0.45)}px">${p.emoji}</div>`;
+const spTag = s => `<span class="tag sp-${s}">${t('sp_' + s)}</span>`;
+const cartCount = () => Object.values(S.cart).reduce((a, b) => a + b, 0);
+let toastTimer;
+function toast(msg) { S.toast = msg; clearTimeout(toastTimer); toastTimer = setTimeout(() => { S.toast = ''; render(); }, 1600); }
+
+const ICONS = {
+  home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>',
+  explore:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>',
+  trip:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>',
+};
+
+/* ---------------- onboarding ---------------- */
+function renderOnboarding() {
+  const o = S.ob, steps = [0,1,2,3].map(i => `<i class="${i <= o.step ? 'on' : ''}"></i>`).join('');
+  let body = '', foot = '';
+  if (o.step === 0) {
+    body = `<div class="logo" style="font-size:30px;margin-bottom:18px">진선미 <b>·</b> Jinseonmi</div>
+      <h2>${t('ob_lang')}</h2><p class="hint">${t('ob_lang_hint')}</p>
+      <div style="display:grid;gap:10px">
+        <button class="opt big ${o.lang==='en'?'on':''}" data-a="ob-lang" data-v="en">English</button>
+        <button class="opt big ${o.lang==='ko'?'on':''}" data-a="ob-lang" data-v="ko">한국어</button>
+      </div>`;
+    foot = `<button class="btn" data-a="ob-next">${t('next')}</button>`;
+  } else if (o.step === 1) {
+    body = `<h2>${t('ob_country')}</h2><p class="hint">${t('ob_country_hint')}</p>
+      <div class="opt-grid">${COUNTRIES.map(c => `<button class="opt ${o.country===c.code?'on':''}" data-a="ob-country" data-v="${c.code}">${c.flag} ${c[L()]}</button>`).join('')}</div>
+      <div class="lbl">${t('currency')}</div>
+      <select class="field" data-c="ob-currency">${Object.keys(SAMPLE_RATES).map(k => `<option ${o.currency===k?'selected':''}>${k}</option>`).join('')}</select>`;
+    foot = `<button class="btn line" data-a="ob-back">${t('back')}</button><button class="btn" data-a="ob-next" ${o.country?'':'disabled'}>${t('next')}</button>`;
+  } else if (o.step === 2) {
+    const opts = (key, list) => list.map(v => `<button class="pill ${o[key]===v?'on':''}" data-a="ob-${key}" data-v="${v}">${t((key==='gender'?'g_':'a_') + v)}</button>`).join('');
+    body = `<h2>${t('ob_basic')}</h2><p class="hint">${t('ob_basic_hint')}</p>
+      <div class="lbl">${t('gender')}</div><div class="chips">${opts('gender', ['f','m','o','n'])}</div>
+      <div class="lbl">${t('age')}</div><div class="chips">${opts('age', ['10','20','30','40','50','n'])}</div>`;
+    foot = `<button class="btn line" data-a="ob-back">${t('back')}</button><button class="btn ghost" data-a="ob-next">${t('skip')}</button><button class="btn" data-a="ob-next">${t('next')}</button>`;
+  } else {
+    body = `<h2>${t('ob_pref')}</h2><p class="hint">${t('ob_pref_hint')}</p>
+      ${prefEditor(o.beauty, o.medical, 'ob')}
+      <div class="lbl">${t('usingNow')}</div>
+      <input class="field" id="ob-using" data-i="ob-using" placeholder="${t('usingNowPh')}" value="${esc(o.usingNow)}">`;
+    foot = `<button class="btn line" data-a="ob-back">${t('back')}</button><button class="btn ghost" data-a="ob-finish" data-v="skip">${t('skip')}</button><button class="btn" data-a="ob-finish">${t('start')}</button>`;
+  }
+  return `<div class="ob"><div class="ob-steps">${steps}</div>${body}<div class="ob-foot">${foot}</div></div>`;
+}
+function prefEditor(beauty, medical, ns) {
+  return `<div class="lbl">${t('beautyInt')}</div>
+    <div class="chips">${['skin','makeup','sun','hair'].map(v => `<button class="pill ${beauty.includes(v)?'on':''}" data-a="${ns}-b" data-v="${v}">${t('i_' + v)}</button>`).join('')}</div>
+    <div class="lbl">${t('medicalInt')} <span class="tag warn">${t('scopeTbd')}</span></div>
+    <div class="chips">${['derm','checkup','dental'].map(v => `<button class="pill med ${medical.includes(v)?'on':''}" data-a="${ns}-m" data-v="${v}">${t('k_' + v)}</button>`).join('')}</div>`;
+}
+
+/* ---------------- shell ---------------- */
+function renderHeader() {
+  const c = countryOf(S.profile.country);
+  return `<header class="hdr">
+    <div class="logo">${t('appName')}<b>.</b></div>
+    <div class="hdr-r">
+      <button class="chip" data-a="open-settings">${c ? c.flag : ''} ${userCur()}</button>
+      <button class="icon-btn" data-a="open-cart" aria-label="cart">🛒${cartCount() ? `<span class="badge-n">${cartCount()}</span>` : ''}</button>
+      <button class="icon-btn" data-a="open-settings" aria-label="settings">⚙️</button>
+    </div></header>`;
+}
+function renderNav() {
+  const tut = !S.tutorialDone;
+  return `<nav class="nav ${tut ? 'tut' : ''}">${['home','explore','trip'].map((k, i) =>
+    `<button class="${S.tab===k?'on':''} ${tut && S.tutStep===i ? 'hl' : ''}" data-a="tab" data-v="${k}">${ICONS[k]}${t(k)}</button>`).join('')}</nav>`;
+}
+const sampleBanner = () => `<div class="sample">⚠️ ${t('sample')}</div>`;
+
+/* ---------------- home ---------------- */
+function recommendations() {
+  const p = S.profile.prefs || {beauty:[], medical:[]};
+  const out = [];
+  const beautyPicks = p.beauty.length ? BEAUTY.filter(b => p.beauty.includes(b.interest)) : [];
+  (beautyPicks.length ? beautyPicks : BEAUTY).slice(0, 2).forEach(b =>
+    out.push({item:b, why: beautyPicks.length ? t('basedPref', {x: t('i_' + b.interest)}) : t('basedCommon')}));
+  const medPicks = p.medical.length ? MEDICAL.filter(m => p.medical.includes(m.kind)) : [];
+  (medPicks.length ? medPicks : MEDICAL).slice(0, 1).forEach(m =>
+    out.push({item:m, why: medPicks.length ? t('basedPref', {x: t('k_' + m.kind)}) : t('basedCommon')}));
+  return out;
+}
+function renderHome() {
+  const recs = recommendations().map(({item, why}) => {
+    const isMed = !!item.kind;
+    return `<button class="card rec" style="text-align:left" data-a="open-item" data-v="${item.id}">
+      <div class="row">${thumb(item, 46)}<div class="grow">
+        <span class="tag ${isMed ? 'med' : 'beauty'}">${isMed ? t('medical') : t('beauty')}</span>
+        <div class="trunc" style="font-weight:700;font-size:14px;margin-top:3px">${item.name}</div>
+        <div class="tiny muted">${isMed ? `${item.area} · ${t('from')} ${won(item.priceFrom)}` : `${item.brand} · ${won(item.price)}`}</div>
+      </div></div>
+      <div class="tiny" style="margin-top:8px"><b>${t('why')}:</b> ${why}</div>
+      <div class="row" style="margin-top:6px">${spTag(item.sponsor)}</div>
+    </button>`;
+  }).join('');
+  const stops = tripStops().length;
+  return `
+    <button class="ad" style="width:100%;text-align:left" data-a="go" data-v="beauty:sponsor:overall">
+      <span class="ad-l">${t('ad')}</span>
+      <h3>LUMI · Aurora Glow Ampoule ✨</h3>
+      <p>${t('adNote')}</p>
+    </button>
+    <div class="sec-t">${t('picked')}<small>${countryOf(S.profile.country).flag} ${countryName(S.profile.country)}</small></div>
+    <div class="hscroll">${recs}</div>
+    <div class="note">ℹ️ ${t('countryNote', {c: countryName(S.profile.country)})}</div>
+    <div class="sec-t">${t('categories')}</div>
+    <div class="cat-grid">
+      <button class="cat" style="background:var(--med-soft);color:#0b6e56" data-a="go" data-v="medical:real:overall"><b>🏥 ${t('cat_med')}</b><span>${t('cat_med_s')}</span></button>
+      <button class="cat" style="background:var(--primary-soft);color:#a3285a" data-a="go" data-v="beauty:real:overall"><b>🏆 ${t('cat_real')}</b><span>${t('cat_real_s')}</span></button>
+      <button class="cat" style="background:#fff3bf;color:#8a6d00" data-a="go" data-v="beauty:real:rising"><b>📈 ${t('cat_rising')}</b><span>${t('cat_rising_s')}</span></button>
+      <button class="cat" style="background:#e7f0ff;color:#2f5aa8" data-a="go" data-v="beauty:real:overall"><b>🔁 ${t('cat_alt')}</b><span>${t('cat_alt_s')}</span></button>
+    </div>
+    <button class="card row" style="width:100%;margin-top:12px;text-align:left" data-a="tab" data-v="trip">
+      <span style="font-size:22px">🗺️</span><div class="grow"><b>${t('tripTeaser')}</b><div class="tiny muted">${t('tripStops', {n: stops})}</div></div><span>›</span>
+    </button>`;
+}
+
+/* ---------------- explore ---------------- */
+function exploreList() {
+  if (S.domain === 'beauty') {
+    if (S.list === 'sponsor') return BEAUTY_SP;
+    const arr = [...BEAUTY];
+    if (S.sort === 'rising') arr.sort((a, b) => a.rising - b.rising);
+    return arr;
+  }
+  return S.list === 'sponsor' ? MEDICAL_SP : MEDICAL;
+}
+function renderExplore() {
+  const list = exploreList();
+  const sel = list.find(x => x.id === S.selected) || list[0];
+  const isMed = S.domain === 'medical', isSp = S.list === 'sponsor';
+  const items = list.map((p, i) => `
+    <button class="rank-item ${isMed ? 'medi' : ''} ${isSp ? 'spi' : ''} ${p.id===sel.id?'on':''}" data-a="select" data-v="${p.id}">
+      ${thumb(p, 34)}
+      <div class="grow"><div class="rk">${isSp ? 'AD' : (S.sort==='rising' && !isMed ? '↑' : '#') + (i + 1)}</div>
+      <div class="trunc" style="font-size:12px;font-weight:600">${p.name}</div>
+      <div class="trunc tiny muted">${isMed ? t('k_' + p.kind) : t('c_' + p.cat)}</div></div>
+    </button>`).join('');
+  return `
+    <div class="seg"><button class="${!isMed?'on':''}" data-a="domain" data-v="beauty">💄 ${t('beauty')}</button><button class="${isMed?'on':''}" data-a="domain" data-v="medical">🩺 ${t('medical')}</button></div>
+    ${!isMed && !isSp ? altBox() : ''}
+    <div class="tabs">
+      <button class="${!isSp?'on':''}" data-a="list" data-v="real">${t('real')}</button>
+      <button class="sp ${isSp?'on':''}" data-a="list" data-v="sponsor">${t('sponsored')}</button>
+      ${!isMed && !isSp ? `<span style="flex:1"></span>
+        <button class="${S.sort==='overall'?'on':''}" data-a="sort" data-v="overall">${t('overall')}</button>
+        <button class="${S.sort==='rising'?'on':''}" data-a="sort" data-v="rising">${t('rising')}</button>` : ''}
+    </div>
+    <div class="tiny muted" style="margin:0 2px 8px">${isSp ? t('sponsoredBy') : isMed ? t('rankedByMed') : t('rankedBy')}</div>
+    <div class="split"><section>${items}</section><section>${isMed ? medDetail(sel) : beautyDetail(sel)}</section></div>`;
+}
+function altBox() {
+  const p = S.profile;
+  const match = p.usingNow && p.usingCat ? BEAUTY.find(b => b.cat === p.usingCat) : null;
+  return `<div class="card alt">
+    <div style="font-weight:700;font-size:13px">🔁 ${t('altTitle')}</div>
+    <div class="row" style="margin-top:8px">
+      <input class="field grow" id="alt-using" data-i="alt-using" placeholder="${t('altYour')}" value="${esc(p.usingNow || '')}" style="padding:7px 10px;font-size:12px">
+      <select class="field" data-c="alt-cat" style="width:96px;padding:7px 6px;font-size:12px">
+        <option value="">${t('altCat')}</option>
+        ${['cleanser','toner','serum','sun','lip','cream'].map(c => `<option value="${c}" ${p.usingCat===c?'selected':''}>${t('c_' + c)}</option>`).join('')}
+      </select>
+    </div>
+    <div id="alt-result" class="tiny" style="margin-top:8px">${match
+      ? `<button class="row" data-a="select" data-v="${match.id}" style="text-align:left">“${esc(p.usingNow)}” → <b>${t('altResult', {cat: t('c_' + match.cat)})}: ${match.name}</b> ›</button>`
+      : `<span class="muted">${t('altEmpty')}</span>`}</div>
+  </div>`;
+}
+function beautyDetail(p) {
+  const realPick = p.sponsored ? BEAUTY.find(b => b.cat === p.cat) : null;
+  const ev = p.sponsored
+    ? `<li><span>${t('ev_promo')}</span><b>${t('ev_promo_v')}</b></li>`
+    : `<li><span>${t('ev_blog')}</span><b>${p.blog.toLocaleString()}</b></li>
+       <li><span>${t('ev_store')}</span><b>#${p.store}</b></li>
+       <li><span>${t('ev_trend')}</span><b>#${p.trend}</b></li>`;
+  const shorts = [1,2,3].map(i => `<div class="short" style="background:linear-gradient(180deg,${HUES[p.hue]},#3b2a33)">
+      <span class="tag" style="position:absolute;top:8px;left:8px;background:rgba(255,255,255,.25);color:#fff">#${i}</span>
+      <div class="play">▶</div><div class="tiny" style="opacity:.9">${t('shortPh')}</div></div>`).join('');
+  return `<div class="card detail">
+    <div class="row">${thumb(p, 40)}<div class="grow"><h3>${p.name}</h3><div class="tiny muted">${p.brand} · ${t('c_' + p.cat)}</div></div></div>
+    <div class="row" style="margin-top:8px;justify-content:space-between">
+      <div><div class="price">${won(p.price)}</div><div class="conv">${conv(p.price)}</div></div>
+      <button class="btn sm" data-a="add-cart" data-v="${p.id}">${t('addCart')}</button>
+    </div>
+    <div class="row tiny" style="margin-top:8px;justify-content:space-between"><span class="muted">${t('sp')}</span>${spTag(p.sponsor)}</div>
+    <div class="tiny" style="font-weight:700;margin-top:8px">${t('evidence')}</div>
+    <ul class="ev">${ev}</ul>
+    ${realPick ? `<div class="tiny" style="font-weight:700;margin-top:10px">${t('cmpTitle', {cat: t('c_' + p.cat)})}</div>
+      <div class="cmp">
+        <div><span class="tag sp-yes">AD</span><div class="trunc" style="margin-top:4px">${p.name}</div><b>${won(p.price)}</b></div>
+        <button style="text-align:left" data-a="go-item" data-v="${realPick.id}"><div><span class="tag beauty">${t('real')}</span><div class="trunc" style="margin-top:4px">${realPick.name}</div><b>${won(realPick.price)}</b></div></button>
+      </div>
+      <div class="tiny muted" style="margin-top:4px">${t('notDiscount')}</div>` : ''}
+    <div class="tiny" style="font-weight:700;margin-top:10px">${t('shorts')}</div>
+    <div class="shorts">${shorts}</div>
+  </div>`;
+}
+function medDetail(m) {
+  const inTrip = S.trip.includes(m.id);
+  return `<div class="card detail">
+    <div class="row">${thumb(m, 40)}<div class="grow"><h3>${m.name}</h3><div class="tiny muted">${t('k_' + m.kind)} · ${m.area}</div></div></div>
+    <div style="margin-top:8px"><div class="price">${t('from')} ${won(m.priceFrom)}</div><div class="conv">${conv(m.priceFrom)}</div></div>
+    <div class="row tiny" style="margin-top:8px;justify-content:space-between"><span class="muted">${t('sp')}</span>${spTag(m.sponsor)}</div>
+    <div class="tiny" style="font-weight:700;margin-top:8px">${t('evidence')}</div>
+    <ul class="ev">
+      ${m.sponsored ? `<li><span>${t('ev_promo')}</span><b>${t('ev_promo_v')}</b></li>` : `<li><span>${t('reviews')}</span><b>${m.reviews.toLocaleString()}</b></li>`}
+      <li><span>${t('langs')}</span><b>${m.langs.join(' · ')}</b></li>
+      <li><span>${t('area')}</span><b>${m.area}</b></li>
+    </ul>
+    <button class="btn med block" style="margin-top:10px;${inTrip?'background:var(--med-soft);color:var(--med)':''}" data-a="toggle-trip" data-v="${m.id}">${inTrip ? t('inTrip') : t('addTrip')}</button>
+    <div class="note">⚕️ ${t('medDisc')}</div>
+  </div>`;
+}
+
+/* ---------------- cart ---------------- */
+function renderCart() {
+  const entries = Object.entries(S.cart).map(([id, q]) => ({p: findB(id), q})).filter(e => e.p);
+  const total = entries.reduce((n, e) => n + e.p.price * e.q, 0);
+  return `<div class="scrim" data-a="close-cart"></div>
+  <aside class="drawer">
+    <div class="d-h"><div><b>${t('cart')}</b><div class="tiny muted">${t('items', {n: cartCount()})}</div></div><button class="icon-btn" data-a="close-cart">✕</button></div>
+    <div class="d-b">${entries.length ? entries.map(({p, q}) => `
+      <div class="card row" style="margin-bottom:8px">${thumb(p, 38)}
+        <div class="grow"><div class="trunc" style="font-size:12px;font-weight:600">${p.name}</div>
+          <div class="tiny muted">${won(p.price)} ${p.sponsored ? '<span class="tag sp-yes">AD</span>' : ''}</div></div>
+        <div class="qty"><button data-a="qty" data-v="${p.id}:-1">−</button><b class="tiny">${q}</b><button data-a="qty" data-v="${p.id}:1">+</button></div>
+      </div>`).join('') : `<div class="empty">${t('cartEmpty')}</div>`}</div>
+    <div class="d-f">
+      <div class="row" style="justify-content:space-between;font-weight:800"><span>${t('total')}</span><span>${won(total)}</span></div>
+      ${userCur() !== 'KRW' ? `<div class="row" style="justify-content:space-between" ><span class="tiny muted">${t('rateNote')}</span><span class="conv" style="font-weight:700">${conv(total)}</span></div>` : ''}
+      <button class="btn block" style="margin-top:10px" data-a="cart-to-trip" ${entries.length ? '' : 'disabled'}>🗺️ ${t('cartToTrip')}</button>
+    </div>
+  </aside>`;
+}
+
+/* ---------------- my trip ---------------- */
+function tripStops() {
+  const stops = [];
+  const ids = Object.keys(S.cart);
+  [...new Set(ids.map(id => findB(id)?.shop).filter(Boolean))].forEach(sid => {
+    const sh = SHOPS[sid];
+    stops.push({id:'shop-' + sid, type:'shop', name:sh.name, area:sh.area, x:sh.x, y:sh.y,
+      items: ids.map(findB).filter(p => p && p.shop === sid).map(p => p.name)});
+  });
+  S.trip.forEach(mid => { const m = findM(mid); if (m) stops.push({id:'med-' + mid, type:'med', name:m.name, area:m.area, x:m.x, y:m.y}); });
+  return stops.sort((a, b) => a.x - b.x); // simple west→east ordering (placeholder for a real routing provider)
+}
+function renderTrip() {
+  const p = S.profile, prefs = p.prefs || {beauty:[], medical:[]};
+  const hasPrefs = prefs.beauty.length || prefs.medical.length;
+  const stops = tripStops();
+  const prefCard = `<div class="card" style="margin-bottom:12px">
+    <div class="row" style="justify-content:space-between"><b style="font-size:13px">🎯 ${t('personalize')}</b>
+      <button class="btn sm line" data-a="prefs-toggle">${S.prefsOpen ? t('done') : t('edit')}</button></div>
+    ${S.prefsOpen ? prefEditor(prefs.beauty, prefs.medical, 'pf')
+      : `<div class="chips" style="margin-top:8px">${hasPrefs
+          ? [...prefs.beauty.map(v => `<span class="tag beauty">${t('i_' + v)}</span>`), ...prefs.medical.map(v => `<span class="tag med">${t('k_' + v)}</span>`)].join('')
+          : `<span class="tiny muted">${t('personalizeOff')}</span>`}</div>`}
+  </div>`;
+  if (!stops.length) return prefCard + `<div class="card empty">🧳<br>${t('emptyTrip')}<br><br><button class="btn" data-a="tab" data-v="explore">${t('goExplore')}</button></div>`;
+
+  const color = s => s.type === 'med' ? 'var(--med)' : 'var(--primary)';
+  const list = stops.map((s, i) => `<div class="stop"><div class="pin" style="background:${color(s)}">${i + 1}</div>
+      <div class="grow"><div style="font-size:13px;font-weight:600">${esc(s.name)}</div>
+      <div class="tiny muted">${s.type === 'med' ? t('medStop') : t('shopStop')} · ${s.area}</div>
+      ${s.items ? `<div class="tiny muted">${t('forItems', {x: s.items.join(', ')})}</div>` : ''}</div></div>`).join('');
+
+  const map = `<div class="map"><svg viewBox="0 0 100 60" style="display:block;width:100%;height:auto">
+      <path d="M0 35 C20 31 35 38 55 33 S85 30 100 33" stroke="#a5d8ff" stroke-width="4" fill="none"/>
+      <polyline points="${stops.map(s => `${s.x},${s.y * 0.6}`).join(' ')}" fill="none" stroke="#231c1f" stroke-width="0.8" stroke-dasharray="2 1.5"/>
+      ${stops.map((s, i) => `<circle cx="${s.x}" cy="${s.y * 0.6}" r="3.2" fill="${s.type==='med'?'#0f9d7a':'#d9467a'}"/><text x="${s.x}" y="${s.y * 0.6 + 1.2}" font-size="3.4" text-anchor="middle" fill="#fff" font-weight="700">${i + 1}</text>`).join('')}
+    </svg><div class="tiny muted" style="padding:6px 10px">🗺️ ${t('mapNote')}</div></div>`;
+
+  const sched = stops.map((s, i) => {
+    const mins = 10 * 60 + i * 100, hh = String(Math.floor(mins / 60)).padStart(2, '0'), mm = String(mins % 60).padStart(2, '0');
+    const ok = !!S.approvals[s.id];
+    return `<div class="stop"><div class="time">${hh}:${mm}</div><div class="grow">
+      <div style="font-size:13px;font-weight:600">${esc(s.name)}</div>
+      <div class="row" style="margin-top:4px;flex-wrap:wrap">
+        <span class="tag ${ok ? 'ok' : 'warn'}">${ok ? t('st_ok') : t('st_sug')}</span>
+        ${s.type === 'med' ? `<span class="tag sp-unknown">${t('clinicPending')}</span>` : ''}
+      </div></div>
+      ${ok ? '' : `<button class="btn sm line" data-a="approve" data-v="${s.id}">${t('approve')}</button>`}</div>`;
+  }).join('');
+
+  return prefCard + `
+    <div class="sec-t" style="margin-top:4px">${t('stops')}<small>${t('tripStops', {n: stops.length})}</small></div>
+    <div class="card">${list}</div>
+    ${S.routeBuilt
+      ? `<div class="sec-t">🧭 Route</div>${map}<div class="sec-t">${t('schedule')}</div><div class="card">${sched}</div>`
+      : `<button class="btn block" style="margin-top:12px" data-a="build-route">🧭 ${t('buildRoute')}</button>`}`;
+}
+
+/* ---------------- settings & tutorial ---------------- */
+function renderSettings() {
+  const p = S.profile;
+  return `<div class="scrim" data-a="close-settings"></div>
+  <div class="sheet">
+    <div class="row" style="justify-content:space-between"><b style="font-size:16px">${t('settings')}</b><button class="icon-btn" data-a="close-settings">✕</button></div>
+    <div class="lbl">${t('language')}</div>
+    <div class="seg"><button class="${p.lang==='en'?'on':''}" data-a="set-lang" data-v="en">English</button><button class="${p.lang==='ko'?'on':''}" data-a="set-lang" data-v="ko">한국어</button></div>
+    <div class="lbl">${t('country')}</div>
+    <select class="field" data-c="set-country">${COUNTRIES.map(c => `<option value="${c.code}" ${p.country===c.code?'selected':''}>${c.flag} ${c[L()]}</option>`).join('')}</select>
+    <div class="lbl">${t('currency')}</div>
+    <select class="field" data-c="set-currency">${Object.keys(SAMPLE_RATES).map(k => `<option ${p.currency===k?'selected':''}>${k}</option>`).join('')}</select>
+    <div style="display:grid;gap:8px;margin-top:18px">
+      <button class="btn line" data-a="replay-tut">${t('replayTut')}</button>
+      <button class="btn line" data-a="redo-ob">${t('redoOb')}</button>
+      <button class="btn ghost" data-a="reset">${t('reset')}</button>
+    </div>
+  </div>`;
+}
+function renderTutorial() {
+  const i = S.tutStep, last = i === 2;
+  return `<div class="tut-scrim"></div>
+  <div class="tut-bubble" style="--arrow-x:${[15, 47, 79][i]}%">
+    <div style="font-size:14px;line-height:1.45"><span class="tut-num">${i + 1}</span>${t('tut' + (i + 1))}</div>
+    <div class="row" style="justify-content:space-between;margin-top:14px">
+      <button class="btn ghost sm" data-a="tut-skip">${t('tutSkip')}</button>
+      <div class="row"><span class="tiny muted">${i + 1} / 3</span><button class="btn sm" data-a="tut-next">${last ? t('tutDone') : t('tutNext')}</button></div>
+    </div>
+  </div>`;
+}
+
+/* ---------------- render loop ---------------- */
+const $app = document.getElementById('app');
+function render() {
+  document.documentElement.lang = L();
+  document.title = t('appName');
+  const content = document.getElementById('content');
+  const scroll = content ? content.scrollTop : 0;
+  const ae = document.activeElement, focusId = ae && ae.id, caret = ae && ae.selectionStart;
+
+  let html = '<div class="phone">';
+  if (!S.profile) html += renderOnboarding();
+  else {
+    const screen = S.tab === 'home' ? renderHome() : S.tab === 'explore' ? renderExplore() : renderTrip();
+    html += renderHeader() + `<main class="content" id="content">${sampleBanner()}${screen}</main>` + renderNav();
+    if (S.cartOpen) html += renderCart();
+    if (S.settingsOpen) html += renderSettings();
+    if (!S.tutorialDone) html += renderTutorial();
+  }
+  if (S.toast) html += `<div class="toast">${esc(S.toast)}</div>`;
+  $app.innerHTML = html + '</div>';
+
+  const c2 = document.getElementById('content');
+  if (c2) c2.scrollTop = S._top ? 0 : scroll;
+  S._top = false;
+  if (focusId) { const el = document.getElementById(focusId); if (el) { el.focus(); if (caret != null && el.setSelectionRange) el.setSelectionRange(caret, caret); } }
+}
+const toggleIn = (arr, v) => arr.includes(v) ? arr.filter(x => x !== v) : [...arr, v];
+
+function act(a, v) {
+  const o = S.ob, p = S.profile;
+  switch (a) {
+    case 'ob-lang': o.lang = v; break;
+    case 'ob-next': o.step++; break;
+    case 'ob-back': o.step--; break;
+    case 'ob-country': o.country = v; o.currency = countryOf(v).cur; break;
+    case 'ob-gender': o.gender = o.gender === v ? '' : v; break;
+    case 'ob-age': o.age = o.age === v ? '' : v; break;
+    case 'ob-b': o.beauty = toggleIn(o.beauty, v); break;
+    case 'ob-m': o.medical = toggleIn(o.medical, v); break;
+    case 'ob-finish': {
+      const skip = v === 'skip';
+      S.profile = {lang:o.lang, country:o.country, currency:o.currency, gender:o.gender, age:o.age,
+        prefs:{beauty: skip ? [] : o.beauty, medical: skip ? [] : o.medical}, usingNow: skip ? '' : o.usingNow, usingCat:''};
+      S.tab = 'home'; S.tutStep = 0; S._top = true; persist(); break;
+    }
+    case 'tab': S.tab = v; S._top = true; break;
+    case 'go': { const [d, l, s] = v.split(':'); S.domain = d; S.list = l; S.sort = s; S.selected = null; S.tab = 'explore'; S._top = true; break; }
+    case 'open-item': {
+      const isMed = !!findM(v); S.domain = isMed ? 'medical' : 'beauty';
+      S.list = (isMed ? findM(v) : findB(v)).sponsored ? 'sponsor' : 'real'; S.sort = 'overall'; S.selected = v; S.tab = 'explore'; S._top = true; break;
+    }
+    case 'go-item': S.list = 'real'; S.sort = 'overall'; S.selected = v; break;
+    case 'domain': S.domain = v; S.selected = null; if (v === 'medical') S.sort = 'overall'; break;
+    case 'list': S.list = v; S.selected = null; break;
+    case 'sort': S.sort = v; break;
+    case 'select': S.selected = v; if (findB(v) && !findB(v).sponsored) S.list = 'real'; break;
+    case 'add-cart': S.cart[v] = (S.cart[v] || 0) + 1; persist(); toast(t('added')); break;
+    case 'qty': { const [id, d] = v.split(':'); const q = (S.cart[id] || 0) + +d; if (q <= 0) delete S.cart[id]; else S.cart[id] = q; persist(); break; }
+    case 'toggle-trip': {
+      const had = S.trip.includes(v); S.trip = had ? S.trip.filter(x => x !== v) : [...S.trip, v];
+      persist(); toast(had ? t('removedTrip') : t('addedTrip')); break;
+    }
+    case 'open-cart': S.cartOpen = true; break;
+    case 'close-cart': S.cartOpen = false; break;
+    case 'cart-to-trip': S.cartOpen = false; S.tab = 'trip'; S._top = true; break;
+    case 'open-settings': S.settingsOpen = true; break;
+    case 'close-settings': S.settingsOpen = false; break;
+    case 'set-lang': p.lang = v; persist(); break;
+    case 'tut-next': if (S.tutStep < 2) { S.tutStep++; S.tab = ['home','explore','trip'][S.tutStep]; } else { S.tutorialDone = true; S.tab = 'home'; persist(); } break;
+    case 'tut-skip': S.tutorialDone = true; S.tab = 'home'; persist(); break;
+    case 'replay-tut': S.settingsOpen = false; S.tutorialDone = false; S.tutStep = 0; S.tab = 'home'; break;
+    case 'redo-ob': S.settingsOpen = false; Object.assign(o, {step:0, lang:p.lang, country:p.country, currency:p.currency}); S.profile = null; break;
+    case 'reset': localStorage.removeItem(KEY); location.href = location.pathname; return;
+    case 'build-route': S.routeBuilt = true; persist(); break;
+    case 'approve': S.approvals[v] = true; persist(); break;
+    case 'prefs-toggle': S.prefsOpen = !S.prefsOpen; break;
+    case 'pf-b': p.prefs.beauty = toggleIn(p.prefs.beauty, v); persist(); break;
+    case 'pf-m': p.prefs.medical = toggleIn(p.prefs.medical, v); persist(); break;
+    default: return;
+  }
+  render();
+}
+
+$app.addEventListener('click', e => { const el = e.target.closest('[data-a]'); if (el && !el.disabled) act(el.dataset.a, el.dataset.v); });
+$app.addEventListener('change', e => {
+  const el = e.target.closest('[data-c]'); if (!el) return;
+  const p = S.profile, v = el.value;
+  if (el.dataset.c === 'ob-currency') S.ob.currency = v;
+  if (el.dataset.c === 'set-country') { p.country = v; p.currency = countryOf(v).cur; }
+  if (el.dataset.c === 'set-currency') p.currency = v;
+  if (el.dataset.c === 'alt-cat') p.usingCat = v;
+  persist(); render();
+});
+$app.addEventListener('input', e => {
+  const el = e.target.closest('[data-i]'); if (!el) return;
+  if (el.dataset.i === 'ob-using') S.ob.usingNow = el.value;           // no re-render needed
+  if (el.dataset.i === 'alt-using') { S.profile.usingNow = el.value; persist(); render(); }
+});
+
+render();
+</script>
+</body>
+</html>

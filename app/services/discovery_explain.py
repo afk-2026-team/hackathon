@@ -17,7 +17,7 @@ from datetime import datetime, timezone
 from typing import Protocol
 
 from app.schemas.discovery import CompareResponse, ExplainResponse, Source
-from app.services.discovery_compare import NOTICE
+from app.services.discovery_i18n import Lang, msg
 from app.utils.logger import AGENT_LOGGER_NAME
 
 logger = logging.getLogger(AGENT_LOGGER_NAME)
@@ -80,7 +80,7 @@ def _price_str(p) -> str:
     return f"{p.currency} {p.amount:,.0f}" if whole else f"{p.currency} {p.amount:,.2f}"
 
 
-def build_facts(result: CompareResponse, budget_krw: float | None) -> list[Fact]:
+def build_facts(result: CompareResponse, budget_krw: float | None, lang: Lang = "en") -> list[Fact]:
     """compare 결과의 사실만으로 문장을 만든다. 가격·예산 판단은 여기서 서버가 계산한다."""
     facts: list[Fact] = []
 
@@ -89,42 +89,41 @@ def build_facts(result: CompareResponse, budget_krw: float | None) -> list[Fact]
 
     cand = result.candidate
     if result.current is None:
-        add(f"We could not match your current product, so only {cand.title}'s listed details are shown.", cand.sources)
+        add(msg(lang, "exp.no_match", title=cand.title), cand.sources)
     common = {p.attribute: p for p in result.common}
     diffs = {p.attribute: p for p in result.differences}
     if "key_ingredients" in common:
-        add(f"Both labels list {', '.join(common['key_ingredients'].candidate)}.", common["key_ingredients"].sources)
+        add(msg(lang, "exp.both_ingredients", names=", ".join(common["key_ingredients"].candidate)), common["key_ingredients"].sources)
     if "form" in common:
-        add(f"Both are a {common['form'].candidate}.", common["form"].sources)
+        add(msg(lang, "exp.both_form", form=common["form"].candidate), common["form"].sources)
     if "volume_ml" in common:
-        add(f"Both are {common['volume_ml'].candidate:g} ml.", common["volume_ml"].sources)
+        add(msg(lang, "exp.both_volume", ml=f"{common['volume_ml'].candidate:g}"), common["volume_ml"].sources)
     if "key_ingredients" in diffs:
         p = diffs["key_ingredients"]
         if p.current:
-            add(f"Listed for your current product but not in {cand.title}'s full list: {', '.join(p.current)}.", p.sources)
+            add(msg(lang, "exp.cur_only", title=cand.title, names=", ".join(p.current)), p.sources)
         if p.candidate:
-            add(f"Listed for {cand.title} but not in your current product's full list: {', '.join(p.candidate)}.", p.sources)
+            add(msg(lang, "exp.cand_only", title=cand.title, names=", ".join(p.candidate)), p.sources)
     if "form" in diffs:
-        add(f"Forms differ: {diffs['form'].current} vs {diffs['form'].candidate}.", diffs["form"].sources)
+        add(msg(lang, "exp.form_diff", cur=diffs["form"].current, cand=diffs["form"].candidate), diffs["form"].sources)
     if "volume_ml" in diffs:
-        add(f"Sizes differ: {diffs['volume_ml'].current:g} ml vs {diffs['volume_ml'].candidate:g} ml.", diffs["volume_ml"].sources)
+        add(msg(lang, "exp.volume_diff", cur=f"{diffs['volume_ml'].current:g}", cand=f"{diffs['volume_ml'].candidate:g}"), diffs["volume_ml"].sources)
     partial = next((p for p in result.unverified if p.attribute == "key_ingredients"), None)
     if partial is not None:
-        add("Some ingredients could not be checked because an ingredient list is partial or missing.", partial.sources, keep=True)
+        add(msg(lang, "exp.partial"), partial.sources, keep=True)
 
     price = result.price
     if price.current and price.candidate:
-        tail = "and are not compared" if not price.comparable else "for the same size"
-        add(f"Listed prices are {_price_str(price.current)} and {_price_str(price.candidate)}, shown as listed {tail}.",
-            [price.current.source, price.candidate.source])
+        key = "exp.prices_same_size" if price.comparable else "exp.prices_not_compared"
+        add(msg(lang, key, cur=_price_str(price.current), cand=_price_str(price.candidate)), [price.current.source, price.candidate.source])
     elif price.candidate:
-        add(f"{cand.title} is listed at {_price_str(price.candidate)}.", [price.candidate.source])
+        add(msg(lang, "exp.cand_price", title=cand.title, price=_price_str(price.candidate)), [price.candidate.source])
     if budget_krw is not None and price.candidate and price.candidate.currency == "KRW":
-        rel = "within" if price.candidate.amount <= budget_krw else "above"
-        add(f"Its listed price is {rel} your budget of KRW {budget_krw:,.0f}.", [price.candidate.source])
+        key = "exp.budget_within" if price.candidate.amount <= budget_krw else "exp.budget_above"
+        add(msg(lang, key, budget=f"{budget_krw:,.0f}"), [price.candidate.source])
 
     if not facts:
-        add(f"Label details for {cand.title} are not recorded yet.", cand.sources)
+        add(msg(lang, "exp.no_details", title=cand.title), cand.sources)
     return facts
 
 
@@ -161,9 +160,9 @@ def assemble(facts: list[Fact], ids: list[str] | None) -> tuple[str, list[Source
     return " ".join(f.text for f in chosen), sources
 
 
-async def explain(result: CompareResponse, budget_krw: float | None, llm: ChatModel | None, now: datetime | None = None) -> ExplainResponse:
+async def explain(result: CompareResponse, budget_krw: float | None, llm: ChatModel | None, now: datetime | None = None, lang: Lang = "en") -> ExplainResponse:
     stamp = (now or datetime.now(timezone.utc)).isoformat(timespec="seconds")
-    facts = build_facts(result, budget_krw)
+    facts = build_facts(result, budget_krw, lang)
     reason = None
     if llm is None:
         reason = "llm_unavailable"
@@ -174,7 +173,7 @@ async def explain(result: CompareResponse, budget_krw: float | None, llm: ChatMo
             ids = parse_selection(_content_text(msg), facts)
             text, sources = assemble(facts, ids)
             logger.info(f"[Explain] ✅ mode=llm picked={len(ids)}")
-            return ExplainResponse(text=text, mode="llm", fallback_reason=None, sources=sources, notice=NOTICE, generated_at=stamp)
+            return ExplainResponse(text=text, mode="llm", fallback_reason=None, sources=sources, notice=result.notice, generated_at=stamp)
         except asyncio.TimeoutError:
             reason = "timeout"
         except SelectionError as exc:
@@ -184,4 +183,4 @@ async def explain(result: CompareResponse, budget_krw: float | None, llm: ChatMo
             reason = "llm_error"
             logger.warning(f"[Explain] ⚠️ llm error ({type(exc).__name__})")
     text, sources = assemble(facts, None)
-    return ExplainResponse(text=text, mode="fallback", fallback_reason=reason, sources=sources, notice=NOTICE, generated_at=stamp)
+    return ExplainResponse(text=text, mode="fallback", fallback_reason=reason, sources=sources, notice=result.notice, generated_at=stamp)

@@ -2,12 +2,13 @@ from __future__ import annotations
 
 import logging
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 
 from app.schemas.discovery import Catalog, CompareRequest, CompareResponse, ExplainResponse, RecommendationRequest, RecommendationResponse, ReferenceCatalog
 from app.services import discovery as svc
 from app.services import discovery_compare as cmp
 from app.services import discovery_explain as exp
+from app.services import discovery_i18n as i18n
 from app.utils.logger import AGENT_LOGGER_NAME
 
 logger = logging.getLogger(AGENT_LOGGER_NAME)
@@ -25,14 +26,15 @@ def _catalog() -> Catalog:
 
 
 @router.get("/catalog")
-async def get_catalog() -> Catalog:
-    return _catalog()
+async def get_catalog(lang: str = Query(default="en", max_length=35, description="BCP 47 language tag. ko returns Korean text.")) -> Catalog:
+    return _data(lambda: i18n.localize_catalog(_catalog(), i18n.ui_lang(lang)))
 
 
 @router.post("/recommendations")
 async def post_recommendations(body: RecommendationRequest) -> RecommendationResponse:
     # 프로필은 로그에 남기지 않는다(개인 조건). 결과 수와 국가 맥락 상태만 남긴다.
-    result = svc.recommend(body, _catalog())
+    catalog = _catalog()
+    result = _data(lambda: svc.recommend(body, catalog))
     logger.info(f"[Discovery] ✅ items={len(result.items)} country_context={result.country_context.status}")
     return result
 
@@ -51,9 +53,9 @@ async def get_reference_products() -> ReferenceCatalog:
 
 
 def _compare(body: CompareRequest) -> tuple[CompareResponse, Catalog, ReferenceCatalog]:
-    catalog, refs = _catalog(), _data(cmp.load_references)
+    catalog, refs, facts = _catalog(), _data(cmp.load_references), _data(cmp.load_facts)
     try:
-        return cmp.compare(body, catalog, refs, _data(cmp.load_facts)), catalog, refs
+        return _data(lambda: cmp.compare(body, catalog, refs, facts)), catalog, refs
     except cmp.CompareNotFound as exc:
         raise HTTPException(status_code=404, detail=str(exc)) from exc
 
@@ -79,6 +81,6 @@ def get_explain_llm():
 async def post_explain(body: CompareRequest, llm=Depends(get_explain_llm)) -> ExplainResponse:
     result, _, _ = _compare(body)
     prefs = body.profile.preferences
-    out = await exp.explain(result, prefs.budget_krw if prefs else None, llm)
+    out = await exp.explain(result, prefs.budget_krw if prefs else None, llm, lang=i18n.ui_lang(body.profile.language))
     logger.info(f"[Discovery] ✅ explain mode={out.mode} reason={out.fallback_reason}")
     return out

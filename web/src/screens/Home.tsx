@@ -3,10 +3,11 @@ import type { HomeProps } from './contracts'
 import type { CatalogItem } from '../lib/types'
 import { fetchCatalog } from '../lib/api'
 import { useRecommendations } from '../lib/useRecommendations'
-import { fill, useT, type Key } from '../lib/i18n'
+import { fill, useLang, useT, type Key } from '../lib/i18n'
 import { EmptyState, ErrorState, LoadingState } from '../components/States'
 import { CategoryBadge, Price, SponsorBadge, Thumb } from '../components/Common'
 import { isClinic } from '../components/explore/facets'
+import { subtitleBesideTitle } from '../components/detail/parts'
 import '../styles/shell.css'
 
 // 섹션별 상한. 나머지는 '전체 보기'로 해당 카테고리 Explore 에서 본다. 순서는 서버가 준 그대로(관심사 정렬 포함) 유지한다.
@@ -20,16 +21,17 @@ function useTaxGuide(items: CatalogItem[] | null): CatalogItem | null {
   const fromReco = items?.find((i) => i.kind === 'guide' && i.tags?.includes(TAX_TAG)) ?? null
   const [fromCatalog, setFromCatalog] = useState<CatalogItem | null>(null)
   const need = items != null && !fromReco
+  const lang = useLang()
   useEffect(() => {
     if (!need) return
     let alive = true
-    fetchCatalog()
+    fetchCatalog(lang)
       .then((c) => alive && setFromCatalog(c.items?.find((i) => i.kind === 'guide' && i.tags?.includes(TAX_TAG)) ?? null))
       .catch(() => {})
     return () => {
       alive = false
     }
-  }, [need])
+  }, [need, lang])
   return fromReco ?? fromCatalog
 }
 
@@ -65,7 +67,7 @@ function ProductRow({ item, currency, onOpen }: { item: CatalogItem; currency: s
       <button type="button" className="home-row" onClick={() => onOpen(item)}>
         <Thumb item={item} size={84} />
         <span className="home-row__info">
-          {item.subtitle && <span className="home-row__sub">{item.subtitle}</span>}
+          {subtitleBesideTitle(item) && <span className="home-row__sub">{subtitleBesideTitle(item)}</span>}
           <span className="home-row__title">{item.title}</span>
           <Price krw={item.price_krw} list={item.list_price} currency={currency} size="sm" />
           <span className="home-row__badges">
@@ -92,7 +94,7 @@ function GuideCard({ item, onOpen }: { item: CatalogItem; onOpen: (i: CatalogIte
             <SponsorBadge value={item.sponsorship} hideUnknown />
           </span>
           <span className="home-card__title">{item.title}</span>
-          {item.subtitle && <span className="home-card__sub">{item.subtitle}</span>}
+          {subtitleBesideTitle(item) && <span className="home-card__sub">{subtitleBesideTitle(item)}</span>}
           {item.location?.address && (
             <span className="home-card__addr"><PinIcon />{item.location.address}</span>
           )}

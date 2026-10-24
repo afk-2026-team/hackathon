@@ -82,3 +82,14 @@ class ApiError extends Error { status?: number }  // 실패 시 사용자 문구
 - 목업의 표본 순위·점수·환율·가짜 제품
 - 일정 제안/승인과 클리닉 확인 대기 표시(백엔드 상태가 생기면 다시 검토)
 - 보호 파일 수정
+
+## 6. 구현 결과 (2026-10-24 15:10)
+
+| 항목 | 결과 |
+|---|---|
+| 충돌 해소 | Workspace·Home·Explore·MyTrip·States·styles.css는 바다 버전을 쓴다. ItemCard·ItemDetail은 삭제했다. 보호 파일은 62e7291과 diff가 없다 |
+| 보호 온보딩 스타일 | `styles/onboarding.css`를 `.onboarding` 범위로 두고, 바다 셸의 `.onboarding{display:grid}`보다 앞서도록 `main.onboarding`을 지정했다. 바다 병합으로 바뀐 보호 문구 2개(`entry.title`, `ob.basicsLead`, EN/KO)는 62e7291 값으로 되돌렸다 |
+| 제품 비교 | `ProductDetail`에 `ComparePanel`(비교 요약·출처 포함)을 연결했다. `DetailProps.currentProduct?`·`onSetCurrent?`를 추가했고, 현재 제품은 프로필에 저장한다. 스타일은 `styles/compare.css` |
+| Home AI | `components/HomeAssistant`(연결 세션의 `useAssistant` 사용). 사용자가 누를 때만 요청하고(자동 호출 없음), 서버 텍스트를 그대로 보여준다. 자유 텍스트를 상품 카드나 출처로 파싱하지 않는다. 오류·재시도·취소를 지원하고, 답이 나오면 Explore로 가는 버튼을 보여준다 |
+| 내비게이션 | 바다의 화면 스택 방식을 쓴다. 이전 main의 hash 딥링크(`#explore/<id>`)는 **제거됐다**. 새로고침해도 사용자 데이터(프로필·카트·여행)는 localStorage로 유지된다 |
+| 실행 서버 | 확인 시점의 8001은 병합 전 코드라 `/v1/maps/config`·`/v1/fx`가 404, `/v1/responses`가 405였다. 지도·환율·Home AI는 화면에서 오류/대체 상태로 보였고, 재시작 후 live 확인이 필요하다 |

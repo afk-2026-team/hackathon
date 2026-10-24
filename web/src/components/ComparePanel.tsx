@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import '../styles/compare.css'
 import type { CatalogItem, ProfilePayload } from '../lib/types'
 import type { CompareRow, PointAttribute } from '../lib/compare'
 import { formatMoney, type PriceFact } from '../lib/compare'

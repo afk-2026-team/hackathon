@@ -121,7 +121,8 @@ describe('compare → evidence → save flow', () => {
     await openCandidate(user)
     const region = await screen.findByRole('region', { name: 'Side by side' })
     const alert = await within(region).findByRole('alert')
-    expect(alert).toHaveTextContent(/load/i)
+    expect(within(alert).getByRole('button', { name: 'Try again' })).toBeInTheDocument()
+    expect(alert).not.toHaveTextContent(/503/)
     expect(compareCalls[0]).toMatchObject({ current_product_name: 'Unlisted serum' })
     failCompare = false
     await user.click(within(alert).getByRole('button', { name: 'Try again' }))

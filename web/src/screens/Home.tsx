@@ -1,3 +1,4 @@
+import { HomeAssistant } from '../components/HomeAssistant'
 import { useEffect, useState, type ReactNode } from 'react'
 import type { HomeProps } from './contracts'
 import type { CatalogItem } from '../lib/types'
@@ -184,6 +185,8 @@ export function Home({ profile, onOpen, onBrowse, onSearch, onGoTrip, tripCount,
           </button>
         ))}
       </nav>
+
+      <HomeAssistant profile={profile} onBrowse={() => onBrowse('all')} />
 
       {(tripCount > 0 || cartCount > 0) && (
         <button type="button" className="home-trip" onClick={onGoTrip}>

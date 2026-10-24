@@ -32,7 +32,7 @@ export function StartPoint({ value, onChange }: { value: Start | null; onChange:
   }
 
   const pick = (r: GeocodeResult) => {
-    onChange({ label: query.trim(), address: r.road_address || r.address, lat: r.lat, lng: r.lng, coords_source: 'naver_maps_geocode' })
+    onChange({ label: query.trim(), address: r.road_address || r.address || query.trim(), lat: r.lat, lng: r.lng, coords_source: 'naver_maps_geocode' })
     setEditing(false)
     setPhase({ k: 'idle' })
     setQuery('')

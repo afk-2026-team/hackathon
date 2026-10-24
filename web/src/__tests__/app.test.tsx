@@ -279,3 +279,23 @@ describe('integrated home', () => {
     expect(JSON.parse(localStorage.getItem(keyFor('guest', 'profile'))!).tutorial_done).toBe(true)
   })
 })
+
+describe('product name follows the screen language', () => {
+  it('uses 진선미 for Korean screens and Jinseonmi for English screens in the browser title', async () => {
+    saveEntry('guest')
+    const save = (language: string) =>
+      localStorage.setItem(keyFor('guest', 'profile'), JSON.stringify({ version: 1, country: 'JP', language, currency: 'JPY', tutorial_done: true }))
+    const auth = fakeAuth({ state: 'disabled', reason: 'provider_disabled' })
+
+    save('ko')
+    const { unmount } = render(<App auth={auth} />)
+    expect(await screen.findByRole('button', { name: '진선미' })).toBeInTheDocument()
+    expect(document.title).toBe('진선미')
+    unmount()
+
+    save('en')
+    render(<App auth={auth} />)
+    expect(await screen.findByRole('button', { name: 'Jinseonmi' })).toBeInTheDocument()
+    expect(document.title).toBe('Jinseonmi')
+  })
+})

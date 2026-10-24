@@ -13,7 +13,7 @@ export const UI_LANGS: { code: Lang; name: string }[] = [
 
 const coreEn = {
   brand: 'Jinseonmi',
-  'entry.title': 'Beauty, clinics and neighborhoods in one plan',
+  'entry.title': 'K-beauty and K-medical, picked with evidence and routed into your trip',
   'entry.lead': 'Start with your Google account, or look around right away without signing in.',
   'entry.google': 'Continue with Google',
   'entry.guest': 'Continue as guest',
@@ -27,7 +27,7 @@ const coreEn = {
   'callback.retry': 'Try Google again',
   'ob.basics': 'Plan Korea your way',
   'ob.basicsEdit': 'Your basics',
-  'ob.basicsLead': 'Beauty, clinics and neighborhoods in one place. Start with three basics.',
+  'ob.basicsLead': 'Three basics so prices and picks fit your trip. You can change them any time.',
   'ob.language': 'Language',
   'ob.country': 'Where are you visiting from?',
   'ob.currency': 'Currency',
@@ -79,7 +79,7 @@ export type Key = keyof typeof en
 
 const coreKo: Record<keyof typeof coreEn, string> = {
   brand: '진선미',
-  'entry.title': '뷰티, 병원, 동네 경험을 한 번에 계획하세요',
+  'entry.title': 'K-뷰티와 K-의료를 근거로 고르고, 여행 동선까지 한 번에',
   'entry.lead': 'Google 계정으로 시작하거나, 로그인 없이 바로 둘러보세요.',
   'entry.google': 'Google로 계속하기',
   'entry.guest': '게스트로 시작하기',
@@ -93,7 +93,7 @@ const coreKo: Record<keyof typeof coreEn, string> = {
   'callback.retry': 'Google로 다시 시도',
   'ob.basics': '나에게 맞는 한국 여행',
   'ob.basicsEdit': '기본 정보',
-  'ob.basicsLead': '뷰티, 병원, 동네 경험을 한곳에서. 기본 정보 세 가지로 시작해요.',
+  'ob.basicsLead': '가격과 추천을 여행에 맞추는 기본 정보 세 가지예요. 언제든 바꿀 수 있어요.',
   'ob.language': '언어',
   'ob.country': '어느 나라에서 오시나요?',
   'ob.currency': '통화',

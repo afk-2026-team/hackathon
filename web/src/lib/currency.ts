@@ -38,7 +38,7 @@ export function useFx(): FxState {
 /** 원화 금액을 선택 통화로 환산. 환율이 없거나 원화를 고른 경우 null. */
 export function convertKrw(krw: number, currency: string, fx: FxResponse | null): number | null {
   if (!fx || currency === 'KRW') return null
-  const rate = fx.rates[currency]
+  const rate = fx.rates?.[currency]
   return typeof rate === 'number' && rate > 0 ? krw * rate : null
 }
 

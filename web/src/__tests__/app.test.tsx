@@ -1,9 +1,11 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import App from '../App'
 import type { Auth, AuthStatus } from '../auth/core'
 import { keyFor, saveEntry } from '../lib/storage'
+import { resetFxCache } from '../lib/currency'
+import type { CatalogItem } from '../lib/types'
 
 const reco = { items: [], country_context: { country: 'JP', status: 'insufficient', explanation: 'General picks.' }, generated_at: 'x' }
 
@@ -22,6 +24,7 @@ function fakeAuth(status: AuthStatus, session: unknown = null, over: Partial<Aut
 }
 
 beforeEach(() => {
+  resetFxCache()
   vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify(reco), { status: 200 })))
   window.history.replaceState(null, '', '/')
 })
@@ -137,5 +140,142 @@ describe('entry, onboarding and revisit', () => {
     await new Promise((r) => setTimeout(r, 10))
     expect(screen.getByLabelText('Language')).toBeInTheDocument()
     expect(localStorage.getItem('korea-locally/entry')).toBe('guest')
+  })
+})
+
+// ── 통합 Home ──
+const fx = { base: 'KRW', date: '2026-10-23', rates: { JPY: 0.11 }, source: { label: 'ECB reference rate', url: 'https://example.org/fx' }, fetched_at: 'x' }
+
+function item(over: Partial<CatalogItem> & Pick<CatalogItem, 'id' | 'title'>): CatalogItem {
+  return {
+    kind: 'product', category: 'beauty', subtitle: '', description: '', image_url: null, price_krw: null, location: null,
+    sources: [{ label: 'Official', url: `https://example.org/${over.id}`, checked_at: '2026-10-24' }],
+    sponsorship: 'unknown', reasons: [], country_codes: [], tags: [], provenance: 'test', ...over,
+  }
+}
+
+const natural = item({ id: 'p1', title: 'Natural Cream', subtitle: '올리브영 명동', price_krw: 20000 })
+const paid = item({ id: 'p2', title: 'Paid Serum', sponsorship: 'sponsored', price_krw: 30000 })
+const guide = item({ id: 'g1', kind: 'guide', category: 'medical', title: 'Clinic Portal', location: { name: 'Center', address: 'Seoul Jung-gu 1' } })
+const tax = item({ id: 't1', kind: 'guide', title: 'Tax Refund Guide', tags: ['tax_refund'] })
+const place = item({ id: 'pl1', kind: 'place', category: 'medical', title: 'Info Center' })
+
+function stubApi(items: CatalogItem[], status: 'supported' | 'insufficient' = 'insufficient', catalog: CatalogItem[] = items) {
+  vi.stubGlobal('fetch', vi.fn(async (url: string) => {
+    const u = String(url)
+    const body = u.includes('/v1/fx')
+      ? fx
+      : u.includes('/v1/discovery/catalog')
+        ? { items: catalog }
+        : u.includes('/v1/discovery/recommendations')
+          ? { items, country_context: { country: 'JP', status, explanation: 'Server explanation in English.' }, generated_at: 'x' }
+          : null
+    return body ? new Response(JSON.stringify(body), { status: 200 }) : new Response(JSON.stringify({ error: { message: 'off' } }), { status: 503 })
+  }))
+}
+
+function guestHome(language = 'en', trip: unknown[] = []) {
+  localStorage.setItem(keyFor('guest', 'profile'), JSON.stringify({ version: 1, country: 'JP', language, currency: 'JPY', tutorial_done: true }))
+  if (trip.length) localStorage.setItem(keyFor('guest', 'trip'), JSON.stringify(trip))
+  saveEntry('guest')
+  return render(<App auth={fakeAuth({ state: 'disabled', reason: 'provider_disabled' })} />)
+}
+
+describe('integrated home', () => {
+  it('keeps sponsored items out of the natural picks and shows them only in the Sponsored section', async () => {
+    stubApi([natural, paid, guide, place])
+    guestHome()
+    const picks = await screen.findByRole('region', { name: 'Today’s beauty picks' })
+    expect(within(picks).getByText('Natural Cream')).toBeInTheDocument()
+    expect(within(picks).queryByText('Paid Serum')).toBeNull()
+    expect(within(picks).getByText('Curated')).toBeInTheDocument()
+    const sponsored = screen.getByRole('region', { name: 'Sponsored' })
+    expect(within(sponsored).getByText('Paid Serum')).toBeInTheDocument()
+    expect(within(sponsored).queryByText('Natural Cream')).toBeNull()
+    // 협찬 표시가 없는 항목을 비협찬으로 단정하지 않는다
+    expect(within(picks).getByText('Sponsorship unknown')).toBeInTheDocument()
+    const medical = screen.getByRole('region', { name: 'Medical & official guides' })
+    expect(within(medical).getByText('Seoul Jung-gu 1')).toBeInTheDocument()
+    expect(within(screen.getByRole('region', { name: 'Places' })).getByText('Info Center')).toBeInTheDocument()
+  })
+
+  it('shows an honest empty state when nothing sponsored is on display', async () => {
+    stubApi([natural])
+    guestHome()
+    expect(await screen.findByText('There are no sponsored items on display right now.')).toBeInTheDocument()
+  })
+
+  it('explains insufficient country evidence, in our own words on the Korean screen', async () => {
+    stubApi([natural], 'insufficient')
+    const { unmount } = guestHome()
+    expect(await screen.findByText('Not enough country-specific evidence')).toBeInTheDocument()
+    expect(screen.getByText(/rely on general sources/)).toBeInTheDocument()
+    unmount()
+    localStorage.clear()
+    stubApi([natural], 'insufficient')
+    guestHome('ko')
+    expect(await screen.findByText('국가별 근거가 부족해요')).toBeInTheDocument()
+    expect(screen.getByText(/공통인 근거를 기반으로/)).toBeInTheDocument()
+    expect(screen.getByText('서버 설명 원문')).toBeInTheDocument() // 영어 원문은 접힌 상세로만
+  })
+
+  it('does not flag missing country evidence when the server supports the country', async () => {
+    stubApi([natural], 'supported')
+    guestHome()
+    await screen.findByText('Natural Cream')
+    expect(screen.queryByText('Not enough country-specific evidence')).toBeNull()
+  })
+
+  it('category shortcuts move to Explore and My Trip; search opens the search view', async () => {
+    const user = userEvent.setup()
+    stubApi([natural])
+    guestHome()
+    await screen.findByText('Natural Cream')
+    await user.click(screen.getByRole('button', { name: 'Beauty' }))
+    expect(screen.getByRole('button', { name: 'Explore' })).toHaveAttribute('aria-current', 'page')
+    await user.click(screen.getByRole('button', { name: 'Home' }))
+    await user.click(await screen.findByRole('button', { name: 'Trip plan' }))
+    expect(screen.getByRole('button', { name: 'My Trip' })).toHaveAttribute('aria-current', 'page')
+    await user.click(screen.getByRole('button', { name: 'Home' }))
+    await user.click(await screen.findByRole('button', { name: 'Search products, clinics and places' }))
+    expect(screen.queryByRole('button', { name: 'Search products, clinics and places' })).toBeNull()
+  })
+
+  it('offers the tax refund shortcut only when the catalog has that guide, and opens it', async () => {
+    const user = userEvent.setup()
+    stubApi([natural])
+    const { unmount } = guestHome()
+    await screen.findByText('Natural Cream')
+    expect(screen.queryByRole('button', { name: 'Tax refund' })).toBeNull()
+    unmount()
+    localStorage.clear()
+    stubApi([natural], 'insufficient', [natural, tax])
+    guestHome()
+    await user.click(await screen.findByRole('button', { name: 'Tax refund' }))
+    // 상세가 열리면 홈(검색창)은 사라진다
+    expect(screen.queryByRole('button', { name: 'Search products, clinics and places' })).toBeNull()
+  })
+
+  it('shows a trip summary banner that leads to My Trip', async () => {
+    const user = userEvent.setup()
+    stubApi([natural])
+    guestHome('en', [{ entry_id: 'e1', item_id: 'pl1', title: 'Info Center', category: 'medical', location: null, day: 1 }])
+    await user.click(await screen.findByRole('button', { name: /My Trip has 1 places/ }))
+    expect(screen.getByRole('button', { name: 'My Trip' })).toHaveAttribute('aria-current', 'page')
+  })
+
+  it('tutorial points at the real bottom tabs and can be skipped in Korean', async () => {
+    const user = userEvent.setup()
+    stubApi([natural])
+    localStorage.setItem(keyFor('guest', 'profile'), JSON.stringify({ version: 1, country: 'JP', language: 'ko', currency: 'JPY', tutorial_done: false }))
+    saveEntry('guest')
+    render(<App auth={fakeAuth({ state: 'disabled', reason: 'provider_disabled' })} />)
+    const tour = await screen.findByRole('dialog')
+    expect(document.querySelector('[data-tour="tab-1"]')).toHaveClass('is-tour-target')
+    await user.click(within(tour).getByRole('button', { name: '다음' }))
+    expect(document.querySelector('[data-tour="tab-2"]')).toHaveClass('is-tour-target')
+    await user.click(within(tour).getByRole('button', { name: '건너뛰기' }))
+    expect(screen.queryByRole('dialog')).toBeNull()
+    expect(JSON.parse(localStorage.getItem(keyFor('guest', 'profile'))!).tutorial_done).toBe(true)
   })
 })

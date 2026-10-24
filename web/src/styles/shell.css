@@ -18,12 +18,13 @@
 /* ── 튜토리얼 코치마크: 실제 하단 탭 칸을 스포트라이트로 비춘다 ── */
 .tour { position: fixed; inset: 0; z-index: 80; }
 .tour__frame { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); width: 100%; max-width: var(--app-w); height: 100%; pointer-events: none; }
-.tour__ring { position: absolute; bottom: env(safe-area-inset-bottom); width: calc(100% / 3); height: var(--nav-h); border-radius: 14px; box-shadow: 0 0 0 9999px rgba(19, 21, 23, 0.62); outline: 2px solid #fff; outline-offset: -4px; transition: left 0.25s ease; }
+.tour__ring { position: absolute; z-index: 1; bottom: env(safe-area-inset-bottom); width: calc(100% / 3); height: var(--nav-h); border-radius: 14px; box-shadow: 0 0 0 9999px rgba(19, 21, 23, 0.62); outline: 2px solid #fff; outline-offset: -4px; transition: left 0.25s ease; }
 .tour__ring--1 { left: 0; }
 .tour__ring--2 { left: calc(100% / 3); }
 .tour__ring--3 { left: calc(200% / 3); }
 .tour__ring span { position: absolute; top: -10px; right: 10px; width: 20px; height: 20px; border-radius: 50%; background: var(--medical); color: #fff; font-size: 11px; font-weight: 800; display: grid; place-items: center; }
-.tour__card { pointer-events: auto; position: absolute; left: 16px; right: 16px; bottom: calc(var(--nav-h) + env(safe-area-inset-bottom) + 18px); background: #fff; border-radius: var(--r-lg); padding: 18px 18px 14px; box-shadow: var(--shadow); animation: tour-in 0.2s ease-out; }
+/* 링의 어두운 그림자(9999px)가 카드를 덮지 않도록 카드를 한 층 위에 둔다 */
+.tour__card { pointer-events: auto; position: absolute; z-index: 2; left: 16px; right: 16px; bottom: calc(var(--nav-h) + env(safe-area-inset-bottom) + 18px); background: #fff; border-radius: var(--r-lg); padding: 18px 18px 14px; box-shadow: var(--shadow); animation: tour-in 0.2s ease-out; }
 .tour__top { display: flex; justify-content: space-between; align-items: center; font-size: 12px; margin-bottom: 10px; }
 .tour__label { font-weight: 700; color: var(--beauty-ink); }
 .tour__count { color: var(--g5); }

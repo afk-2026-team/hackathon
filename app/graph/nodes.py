@@ -9,6 +9,7 @@ from langchain_core.prompts import PromptTemplate
 
 from app.graph.state import AgentState
 from app.knowledge.okf import Concept
+from app.services.catalog_context import NO_CATALOG
 from app.knowledge.retrieve import format_evidence, retrieve as retrieve_concepts
 from app.utils.logger import AGENT_LOGGER_NAME
 
@@ -95,6 +96,7 @@ async def respond(state: AgentState, *, llm: BaseChatModel, system_prompt: str, 
             content_kind=state["content_kind"],
             medical_intent=PROB_FORMAT.format(state["medical_intent"]),
             profile=format_profile(state.get("profile")),
+            catalog=state.get("catalog") or NO_CATALOG,
             evidence=state["evidence"],
             question=state["messages"][-1].text,
         )

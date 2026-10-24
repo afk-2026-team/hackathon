@@ -78,6 +78,9 @@ def _candidate(item: CatalogItem, facts: ProductFacts | None) -> CandidateFacts:
     price = None
     if item.price_krw is not None and facts and facts.price_source and facts.price_basis:
         price = PriceFact(amount=item.price_krw, currency="KRW", basis=facts.price_basis, source=facts.price_source)
+    elif item.list_price is not None:
+        # 원화 확인가가 없으면 카탈로그의 공식 표시가(통화 그대로)를 쓴다. 통화가 다르면 _price 가 비교하지 않는다
+        price = item.list_price
     return CandidateFacts(
         id=item.id,
         title=item.title,

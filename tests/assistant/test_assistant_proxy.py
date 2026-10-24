@@ -61,16 +61,25 @@ def test_forwards_profile_and_question_to_upstream(make_client):
     assert res.json()["output"][0]["content"][0]["text"] == "Try a ceramide cream."
     sent = json.loads(calls[0].content)
     assert str(calls[0].url) == "http://ai.upstream.test/v1/responses"
-    assert sent == {"model": "kbeauty-sonnet", "input": "What should I buy?", "stream": False, "metadata": {"profile": PROFILE}}
+    assert {k: sent[k] for k in ("model", "stream")} == {"model": "kbeauty-sonnet", "stream": False}
+    assert sent["metadata"]["profile"] == PROFILE
+    # 분류기가 보는 input 은 원문 질문 그대로 — 카탈로그는 id 목록만 별도 metadata 로 간다
+    assert sent["input"] == "What should I buy?"
+    assert sent["metadata"]["catalog_candidate_ids"]
     assert calls[0].headers["X-Thread-Id"] == "session-1"
 
 
-def test_home_request_without_input_sends_profile_only(make_client):
+def test_home_request_without_input_leaves_home_sentence_to_backend(make_client):
     client, calls = make_client(lambda r: httpx.Response(200, json=_response_object()))
     res = client.post("/v1/responses", json={"metadata": {"profile": {"language": "ko", "country": "JP"}}})
     assert res.status_code == 200
     sent = json.loads(calls[0].content)
-    assert sent["input"] is None and sent["metadata"] == {"profile": {"language": "ko", "country": "JP"}}
+    assert sent["metadata"]["profile"] == {"language": "ko", "country": "JP"}
+    assert sent["input"] is None  # B 가 같은 프로필로 HOME_REQUEST 문장을 만든다
+    meta = res.json()["metadata"]
+    assert meta["candidates_status"] == "ok"
+    assert sent["metadata"]["catalog_candidate_ids"] == [c["id"] for c in meta["candidates"]]
+    assert "catalog_candidate_ids" not in meta  # 전달용 키는 응답에 되돌리지 않는다
 
 
 @pytest.mark.parametrize("body,param", [
@@ -78,7 +87,11 @@ def test_home_request_without_input_sends_profile_only(make_client):
     ({"input": "hi", "metadata": {"profile": {"language": "en", "country": "USA"}}}, "metadata.profile.country"),
     ({"input": "x" * 2001, "metadata": {"profile": PROFILE}}, "input"),
     ({"input": "hi", "stream": True, "metadata": {"profile": PROFILE}}, "stream"),
-    ({"input": "hi", "metadata": {"profile": {**PROFILE, "currency": "USD"}}}, "metadata.profile.currency"),
+    ({"input": "hi", "metadata": {"profile": {**PROFILE, "currency": "US"}}}, "metadata.profile.currency"),
+    ({"input": "hi", "metadata": {"profile": {**PROFILE, "skin_type": "dry"}}}, "metadata.profile.skin_type"),
+    ({"input": "hi", "metadata": {"profile": {**PROFILE, "budget_krw": 0}}}, "metadata.profile.budget_krw"),
+    ({"input": "hi", "metadata": {"profile": {**PROFILE, "interests": ["a"] * 11}}}, "metadata.profile.interests"),
+    ({"input": "hi", "metadata": {"profile": {**PROFILE, "current_product": "x" * 201}}}, "metadata.profile.current_product"),
 ])
 def test_invalid_input_is_rejected_before_upstream(make_client, body, param):
     client, calls = make_client(lambda r: httpx.Response(200, json=_response_object()))

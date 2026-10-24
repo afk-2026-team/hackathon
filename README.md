@@ -59,7 +59,7 @@ cd web && npm run dev
 | `youtube` | 제품 상세 숏폼(`/v1/evidence/videos`, 크리에이터 유료 광고 신고만 협찬 표시) | 503 안내 |
 | (키 없음) | 통화 환산(`/v1/fx`, ECB 기준율) | ECB 가 주지 않는 통화는 원화만 표시 |
 
-- 지도 JS(Dynamic Map)는 NAVER Cloud 콘솔의 Maps 앱에 **웹 서비스 URL**(예: `http://localhost:5173`)이 등록된 주소에서만 뜹니다. 미등록이면 화면에 등록 안내가 나옵니다. 현재 Maps 앱에서 Geocoding 만 활성이라 경로는 방문 순서를 잇는 직선(실제 경로 아님)과 구간별 네이버 지도 길찾기 링크로 보여 줍니다.
+- 지도 JS(Dynamic Map)는 NAVER Cloud 콘솔의 Maps 앱에 **웹 서비스 URL**(예: `http://localhost:5173`)이 등록된 주소에서만 뜹니다. 미등록이면 화면에 등록 안내가 나옵니다. Maps 앱에서 Geocoding 과 Directions 5(자동차 경로, 2026-10-24 controller 활성화·일 1,000/월 5,000 한도)가 활성입니다. `GET /v1/maps/directions`는 자동차 도로 경로·시간이며, 도보·대중교통 시간으로 표시하지 않습니다. `POST /v1/trips/plan`은 이와 별개로 선택 장소를 직선거리 근접 순으로만 정렬합니다(이동 시간·도로 최적화 아님).
 - 지오코딩은 한글 도로명 주소만 찾습니다. 카탈로그 장소 주소와 숙소 입력은 한글 주소를 씁니다.
 - Windows 에서 실행기가 `infisical` 을 찾지 못하면 `infisical.exe` 가 있는 폴더(npm 전역 설치 시 `@infisical/cli/bin`)를 PATH 앞에 두고, Git Bash 에서는 `MSYS_NO_PATHCONV=1` 로 실행합니다.
 

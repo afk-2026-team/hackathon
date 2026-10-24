@@ -15,6 +15,7 @@ class AgentState(TypedDict):
     content_kind: str  # Jev Choice 라벨(product|clinic|video|any) — retrieve 필터
     medical_intent: float  # Jev Noul 확률 — retrieve 점수
     profile: dict  # 온보딩 프로필(language·country·gender·age_band + 선택 currency·interests·budget_krw·current_product). Jev 에는 넣지 않고 retrieve·respond 만 읽는다
+    catalog: str  # 이번 턴 [Official catalog] 본문(서버가 카탈로그 id 로 재구성). Jev 에는 넣지 않는다
     evidence: str  # retrieve 가 고른 근거 블록(respond 턴에 그대로 들어간다)
     retrieved_ids: list[str]  # 로그·검증용 — 응답이 인용해야 할 concept id
     route: str  # "respond" | "decline" — branching OFF 여도 판단 기록으로 남는다

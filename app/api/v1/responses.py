@@ -12,7 +12,7 @@ from fastapi import APIRouter, Request
 from fastapi.responses import StreamingResponse
 
 from app.api.v1.chat_completions import prepend, text_deltas
-from app.api.v1.inputs import graph_input_from, join_parts, profile_from_metadata, runtime_for
+from app.api.v1.inputs import catalog_from_metadata, graph_input_from, join_parts, profile_from_metadata, runtime_for
 from app.schemas.responses import IncompleteDetails, OutputMessage, OutputText, ResponseObject, ResponsesRequest
 from app.utils.errors import OpenAIError
 from app.utils.logger import AGENT_LOGGER_NAME
@@ -59,6 +59,7 @@ async def responses(body: ResponsesRequest, request: Request):
         request.headers,
         multi_turn=runtime.multi_turn,
         thread_header=request.app.state.config["multi_turn"]["thread_header"],
+        catalog=catalog_from_metadata(body.metadata),
     )
     rid, mid, created = f"resp_{uuid.uuid4().hex}", f"msg_{uuid.uuid4().hex}", int(time.time())
 

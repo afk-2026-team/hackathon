@@ -25,6 +25,7 @@ from app.api.v1.discovery import router as discovery_router
 from app.api.v1.evidence import router as evidence_router
 from app.api.v1.fx import router as fx_router
 from app.api.v1.maps import router as maps_router
+from app.api.v1.trips import router as trips_router
 
 HOST = os.environ.get("DISCOVERY_HOST", "127.0.0.1")
 PORT = int(os.environ.get("DISCOVERY_PORT", "8001"))
@@ -76,6 +77,7 @@ def create_discovery_app(web_dist: Path | None = WEB_DIST) -> FastAPI:
     app.include_router(maps_router, prefix="/v1")  # 지도 공개 설정·지오코딩(naver_maps)
     app.include_router(evidence_router, prefix="/v1")  # 블로그(naver)·숏폼(youtube) 근거
     app.include_router(fx_router, prefix="/v1")  # ECB 기준율, 키 불필요
+    app.include_router(trips_router, prefix="/v1")  # 선택 장소 근접 순서(직선거리), 지오코딩은 maps 재사용
     app.include_router(assistant_router, prefix="/v1")  # /v1/responses → app.serve(JINSEONMI_AI_UPSTREAM) 명시적 프록시, 키는 8000 쪽에만
 
     if web_dist is not None:

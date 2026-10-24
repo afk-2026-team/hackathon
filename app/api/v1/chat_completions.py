@@ -10,7 +10,7 @@ from fastapi import APIRouter, Request
 from fastapi.responses import StreamingResponse
 from langchain_core.messages import AIMessageChunk
 
-from app.api.v1.inputs import graph_input_from, join_parts, profile_from_metadata, runtime_for
+from app.api.v1.inputs import catalog_from_metadata, graph_input_from, join_parts, profile_from_metadata, runtime_for
 from app.graph.nodes import LLM_NODES
 from app.schemas.openai import (
     AssistantMessage,
@@ -41,7 +41,8 @@ def to_graph_input(
             raise OpenAIError(400, f"마지막 메시지는 role=user 여야 한다: role={last.role}", "invalid_request_error", "messages")
         text = join_parts(last.content)
     profile = profile_from_metadata(body.metadata)
-    return graph_input_from(text, profile, headers, multi_turn=multi_turn, thread_header=thread_header)
+    return graph_input_from(text, profile, headers, multi_turn=multi_turn, thread_header=thread_header,
+                            catalog=catalog_from_metadata(body.metadata))
 
 
 @router.post("/chat/completions")

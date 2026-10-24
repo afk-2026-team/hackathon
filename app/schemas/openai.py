@@ -18,12 +18,14 @@ class ChatMessage(BaseModel):
 
 
 class ChatCompletionRequest(BaseModel):
-    """OpenAI 호환 요청. 쓰지 않는 필드(temperature·stream_options 등)는 받되 무시한다(설계 §3)."""
+    """OpenAI 호환 요청. 쓰지 않는 필드(temperature·stream_options 등)는 받되 무시한다(설계 §3).
+    messages 가 비어도 metadata 에 프로필이 있으면 Home 조언 요청이다(app/api/v1/inputs.py)."""
 
     model_config = ConfigDict(extra="allow")
     model: str
-    messages: list[ChatMessage] = Field(min_length=1)
+    messages: list[ChatMessage] = Field(default_factory=list)
     stream: bool = False
+    metadata: dict | None = None
 
 
 class AssistantMessage(BaseModel):

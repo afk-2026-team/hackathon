@@ -1,23 +1,38 @@
 name: jev_questions
 description: >-
-  Jev(TypeSafe) 에 보내는 판단 질문. 질문 id(category·purchase_intent)는 app/graph/nodes.py 의
-  CATEGORY_QID·PURCHASE_INTENT_QID 와 짝이다. category criteria 키는 router.decline_labels 의 허용 라벨이다.
+  Jev(TypeSafe) 에 보내는 판단 질문. 질문 id(category·purchase_intent·content_kind·medical_intent)는
+  app/graph/nodes.py 의 *_QID 와 짝이다. category criteria 키는 router.decline_labels 의 허용 라벨이고,
+  category·content_kind 라벨은 Crawling_DB frontmatter 의 category·content_kind 값과 같은 어휘다(retrieve 필터).
 questions:
   category:
     type: choice
     instructions: >-
-      Which K-beauty topic is this traveler's message about? Choose out_of_scope when the message
-      is not about beauty products, hair products, or Korean skin clinics.
+      Which K-beauty or K-medical topic is this traveler's message about? Choose out_of_scope when the message
+      is not about beauty products, hair products, or Korean clinics and medical visits.
     criteria:
       skincare: "Skincare products or routines: cleanser, toner, serum, moisturizer, acne, dry or oily skin."
       makeup: "Color cosmetics: foundation, cushion, lip tint, eyeshadow, mascara."
       suncare: "Sunscreen, sun cream, UV protection, after-sun care."
       haircare: "Shampoo, hair treatment, scalp care, hair styling products."
-      k_medical: "Korean dermatology clinics or procedures: laser, botox, filler, skin booster."
-      out_of_scope: "Anything not about beauty products or skin clinics, such as stocks, weather, food, or transport."
+      k_medical: "Korean clinics and medical visits: dermatology, laser, botox, filler, skin booster, health checkups, dentists."
+      out_of_scope: "Anything not about beauty products or Korean clinics, such as stocks, weather, food, or transport."
   purchase_intent:
     type: noul
     instructions: "Does the user want to buy a product or get a product recommendation?"
     criteria:
       "true": "Asks what to buy, where to buy it, or which product to choose."
       "false": "General information, chit-chat, or a request that is not about shopping."
+  content_kind:
+    type: choice
+    instructions: "What kind of content would best answer this traveler right now?"
+    criteria:
+      product: "Product picks or product reviews: what to buy, which item works for them."
+      clinic: "Clinics or medical places to visit, or reviews of clinic visits."
+      video: "Video reviews, routines, or hauls they want to watch."
+      any: "A broad or home-feed request with no single content type, or a mix of products, places, and videos."
+  medical_intent:
+    type: noul
+    instructions: "Is the traveler interested in visiting a Korean clinic or getting a medical or dermatology procedure?"
+    criteria:
+      "true": "Mentions clinics, dermatologists, procedures, treatments, checkups, or dentists."
+      "false": "Only about products, routines, shopping, or general beauty tips."

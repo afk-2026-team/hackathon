@@ -12,7 +12,7 @@ server:
   serving_type: "chat/completions" # 허용값은 이것 하나 — 다른 값이면 기동 거부
 
 profiles:                          # 행 1개 = 서빙할 모델 1개. id = 요청의 model 값. 0행이면 기동 거부
-  - {id: kbeauty-haiku, llm: {path: envs/models/claude-haiku-5-5_anthropic.yaml, override: {}}}
+  - {id: kbeauty-haiku, llm: {path: envs/models/claude-haiku-5-5_anthropic.yaml, override: {max_tokens: 2048}}}  # Home 피드 3~5건이 1024 에서 잘림(2026-10-24 실측)
 
 # ── 이 아래는 workflow 전용 블록 ──
 
@@ -36,3 +36,7 @@ prompt:                            # app/prompts/ 파일명 — 노드는 파일
 multi_turn:                        # on/off 토글 블록 — 꺼도 남겨 두고 값은 검증한다(K4)
   enabled: false                   # true → InMemorySaver checkpointer 부착, 요청마다 thread_header 필수(없으면 400)
   thread_header: "X-Thread-Id"     # thread id 를 읽을 요청 헤더 이름(비어 있으면 기동 거부)
+
+knowledge:                         # retrieve 노드가 읽는 OKF v0.2 번들(crawler/run.py 가 적재)
+  bundle_path: Crawling_DB         # 프로젝트 루트 기준. 기동 시 1회 읽는다 — 비어 있으면 기동 거부. 다시 크롤링하면 서버 재시작
+  top_n: 5                         # respond 에 넘길 근거 수(interview Q12(d))

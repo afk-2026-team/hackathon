@@ -1,6 +1,7 @@
 /* 제품 비교(지금 쓰는 제품 vs 한국 후보). 팀 비교 기능(ComparePanel)을 진선미 토큰으로 옮긴 스타일.
    한국 후보 쪽은 뷰티 민트로 강조한다. 모든 클래스는 .compare 아래로 범위를 묶는다. */
-.compare { border: 1px solid var(--g15); border-radius: var(--r); padding: 16px; display: flex; flex-direction: column; gap: 12px; background: #fff; }
+.compare-wrap { padding: 20px 0; }
+.compare { margin: 0 16px; border: 1px solid var(--g15); border-radius: var(--r); padding: 16px; display: flex; flex-direction: column; gap: 12px; background: #fff; }
 .compare--ask { background: var(--beauty-bg); border-color: transparent; }
 .compare .section-title { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: -0.02em; }
 .compare .note { padding: 10px 12px; font-size: 12px; }

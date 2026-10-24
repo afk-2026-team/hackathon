@@ -83,7 +83,7 @@ describe('Explore', () => {
     expect(within(real).getByText('Medical Info Center')).toBeInTheDocument()
     expect(within(real).queryByText('Paid Serum')).toBeNull()
     expect(screen.getByText('Curation order · not a measured ranking')).toBeInTheDocument()
-    expect(screen.getByText(/Not enough country-specific evidence/)).toBeInTheDocument()
+    expect(screen.queryByText(/Not enough country-specific evidence/)).toBeNull() // 국가 근거 안내는 제거됨(사용자 요청)
 
     await user.click(screen.getByRole('tab', { name: 'Sponsored 1' }))
     const sp = screen.getByRole('list', { name: 'Sponsored items' })
@@ -99,8 +99,8 @@ describe('Explore', () => {
         : undefined,
     )
     renderExplore(profile({ language: 'ko' }), {}, 'ko')
-    expect(await screen.findByText('Japan 관련 근거가 포함된 추천이에요')).toBeInTheDocument()
-    await user.click(screen.getByRole('tab', { name: '협찬 0' }))
+    expect(screen.queryByText('Japan 관련 근거가 포함된 추천이에요')).toBeNull() // 국가 근거 안내는 제거됨(사용자 요청)
+    await user.click(await screen.findByRole('tab', { name: '협찬 0' }))
     expect(screen.getByText('지금 홍보 중인 협찬 상품이 없어요.')).toBeInTheDocument()
   })
 

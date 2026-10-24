@@ -83,3 +83,9 @@
 .trip-dayroute__legs { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
 .trip-legend__line--real { border-top-style: solid; border-top-color: #1e6ef0; opacity: 0.9; }
 .trip-legend__real { color: var(--g8); font-weight: 600; }
+
+/* 숙소 없이 현재 위치에서 출발 */
+.trip-here { padding: 14px 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+.trip-here > p { flex: 1 1 220px; margin: 0; }
+.trip-here .trip-fine { flex-basis: 100%; }
+.trip-here__on { font-weight: 700; color: var(--ink); }

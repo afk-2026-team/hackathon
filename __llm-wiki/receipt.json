@@ -8,6 +8,7 @@
   "__llm-wiki/cards/docs/checklist/checklist_26102411_GitHub_remote_연결_push.md.card.md": "130ba2aeeff614f5e86b31a550bef5641a9e4df09ced1bfacea31caf6e0f2823",
   "__llm-wiki/cards/docs/checklist/checklist_26102412_공통_시크릿_매니저.md.card.md": "f8bc8eaa8b60e4cb9d6f48735df8adb34a050727f2f3d3eb06a9aae8861dae44",
   "__llm-wiki/cards/docs/checklist/checklist_26102413_LangGraph_Jev_라이브서버.md.card.md": "65d469c97b91a5573624aba4a92a6322747e7310215ac492934b0de1e69b4d7b",
+  "__llm-wiki/cards/docs/checklist/checklist_26102413_최종기획안_공유.md.card.md": "26686ed75e274ea58f4ed566b4bde3dc9594994c96df83985008840e307be9a5",
   "__llm-wiki/cards/docs/devlog/devlog_26102410_13_19_envs_키폴더_추적차단.md.card.md": "2e5932c58b7a3716d27189388db2324d7c992df0e959714af94d2da1fea9760c",
   "__llm-wiki/cards/docs/devlog/devlog_26102410_54_50_프로젝트_헌장_목표.md.card.md": "7f45ce3088697b6808485f8b8cf661eb0e1efe66e3abb0183a12c24872943b75",
   "__llm-wiki/cards/docs/devlog/devlog_26102410_SDD서고환경_설치.md.card.md": "dff325910f50522fef7c863d382ab85ecc4b5b752d5e21f6bf91deec6be5624d",
@@ -16,6 +17,7 @@
   "__llm-wiki/cards/docs/devlog/devlog_26102411_GitHub_remote_연결_push.md.card.md": "727617699f024ff27371ca3b1f0ebf320b249d7c7ed08cfef31cdb6a407be561",
   "__llm-wiki/cards/docs/devlog/devlog_26102412_공통_시크릿_매니저.md.card.md": "864c4251ba5efac003f4e8129677796dc47d1fab110a105044b88ee45ba7b2d9",
   "__llm-wiki/cards/docs/devlog/devlog_26102413_LangGraph_Jev_라이브서버.md.card.md": "be70f010ca1b973c2d4055717393993876f238e9001740633860660183647a6a",
+  "__llm-wiki/cards/docs/devlog/devlog_26102413_최종기획안_공유.md.card.md": "a883ffa79d41b51e722a396247c08ab321620d4443558cce5946535d1d31cbcc",
   "__llm-wiki/cards/docs/interview/interview_26102409_SDD서고환경_설치.md.card.md": "9814f11313635b90a3a003a65d1da754550e076933ac7f5b29321a76e84098ea",
   "__llm-wiki/cards/docs/interview/interview_26102410_38_32_Infisical_연결_셋업.md.card.md": "07d4233d5e42092f7d9c6b9cc9636040a02d89c1e664df79376c3d6a6ad37381",
   "__llm-wiki/cards/docs/interview/interview_26102410_53_39_프로젝트_헌장_목표.md.card.md": "6facaf466c386b809a77bf848d57c71db85679fc7110fef606a5ae7af129e915",
@@ -24,6 +26,7 @@
   "__llm-wiki/cards/docs/interview/interview_26102411_GitHub_remote_연결_push.md.card.md": "ab0986f262665d487040f1e2eb59c1d9796d423b5a4f7633117c9687b9d1111c",
   "__llm-wiki/cards/docs/interview/interview_26102412_LangGraph_Jev_라이브서버.md.card.md": "f094720f120cae0481527ae2be07e9a70cc288a55ebe1a2472cdba25986f738a",
   "__llm-wiki/cards/docs/interview/interview_26102412_공통_시크릿_매니저.md.card.md": "87d1fa2c4375bc9d8baa8dc94ec5c60a10f4c08e432423d58cb7c818e3f63dd1",
+  "__llm-wiki/cards/docs/interview/interview_26102413_최종기획안_공유.md.card.md": "3026932551d169ac7a6b0312f4f657616332c355c5766a1b1c231a6a7c8983a5",
   "__llm-wiki/cards/docs/plan/plan_26102410_11_42_envs_키폴더_추적차단.md.card.md": "9a487c199e8780711d94dbbe877b922b29f4abd975462c9c866185d60e27a661",
   "__llm-wiki/cards/docs/plan/plan_26102410_13_03_envs_키폴더_추적차단.md.card.md": "597385c8580081815c07e61c0941f1cfb54e7e9c21d7b070ce3e8a596abd3c05",
   "__llm-wiki/cards/docs/plan/plan_26102410_40_06_Infisical_연결_셋업.md.card.md": "bf9852f5e77d968b625c8050e16107ae93f4c8b74f454e039112c6afeba52947",
@@ -34,10 +37,12 @@
   "__llm-wiki/cards/docs/plan/plan_26102412_52_00_LangGraph_Jev_라이브서버_구현.md.card.md": "87e4a8e75ca27b26e95e73f38a7488239aa97b70cfa2d1250d4268749ce33fb2",
   "__llm-wiki/cards/docs/plan/plan_26102412_LangGraph_Jev_라이브서버_설계.md.card.md": "b62270d7e6af69859ee968828b44eea31d1b997d1312eed79949fc46e9806b3d",
   "__llm-wiki/cards/docs/plan/plan_26102412_공통_시크릿_매니저.md.card.md": "81484f3ef75320541d3276cce70c995f39ad3263618f63b2a6e21f029257a132",
+  "__llm-wiki/cards/docs/plan/plan_26102413_최종기획안_공유.md.card.md": "af7758fb959dbbfb2a03d0d87a71003c21c68b34cb04d65b4b93eec184cb72c7",
   "__llm-wiki/cards/docs/research/research_26102411_K뷰티_로컬찐템_딥리서치.md.card.md": "ee66ab71b1587571578e6220b28d833e556e7154649e75cee435dfe68b2fdda3",
   "__llm-wiki/cards/docs/strategy/strategy_26102411_K뷰티_제품_구체화.md.card.md": "97685d309597ae3888751f79d610a9b53546d1d65537faa2a0c4860fced03121",
+  "__llm-wiki/cards/docs/strategy/strategy_26102413_통합플랫폼_최종기획안.md.card.md": "5ed000f8faef2b0abff44c6926f065b7fe1307ba87d1808421f08b36888c8b0c",
   "__llm-wiki/contract.json": "079c396f916cdc974c84bc8e989fc6d7e377b3e1e4f614899a4acbfb43028c26",
-  "__llm-wiki/index.md": "c5fae3d674c8c8cf5e780d428d6a92339d1750ba5cb6ac3b259c33850f832dca",
-  "__llm-wiki/log.md": "376720ff64d60ea5d42cd553abaa514422a309801f6545ada08fc3056345bc5e"
+  "__llm-wiki/index.md": "b3ddcaae065bcc29b6bffebb26f4d75dea334bfa5dcb424529a96e8fc3d858bf",
+  "__llm-wiki/log.md": "58aa0c3bf6b967417c554285d8c18213cd9c2d443e121771cfcbbb2ccb7c2b91"
  }
 }

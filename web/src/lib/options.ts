@@ -40,6 +40,7 @@ export const INTERESTS: { code: string; label: string }[] = [
   { code: 'dermatology', label: 'Dermatology visit' },
   { code: 'checkup', label: 'Health checkup' },
   { code: 'dental', label: 'Dental' },
+  { code: 'plastic_surgery', label: 'Plastic surgery' },
   { code: 'neighborhoods', label: 'Local neighborhoods' },
 ]
 

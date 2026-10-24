@@ -75,3 +75,29 @@
 - `Catalog.model_validate` 통과, 196개 id 고유, 기존 `discovery_catalog.json` id와 겹침 없음.
 - 출처 URL 6개(data.go.kr 데이터셋 4 + 메디컬코리아 2) 모두 HTTP 200(2026-10-24).
 - 좌표 196/196 시도 경계 안, 표본 주소-좌표 일치 확인.
+
+## 성형외과 추가(2026-10-24)
+
+사용자 결정("같은 공공데이터 방식으로 성형외과도 병원 목록에 추가해줘")에 따라, 위에서 범위 미정으로 보류했던 성형외과를 같은 출처·같은 매칭 규칙으로 추가했다.
+
+- 산출물
+  - `app/data/staging/plastic_surgery.json`: 성형외과 의원 200곳. 서울 183곳(강남 135, 서초 46, 종로 1, 영등포 1), 부산 13곳, 제주 4곳. 좌표 200/200, 모두 해당 시도 경계 안.
+  - `app/data/staging/plastic_surgery_patch.json`: 이미 병합된 종합병원 33곳에 `plastic_surgery` 태그를 더하는 패치(`{id: {add_tags}}`).
+- 출처·이용 조건: 위 표와 같다. KHIDI 외국인환자 유치기관 현황(2026-07-21, 상태 '유지')과 KHIDI 메디컬코리아 영문 목록은 data.go.kr 표기 "이용허락범위 제한 없음", HIRA 병의원 현황 2026.9는 공공누리 제1유형. 민간 데이터·후기·순위·가격·병원 자체 소개 문구는 쓰지 않았다.
+- 분야 판정: KHIDI 한국어 상호명에 '성형외과'가 있고, HIRA 종별이 의원 또는 병원이며, HIRA 진료과목정보에 성형외과 전문의가 1명 이상일 때. 태그는 `plastic_surgery`, `international_clinic`, `foreign_patient_registered`, `clinic`(결과는 모두 의원급), 지역 태그.
+- 매칭 규칙: 지난번과 같다. KHIDI 이름을 HIRA와 같은 시도 안에서 공백 제거 이름이 하나로 일치할 때만 잇고, HIRA를 영문 목록과 전화번호+구가 하나로 일치할 때만 잇는다. 의원급에 건물번호 대체 규칙은 쓰지 않았다. 영문명에 dental·korean medicine·oriental이 들어가면 제외했다(해당 0건).
+- description: HIRA 종별, KHIDI 등록번호·'유지' 상태, HIRA 성형외과 전문의 수, 메디컬코리아 영문 주소, 고지문 "Medical decisions and bookings are made by the institution." 미용·시술 효과 표현은 쓰지 않았다.
+- 종합병원 패치 근거: 기존 종합병원 55곳 가운데 HIRA 진료과목정보 2026.9에 성형외과 전문의가 1명 이상인 33곳. 기존 항목과는 영문 title과 한국어 subtitle이 모두 같을 때만 id를 대응시켰다(대응 실패 0건). 패치 파일에는 형식대로 `add_tags`만 넣었다. 기관별 전문의 수 근거는 저장소 밖 `afk-hackathon-tools/hospitals/out/patch_basis.json`에 있다.
+- 제외 집계(서울·부산·제주 KHIDI 목록에서 상호명에 '성형'이 있는 581곳 기준)
+  | 사유 | 건수 |
+  |---|---|
+  | 영문 목록 유일 매칭 실패(전화번호 공유·중복 등록) | 292 |
+  | HIRA 이름 불일치 | 53 |
+  | 영문 목록 매칭 없음 | 20 |
+  | 서울 관광 동선 밖 구의 의원급 | 9 |
+  | HIRA 동명 기관 여러 곳 | 2 |
+  | '성형외과' 명칭이 아니거나 HIRA에 성형외과 전문의 없음 | 3 |
+  | 기관구분이 유치사업자·기타 | 2 |
+- 재현: `afk-hackathon-tools/hospitals/scripts/build_ps.py` (`python -I -X utf8 build_ps.py <raw> <out/plastic_surgery.json> <discovery_catalog.json> <report.json>`; 패치는 `<out>_patch.json`으로 생성).
+- 검증: `Catalog.model_validate` 통과, 200개 id 고유, 기존 카탈로그 291개 id와 겹침 없음, 기존 항목과 한국어 기관명 중복 없음, 패치 id 33개 모두 기존 카탈로그에 있음.
+- 한계: 외국인환자 유치기관 등록은 행정 등록일 뿐, 시술 안전·결과·가격·통역 제공을 보증하지 않는다. 목록에 없다고 외국인 진료가 안 되는 것은 아니다.

@@ -20,7 +20,7 @@ LLM_NODES = (RESPOND, DECLINE)
 # app/prompts/jev_questions.yaml 의 질문 id 와 짝(test_questions_contract 가 핀한다)
 CATEGORY_QID, PURCHASE_INTENT_QID = "category", "purchase_intent"
 CONTENT_KIND_QID, MEDICAL_INTENT_QID = "content_kind", "medical_intent"
-PROFILE_KEYS = ("language", "country", "gender", "age_band")  # respond 턴에 보이는 순서
+PROFILE_KEYS = ("language", "country", "gender", "age_band", "currency", "interests", "budget_krw", "current_product")  # respond 턴에 보이는 순서
 # Anthropic stop_reason → OpenAI finish_reason. 표에 없는 stop_reason 은 KeyError 로 드러낸다(조용한 기본값 금지)
 FINISH_REASONS = {"end_turn": "stop", "stop_sequence": "stop", "max_tokens": "length", "refusal": "stop"}
 # 로그에 찍는 확률·confidence 자릿수(라이브 판정 정규식은 값이 아니라 route 만 본다)
@@ -71,7 +71,10 @@ async def retrieve(state: AgentState, *, concepts: list[Concept], top_n: int) ->
 
 def format_profile(profile: dict | None) -> str:
     profile = profile or {}
-    return " ".join(f"{k}={profile.get(k) or 'not_given'}" for k in PROFILE_KEYS)
+    def show(v) -> str:
+        return ", ".join(map(str, v)) if isinstance(v, list) else str(v)
+
+    return " ".join(f"{k}={show(profile[k]) if profile.get(k) else 'not_given'}" for k in PROFILE_KEYS)
 
 
 async def _answer(llm: BaseChatModel, system_prompt: str, state: AgentState, human: HumanMessage, tag: str) -> dict:

@@ -224,7 +224,7 @@
   - `stream=true`면 SSE로 `response.created` → `response.output_item.added`·`content_part.added`·`output_text.delta`… → `response.completed|incomplete`를 보낸다.
 - **오류:** 없는 model은 404 `model_not_found`, 형식 오류는 400(OpenAI envelope)이다.
 - **A 프록시(`app/api/v1/assistant_proxy.py`) 규칙:**
-  - 요청: `{model?: string(기본 JINSEONMI_AI_MODEL 또는 "kbeauty-haiku"), input?: string|null(≤2000자, 앞뒤 공백 제거), stream?: false, metadata: {profile: {language(2~8자), country(2자), gender?(≤32자), age_band?(≤16자)}}}`
+  - 요청: `{model?: string(기본 JINSEONMI_AI_MODEL 또는 "kbeauty-sonnet"), input?: string|null(≤2000자, 앞뒤 공백 제거), stream?: false, metadata: {profile: {language(2~8자), country(2자), gender?(≤32자), age_band?(≤16자)}}}`
   - `stream=true`, extra 필드(프로필 안 포함), 2000자 초과, `metadata` 누락은 B 호출 전에 422로 막는다. 오류 형식은 A의 `{"error": {"message", "param"}}`다.
   - 업스트림은 `JINSEONMI_AI_UPSTREAM`(기본 `http://127.0.0.1:8000`), 시간 상한 60초다. `X-Thread-Id`가 오면 그대로 넘긴다.
   - 실패 매핑: B 미기동 503, 시간 초과 504, 읽을 수 없거나 `object≠"response"`인 응답 502. B의 4xx·5xx는 상태를 유지하고 B의 `error.message`를 담는다(UI는 이 문구를 `detail`로만 보관하고 사용자 문구는 따로 쓴다).

@@ -23,7 +23,7 @@ def _response_object(text="Hello", status="completed"):
         "object": "response",
         "created_at": 1,
         "status": status,
-        "model": "kbeauty-haiku",
+        "model": "kbeauty-sonnet",
         "output": [{"type": "message", "id": "msg_test", "status": status, "role": "assistant",
                     "content": [{"type": "output_text", "text": text, "annotations": []}]}],
         "incomplete_details": None,
@@ -61,7 +61,7 @@ def test_forwards_profile_and_question_to_upstream(make_client):
     assert res.json()["output"][0]["content"][0]["text"] == "Try a ceramide cream."
     sent = json.loads(calls[0].content)
     assert str(calls[0].url) == "http://ai.upstream.test/v1/responses"
-    assert sent == {"model": "kbeauty-haiku", "input": "What should I buy?", "stream": False, "metadata": {"profile": PROFILE}}
+    assert sent == {"model": "kbeauty-sonnet", "input": "What should I buy?", "stream": False, "metadata": {"profile": PROFILE}}
     assert calls[0].headers["X-Thread-Id"] == "session-1"
 
 

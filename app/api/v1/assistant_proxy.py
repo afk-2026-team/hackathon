@@ -21,7 +21,7 @@ from pydantic import BaseModel, ConfigDict, Field
 router = APIRouter()
 
 DEFAULT_UPSTREAM = "http://127.0.0.1:8000"
-DEFAULT_MODEL = "kbeauty-haiku"
+DEFAULT_MODEL = "kbeauty-sonnet"
 AI_TIMEOUT_S = 60.0  # LLM 응답 대기 상한(이 파일에서만 쓰는 국소 상수)
 MAX_INPUT_CHARS = 2000
 THREAD_HEADER = "X-Thread-Id"  # 업스트림 multi_turn 이 켜졌을 때만 의미가 있다 — 있으면 그대로 넘긴다

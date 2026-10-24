@@ -12,7 +12,7 @@ const profile: ProfilePayload = {
   preferences: { interests: ['skincare'], current_product: 'CeraVe Moisturizing Cream', budget_krw: 50000 },
 }
 const responseObject = (text = 'Try a ceramide cream.', status = 'completed') => ({
-  id: 'resp_1', object: 'response', created_at: 1, status, model: 'kbeauty-haiku',
+  id: 'resp_1', object: 'response', created_at: 1, status, model: 'kbeauty-sonnet',
   output: [{ type: 'message', id: 'msg_1', status, role: 'assistant', content: [{ type: 'output_text', text, annotations: [] }] }],
 })
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json' } })

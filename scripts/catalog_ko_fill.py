@@ -38,7 +38,7 @@ MED_TYPE_KO = {
     "clinic": "의원", "dental clinic": "치과의원", "general hospital": "종합병원",
     "tertiary general hospital": "상급종합병원", "dental hospital": "치과병원",
 }
-SPECIALTY_KO = {"dermatology and dentistry": "피부과·치과", "dermatology": "피부과", "dentistry": "치과"}
+SPECIALTY_KO = {"dermatology and dentistry": "피부과·치과", "dermatology": "피부과", "dentistry": "치과", "plastic surgery": "성형외과"}
 
 # 한 번씩만 나오는 문장(원문 그대로 키)
 FIXED_KO = {
@@ -54,6 +54,7 @@ FIXED_KO = {
     "Listed in the Medical Korea registry of hospitals registered to treat foreign patients": "Medical Korea의 외국인 환자 진료 등록 병원 목록에 있어요",
     "Classified as a dental institution in HIRA public data": "건강보험심사평가원 공공데이터에서 치과 기관으로 분류돼요",
     "HIRA records dermatology as a department with specialist doctors": "건강보험심사평가원 자료에 피부과 전문의가 있는 진료과로 기록돼 있어요",
+    "HIRA records plastic surgery as a department with specialist doctors": "건강보험심사평가원 자료에 성형외과 전문의가 있는 진료과로 기록돼 있어요",
     "Designated national health checkup institution (NHIS list)": "국가건강검진기관으로 지정돼 있어요(국민건강보험공단 목록)",
     "Accredited under the KAHF foreign patient accreditation program (Medical Korea list)": "KAHF 외국인환자 유치기관 평가인증을 받았어요(Medical Korea 목록)",
 }
@@ -127,9 +128,9 @@ def medical_description_ko(item: dict) -> str:
          lambda m: f"한국보건산업진흥원(KHIDI)에 외국인환자 유치 의료기관으로 등록돼 있어요(등록번호 {m.group(1)}, {m.group(2)} 목록 기준 '유지' 상태)."),
         (r"Listed among KAHF-accredited hospitals on Medical Korea\.\s*",
          lambda m: "Medical Korea의 KAHF 인증 병원 목록에 있어요."),
-        (r"HIRA lists dermatology among its departments \((\d+) dermatology specialist\(s\) reported\)\.\s*",
-         lambda m: f"건강보험심사평가원 자료에 피부과 진료과가 있어요(피부과 전문의 {m.group(1)}명 신고)."),
-        (r"HIRA data lists specialist doctors in (dermatology and dentistry|dermatology|dentistry) among its departments\.\s*",
+        (r"HIRA lists (dermatology|plastic surgery) among its departments \((\d+) \1 specialist\(s\) reported\)\.\s*",
+         lambda m: f"건강보험심사평가원 자료에 {SPECIALTY_KO[m.group(1)]} 진료과가 있어요({SPECIALTY_KO[m.group(1)]} 전문의 {m.group(2)}명 신고)."),
+        (r"HIRA data lists specialist doctors in (dermatology and dentistry|dermatology|dentistry|plastic surgery) among its departments\.\s*",
          lambda m: f"건강보험심사평가원 자료에 {SPECIALTY_KO[m.group(1)]} 전문의가 있는 진료과가 있어요."),
         (r"English address in the Medical Korea listing: (.+?)\.\s*(?=Medical decisions)",
          lambda m: f"Medical Korea 목록의 영문 주소: {m.group(1)}."),

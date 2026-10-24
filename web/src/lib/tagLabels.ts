@@ -57,6 +57,7 @@ const KO: Record<string, string> = {
   patient_rights: '환자 권리',
   pdrn: 'PDRN',
   peptide: '펩타이드',
+  plastic_surgery: '성형외과',
   powder: '파우더',
   primer: '프라이머',
   propolis: '프로폴리스',

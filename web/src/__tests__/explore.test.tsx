@@ -137,6 +137,168 @@ describe('Explore', () => {
   })
 })
 
+// ── 대량 카탈로그(병원 45·제품 30) ──
+const GU = ['강남구', '서초구', '마포구']
+const FIELDS = ['dermatology', 'dental', 'checkup']
+const hospitals: CatalogItem[] = Array.from({ length: 45 }, (_, n) =>
+  item({
+    id: `h${n}`,
+    title: `Clinic ${n}`,
+    kind: 'place',
+    category: 'medical',
+    price_krw: null,
+    tags: ['clinic', FIELDS[n % 3], ...(n === 0 ? ['international_clinic'] : [])],
+    location: { name: `Clinic ${n}`, address: `서울특별시 ${n % 5 < 3 ? GU[0] : GU[1 + (n % 2)]} 테헤란로 ${n}` },
+    sponsorship: n === 44 ? 'sponsored' : 'unknown',
+  }),
+)
+const medGuides: CatalogItem[] = [
+  item({ id: 'g1', title: 'Medical Korea Guide', kind: 'guide', category: 'medical', price_krw: null, tags: ['official_guide'] }),
+  item({ id: 'g2', title: 'Interpretation Guide', kind: 'guide', category: 'medical', price_krw: null, tags: ['official_guide'] }),
+]
+const TYPES = ['toner', 'serum', 'sunscreen']
+const products: CatalogItem[] = Array.from({ length: 30 }, (_, n) =>
+  item({ id: `b${n}`, title: `Product ${n}`, tags: ['skincare', TYPES[n % 3]] }),
+)
+function stubBulk(list: CatalogItem[]) {
+  stubFetch((url) =>
+    url.startsWith('/v1/discovery/recommendations') || url.startsWith('/v1/discovery/catalog')
+      ? json({ items: list, country_context: { country: 'JP', status: 'insufficient', explanation: '' }, generated_at: 'x' })
+      : undefined,
+  )
+}
+const rows = (name = 'Real picks') => within(screen.getByRole('list', { name })).getAllByRole('listitem')
+const real = (list: CatalogItem[]) => list.filter((i) => i.sponsorship !== 'sponsored')
+const inGu = (gu: string) => real(hospitals).filter((h) => h.location!.address!.includes(gu))
+
+describe('Explore with a large catalog', () => {
+  it('shows 20 at a time with a remaining count and goes back to the first page when a filter changes', async () => {
+    const user = userEvent.setup()
+    stubBulk([...hospitals, ...medGuides, ...products])
+    renderExplore()
+    await screen.findByRole('list', { name: 'Real picks' })
+    const total = 44 + 2 + 30 // 협찬 1곳 제외
+    expect(screen.getByText(`${total} results`)).toBeInTheDocument()
+    expect(rows()).toHaveLength(20)
+    await user.click(screen.getByRole('button', { name: `Show more (${total - 20} left)` }))
+    expect(rows()).toHaveLength(40)
+    await user.click(screen.getByRole('button', { name: `Show more (${total - 40} left)` }))
+    expect(rows()).toHaveLength(60)
+    // 필터를 바꾸면 처음 20개로
+    await user.click(within(screen.getByRole('group', { name: 'Interest filters' })).getByRole('button', { name: 'Skincare' }))
+    expect(screen.getByText('30 results')).toBeInTheDocument()
+    expect(rows()).toHaveLength(20)
+    expect(screen.getByRole('button', { name: 'Show more (10 left)' })).toBeInTheDocument()
+    // 큐레이션 순서는 필터 뒤에도 원래 목록 순번 그대로(병원 44 + 안내 2 다음)
+    expect(within(rows()[0]).getByLabelText('Pick 47')).toBeInTheDocument()
+  }, 15000)
+
+  it('medical tab: specialty and area chips come from the results, with counts, and can be cleared', async () => {
+    const user = userEvent.setup()
+    stubBulk([...hospitals, ...medGuides])
+    renderExplore(profile(), { category: 'medical' })
+    await screen.findByRole('list', { name: 'Real picks' })
+    expect(screen.queryByRole('group', { name: 'Interest filters' })).toBeNull()
+
+    const fields = screen.getByRole('group', { name: 'Specialty filters' })
+    const nField = (f: string) => real(hospitals).filter((h) => h.tags.includes(f)).length
+    expect(within(fields).getAllByRole('button').map((b) => b.textContent)).toEqual([
+      `Dermatology ${nField('dermatology')}`, `Dental ${nField('dental')}`, `Health checkup ${nField('checkup')}`, 'International clinic 1',
+    ])
+    const areas = screen.getByRole('group', { name: 'Area filters' })
+    expect(within(areas).getAllByRole('button')).toHaveLength(3)
+    expect(within(areas).getByRole('button', { name: `Gangnam-gu ${inGu('강남구').length}` })).toBeInTheDocument()
+
+    await user.click(within(areas).getByRole('button', { name: /^Seocho-gu/ }))
+    const seocho = inGu('서초구')
+    expect(screen.getByText(`${seocho.length} results`)).toBeInTheDocument()
+    expect(rows().every((r) => within(r).queryByText('Seocho-gu') !== null)).toBe(true)
+
+    await user.click(within(fields).getByRole('button', { name: /^Dental/ }))
+    const both = seocho.filter((h) => h.tags.includes('dental'))
+    expect(both.length).toBeGreaterThan(0)
+    expect(screen.getByText(`${both.length} results`)).toBeInTheDocument()
+    expect(within(rows()[0]).getByText('Dental')).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Clear filters' }))
+    expect(screen.getByText('46 results')).toBeInTheDocument()
+    expect(within(areas).getByRole('button', { name: /^Seocho-gu/ })).toHaveAttribute('aria-pressed', 'false')
+  })
+
+  it('medical tab separates clinics from official guides and keeps sponsored clinics in their own lane', async () => {
+    const user = userEvent.setup()
+    stubBulk([...hospitals, ...medGuides])
+    renderExplore(profile(), { category: 'medical' })
+    const kinds = await screen.findByRole('group', { name: 'Clinics or guides' })
+    await user.click(within(kinds).getByRole('button', { name: 'Official guides 2' }))
+    expect(rows()).toHaveLength(2)
+    expect(screen.getByText('Medical Korea Guide')).toBeInTheDocument()
+    expect(screen.queryByText('Clinic 1')).toBeNull()
+    await user.click(within(kinds).getByRole('button', { name: 'Clinics 44' }))
+    expect(screen.getByText('44 results')).toBeInTheDocument()
+    expect(screen.getByText('Curation order · not a measured ranking')).toBeInTheDocument()
+    expect(screen.queryByText('Clinic 44')).toBeNull()
+
+    await user.click(screen.getByRole('tab', { name: 'Sponsored 1' }))
+    expect(rows('Sponsored items')).toHaveLength(1)
+    expect(screen.getByText('Clinic 44')).toBeInTheDocument()
+  })
+
+  it('shows Korean district and specialty labels in Korean', async () => {
+    stubBulk(hospitals.slice(0, 3))
+    renderExplore(profile({ language: 'ko' }), { category: 'medical' }, 'ko')
+    const areas = await screen.findByRole('group', { name: '지역 필터' })
+    expect(within(areas).getByRole('button', { name: '강남구 3' })).toBeInTheDocument()
+    expect(within(screen.getByRole('group', { name: '진료 분야 필터' })).getByRole('button', { name: '피부과 1' })).toBeInTheDocument()
+    expect(within(screen.getByRole('list', { name: '진짜 추천' })).getAllByText('강남구')).toHaveLength(3)
+  })
+
+  it('beauty tab offers product-type chips only for types present in the results', async () => {
+    const user = userEvent.setup()
+    stubBulk(products)
+    renderExplore(profile(), { category: 'beauty' })
+    const types = await screen.findByRole('group', { name: 'Product type filters' })
+    expect(within(types).getAllByRole('button').map((b) => b.textContent)).toEqual(['Toner 10', 'Serum 10', 'Sunscreen 10'])
+    await user.click(within(types).getByRole('button', { name: 'Serum 10' }))
+    expect(screen.getByText('10 results')).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /Show more/ })).toBeNull()
+  })
+
+  it('resets filters when the tab changes', async () => {
+    const user = userEvent.setup()
+    stubBulk(products)
+    const props = { profile: profile(), onCategory: vi.fn(), onOpen: vi.fn(), onAddCart: vi.fn(), onSearch: vi.fn(), cartQty: {}, tripIds: new Set<string>() }
+    const { rerender } = render(withLang('en', <Explore {...props} category="beauty" />))
+    const types = await screen.findByRole('group', { name: 'Product type filters' })
+    await user.click(within(types).getByRole('button', { name: 'Serum 10' }))
+    expect(screen.getByText('10 results')).toBeInTheDocument()
+    rerender(withLang('en', <Explore {...props} category="all" />))
+    await screen.findByRole('list', { name: 'Real picks' })
+    rerender(withLang('en', <Explore {...props} category="beauty" />))
+    expect(await screen.findByText('30 results')).toBeInTheDocument()
+  })
+})
+
+describe('Search with a large catalog', () => {
+  it('shows the top 50 with a show-more button and district/specialty badges for clinics', async () => {
+    const user = userEvent.setup()
+    const many = Array.from({ length: 60 }, (_, n) => item({ id: `c${n}`, title: `Cream ${n}`, tags: ['cream'] }))
+    stubBulk([...many, ...hospitals.slice(0, 2)])
+    render(withLang('en', <Search profile={profile()} onBack={vi.fn()} onOpen={vi.fn()} />))
+    await user.type(screen.getByRole('searchbox'), 'cream')
+    expect(await screen.findByText('60 results')).toBeInTheDocument()
+    const list = () => within(document.querySelector('ul.ex-list') as HTMLElement).getAllByRole('listitem')
+    expect(list()).toHaveLength(50)
+    await user.click(screen.getByRole('button', { name: 'Show more (10 left)' }))
+    expect(list()).toHaveLength(60)
+    await user.clear(screen.getByRole('searchbox'))
+    await user.type(screen.getByRole('searchbox'), '강남구')
+    expect(await screen.findByText('2 results')).toBeInTheDocument()
+    expect(screen.getAllByText('Gangnam-gu')).toHaveLength(2)
+    expect(screen.getByText('Dermatology')).toBeInTheDocument()
+  }, 15000)
+})
+
 describe('Search', () => {
   it('searches the catalog client-side, case-insensitively and in Korean', async () => {
     const user = userEvent.setup()
@@ -148,12 +310,11 @@ describe('Search', () => {
     expect(await screen.findByText('Ceramide Cream')).toBeInTheDocument()
     await user.clear(input)
     await user.type(input, '세라마이드')
-    expect(screen.getByText('Ceramide Cream')).toBeInTheDocument()
-    await user.click(screen.getByText('Ceramide Cream'))
+    await user.click(await screen.findByText('Ceramide Cream'))
     expect(onOpen).toHaveBeenCalledWith(items[0])
     await user.clear(input)
     await user.type(input, 'zzz')
-    expect(screen.getByText('No results')).toBeInTheDocument()
+    expect(await screen.findByText('No results')).toBeInTheDocument()
   })
 
   it('calls blog search only on submit and explains a missing server key (503)', async () => {

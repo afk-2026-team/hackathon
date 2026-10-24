@@ -1,5 +1,6 @@
 import type { CatalogItem } from '../../lib/types'
-import { fill, useT } from '../../lib/i18n'
+import { fill, useLang, useT } from '../../lib/i18n'
+import { fieldKey, itemFields, regionOf, regionLabel } from './facets'
 import { CategoryBadge, Price, SponsorBadge, Thumb } from '../Common'
 import '../../styles/explore.css'
 
@@ -52,6 +53,9 @@ function ProductRow({ item, currency, curation, qty = 0, onOpen, onAdd }: ItemRo
 
 function PlaceCard({ item, currency, curation, inTrip, onOpen }: ItemRowProps) {
   const t = useT()
+  const lang = useLang()
+  const region = item.category === 'medical' ? regionOf(item) : null
+  const fields = item.category === 'medical' ? itemFields(item) : []
   const kindKey = item.kind === 'place' ? 'explore.kindPlace' : item.kind === 'guide' ? 'explore.kindGuide' : 'explore.kindProduct'
   const address = item.location?.address ?? item.location?.name
   return (
@@ -63,6 +67,8 @@ function PlaceCard({ item, currency, curation, inTrip, onOpen }: ItemRowProps) {
             {curation != null && <span className="ex-card__cur">{fill(t('explore.curationN'), { n: curation })}</span>}
             <CategoryBadge category={item.category} />
             <span className="badge badge--outline">{t(kindKey)}</span>
+            {region && <span className="badge badge--region">{regionLabel(region, lang)}</span>}
+            {fields.map((f) => <span key={f} className="badge badge--medical badge--field">{t(fieldKey(f))}</span>)}
           </span>
           <span className="ex-card__title">{item.title}</span>
           {item.subtitle && <span className="ex-card__sub" lang="ko">{item.subtitle}</span>}

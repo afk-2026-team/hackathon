@@ -8,9 +8,13 @@ import { fill, useT, type Key } from '../lib/i18n'
 import { EmptyState, ErrorState, LoadingState } from '../components/States'
 import { CategoryBadge, Price, SponsorBadge, Thumb } from '../components/Common'
 import { CountryNote } from '../components/CountryNote'
+import { isClinic } from '../components/explore/facets'
 import '../styles/shell.css'
 
-const SECTION_LIMIT = 5
+// 섹션별 상한. 나머지는 '전체 보기'로 해당 카테고리 Explore 에서 본다. 순서는 서버가 준 그대로(관심사 정렬 포함) 유지한다.
+const PICKS_LIMIT = 6
+const MEDICAL_LIMIT = 6
+const PLACES_LIMIT = 8
 const TAX_TAG = 'tax_refund'
 
 /** 세금 환급 안내 항목. 추천 결과에 없으면 카탈로그에서 한 번 찾는다. 없으면 바로가기를 숨긴다. */
@@ -147,8 +151,9 @@ export function Home({ profile, onOpen, onBrowse, onSearch, onGoTrip, tripCount,
   const natural = items?.filter((i) => i.sponsorship !== 'sponsored') ?? []
   const sponsored = items?.filter((i) => i.sponsorship === 'sponsored') ?? []
   const picks = natural.filter((i) => i.kind === 'product' && i.category === 'beauty')
-  const guides = natural.filter((i) => i.kind === 'guide' || (i.kind === 'product' && i.category === 'medical'))
-  const places = natural.filter((i) => i.kind === 'place')
+  // 의료 섹션: 공식 안내·의료 상품·병원(진료 분야/병원 태그가 있는 의료 place). 그 밖의 place 는 장소 섹션.
+  const guides = natural.filter((i) => i.kind === 'guide' || (i.kind === 'product' && i.category === 'medical') || isClinic(i))
+  const places = natural.filter((i) => i.kind === 'place' && !isClinic(i))
 
   return (
     <div className="home">
@@ -223,10 +228,10 @@ export function Home({ profile, onOpen, onBrowse, onSearch, onGoTrip, tripCount,
                 title={t('shell.home.picks')}
                 sub={t('shell.home.picksSub')}
                 extra={<span className="home-curated">{t('shell.home.curated')}</span>}
-                onMore={picks.length > SECTION_LIMIT ? () => onBrowse('beauty') : undefined}
+                onMore={() => onBrowse('beauty')}
               />
               <ul className="home-list">
-                {picks.slice(0, SECTION_LIMIT).map((i) => (
+                {picks.slice(0, PICKS_LIMIT).map((i) => (
                   <ProductRow key={i.id} item={i} currency={profile.currency} onOpen={onOpen} />
                 ))}
               </ul>
@@ -237,9 +242,9 @@ export function Home({ profile, onOpen, onBrowse, onSearch, onGoTrip, tripCount,
             <>
               <div className="divider" />
               <section className="sec home-sec" aria-label={t('shell.home.medical')}>
-                <SectionHead title={t('shell.home.medical')} sub={t('shell.home.medicalSub')} onMore={guides.length > SECTION_LIMIT ? () => onBrowse('medical') : undefined} />
+                <SectionHead title={t('shell.home.medical')} sub={t('shell.home.medicalSub')} onMore={() => onBrowse('medical')} />
                 <ul className="home-cards">
-                  {guides.slice(0, SECTION_LIMIT).map((i) => (
+                  {guides.slice(0, MEDICAL_LIMIT).map((i) => (
                     <GuideCard key={i.id} item={i} onOpen={onOpen} />
                   ))}
                 </ul>
@@ -251,9 +256,9 @@ export function Home({ profile, onOpen, onBrowse, onSearch, onGoTrip, tripCount,
             <>
               <div className="divider" />
               <section className="sec home-sec" aria-label={t('shell.home.places')}>
-                <SectionHead title={t('shell.home.places')} sub={t('shell.home.placesSub')} />
+                <SectionHead title={t('shell.home.places')} sub={t('shell.home.placesSub')} onMore={() => onBrowse('all')} />
                 <ul className="hscroll home-places">
-                  {places.map((i) => (
+                  {places.slice(0, PLACES_LIMIT).map((i) => (
                     <PlaceCard key={i.id} item={i} onOpen={onOpen} />
                   ))}
                 </ul>

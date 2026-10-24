@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { act, render, screen, within } from '@testing-library/react'
+import { act, render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MyTrip, resetTripGeoMemo } from '../screens/MyTrip'
 import type { MyTripProps } from '../screens/contracts'
@@ -302,7 +302,8 @@ describe('My Trip navigation', () => {
     render(<MyTrip {...props({ trip: [place('1'), place('2')] })} />)
     expect(await screen.findByText('By car about 13 min · 4.3 km (NAVER Directions, varies with traffic)')).toBeInTheDocument()
     expect(screen.getByText(/Solid line: driving route/)).toBeInTheDocument()
-    expect(made.polylines.at(-1)).toMatchObject({ strokeStyle: 'solid' })
+    // 문구(렌더)와 실선(지도 그리기 이펙트)은 한 박자 차이로 반영된다 — 부하가 걸려도 실선이 그려질 때까지 기다린다
+    await waitFor(() => expect(made.polylines.at(-1)).toMatchObject({ strokeStyle: 'solid' }))
     expect((made.polylines.at(-1)!.path as unknown[]).length).toBe(3)
     const url = String(f.mock.calls.find(([u]) => String(u).startsWith('/v1/maps/directions'))![0])
     expect(url).toContain(`start=${encodeURIComponent('127.010000,37.510000')}`)

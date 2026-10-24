@@ -1,0 +1,11 @@
+# 모델 선언 yaml (1개 = 모델 1개). 키 값이 아니라 환경변수 '이름'만 갖는다.
+model_name: claude-haiku-5-5
+provider: anthropic                # app/models/llm_loader.py 분기 키
+base_url: "https://api.anthropic.com"
+api_key_env: ANTHROPIC_API_KEY
+sampling:                          # 프로필 override 가 덮어쓸 수 있는 범위 = 이 블록의 키
+  # temperature 는 두지 않는다: 이 모델은 400 "`temperature` is deprecated for this model." 로 거부한다(2026-10-24 실측)
+  max_tokens: 1024
+limits:
+  timeout_seconds: 120
+  max_retries: 2

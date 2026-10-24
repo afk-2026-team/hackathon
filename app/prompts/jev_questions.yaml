@@ -1,0 +1,23 @@
+name: jev_questions
+description: >-
+  Jev(TypeSafe) 에 보내는 판단 질문. 질문 id(category·purchase_intent)는 app/graph/nodes.py 의
+  CATEGORY_QID·PURCHASE_INTENT_QID 와 짝이다. category criteria 키는 router.decline_labels 의 허용 라벨이다.
+questions:
+  category:
+    type: choice
+    instructions: >-
+      Which K-beauty topic is this traveler's message about? Choose out_of_scope when the message
+      is not about beauty products, hair products, or Korean skin clinics.
+    criteria:
+      skincare: "Skincare products or routines: cleanser, toner, serum, moisturizer, acne, dry or oily skin."
+      makeup: "Color cosmetics: foundation, cushion, lip tint, eyeshadow, mascara."
+      suncare: "Sunscreen, sun cream, UV protection, after-sun care."
+      haircare: "Shampoo, hair treatment, scalp care, hair styling products."
+      k_medical: "Korean dermatology clinics or procedures: laser, botox, filler, skin booster."
+      out_of_scope: "Anything not about beauty products or skin clinics, such as stocks, weather, food, or transport."
+  purchase_intent:
+    type: noul
+    instructions: "Does the user want to buy a product or get a product recommendation?"
+    criteria:
+      "true": "Asks what to buy, where to buy it, or which product to choose."
+      "false": "General information, chit-chat, or a request that is not about shopping."

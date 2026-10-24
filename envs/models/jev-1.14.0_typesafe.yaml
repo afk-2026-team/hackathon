@@ -1,0 +1,8 @@
+# 결정 모델(Jev) 선언 yaml. 키 값이 아니라 환경변수 '이름'만 갖는다.
+# jev-latest 대신 버전을 고정한다 — 분류 확률·임계값은 모델 버전에 따라 달라진다(2026-10-24 jev-latest = jev-1.14.0 실측).
+model_name: jev-1.14.0
+provider: typesafe                 # app/models/classifier_loader.py 분기 키
+base_url: "https://api.typesafe.ai"
+api_key_env: JEV_API_KEY           # langchain-typesafe 기본값(TYPESAFE_API_KEY) 대신 이 이름을 읽어 생성자에 넘긴다
+limits:
+  timeout_seconds: 30

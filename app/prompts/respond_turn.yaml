@@ -1,0 +1,10 @@
+name: respond_turn
+description: respond 노드 현재 턴 human 메시지 템플릿 — 턴마다 바뀌는 판단 결과와 질문만 담는다(spec §2.4 캐싱 규칙)
+template: |-
+  [Jev judgment]
+  category: {category} (confidence {category_confidence})
+  purchase_intent: {purchase_intent}
+
+  [User message]
+  {question}
+input_variables: [category, category_confidence, purchase_intent, question]

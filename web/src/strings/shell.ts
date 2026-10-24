@@ -120,11 +120,6 @@ export const en = {
   'shell.ai.cancel': 'Cancel',
   'shell.ai.retry': 'Try again',
   'shell.ai.browse': 'Browse beauty and medical picks',
-  'shell.ai.citedTitle': 'Mentioned in the answer',
-  'shell.ai.citedBadge': 'In the answer',
-  'shell.ai.relatedTitle': 'Related options',
-  'shell.ai.relatedNote': 'Picked by our server from your basics. Not all of them are discussed above.',
-  'shell.ai.candidatesUnavailable': 'Matching items from our list aren’t available right now — only the answer is shown.',
   'shell.ai.note': 'AI answer. Check each item’s sources before you decide.',
 }
 
@@ -241,10 +236,5 @@ export const ko: Record<keyof typeof en, string> = {
   'shell.ai.cancel': '취소',
   'shell.ai.retry': '다시 시도',
   'shell.ai.browse': '뷰티·의료 추천 둘러보기',
-  'shell.ai.citedTitle': '답변에서 언급한 항목',
-  'shell.ai.citedBadge': '답변 언급',
-  'shell.ai.relatedTitle': '관련 후보',
-  'shell.ai.relatedNote': '기본 정보로 서버가 고른 후보예요. 위 답변에서 모두 다루지는 않았어요.',
-  'shell.ai.candidatesUnavailable': '지금은 목록 후보를 불러오지 못해 답변만 보여드려요.',
   'shell.ai.note': 'AI 답변이에요. 결정하기 전에 각 항목의 출처를 확인하세요.',
 }

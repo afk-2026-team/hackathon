@@ -87,3 +87,9 @@
 .trip-plan-suggest__head { justify-content: space-between; gap: 10px; flex-wrap: wrap; }
 .trip-plan-suggest__unlocated { margin: 0; padding-left: 18px; }
 .trip-route-status { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; }
+
+/* 숙소 없이 현재 위치에서 출발 */
+.trip-here { padding: 14px 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+.trip-here > p { flex: 1 1 220px; margin: 0; }
+.trip-here .trip-fine { flex-basis: 100%; }
+.trip-here__on { font-weight: 700; color: var(--ink); }

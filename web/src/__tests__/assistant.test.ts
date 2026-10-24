@@ -2,10 +2,10 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { ApiError } from '../lib/api'
 import {
-  AssistantError, MAX_QUESTION_CHARS, askAssistant, assistantReducer, initialAssistantState,
-  parseAnswer, parseCandidates, requestAssistant, toAssistantProfile,
+  AssistantError, MAX_QUESTION_CHARS, askAssistant, assistantReducer, homeQuestion, initialAssistantState, matchCatalogItems,
+  parseAnswer, requestAssistant, toAssistantProfile,
 } from '../lib/assistant'
-import type { ProfilePayload } from '../lib/types'
+import type { CatalogItem, ProfilePayload } from '../lib/types'
 
 const profile: ProfilePayload = {
   country: 'us', language: 'en-US', currency: 'USD', gender: 'female', age_range: '25-34',
@@ -23,18 +23,11 @@ afterEach(() => {
 })
 
 describe('toAssistantProfile', () => {
-  it('maps onboarding payload including preferences to the /v1/responses profile contract', () => {
-    expect(toAssistantProfile(profile)).toEqual({ language: 'en', country: 'US', gender: 'female', age_band: '25-34', currency: 'USD', interests: ['skincare'], budget_krw: 50000, current_product: 'CeraVe Moisturizing Cream' })
-  })
-  it('clips values to the server limits instead of sending a 422-bound request', () => {
-    const long = toAssistantProfile({ country: 'KR', language: 'ko', currency: 'krw', preferences: { interests: Array.from({ length: 12 }, (_, i) => `i${i}`).concat(['x'.repeat(41)]), budget_krw: 2e8, current_product: 'p'.repeat(250) } })
-    expect(long.interests).toHaveLength(10)
-    expect(long.budget_krw).toBeUndefined()
-    expect(long.current_product).toHaveLength(200)
-    expect(long.currency).toBe('KRW')
+  it('maps onboarding payload to the /v1/responses profile contract only', () => {
+    expect(toAssistantProfile(profile)).toEqual({ language: 'en', country: 'US', gender: 'female', age_band: '25-34' })
   })
   it('omits optional fields that were not shared', () => {
-    expect(toAssistantProfile({ country: 'JP', language: 'ja', currency: 'JPY' })).toEqual({ language: 'ja', country: 'JP', currency: 'JPY' })
+    expect(toAssistantProfile({ country: 'JP', language: 'ja', currency: 'JPY' })).toEqual({ language: 'ja', country: 'JP' })
   })
 })
 
@@ -43,14 +36,14 @@ describe('requestAssistant', () => {
     const fetchMock = vi.fn(async () => json(responseObject()))
     vi.stubGlobal('fetch', fetchMock)
     const ans = await requestAssistant(profile, { question: '  What should I buy?  ', threadId: 's-1' })
-    expect(ans).toEqual({ responseId: 'resp_1', status: 'completed', text: 'Try a ceramide cream.', candidates: [], candidatesStatus: 'none', recommendedIds: [] })
+    expect(ans).toEqual({ responseId: 'resp_1', status: 'completed', text: 'Try a ceramide cream.' })
     const [url, init] = fetchMock.mock.calls[0] as unknown as [string, RequestInit]
     expect(url).toBe('/v1/responses')
     expect(init.method).toBe('POST')
     expect((init.headers as Record<string, string>)['X-Thread-Id']).toBe('s-1')
     expect(JSON.parse(init.body as string)).toEqual({
       input: 'What should I buy?', stream: false,
-      metadata: { profile: { language: 'en', country: 'US', gender: 'female', age_band: '25-34', currency: 'USD', interests: ['skincare'], budget_krw: 50000, current_product: 'CeraVe Moisturizing Cream' } },
+      metadata: { profile: { language: 'en', country: 'US', gender: 'female', age_band: '25-34' } },
     })
   })
 
@@ -121,7 +114,7 @@ describe('assistantReducer', () => {
   it('tracks ask → answer and ask → fail', () => {
     let s = assistantReducer(initialAssistantState, { type: 'ask', id: 'a', question: 'q1' })
     expect(s.status).toBe('loading')
-    s = assistantReducer(s, { type: 'answer', id: 'a', answer: { responseId: 'r', status: 'completed', text: 't', candidates: [], candidatesStatus: 'none', recommendedIds: [] } })
+    s = assistantReducer(s, { type: 'answer', id: 'a', answer: { responseId: 'r', status: 'completed', text: 't' } })
     expect(s).toMatchObject({ status: 'ready', turns: [{ id: 'a', question: 'q1', answer: { text: 't' } }] })
     s = assistantReducer(s, { type: 'ask', id: 'b', question: null })
     s = assistantReducer(s, { type: 'fail', id: 'b', error: { message: 'down', kind: 'unavailable' } })
@@ -135,42 +128,44 @@ describe('assistantReducer', () => {
   })
 })
 
-const cand = (id: string, title: string) => ({ id, kind: 'product', category: 'beauty', title, subtitle: '', image_url: null, price_krw: null, list_price: null, reasons: ['r'], sources: [{ label: 's', url: 'https://example.com', checked_at: '2026-10-24' }] })
+const item = (id: string, title: string, subtitle: string) => ({ id, title, subtitle } as CatalogItem)
 
 describe('askAssistant (screen contract)', () => {
-  it('Home request sends input null and every preference in metadata.profile', async () => {
+  it('Home request carries only the user-chosen interests, budget and current product as input text', async () => {
+    const fetchMock = vi.fn(async () => json(responseObject('Look at ILLIYOON Ceramide Ato Concentrate Cream 75ml.')))
+    vi.stubGlobal('fetch', fetchMock)
+    const catalog = [item('illiyoon', 'ILLIYOON Ceramide Ato Concentrate Cream 75ml', '일리윤 세라마이드 아토 집중 크림 · 75ml'), item('tor', 'Torriden Dive-In Cream', '토리든')]
+    const res = await askAssistant({ profile, catalog })
+    const sent = JSON.parse((fetchMock.mock.calls[0] as unknown as [string, RequestInit])[1].body as string)
+    expect(sent.input).toBe('[Home] I\'m interested in skincare. My budget is about KRW 50,000. I currently use CeraVe Moisturizing Cream. What K-beauty products or clinics should I look at first on my trip to Korea?')
+    expect(sent.input).not.toMatch(/female|25-34/)
+    expect(sent.metadata.profile).toEqual({ language: 'en', country: 'US', gender: 'female', age_band: '25-34' })
+    expect(res).toMatchObject({ itemIds: ['illiyoon'], followUps: undefined, question: sent.input })
+  })
+
+  it('uses the backend Home request (input null) when no preferences were chosen', async () => {
     const fetchMock = vi.fn(async () => json(responseObject()))
     vi.stubGlobal('fetch', fetchMock)
-    const res = await askAssistant({ profile })
-    const sent = JSON.parse((fetchMock.mock.calls[0] as unknown as [string, RequestInit])[1].body as string)
-    expect(sent.input).toBeNull()
-    expect(sent.metadata.profile).toEqual({ language: 'en', country: 'US', gender: 'female', age_band: '25-34', currency: 'USD', interests: ['skincare'], budget_krw: 50000, current_product: 'CeraVe Moisturizing Cream' })
+    const res = await askAssistant({ profile: { country: 'JP', language: 'ja', currency: 'JPY' } })
+    expect(JSON.parse((fetchMock.mock.calls[0] as unknown as [string, RequestInit])[1].body as string).input).toBeNull()
     expect(res.question).toBeNull()
   })
 
-  it('a typed question is sent as-is with the same profile', async () => {
+  it('a typed question is sent as-is, not replaced by the Home sentence', async () => {
     const fetchMock = vi.fn(async () => json(responseObject()))
     vi.stubGlobal('fetch', fetchMock)
     await askAssistant({ profile, input: 'Is this good for dry skin?' })
-    const sent = JSON.parse((fetchMock.mock.calls[0] as unknown as [string, RequestInit])[1].body as string)
-    expect(sent.input).toBe('Is this good for dry skin?')
-    expect(sent.metadata.profile.current_product).toBe('CeraVe Moisturizing Cream')
-  })
-
-  it('reads structured candidates and keeps only cited ids that are real candidates', async () => {
-    const body = { ...responseObject('Try ILLIYOON.'), metadata: { candidates_basis: 'server_recommendation', candidates_status: 'ok', candidates: [cand('a', 'A'), cand('b', 'B'), { id: 'bad' }], recommended_ids: ['b', 'ghost', 'b'] } }
-    vi.stubGlobal('fetch', vi.fn(async () => json(body)))
-    const res = await askAssistant({ profile })
-    expect(res.candidates.map((c) => c.id)).toEqual(['a', 'b'])
-    expect(res.recommendedIds).toEqual(['b'])
-    expect(res.candidatesStatus).toBe('ok')
+    expect(JSON.parse((fetchMock.mock.calls[0] as unknown as [string, RequestInit])[1].body as string).input).toBe('Is this good for dry skin?')
   })
 })
 
-describe('parseCandidates', () => {
-  it('reports unavailable honestly and none when the server sent nothing', () => {
-    expect(parseCandidates({ candidates_basis: 'server_recommendation', candidates_status: 'unavailable', candidates: [] })).toEqual({ candidates: [], candidatesStatus: 'unavailable', recommendedIds: [] })
-    expect(parseCandidates(undefined).candidatesStatus).toBe('none')
-    expect(parseCandidates({ candidates: [cand('a', 'A')] }).candidates).toEqual([]) // basis 없는 목록은 믿지 않는다
+describe('homeQuestion / matchCatalogItems', () => {
+  it('returns undefined without preferences', () => {
+    expect(homeQuestion({ country: 'US', language: 'en', currency: 'USD', preferences: { interests: [] } })).toBeUndefined()
+  })
+  it('matches only names that literally appear in the answer', () => {
+    const catalog = [item('a', 'ROUND LAB Birch Juice Moisturizing Cream 80ml', '라운드랩 자작나무 수분크림 · 80ml'), item('b', 'Medical Korea official portal', 'Medical Korea 공식 포털')]
+    expect(matchCatalogItems('라운드랩 자작나무 수분크림 is popular', catalog)).toEqual(['a'])
+    expect(matchCatalogItems('Try a birch cream', catalog)).toEqual([])
   })
 })

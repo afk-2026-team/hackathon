@@ -268,7 +268,6 @@ export function Workspace({ ns, uiLang, account, onSignIn, onSignOut, onResetDon
             <Home
               profile={payload}
               onOpen={openItem}
-              onOpenId={openItemId}
               onBrowse={(c) => {
                 setCategory(c)
                 goTab('explore')

@@ -1,19 +1,21 @@
 // 화면용 훅. 화면 파일은 이 계약만 쓴다:
-//   const { state, ask, retry, cancel, reset } = useAssistant(profilePayload)
-//   ask('질문') — 질문, ask() — Home 추천 요청. state.turns[].answer.{text,candidates,recommendedIds} / .error.message 를 그린다.
+//   const { state, ask, retry, cancel, reset } = useAssistant(profilePayload, catalogItems?)
+//   ask('질문') — 질문, ask() — Home 추천 요청. state.turns[].answer.{text,itemIds} / .error.message 를 그린다.
 // 프로필(계정·게스트 전환 포함)이 바뀌면 대화를 비우고 진행 중 요청을 취소한다.
 import { useCallback, useEffect, useReducer, useRef } from 'react'
 import { AssistantError, askAssistant, assistantReducer, initialAssistantState } from './assistant'
-import type { ProfilePayload } from './types'
+import type { CatalogItem, ProfilePayload } from './types'
 
 let seq = 0
 const nextId = () => `turn-${Date.now().toString(36)}-${++seq}`
 
-export function useAssistant(profile: ProfilePayload | null) {
+export function useAssistant(profile: ProfilePayload | null, catalog?: CatalogItem[]) {
   const [state, dispatch] = useReducer(assistantReducer, initialAssistantState)
   const inflight = useRef<AbortController | null>(null)
   const lastQuestion = useRef<string | null>(null)
   const profileKey = profile ? JSON.stringify(profile) : ''
+  const catalogRef = useRef(catalog)
+  catalogRef.current = catalog
 
   useEffect(() => {
     inflight.current?.abort()
@@ -32,7 +34,7 @@ export function useAssistant(profile: ProfilePayload | null) {
       lastQuestion.current = q
       dispatch({ type: 'ask', id, question: q })
       try {
-        const answer = await askAssistant({ profile, input: q ?? undefined, signal: ctrl.signal })
+        const answer = await askAssistant({ profile, input: q ?? undefined, signal: ctrl.signal, catalog: catalogRef.current })
         if (inflight.current === ctrl) dispatch({ type: 'answer', id, answer })
       } catch (e) {
         const err = e instanceof AssistantError ? e : new AssistantError('Something went wrong. Please try again.', 'http')

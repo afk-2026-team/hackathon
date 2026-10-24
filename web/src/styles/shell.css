@@ -229,14 +229,3 @@
 .home-ai__form { display: flex; gap: 8px; }
 .home-ai__form input { flex: 1; min-width: 0; font: inherit; font-size: 16px; height: 44px; padding: 0 14px; border: 1px solid var(--g2); border-radius: var(--r-sm); }
 .home-ai__note { margin: 0; font-size: 12px; color: var(--g5); }
-.home-ai__cands { display: flex; flex-direction: column; gap: 10px; }
-.home-ai__cands-h { font-size: 13px; font-weight: 800; margin: 4px 0 6px; color: var(--g8); }
-.home-ai__cand-note { font-size: 12px; color: var(--g5); margin: 0 0 6px; }
-.home-ai__cand-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-.home-ai__cand-btn { width: 100%; display: flex; gap: 10px; text-align: left; padding: 10px; border: 1px solid var(--g15); border-radius: var(--r-sm); background: #fff; cursor: pointer; }
-.home-ai__cand.is-cited .home-ai__cand-btn { border-color: var(--beauty); box-shadow: 0 0 0 1px var(--beauty) inset; }
-.home-ai__cand-img { width: 56px; height: 56px; border-radius: 8px; object-fit: cover; flex: none; background: var(--g05); }
-.home-ai__cand-body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
-.home-ai__cand-badges { display: flex; gap: 6px; flex-wrap: wrap; }
-.home-ai__cand-title { font-size: 14px; font-weight: 700; overflow-wrap: anywhere; }
-.home-ai__cand-sub, .home-ai__cand-reason { font-size: 12px; color: var(--g6); overflow-wrap: anywhere; }

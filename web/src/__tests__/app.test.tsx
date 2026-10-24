@@ -194,8 +194,7 @@ describe('integrated home', () => {
     expect(within(sponsored).queryByText('Natural Cream')).toBeNull()
     // 협찬 표시가 없는 항목을 비협찬으로 단정하지 않는다
     expect(within(picks).getByText('Sponsorship unknown')).toBeInTheDocument()
-    const medical = screen.getByRole('region', { name: 'Medical & official guides' })
-    expect(within(medical).getByText('Seoul Jung-gu 1')).toBeInTheDocument()
+    expect(screen.queryByRole('region', { name: 'Medical & official guides' })).toBeNull() // 홈 의료·공식 안내 섹션은 제거됨(사용자 요청)
     expect(within(screen.getByRole('region', { name: 'Places' })).getByText('Info Center')).toBeInTheDocument()
   })
 
@@ -210,18 +209,12 @@ describe('integrated home', () => {
     guestHome()
     const picks = await screen.findByRole('region', { name: 'Today’s beauty picks' })
     expect(within(picks).getAllByRole('listitem').map((li) => li.textContent)).toEqual(beauty.slice(0, 6).map((b) => expect.stringContaining(b.title)))
-    const medical = screen.getByRole('region', { name: 'Medical & official guides' })
-    expect(within(medical).getAllByRole('listitem')).toHaveLength(6)
-    expect(within(medical).getByText('Clinic 0')).toBeInTheDocument()
     const places = screen.getByRole('region', { name: 'Places' })
     expect(within(places).getAllByRole('listitem')).toHaveLength(8)
-    expect(within(places).queryByText('Clinic 0')).toBeNull() // 병원은 장소가 아니라 의료 섹션
+    expect(within(places).queryByText('Clinic 0')).toBeNull() // 병원은 장소 섹션에 넣지 않는다(의료 바로가기로 탐색)
+    expect(screen.queryByText('Clinic 0')).toBeNull()
 
-    await user.click(within(medical).getByRole('button', { name: 'See all · Medical & official guides' }))
-    expect(screen.getByRole('button', { name: 'Explore' })).toHaveAttribute('aria-current', 'page')
-    expect(screen.getByRole('tab', { name: 'Medical' })).toHaveAttribute('aria-selected', 'true')
-    await user.click(screen.getByRole('button', { name: 'Home' }))
-    await user.click(within(await screen.findByRole('region', { name: 'Today’s beauty picks' })).getByRole('button', { name: 'See all · Today’s beauty picks' }))
+    await user.click(within(picks).getByRole('button', { name: 'See all · Today’s beauty picks' }))
     expect(screen.getByRole('tab', { name: 'Beauty' })).toHaveAttribute('aria-selected', 'true')
   })
 
@@ -231,25 +224,12 @@ describe('integrated home', () => {
     expect(await screen.findByText('There are no sponsored items on display right now.')).toBeInTheDocument()
   })
 
-  it('explains insufficient country evidence, in our own words on the Korean screen', async () => {
-    stubApi([natural], 'insufficient')
-    const { unmount } = guestHome()
-    expect(await screen.findByText('Not enough country-specific evidence')).toBeInTheDocument()
-    expect(screen.getByText(/rely on general sources/)).toBeInTheDocument()
-    unmount()
-    localStorage.clear()
+  it('shows neither a country-evidence notice nor the AI assistant on Home', async () => {
     stubApi([natural], 'insufficient')
     guestHome('ko')
-    expect(await screen.findByText('국가별 근거가 부족해요')).toBeInTheDocument()
-    expect(screen.getByText(/공통인 근거를 기반으로/)).toBeInTheDocument()
-    expect(screen.getByText('서버 설명 원문')).toBeInTheDocument() // 영어 원문은 접힌 상세로만
-  })
-
-  it('does not flag missing country evidence when the server supports the country', async () => {
-    stubApi([natural], 'supported')
-    guestHome()
     await screen.findByText('Natural Cream')
-    expect(screen.queryByText('Not enough country-specific evidence')).toBeNull()
+    expect(screen.queryByText('국가별 근거가 부족해요')).toBeNull()
+    expect(screen.queryByText('여행에 대해 물어보세요')).toBeNull()
   })
 
   it('category shortcuts move to Explore and My Trip; search opens the search view', async () => {

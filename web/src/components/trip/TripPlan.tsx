@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { ApiError, planTrip, type TripPlanResponse } from '../../lib/api'
 import { fill, useT } from '../../lib/i18n'
-import type { StartPoint, TripEntry } from '../../lib/storage'
+import type { TripEntry } from '../../lib/storage'
 
 interface Props {
   day: number
   entries: TripEntry[] // 그날 항목(장소·체크리스트 모두)
-  start: StartPoint | null
+  start: { lat: number; lng: number } | null // 숙소 또는 현재 위치(저장 안 함)
   onApply: (orderedItemIds: string[]) => void
 }
 

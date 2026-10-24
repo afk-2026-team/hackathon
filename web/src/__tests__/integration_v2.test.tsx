@@ -5,7 +5,6 @@ import userEvent from '@testing-library/user-event'
 import { cartTotals, refreshCartFromCatalog } from '../lib/cartTotals'
 import { reorderDay } from '../lib/tripOrder'
 import { TripPlan } from '../components/trip/TripPlan'
-import { HomeAssistant } from '../components/HomeAssistant'
 import { loadDrivingRoute, resetTripDirections, type MapPoint } from '../components/trip/TripMap'
 import { keyFor, loadCart, saveCart, type CartLine, type TripEntry } from '../lib/storage'
 import type { CatalogItem } from '../lib/types'
@@ -66,7 +65,7 @@ describe('TripPlan (POST /v1/trips/plan)', () => {
     const f = vi.fn(async () => json(plan))
     vi.stubGlobal('fetch', f)
     const onApply = vi.fn()
-    render(<TripPlan day={1} entries={entries} start={{ label: 'Stay', address: 'a', lat: 37.55, lng: 126.97, coords_source: 'naver_maps_geocode' }} onApply={onApply} />)
+    render(<TripPlan day={1} entries={entries} start={{ lat: 37.55, lng: 126.97 }} onApply={onApply} />)
     expect(screen.getByText(/not an optimized route/)).toBeInTheDocument()
     await userEvent.setup().click(screen.getByRole('button', { name: 'Order Day 1 by distance' }))
     expect(await screen.findByText(/Reordered 2 places/)).toBeInTheDocument()
@@ -82,31 +81,6 @@ describe('TripPlan (POST /v1/trips/plan)', () => {
     await userEvent.setup().click(screen.getByRole('button', { name: 'Order Day 1 by distance' }))
     expect(await screen.findByRole('alert')).toBeInTheDocument()
     expect(onApply).not.toHaveBeenCalled()
-  })
-})
-
-describe('Home AI candidates', () => {
-  const cand = (id: string, title: string) => ({ id, kind: 'product', category: 'beauty', title, subtitle: '', image_url: null, price_krw: null, list_price: usd(12), reasons: ['Listed ingredient: ceramide'], sources: [] })
-  const response = (metadata: unknown) => ({ id: 'r', object: 'response', status: 'completed', output: [{ type: 'message', content: [{ type: 'output_text', text: 'Look at B first.' }] }], metadata })
-  const profile = { country: 'US', language: 'en', currency: 'USD' }
-  it('separates items the answer cited from related options and opens details by real id', async () => {
-    vi.stubGlobal('fetch', vi.fn(async () => json(response({ candidates_basis: 'server_recommendation', candidates_status: 'ok', candidates: [cand('a', 'Alpha'), cand('b', 'Beta')], recommended_ids: ['b'] }))))
-    const onOpenId = vi.fn()
-    const user = userEvent.setup()
-    render(<HomeAssistant profile={profile} onBrowse={() => {}} onOpenId={onOpenId} />)
-    await user.click(screen.getByRole('button', { name: 'Suggest for me' }))
-    const cited = await screen.findByRole('region', { name: 'Mentioned in the answer' })
-    expect(cited).toHaveTextContent('Beta')
-    expect(cited).not.toHaveTextContent('Alpha')
-    expect(screen.getByRole('region', { name: 'Related options' })).toHaveTextContent('Alpha')
-    await user.click(screen.getByText('Beta'))
-    expect(onOpenId).toHaveBeenCalledWith('b')
-  })
-  it('says honestly when candidates are unavailable', async () => {
-    vi.stubGlobal('fetch', vi.fn(async () => json(response({ candidates_basis: 'server_recommendation', candidates_status: 'unavailable', candidates: [], recommended_ids: [] }))))
-    render(<HomeAssistant profile={profile} onBrowse={() => {}} />)
-    await userEvent.setup().click(screen.getByRole('button', { name: 'Suggest for me' }))
-    expect(await screen.findByText(/aren’t available right now/)).toBeInTheDocument()
   })
 })
 

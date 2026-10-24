@@ -8,3 +8,8 @@ __llm-wiki/*
 !__llm-wiki/receipt.json
 # 시드(설치 명세 원본)는 비추적
 seed/
+# API KEY 폴더
+# envs/ 아래 키 파일(*.env · *.env.*)은 비추적 — README.md 와 키 이름만 담은 양식(*.env.example)은 추적
+envs/**/*.env
+envs/**/*.env.*
+!envs/**/*.env.example

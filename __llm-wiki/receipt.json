@@ -1,12 +1,17 @@
 {
  "files": {
   "__llm-wiki/.gitignore": "70a213afeabe5ac38ae4c88b2c7002ce5068b91a3e57a032245ab809dc6fa460",
+  "__llm-wiki/cards/docs/checklist/checklist_26102410_13_49_envs_키폴더_추적차단.md.card.md": "66afd77a7b8068079cafc0b208bc403dc5247bca05b35ca61820c37c8ad6d358",
   "__llm-wiki/cards/docs/checklist/checklist_26102410_SDD서고환경_설치.md.card.md": "9f8396bef65ce54fa8265f10f76f4501138c57f1d8a43bc431f6c73e6160271c",
+  "__llm-wiki/cards/docs/devlog/devlog_26102410_13_19_envs_키폴더_추적차단.md.card.md": "2e5932c58b7a3716d27189388db2324d7c992df0e959714af94d2da1fea9760c",
   "__llm-wiki/cards/docs/devlog/devlog_26102410_SDD서고환경_설치.md.card.md": "dff325910f50522fef7c863d382ab85ecc4b5b752d5e21f6bf91deec6be5624d",
   "__llm-wiki/cards/docs/interview/interview_26102409_SDD서고환경_설치.md.card.md": "9814f11313635b90a3a003a65d1da754550e076933ac7f5b29321a76e84098ea",
+  "__llm-wiki/cards/docs/interview/interview_26102410_envs_키폴더_추적차단.md.card.md": "1e063707986c256bec037f90752eeccef13eb0cf52c42b9262de082be65f5f35",
+  "__llm-wiki/cards/docs/plan/plan_26102410_11_42_envs_키폴더_추적차단.md.card.md": "9a487c199e8780711d94dbbe877b922b29f4abd975462c9c866185d60e27a661",
+  "__llm-wiki/cards/docs/plan/plan_26102410_13_03_envs_키폴더_추적차단.md.card.md": "597385c8580081815c07e61c0941f1cfb54e7e9c21d7b070ce3e8a596abd3c05",
   "__llm-wiki/cards/docs/plan/plan_26102410_SDD서고환경_설치.md.card.md": "cb1a834f37dddc412e6267a64219256b76183fa17f51e20368e3b015e7a9e7e8",
   "__llm-wiki/contract.json": "079c396f916cdc974c84bc8e989fc6d7e377b3e1e4f614899a4acbfb43028c26",
-  "__llm-wiki/index.md": "0a98d30bfaca617279d9b8324a933730e2a48d599ccda6e52862799de7b2f6db",
-  "__llm-wiki/log.md": "0924422269309f5b4e4b207a42fd383821cf22e14b296951782e308d5adcaff0"
+  "__llm-wiki/index.md": "1d28841f1201bb7f39bbeda73f898311c1d33f14a6f3ee86c12db3bdca90d80a",
+  "__llm-wiki/log.md": "a6826d533fa16de52452c96cc3d2f08fa52ebc327d3197d212ad1612c5bf9623"
  }
 }

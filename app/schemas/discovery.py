@@ -28,6 +28,13 @@ class Location(_Strict):
     address: str | None = None
 
 
+class PriceFact(_Strict):
+    amount: float = Field(ge=0)
+    currency: str = Field(pattern=r"^[A-Z]{3}$")
+    basis: str = Field(min_length=1)  # 어떤 페이지의 어떤 값인지(용량 미표기 등 한계 포함)
+    source: Source
+
+
 class CatalogItem(_Strict):
     id: str = Field(min_length=1)
     kind: Literal["product", "place", "guide"]
@@ -37,6 +44,8 @@ class CatalogItem(_Strict):
     description: str
     image_url: str | None
     price_krw: float | None = Field(ge=0)
+    # 원화 가격을 확인하지 못했을 때 판매처에 표시된 다른 통화 가격(예: 해외 판매처 USD). 환산해 price_krw 에 넣지 않는다.
+    list_price: PriceFact | None = None
     location: Location | None
     sources: list[Source] = Field(min_length=1)  # 근거 없는 후보는 카탈로그에 들어오지 못한다
     sponsorship: Sponsorship
@@ -87,13 +96,6 @@ class RecommendationResponse(_Strict):
 # 표시사항(성분 표기·용량·표시 가격)만 비교한다. 효능·임상 동등성은 이 계약에 담을 자리가 없다.
 
 CompareAttribute = Literal["key_ingredients", "volume_ml", "form"]
-
-
-class PriceFact(_Strict):
-    amount: float = Field(ge=0)
-    currency: str = Field(pattern=r"^[A-Z]{3}$")
-    basis: str = Field(min_length=1)  # 어떤 페이지의 어떤 값인지(용량 미표기 등 한계 포함)
-    source: Source
 
 
 class ReferenceProduct(_Strict):

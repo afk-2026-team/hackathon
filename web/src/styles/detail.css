@@ -90,3 +90,8 @@
 .dt-bar__main { flex: 1; flex-direction: column; gap: 0; line-height: 1.2; }
 .dt-bar__main--medical { background: linear-gradient(90deg, var(--medical), #ff8a3d); }
 .dt-bar__qty { font-size: 11px; font-weight: 600; opacity: 0.9; }
+
+/* 여기까지 길찾기(담당 N). 버튼 모양은 trip.css 의 .trip-nav 를 쓴다 */
+.dt-route { display: flex; flex-direction: column; gap: 8px; padding: 10px 12px; border: 1px solid var(--g15, #e5e7eb); border-radius: var(--r-sm); }
+.dt-route__h { font-size: 14px; font-weight: 700; }
+.dt-route__from { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }

@@ -16,6 +16,14 @@ export interface ItemLocation {
   address?: string
 }
 
+// 판매처에 표시된 가격(통화 그대로). 원화 가격이 없을 때 쓰며 환산값이 아니다.
+export interface ListPrice {
+  amount: number
+  currency: string
+  basis: string
+  source: Source
+}
+
 export interface CatalogItem {
   id: string
   kind: 'product' | 'place' | 'guide'
@@ -25,6 +33,7 @@ export interface CatalogItem {
   description: string
   image_url: string | null
   price_krw: number | null
+  list_price?: ListPrice | null
   location: ItemLocation | null
   sources: Source[]
   sponsorship: Sponsorship
@@ -82,6 +91,17 @@ export interface GeocodeResponse {
   query: string
   results: GeocodeResult[]
   provenance: 'naver_maps_geocode'
+  fetched_at: string
+}
+
+// NAVER Directions 5(driving) 프록시 응답. 시간·거리는 이 응답일 때만 화면에 보인다(추정 금지).
+export type DirectionsOption = 'trafast' | 'tracomfort' | 'traoptimal'
+export interface DirectionsResponse {
+  option: DirectionsOption
+  distance_m: number
+  duration_s: number
+  path: [number, number][] // [lng, lat]
+  provenance: 'naver_maps_directions'
   fetched_at: string
 }
 

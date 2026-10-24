@@ -23,7 +23,7 @@
 | `country_codes` | 해당 국가와의 관련성을 뒷받침하는 출처가 있을 때만 값을 넣습니다. 현재는 모두 `[]`이며, 국가 선호를 지어내지 않습니다. 따라서 API의 `country_context`는 대부분 `insufficient`가 맞습니다. |
 | `provenance` | 출처 종류와 값별 예외를 적습니다(예: `price_krw=browser_observed_…`, `location=null(…)`). |
 
-## 현재 항목 (20)
+## 현재 항목 (291)
 
 배열 순서는 큐레이션 순서이며 인기·측정 순위가 아닙니다.
 
@@ -33,12 +33,18 @@
   - 토너·에센스·마스크: Anua Heartleaf 77 Hyaluron Soothing Toner 350ml · COSRX Advanced Snail 96 Mucin Power Essence 100mL · ROUND LAB 1025 Dokdo Toner 500ml(+100ml 묶음) · MEDIHEAL W.H.P Charcoal Mineral Mask Sheet 10P
   - 메이크업: rom&nd The Juicy Lasting Tint Mini 1g(색상 옵션) · CLIO Kill Cover Founwear Cushion The Original(+리필, 19N 단일 옵션)
   - 헤어: Mise-en-Scene Perfect Serum Super Rich 80ml(단품/세트 옵션)
+- **beauty product +75 (2026-10-24 대량 보강):** 스킨케어 43·선케어 3·메이크업 17·헤어 5·바디 7. 출처는 OLIVE YOUNG Global 상품 페이지(페이지가 스스로 부르는 공개 상품 데이터), 71개에 `list_price`(USD 판매가, 기간 할인 중일 수 있음), 기존 9개에도 `list_price` 보강. 바디 제품은 `body` 태그로 구분하고 얼굴용 `cleanser`·`lotion` 칩 태그는 붙이지 않음. 상세: [sources_products.md](sources_products.md)
 - **beauty guide 1:** VISITKOREA 세금 환급 안내
 - **medical guide 3:** Medical Korea 포털, 외국인환자 유치기관 등록 조회, 한국의료분쟁조정중재원 외국인 조정 신청 안내
 - **place 5 (My Trip 지도용, 모두 한국어 도로명 주소):**
   - medical: 메디컬코리아 안내센터(서울역 공항철도 B2) — `서울특별시 용산구 청파로 378` (보건복지부 보도자료), 강남메디컬투어센터(강남구청 운영) — `서울특별시 강남구 압구정로 161`
   - beauty: 올리브영 명동 타운 — `서울특별시 중구 명동길 53` (공식 매장 페이지)
   - 관광안내(category=beauty): 명동관광정보센터 — `서울특별시 중구 을지로 66` (VISITKOREA 국문), 하이커 그라운드(한국관광공사 서울센터, 5층 관광안내센터) — `서울특별시 중구 청계천로 40`
+
+- **medical place +196 (2026-10-24 대량 보강):** 외국인환자 유치 등록 의료기관 — 피부과 66·치과 75·상급종합/종합병원 55(서울 155·부산 32·제주 9). 출처: KHIDI 외국인환자 유치기관 현황(2026-07-21)·Medical Korea 영문 목록(data.go.kr, 이용허락범위 제한 없음), HIRA 전국 병의원 현황(공공누리 1유형 — 출처 표시 의무, 좌표), NHIS 검진기관(checkup 근거). `lat`/`lng` 는 HIRA 공식 좌표. `international_clinic` 태그는 "정부 등록" 사실이며 국제진료센터 운영 여부는 확인하지 않음(화면 라벨: 외국인환자 유치 등록). 성형외과는 기획 범위 미정으로 보류. 영문명은 공식 목록 원문 그대로(오타 포함). 상세: [sources_hospitals.md](sources_hospitals.md)
+
+## 필드 추가
+- `list_price`(선택): 원화 가격을 확인하지 못했을 때 판매처에 표시된 다른 통화 가격 `{amount, currency, basis, source}`. 환산해 `price_krw` 에 넣지 않는다. 화면은 통화 그대로 보여 주고 ECB 기준율 환산을 '약'으로 덧붙인다.
 
 ## 후속 작업 (이번 범위 밖)
 

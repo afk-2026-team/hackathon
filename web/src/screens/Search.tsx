@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type FormEvent } from 'react'
+import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react'
 import type { SearchProps } from './contracts'
 import type { BlogResponse, CatalogItem } from '../lib/types'
 import { ApiError, fetchBlogReviews, fetchCatalog } from '../lib/api'
@@ -15,6 +15,8 @@ type Load<T> = { status: 'idle' } | { status: 'loading' } | { status: 'error'; m
 
 const RECENT_KEY = 'jinseonmi.search.recent'
 const RECENT_MAX = 8
+const DEBOUNCE_MS = 150
+const RESULT_PAGE = 50
 
 function readRecent(): string[] {
   try {
@@ -34,9 +36,13 @@ function writeRecent(list: string[]) {
 
 /** 대소문자 무시·한글 포함 부분일치. 공백으로 나눈 단어가 모두 들어 있어야 한다. */
 export function matchItem(item: CatalogItem, query: string): boolean {
+  return matchHay(hayOf(item), query)
+}
+const hayOf = (item: CatalogItem) =>
+  [item.title, item.subtitle, item.description, item.location?.address ?? '', ...item.tags].join(' ').toLocaleLowerCase()
+function matchHay(hay: string, query: string): boolean {
   const words = query.toLocaleLowerCase().split(/\s+/).filter(Boolean)
   if (words.length === 0) return false
-  const hay = [item.title, item.subtitle, item.description, ...item.tags].join(' ').toLocaleLowerCase()
   return words.every((w) => hay.includes(w))
 }
 
@@ -113,8 +119,24 @@ export function Search({ profile, onBack, onOpen }: SearchProps) {
   }
   const retryBlog = () => setBlogTry((n) => n + 1)
 
-  const q = query.trim()
-  const results = catalog.status === 'ready' && q ? catalog.data.filter((i) => matchItem(i, q)) : []
+  // 입력은 바로 보이고, 카탈로그 거르기는 150ms 쉬었을 때만 한다(제출·최근 검색어는 즉시).
+  const [debounced, setDebounced] = useState('')
+  useEffect(() => {
+    const v = query.trim()
+    if (v === debounced) return
+    if (!v) {
+      setDebounced('')
+      return
+    }
+    const id = window.setTimeout(() => setDebounced(v), DEBOUNCE_MS)
+    return () => window.clearTimeout(id)
+  }, [query, debounced])
+  const q = submitted === query.trim() ? submitted : debounced
+  const hays = useMemo(() => (catalog.status === 'ready' ? catalog.data.map((i) => [i, hayOf(i)] as const) : []), [catalog])
+  const results = useMemo(() => (q ? hays.filter(([, h]) => matchHay(h, q)).map(([i]) => i) : []), [hays, q])
+  const [more, setMore] = useState({ q: '', n: RESULT_PAGE })
+  const limit = more.q === q ? more.n : RESULT_PAGE
+  const left = results.length - Math.min(limit, results.length)
 
   return (
     <div className="ex">
@@ -158,8 +180,15 @@ export function Search({ profile, onBack, onOpen }: SearchProps) {
             <>
               <p className="ex-count">{fill(t('explore.catalogCount'), { n: results.length })}</p>
               <ul className="ex-list">
-                {results.map((item) => <ItemRow key={item.id} item={item} currency={profile.currency} onOpen={onOpen} />)}
+                {results.slice(0, limit).map((item) => <ItemRow key={item.id} item={item} currency={profile.currency} onOpen={onOpen} />)}
               </ul>
+              {left > 0 && (
+                <div className="ex-more">
+                  <button type="button" className="btn btn--ghost ex-more__btn" onClick={() => setMore({ q, n: limit + RESULT_PAGE })}>
+                    {fill(t('explore.more'), { n: left })}
+                  </button>
+                </div>
+              )}
             </>
           )
       ) : (

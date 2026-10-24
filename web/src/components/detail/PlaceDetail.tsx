@@ -13,7 +13,7 @@ const KIND_KEY: Record<DetailProps['item']['kind'], Key> = {
 }
 
 // 의료·장소·안내 상세(병원 상세 톤: 헤더 카드 → 안내 → 소개 → 위치 → 후기 → 출처 → 하단 고정 바).
-export function PlaceDetail({ item, onBack, onAddTrip, onOpenCart, onGoTrip, cartQty, inTrip }: DetailProps) {
+export function PlaceDetail({ item, ns, onBack, onAddTrip, onOpenCart, onGoTrip, cartQty, inTrip }: DetailProps) {
   const t = useT()
   const lang = useLang()
   const medical = item.category === 'medical'
@@ -68,7 +68,7 @@ export function PlaceDetail({ item, onBack, onAddTrip, onOpenCart, onGoTrip, car
           <section className="dt-sec" aria-labelledby="dt-loc-h">
             <h2 id="dt-loc-h" className="dt-h2">{t('detail.location')}</h2>
             {!item.location.address && <p className="small muted dt-gap">{t('detail.noAddress')}</p>}
-            <MiniMap location={item.location} lang={lang} />
+            <MiniMap location={item.location} lang={lang} ns={ns} />
           </section>
         </>
       )}

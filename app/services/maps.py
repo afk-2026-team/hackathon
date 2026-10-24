@@ -15,7 +15,7 @@ from typing import Any, Generic, TypeVar
 
 import httpx
 
-from app.schemas.live import GeocodeResponse, GeocodeResult, MapsConfig
+from app.schemas.live import DirectionsResponse, GeocodeResponse, GeocodeResult, MapsConfig
 from app.utils.logger import AGENT_LOGGER_NAME
 
 logger = logging.getLogger(AGENT_LOGGER_NAME)
@@ -111,11 +111,27 @@ GEOCODE_URL = "https://maps.apigw.ntruss.com/map-geocode/v2/geocode"
 GEOCODE_CACHE_MAX = 256  # 지오코딩 결과 메모리 캐시 상한
 SERVICE_NAME = "naver_maps"
 
+DIRECTIONS_URL = "https://maps.apigw.ntruss.com/map-direction/v1/driving"  # Directions 5
+DIRECTIONS_CACHE_MAX = 128
+DIRECTIONS_TTL_S = 600.0  # 교통 반영 경로라 10분만 재사용
+DIRECTIONS_NOT_ENABLED_STATUSES = (401, 403)  # 이 앱에 Directions 상품이 꺼져 있을 때 NCP 가 돌려주는 상태
+
 _geocode_cache: TTLCache[GeocodeResponse] = TTLCache(GEOCODE_CACHE_MAX)
+_directions_cache: TTLCache[DirectionsResponse] = TTLCache(DIRECTIONS_CACHE_MAX, DIRECTIONS_TTL_S)
+
+
+class LiveNotEnabled(Exception):
+    """키는 있으나 NCP 콘솔에서 해당 API(예: Directions 5)가 이 앱에 켜져 있지 않음 → 501. 키 누락(503)과 구분한다."""
+
+
+DIRECTIONS_NOT_ENABLED_MESSAGE = (
+    "Directions is not enabled for this NAVER Cloud Maps application. Enable 'Directions 5' in the NCP console."
+)
 
 
 def reset_cache() -> None:
     _geocode_cache.clear()
+    _directions_cache.clear()
 
 
 def _env(name: str) -> str:
@@ -179,4 +195,66 @@ async def geocode(client: httpx.AsyncClient, query: str) -> GeocodeResponse:
     logger.info("[Maps] geocode ok results=%d", len(results))  # 질의 텍스트는 남기지 않는다
     response = GeocodeResponse(query=query, results=results, fetched_at=utc_now_iso())
     _geocode_cache.set(key, response)
+    return response
+
+
+def _directions_route(data: Any, option: str) -> tuple[int, int, list[list[float]]] | None:
+    """NAVER 응답 {code:0, route:{<option>:[{summary:{distance(m), duration(ms)}, path:[[lng,lat],...]}]}} 에서 첫 경로."""
+    if not isinstance(data, dict) or data.get("code") != 0:
+        return None
+    routes = (data.get("route") or {}).get(option) if isinstance(data.get("route"), dict) else None
+    if not isinstance(routes, list) or not routes or not isinstance(routes[0], dict):
+        return None
+    summary, raw_path = routes[0].get("summary"), routes[0].get("path")
+    if not isinstance(summary, dict) or not isinstance(raw_path, list):
+        return None
+    try:
+        distance_m = int(summary["distance"])
+        duration_s = round(float(summary["duration"]) / 1000)  # NAVER duration 단위는 밀리초
+        path = [[float(p[0]), float(p[1])] for p in raw_path]
+    except (KeyError, TypeError, ValueError, IndexError):
+        return None
+    return distance_m, duration_s, path
+
+
+async def directions(client: httpx.AsyncClient, start: str, goal: str, waypoints: str | None, option: str) -> DirectionsResponse:
+    """start/goal = "lng,lat", waypoints = "lng,lat|lng,lat"(최대 5). 좌표는 로그에 남기지 않는다."""
+    client_id, secret = _credentials()
+    key = (start, goal, waypoints or "", option)
+    cached = _directions_cache.get(key)
+    if cached is not None:
+        return cached
+    params = {"start": start, "goal": goal, "option": option}
+    if waypoints:
+        params["waypoints"] = waypoints
+    try:
+        resp = await client.get(
+            DIRECTIONS_URL,
+            params=params,
+            headers={"x-ncp-apigw-api-key-id": client_id, "x-ncp-apigw-api-key": secret, "Accept": "application/json"},
+        )
+    except httpx.HTTPError as exc:
+        logger.warning("[Maps] ⚠️ directions request error: %s", type(exc).__name__)
+        raise LiveUpstreamError(SERVICE_NAME) from None
+    if resp.status_code in DIRECTIONS_NOT_ENABLED_STATUSES:
+        logger.warning("[Maps] ⚠️ directions not enabled for this app (upstream status %s)", resp.status_code)
+        raise LiveNotEnabled(DIRECTIONS_NOT_ENABLED_MESSAGE)
+    if resp.status_code != 200:
+        logger.warning("[Maps] ⚠️ directions upstream status %s", resp.status_code)
+        raise LiveUpstreamError(SERVICE_NAME, resp.status_code)
+    try:
+        data = resp.json()
+    except ValueError:
+        raise LiveUpstreamError(SERVICE_NAME, 200) from None
+    route = _directions_route(data, option)
+    if route is None:
+        code = data.get("code") if isinstance(data, dict) else None
+        logger.warning("[Maps] ⚠️ directions returned no usable route (code %s)", code)
+        raise LiveUpstreamError(SERVICE_NAME, 200)
+    distance_m, duration_s, path = route
+    logger.info("[Maps] directions ok points=%d", len(path))
+    response = DirectionsResponse(
+        option=option, distance_m=distance_m, duration_s=duration_s, path=path, fetched_at=utc_now_iso()
+    )
+    _directions_cache.set(key, response)
     return response

@@ -199,6 +199,32 @@ describe('integrated home', () => {
     expect(within(screen.getByRole('region', { name: 'Places' })).getByText('Info Center')).toBeInTheDocument()
   })
 
+  it('caps each home section and links See all to the matching Explore tab, keeping server order', async () => {
+    const user = userEvent.setup()
+    const beauty = Array.from({ length: 10 }, (_, n) => item({ id: 'b' + n, title: 'Beauty ' + n, price_krw: 1000 }))
+    const clinics = Array.from({ length: 9 }, (_, n) =>
+      item({ id: 'c' + n, kind: 'place', category: 'medical', title: 'Clinic ' + n, tags: ['clinic', 'dermatology'], location: { name: 'C', address: '서울특별시 강남구 ' + n } }),
+    )
+    const spots = Array.from({ length: 12 }, (_, n) => item({ id: 's' + n, kind: 'place', title: 'Spot ' + n }))
+    stubApi([...beauty, ...clinics, ...spots])
+    guestHome()
+    const picks = await screen.findByRole('region', { name: 'Today’s beauty picks' })
+    expect(within(picks).getAllByRole('listitem').map((li) => li.textContent)).toEqual(beauty.slice(0, 6).map((b) => expect.stringContaining(b.title)))
+    const medical = screen.getByRole('region', { name: 'Medical & official guides' })
+    expect(within(medical).getAllByRole('listitem')).toHaveLength(6)
+    expect(within(medical).getByText('Clinic 0')).toBeInTheDocument()
+    const places = screen.getByRole('region', { name: 'Places' })
+    expect(within(places).getAllByRole('listitem')).toHaveLength(8)
+    expect(within(places).queryByText('Clinic 0')).toBeNull() // 병원은 장소가 아니라 의료 섹션
+
+    await user.click(within(medical).getByRole('button', { name: 'See all · Medical & official guides' }))
+    expect(screen.getByRole('button', { name: 'Explore' })).toHaveAttribute('aria-current', 'page')
+    expect(screen.getByRole('tab', { name: 'Medical' })).toHaveAttribute('aria-selected', 'true')
+    await user.click(screen.getByRole('button', { name: 'Home' }))
+    await user.click(within(await screen.findByRole('region', { name: 'Today’s beauty picks' })).getByRole('button', { name: 'See all · Today’s beauty picks' }))
+    expect(screen.getByRole('tab', { name: 'Beauty' })).toHaveAttribute('aria-selected', 'true')
+  })
+
   it('shows an honest empty state when nothing sponsored is on display', async () => {
     stubApi([natural])
     guestHome()

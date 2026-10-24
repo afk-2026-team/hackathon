@@ -204,6 +204,7 @@ export function Workspace({ ns, uiLang, account, onSignIn, onSignOut, onResetDon
       <ItemDetail
         key={top.item.id}
         item={top.item}
+        ns={ns}
         profile={payload}
         onBack={pop}
         onAddCart={addCart}

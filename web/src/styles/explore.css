@@ -72,3 +72,17 @@
 .ex-cart__fx { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 13px; color: var(--g6); }
 .ex-cart__fine { font-size: 11px; color: var(--g4); line-height: 1.5; }
 .ex-cart__actions { padding: 12px 0 4px; }
+
+/* 대량 목록: 결과 수·초기화·더 보기, 세부 칩 */
+.ex-chips--sub { padding-top: 8px; }
+.ex-chips--sub .chip { height: 28px; font-size: 12px; padding: 0 10px; }
+.ex--beauty .ex-chips .chip.is-on { background: var(--beauty-ink); border-color: var(--beauty-ink); }
+.ex--medical .ex-chips .chip.is-on { background: var(--medical); border-color: var(--medical); }
+.ex-meta { display: flex; align-items: center; gap: 8px; padding: 14px 16px 0; font-size: 12px; }
+.ex-meta__count { font-size: 13px; font-weight: 700; color: var(--g7); }
+.ex-meta__clear { font-size: 12px; padding: 0 4px; height: auto; }
+.ex-meta__cur { margin-left: auto; color: var(--g4); text-align: right; }
+.ex-more { padding: 8px 16px 0; }
+.ex-more__btn { width: 100%; }
+.badge--region { background: var(--g1); color: var(--g7); }
+.badge--field { font-weight: 600; }

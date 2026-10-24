@@ -3997,7 +3997,9 @@
     "https://global.oliveyoung.com/product/detail?prdtNo=GA210811510": "올리브영 글로벌 상품 페이지",
     "https://global.oliveyoung.com/product/detail?prdtNo=GA240322660": "올리브영 글로벌 상품 페이지",
     "https://www.cetaphil.com/us/products/product-categories/all-moisturizers/moisturizing-cream/302993917564.html": "Cetaphil 미국 공식 상품 페이지(성분, 용량)",
-    "https://www.laroche-posay.us/our-products/face/face-moisturizer/toleriane-double-repair-face-moisturizer-tolerianedoublerepair.html": "라로슈포제 미국 공식 상품 페이지(성분)"
+    "https://www.laroche-posay.us/our-products/face/face-moisturizer/toleriane-double-repair-face-moisturizer-tolerianedoublerepair.html": "라로슈포제 미국 공식 상품 페이지(성분)",
+    "https://www.cerave.com/skincare/cleansers/hydrating-facial-cleanser": "CeraVe 미국 공식 상품 페이지(성분, 가격)",
+    "https://www.cerave.com/sunscreen/invisible-mineral-sunscreen": "CeraVe 미국 공식 상품 페이지(성분, 가격)"
   },
   "facts": {
     "beauty-illiyoon-ceramide-ato-concentrate-cream-75ml": {
@@ -4262,7 +4264,7 @@
   },
   "references": {
     "ref-cerave-moisturizing-cream": {
-      "ingredients_basis": "브랜드 미국 공식 상품 페이지의 전성분 목록에서 골랐어요. 브랜드는 포장에 적힌 목록이 가장 최신이라고 안내해요.",
+      "ingredients_basis": "브랜드 미국 공식 상품 페이지의 전성분 목록이에요(2026-10-24 확인). 페이지 문구에 용량이 없어 기록하지 않았어요. 가장 최신 목록은 포장에 적힌 것이에요.",
       "price_basis": "브랜드 미국 공식 상품 페이지에 표시된 가격이에요. 페이지 문구에 어느 용량의 가격인지는 나와 있지 않아요."
     },
     "ref-cetaphil-moisturizing-cream": {
@@ -4270,6 +4272,14 @@
     },
     "ref-laroche-posay-toleriane-double-repair-face-moisturizer": {
       "ingredients_basis": "브랜드 미국 공식 상품 페이지의 전성분 목록이에요(2026-10-24 확인). 목록에 용량이 적혀 있지 않아 기록하지 않았어요. 가장 최신 목록은 포장에 적힌 것이에요."
+    },
+    "ref-cerave-hydrating-facial-cleanser": {
+      "ingredients_basis": "브랜드 미국 공식 상품 페이지의 전성분 목록이에요(2026-10-24 확인). 페이지 문구에 용량이 없어 기록하지 않았어요. 가장 최신 목록은 포장에 적힌 것이에요.",
+      "price_basis": "브랜드 미국 공식 상품 페이지에 표시된 가격이에요. 페이지 문구에 어느 용량의 가격인지는 나와 있지 않아요."
+    },
+    "ref-cerave-invisible-mineral-sunscreen-spf50": {
+      "ingredients_basis": "브랜드 미국 공식 상품 페이지의 전성분 목록이에요(2026-10-24 확인). 유효성분(티타늄디옥사이드 2.66%, 징크옥사이드 15.35%) 다음에 나머지 성분을 적었어요. 페이지 문구에 용량이 없어 기록하지 않았어요. 가장 최신 목록은 포장에 적힌 것이에요.",
+      "price_basis": "브랜드 미국 공식 상품 페이지에 표시된 가격이에요. 페이지 문구에 어느 용량의 가격인지는 나와 있지 않아요."
     }
   },
   "forms": {
@@ -4282,7 +4292,8 @@
     "sunscreen": "선크림",
     "cushion": "쿠션",
     "tint": "틴트",
-    "sheet mask": "시트 마스크"
+    "sheet mask": "시트 마스크",
+    "cleanser": "클렌저"
   },
   "list_price_basis": {
     "OLIVE YOUNG Global listed sale price on 2026-10-24 (may change; shipping/tax excluded)": "2026-10-24 올리브영 글로벌 표시 판매가(바뀔 수 있음, 배송비·세금 제외)",

@@ -7,17 +7,33 @@
       "form": "cream",
       "volume_ml": null,
       "key_ingredients": [
+        "Water",
+        "Glycerin",
+        "Cetearyl Alcohol",
+        "Caprylic/Capric Triglyceride",
+        "Cetyl Alcohol",
+        "Ceteareth-20",
+        "Petrolatum",
+        "Potassium Phosphate",
         "Ceramide NP",
         "Ceramide AP",
         "Ceramide EOP",
-        "Cholesterol",
-        "Phytosphingosine",
+        "Carbomer",
+        "Dimethicone",
+        "Behentrimonium Methosulfate",
+        "Sodium Lauroyl Lactylate",
         "Sodium Hyaluronate",
-        "Petrolatum",
-        "Dimethicone"
+        "Cholesterol",
+        "Phenoxyethanol",
+        "Disodium EDTA",
+        "Dipotassium Phosphate",
+        "Tocopherol",
+        "Phytosphingosine",
+        "Xanthan Gum",
+        "Ethylhexylglycerin"
       ],
-      "ingredients_complete": false,
-      "ingredients_basis": "Selected from the full ingredient list on the brand's official US product page. The brand notes the package is the most current list.",
+      "ingredients_complete": true,
+      "ingredients_basis": "Full ingredient list on the brand's official US product page, checked 2026-10-24. The page text does not state a size; the brand notes the package is the most current list.",
       "price": {
         "amount": 14.99,
         "currency": "USD",
@@ -38,7 +54,7 @@
           "checked_at": "2026-10-24"
         }
       ],
-      "provenance": "official_brand_page; volume_ml=null(size not stated in page text); key_ingredients=subset of listed full ingredients"
+      "provenance": "official_brand_page; volume_ml=null(size not stated in page text); key_ingredients=full listed ingredients; label 'Aqua / Water / Eau' recorded as 'Water' so it matches the same INCI name on Korean labels; other names as on the page in title case"
     },
     {
       "id": "ref-cetaphil-moisturizing-cream",
@@ -126,6 +142,138 @@
         }
       ],
       "provenance": "official_brand_page; volume_ml=null(size not shown with the list); price=null(size not confirmed for the shown price)"
+    },
+    {
+      "id": "ref-cerave-hydrating-facial-cleanser",
+      "brand": "CeraVe",
+      "title": "CeraVe Hydrating Facial Cleanser",
+      "form": "cleanser",
+      "volume_ml": null,
+      "key_ingredients": [
+        "Water",
+        "Glycerin",
+        "Cetearyl Alcohol",
+        "PEG-40 Stearate",
+        "Stearyl Alcohol",
+        "Potassium Phosphate",
+        "Ceramide NP",
+        "Ceramide AP",
+        "Ceramide EOP",
+        "Carbomer",
+        "Glyceryl Stearate",
+        "Behentrimonium Methosulfate",
+        "Sodium Lauroyl Lactylate",
+        "Sodium Hyaluronate",
+        "Cholesterol",
+        "Phenoxyethanol",
+        "Disodium EDTA",
+        "Dipotassium Phosphate",
+        "Tocopherol",
+        "Phytosphingosine",
+        "Xanthan Gum",
+        "Cetyl Alcohol",
+        "Polysorbate 20",
+        "Ethylhexylglycerin"
+      ],
+      "ingredients_complete": true,
+      "ingredients_basis": "Full ingredient list on the brand's official US product page, checked 2026-10-24. The page text does not state a size; the brand notes the package is the most current list.",
+      "price": {
+        "amount": 15.99,
+        "currency": "USD",
+        "basis": "Price shown on the brand's official US product page. The page text does not state which size this price is for.",
+        "source": {
+          "label": "CeraVe US official product page",
+          "url": "https://www.cerave.com/skincare/cleansers/hydrating-facial-cleanser",
+          "checked_at": "2026-10-24"
+        }
+      },
+      "market_codes": [
+        "US"
+      ],
+      "sources": [
+        {
+          "label": "CeraVe US official product page (ingredients, price)",
+          "url": "https://www.cerave.com/skincare/cleansers/hydrating-facial-cleanser",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "provenance": "official_brand_page; volume_ml=null(size not stated in page text); form='cleanser'(page wording); label 'Aqua / Water / Eau' recorded as 'Water' so it matches the same INCI name on Korean labels; other names as on the page in title case"
+    },
+    {
+      "id": "ref-cerave-invisible-mineral-sunscreen-spf50",
+      "brand": "CeraVe",
+      "title": "CeraVe Invisible Mineral Sunscreen SPF 50",
+      "form": "sunscreen",
+      "volume_ml": null,
+      "key_ingredients": [
+        "Titanium Dioxide",
+        "Zinc Oxide",
+        "Water",
+        "C15-19 Alkane",
+        "Glycerin",
+        "Dicaprylyl Carbonate",
+        "Niacinamide",
+        "Propanediol",
+        "Cetearyl Isononanoate",
+        "Polyhydroxystearic Acid",
+        "Dimethicone",
+        "Ethylhexyl Methoxycrylene",
+        "Cellulose",
+        "Triethylhexanoin",
+        "Isohexadecane",
+        "Triethoxycaprylylsilane",
+        "Steareth-20",
+        "Silica",
+        "Steareth-2",
+        "Ceramide NP",
+        "Ceramide AP",
+        "Ceramide EOP",
+        "Carbomer",
+        "Glyceryl Stearate",
+        "Cetearyl Alcohol",
+        "Behentrimonium Methosulfate",
+        "Triethyl Citrate",
+        "Sodium Lauroyl Lactylate",
+        "Cholesterol",
+        "Aluminum Stearate",
+        "Alumina",
+        "Chlorphenesin",
+        "Tocopherol",
+        "Hydroxyacetophenone",
+        "Caprylyl Glycol",
+        "Caprylic/Capric Triglyceride",
+        "Citric Acid",
+        "Diethylhexyl Syringylidenemalonate",
+        "Panthenol",
+        "Xanthan Gum",
+        "Phytosphingosine",
+        "Polysorbate 20",
+        "Acrylates/C10-30 Alkyl Acrylate Crosspolymer",
+        "Benzoic Acid"
+      ],
+      "ingredients_complete": true,
+      "ingredients_basis": "Full list on the brand's official US product page, checked 2026-10-24: active ingredients (Titanium Dioxide 2.66%, Zinc Oxide 15.35%) followed by the other ingredients. The page text does not state a size; the package is the most current list.",
+      "price": {
+        "amount": 16.99,
+        "currency": "USD",
+        "basis": "Price shown on the brand's official US product page. The page text does not state which size this price is for.",
+        "source": {
+          "label": "CeraVe US official product page",
+          "url": "https://www.cerave.com/sunscreen/invisible-mineral-sunscreen",
+          "checked_at": "2026-10-24"
+        }
+      },
+      "market_codes": [
+        "US"
+      ],
+      "sources": [
+        {
+          "label": "CeraVe US official product page (ingredients, price)",
+          "url": "https://www.cerave.com/sunscreen/invisible-mineral-sunscreen",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "provenance": "official_brand_page; volume_ml=null(size not stated in page text); key_ingredients=active ingredients then inactive ingredients, names as on the page in title case"
     }
   ]
 }

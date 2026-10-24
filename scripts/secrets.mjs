@@ -7,7 +7,7 @@ import { loadInfisicalSecrets, applicationEnv } from "./lib/infisical.mjs";
 import { SecretConfigError, checkSecrets, selectServices } from "../src/server/secrets.mjs";
 
 const help = `Usage (Node.js 24+ and Infisical CLI required):
-  node scripts/secrets.mjs check [--env dev|prod] [--services claude,supabase,nebius,naver,youtube]
+  node scripts/secrets.mjs check [--env dev|prod] [--services claude,supabase,nebius,naver,naver_maps,youtube]
   node scripts/secrets.mjs run [--env dev|prod] [--services claude,supabase] -- node --run dev
   node scripts/secrets.mjs run --services claude -- python app.py
 Default: dev, all services. Login once with: infisical login

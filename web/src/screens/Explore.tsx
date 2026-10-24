@@ -1,178 +1,140 @@
-import { useEffect, useRef, useState } from 'react'
-import type { CatalogItem, CategoryFilter, ProfilePayload } from '../lib/types'
+import { useMemo, useState } from 'react'
+import type { ExploreProps } from './contracts'
+import type { CatalogItem, CategoryFilter } from '../lib/types'
 import { useRecommendations } from '../lib/useRecommendations'
-import { ItemCard } from '../components/ItemCard'
-import { ItemDetail } from '../components/ItemDetail'
-import { CountryNote } from '../components/CountryNote'
+import { INTERESTS, countryName } from '../lib/options'
+import { fill, useLang, useT, type Key } from '../lib/i18n'
 import { EmptyState, ErrorState, LoadingState } from '../components/States'
-import type { CartLine } from '../lib/storage'
-import { formatKrw } from '../lib/format'
-import { useT } from '../lib/i18n'
+import { ItemRow } from '../components/explore/ItemRow'
+import '../styles/explore.css'
 
-interface Props {
-  profile: ProfilePayload
-  currentProduct?: string
-  onSetCurrent: (name: string) => void
-  category: CategoryFilter
-  onCategory: (c: CategoryFilter) => void
-  selected: CatalogItem | null
-  selectedId: string | null
-  onSelect: (i: CatalogItem | null) => void
-  cart: CartLine[]
-  tripIds: Set<string>
-  onAddCart: (i: CatalogItem) => void
-  onAddTrip: (i: CatalogItem) => void
-  onChangeQty: (id: string, qty: number) => void
+// 담당: 탐색·검색·카트(D). 기획 §3.1 — Real picks 와 Sponsored 를 섞지 않는다.
+// 목록 순서는 카탈로그의 큐레이션 순서이며 측정 순위가 아니다.
+
+type Lane = 'real' | 'sponsored'
+const CATS: { c: CategoryFilter; key: Key }[] = [
+  { c: 'all', key: 'explore.tabAll' },
+  { c: 'beauty', key: 'explore.tabBeauty' },
+  { c: 'medical', key: 'explore.tabMedical' },
+]
+const INTEREST_KO: Record<string, string> = {
+  skincare: '스킨케어',
+  makeup: '메이크업',
+  hair: '헤어',
+  dermatology: '피부과 방문',
+  checkup: '건강검진',
+  dental: '치과',
+  neighborhoods: '동네 탐방',
 }
 
-type Feed = 'picks' | 'sponsored'
-
-function useIsDesktop() {
-  const q = '(min-width: 960px)'
-  const [d, setD] = useState(() => typeof window !== 'undefined' && !!window.matchMedia?.(q).matches)
-  useEffect(() => {
-    const m = window.matchMedia?.(q)
-    if (!m) return
-    const on = () => setD(m.matches)
-    m.addEventListener?.('change', on)
-    return () => m.removeEventListener?.('change', on)
-  }, [])
-  return d
-}
-
-export function Explore(p: Props) {
+export function Explore({ profile, category, onCategory, onOpen, onAddCart, onSearch, cartQty, tripIds }: ExploreProps) {
   const t = useT()
-  const { state, retry } = useRecommendations(p.profile, p.category)
-  const [feed, setFeed] = useState<Feed>('picks')
-  const [listOpen, setListOpen] = useState(false)
-  const desktop = useIsDesktop()
-  const closeRef = useRef<HTMLDivElement>(null)
+  const lang = useLang()
+  const { state, retry } = useRecommendations(profile, category)
+  const [lane, setLane] = useState<Lane>('real')
+  // null = 아직 사용자가 건드리지 않음 → 프로필 관심사를 미리 선택한 상태로 본다.
+  const [picked, setPicked] = useState<Set<string> | null>(null)
 
-  const items = state.status === 'ready' ? state.data.items : []
-  const visible = items.filter((i) => (feed === 'sponsored' ? i.sponsorship === 'sponsored' : i.sponsorship !== 'sponsored'))
-  const sponsoredCount = items.filter((i) => i.sponsorship === 'sponsored').length
+  const items: CatalogItem[] = state.status === 'ready' ? state.data.items : []
+  const available = useMemo(() => {
+    const tags = new Set(items.flatMap((i) => i.tags))
+    return INTERESTS.filter((x) => tags.has(x.code))
+  }, [items])
+  const availableCodes = new Set(available.map((x) => x.code))
+  const selected = new Set(
+    [...(picked ?? new Set(profile.preferences?.interests ?? []))].filter((c) => availableCodes.has(c)),
+  )
 
-  useEffect(() => {
-    if (feed === 'sponsored' && state.status === 'ready' && sponsoredCount === 0) setFeed('picks')
-  }, [feed, sponsoredCount, state.status])
+  const real = items.filter((i) => i.sponsorship !== 'sponsored')
+  const sponsored = items.filter((i) => i.sponsorship === 'sponsored')
+  const laneItems = lane === 'real' ? real : sponsored
+  const shown = selected.size === 0 ? laneItems : laneItems.filter((i) => i.tags.some((tag) => selected.has(tag)))
 
-  // 딥링크(#explore/<id>)로 들어왔을 때 목록이 도착하면 해당 항목을 연다
-  useEffect(() => {
-    if (state.status !== 'ready' || !p.selectedId || p.selected?.id === p.selectedId) return
-    const hit = items.find((i) => i.id === p.selectedId)
-    if (hit) p.onSelect(hit)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.status, p.selectedId])
-
-  const sheet = !!p.selected && !desktop
-  useEffect(() => {
-    if (!sheet) return
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && p.onSelect(null)
-    document.addEventListener('keydown', onKey)
-    closeRef.current?.querySelector<HTMLButtonElement>('.detail__close')?.focus()
-    const prev = document.body.style.overflow
-    document.body.style.overflow = 'hidden' // 시트 뒤 목록이 같이 스크롤되지 않게
-    return () => {
-      document.removeEventListener('keydown', onKey)
-      document.body.style.overflow = prev
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sheet])
-
-  const count = p.cart.reduce((n, l) => n + l.qty, 0)
-  const priced = p.cart.filter((l) => l.price_krw != null)
-  const total = priced.reduce((s, l) => s + (l.price_krw ?? 0) * l.qty, 0)
-  const unpriced = p.cart.length - priced.length
-
-  const tabs: [CategoryFilter, string][] = [['all', t('explore.all')], ['beauty', t('explore.beauty')], ['medical', t('explore.medical')]]
+  const toggle = (code: string) => {
+    const next = new Set(selected)
+    if (next.has(code)) next.delete(code)
+    else next.add(code)
+    setPicked(next)
+  }
 
   return (
-    <div className={`screen explore${p.cart.length > 0 ? ' explore--with-list' : ''}`}>
-      <div className="explore__bar">
-        <div className="segmented" role="tablist" aria-label="Category">
-          {tabs.map(([c, label]) => (
-            <button key={c} role="tab" aria-selected={p.category === c} className={p.category === c ? 'is-on' : ''} onClick={() => p.onCategory(c)}>
-              {label}
-            </button>
-          ))}
-        </div>
-        <div className="segmented segmented--quiet" role="tablist" aria-label="Feed">
-          <button role="tab" aria-selected={feed === 'picks'} className={feed === 'picks' ? 'is-on' : ''} onClick={() => setFeed('picks')}>{t('explore.picks')}</button>
-          <button role="tab" aria-selected={feed === 'sponsored'} className={feed === 'sponsored' ? 'is-on' : ''} disabled={sponsoredCount === 0} onClick={() => setFeed('sponsored')}>
-            {t('explore.sponsored')}{sponsoredCount ? ` · ${sponsoredCount}` : ''}
+    <div className="ex">
+      <div className="ex-top">
+        <button type="button" className="searchbox" onClick={onSearch}>
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" strokeWidth="2" /><path d="M20 20l-4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
+          <span>{t('explore.searchPlaceholder')}</span>
+        </button>
+      </div>
+      <div className="tabs" role="tablist">
+        {CATS.map(({ c, key }) => (
+          <button key={c} type="button" role="tab" aria-selected={c === category} className={`tabs__item${c === category ? ' is-on' : ''}`} onClick={() => onCategory(c)}>
+            {t(key)}
           </button>
-        </div>
+        ))}
       </div>
 
       {state.status === 'loading' && <LoadingState />}
       {state.status === 'error' && <ErrorState message={state.message} onRetry={retry} />}
       {state.status === 'ready' && (
-        <div className="explore__layout">
-          <div className="explore__list">
-            <CountryNote ctx={state.data.country_context} />
-            {feed === 'sponsored' && <p className="note">{t('explore.paid')}</p>}
-            {visible.length ? (
-              <div className="list">
-                {visible.map((i) => (
-                  <ItemCard key={i.id} item={i} selected={p.selected?.id === i.id} onOpen={p.onSelect} />
-                ))}
-              </div>
-            ) : (
-              <EmptyState title={t('explore.empty')} body={t('explore.emptyBody')} />
-            )}
-          </div>
-          {sheet && <div className="sheet-backdrop" onClick={() => p.onSelect(null)} aria-hidden="true" />}
-          <div
-            ref={closeRef}
-            className={`explore__detail${p.selected ? ' is-open' : ''}`}
-            {...(sheet ? { role: 'dialog', 'aria-modal': true, 'aria-label': p.selected!.title } : {})}
-          >
-            {p.selected ? (
-              <ItemDetail
-                item={p.selected}
-                profile={p.profile}
-                currentProduct={p.currentProduct}
-                onSetCurrent={p.onSetCurrent}
-                inCart={p.cart.find((l) => l.item_id === p.selected!.id)?.qty ?? 0}
-                inTrip={p.tripIds.has(p.selected.id)}
-                onAddCart={p.onAddCart}
-                onAddTrip={p.onAddTrip}
-                onClose={desktop ? undefined : () => p.onSelect(null)}
-              />
-            ) : (
-              <EmptyState title={t('explore.pickSomething')} body={t('explore.pickBody')} />
-            )}
-          </div>
-        </div>
-      )}
+        <>
+          <p className={`ex-country${state.data.country_context.status === 'insufficient' ? ' is-thin' : ''}`}>
+            {state.data.country_context.status === 'supported'
+              ? fill(t('explore.countrySupported'), { country: countryName(state.data.country_context.country) })
+              : t('explore.countryInsufficient')}
+          </p>
 
-      {p.cart.length > 0 && !sheet && (
-        <div className={`cart${listOpen ? ' is-open' : ''}`}>
-          <button type="button" className="cart__bar" aria-expanded={listOpen} aria-controls="shopping-panel" onClick={() => setListOpen(!listOpen)}>
-            <span>{t('list.title')} · {count}</span>
-            <strong>{formatKrw(total)}{unpriced ? ' +' : ''}</strong>
-          </button>
-          {listOpen && (
-            <div className="cart__panel" id="shopping-panel">
-              <ul>
-                {p.cart.map((l) => (
-                  <li key={l.item_id}>
-                    <span className="cart__title">{l.title}</span>
-                    <span className="qty">
-                      <button type="button" aria-label={`− ${l.title}`} onClick={() => p.onChangeQty(l.item_id, l.qty - 1)}>−</button>
-                      <span aria-live="polite">{l.qty}</span>
-                      <button type="button" aria-label={`+ ${l.title}`} onClick={() => p.onChangeQty(l.item_id, l.qty + 1)}>+</button>
-                    </span>
-                    <span className="cart__price">{l.price_krw != null ? formatKrw(l.price_krw * l.qty) : t('detail.notListed')}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="cart__total"><span>{t('list.total')}</span><strong>{formatKrw(total)}</strong></p>
-              {unpriced > 0 && <p className="note">+ {unpriced} {t('list.unpriced')}</p>}
-              <p className="note">{t('list.sellerNote')}</p>
+          <div className="ex-bar">
+            <div className="seg" role="tablist">
+              {(['real', 'sponsored'] as const).map((l) => (
+                <button key={l} type="button" role="tab" aria-selected={lane === l} className={`seg__item${lane === l ? ' is-on' : ''}`} onClick={() => setLane(l)}>
+                  {fill(t('explore.segCount'), { label: t(l === 'real' ? 'explore.segReal' : 'explore.segSponsored'), n: l === 'real' ? real.length : sponsored.length })}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {available.length > 0 && (
+            <div className="hscroll ex-chips" role="group" aria-label={t('explore.interests')}>
+              {available.map((x) => (
+                <button key={x.code} type="button" aria-pressed={selected.has(x.code)} className={`chip${selected.has(x.code) ? ' is-on' : ''}`} onClick={() => toggle(x.code)}>
+                  {lang === 'ko' ? INTEREST_KO[x.code] ?? x.label : x.label}
+                </button>
+              ))}
             </div>
           )}
-        </div>
+
+          <p className="ex-lane-note">{t(lane === 'real' ? 'explore.realNote' : 'explore.sponsoredNote')}</p>
+
+          {laneItems.length === 0 ? (
+            lane === 'sponsored'
+              ? <EmptyState title={t('explore.sponsoredEmptyTitle')} body={t('explore.sponsoredEmptyBody')} />
+              : <EmptyState title={t('explore.realEmptyTitle')} body={t('explore.realEmptyBody')} />
+          ) : shown.length === 0 ? (
+            <EmptyState
+              title={t('explore.filterEmptyTitle')}
+              body={t('explore.filterEmptyBody')}
+              action={<button type="button" className="btn btn--ghost btn--small" onClick={() => setPicked(new Set())}>{t('explore.clearFilters')}</button>}
+            />
+          ) : (
+            <>
+              <p className="ex-curation">{t('explore.curationNote')}</p>
+              <ul className="ex-list" aria-label={t(lane === 'real' ? 'explore.listLabelReal' : 'explore.listLabelSponsored')}>
+                {shown.map((item) => (
+                  <ItemRow
+                    key={item.id}
+                    item={item}
+                    currency={profile.currency}
+                    curation={laneItems.indexOf(item) + 1}
+                    qty={cartQty[item.id] ?? 0}
+                    inTrip={tripIds.has(item.id)}
+                    onOpen={onOpen}
+                    onAdd={onAddCart}
+                  />
+                ))}
+              </ul>
+            </>
+          )}
+        </>
       )}
     </div>
   )

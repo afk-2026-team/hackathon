@@ -98,6 +98,246 @@
       "provenance": "official_seller_page; price_krw=null (bundle listing, single-item KRW price not verified); image shows the bundle"
     },
     {
+      "id": "beauty-beautyofjoseon-relief-sun-rice-probiotics-50ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Beauty of Joseon Relief Sun : Rice + Probiotics 50mL",
+      "subtitle": "조선미녀 맑은쌀 선크림 · 50ml",
+      "description": "Listed by the seller under Suncare > Sunscreen, applied as the last skincare step on sun-exposed areas. Seller label: made in South Korea (Kolmar Korea / Goodai Global); marked as a reviewed functional cosmetic under the Cosmetics Act.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1866/e70e94eb-e597-489d-9ff9-dfe4f4c869c3.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page (single 50mL)",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220816046",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Ingredient list starts with Water and Oryza Sativa (Rice) Extract, and includes Niacinamide (seller label)",
+        "Seller marks it as a functional cosmetic reviewed under the Cosmetics Act; check the SPF on the package"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "suncare",
+        "sunscreen"
+      ],
+      "provenance": "official_seller_page (title, Korean name, category, size, ingredients from the listing); price_krw=null (only USD shown on Global, not converted); SPF/PA not stated on this single-item listing, so not shown"
+    },
+    {
+      "id": "beauty-anua-heartleaf-77-hyaluron-soothing-toner-350ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Anua Heartleaf 77 Hyaluron Soothing Toner 350ml",
+      "subtitle": "아누아 어성초 77 히알루론산 수분 진정 토너 · 350ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Toner, patted on after cleansing. Seller label: made in South Korea (Kolmar Korea / The Founders).",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1973/69068d85-8f68-4350-b514-52d5f347ad07.png",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260439240",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "First ingredient is Houttuynia Cordata (heartleaf) water at 77% (seller label)",
+        "Ingredient list also names Panthenol, Allantoin and Sodium Hyaluronate",
+        "This is the Hyaluron version; the older Heartleaf 77 Soothing Toner is a separate product"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "toner",
+        "heartleaf"
+      ],
+      "provenance": "official_seller_page (title, Korean name, category, size, ingredients from the listing); price_krw=null (only USD shown on Global, not converted)"
+    },
+    {
+      "id": "beauty-cosrx-advanced-snail-96-mucin-power-essence-100ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "COSRX Advanced Snail 96 Mucin Power Essence 100 mL",
+      "subtitle": "코스알엑스 어드벤스드 스네일 96 뮤신 파워 에센스 · 100ml",
+      "description": "Listed by the seller under Skincare > Moisturizers > Essence & Serum, used in the serum or essence step. Seller label: made in Korea (Corea Cosmetical Center / COSRX).",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1327/f6168a73-afc3-4eb9-bf5c-285925a47aa0.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210000530",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "First ingredient is Snail Secretion Filtrate (seller label)",
+        "Short ingredient list (12 items) that also names Sodium Hyaluronate, Allantoin and Panthenol"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "essence",
+        "snail_mucin"
+      ],
+      "provenance": "official_seller_page (title, Korean name, category, size, ingredients from the listing); price_krw=null (only USD shown on Global, not converted)"
+    },
+    {
+      "id": "beauty-romand-juicy-lasting-tint-mini-1g",
+      "kind": "product",
+      "category": "beauty",
+      "title": "rom&nd The Juicy Lasting Tint Mini",
+      "subtitle": "롬앤 더 쥬시 래스팅 틴트 미니 · 1g",
+      "description": "Listed by the seller under Makeup > Lip > Lip Gloss & Lip Tint, as a 1g mini size sold in several shades. Seller label: made in South Korea (COSMAX / iFamilySC).",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1362/ec614bc1-75b0-4fa0-bd32-c7034a6100d6.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page (mini, shade options)",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260237616",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "1g mini size, so you can compare shades before a full-size tint",
+        "Each shade has its own ingredient list on the seller page"
+      ],
+      "country_codes": [],
+      "tags": [
+        "makeup",
+        "lip",
+        "tint"
+      ],
+      "provenance": "official_seller_page (title, Korean name, category, size, ingredients from the listing); price_krw=null (only USD shown on Global, not converted); shade count differs between the listing title and its option list, so not shown; image shows one shade"
+    },
+    {
+      "id": "beauty-clio-kill-cover-founwear-cushion-the-original",
+      "kind": "product",
+      "category": "beauty",
+      "title": "CLIO Kill Cover Founwear Cushion The Original (+Refill)",
+      "subtitle": "클리오 킬 커버 파운웨어 쿠션 디 오리지널 · 15g×2 (리필 포함)",
+      "description": "Listed by the seller under Makeup > Face > Makeup Cushion; the checked listing is a 15g x 2 set (cushion with refill) with one shade option (19N Porcelain). Seller label: made in South Korea (COSMAX / CLUBCLIO).",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1877/6a4d31b6-0763-477a-be7b-29e663b387c5.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page (with refill)",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240825109",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Sold with a refill, so the listing covers 15g x 2",
+        "Ingredient list includes Titanium Dioxide and Niacinamide (seller label); check shade availability in store"
+      ],
+      "country_codes": [],
+      "tags": [
+        "makeup",
+        "cushion",
+        "base",
+        "bundle_sku"
+      ],
+      "provenance": "official_seller_page (title, Korean name, category, size, ingredients from the listing); price_krw=null (only USD shown on Global, not converted); single shade option (19N) on the checked listing"
+    },
+    {
+      "id": "beauty-miseenscene-perfect-serum-super-rich-80ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "Mise-en-Scene Perfect Serum Super Rich 80ml",
+      "subtitle": "미쟝센 퍼펙트 슈퍼리치 세럼 · 80ml",
+      "description": "Listed by the seller under Hair > Treatments > Hair Essence & Serum, applied to towel-dried hair before blow-drying. Seller label: Amorepacific Corporation, made in South Korea. The listing offers single and set options.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1164/2ab29b66-bcdc-45b8-8e8e-164aa85739b2.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page (Set/Single)",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220414457",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Silicone-based hair serum; ingredient list names argan, camellia, apricot, olive and jojoba oils (seller label)",
+        "Contains fragrance; the seller page lists the fragrance allergens"
+      ],
+      "country_codes": [],
+      "tags": [
+        "hair",
+        "hair_serum"
+      ],
+      "provenance": "official_seller_page (title, Korean name, category, size, ingredients from the listing); price_krw=null (only USD shown on Global, not converted); listing has single and set options"
+    },
+    {
+      "id": "beauty-mediheal-whp-charcoal-mineral-mask-10p",
+      "kind": "product",
+      "category": "beauty",
+      "title": "MEDIHEAL W.H.P Charcoal Mineral Mask Sheet 10P",
+      "subtitle": "메디힐 W.H.P 미백수분 숯 마스크 · 10매",
+      "description": "Listed by the seller under Face Masks > Sheet Masks: a pack of 10 sheets (25ml each), left on for 15-20 minutes after toner. Seller label: made in Korea (LS Cosmetic / L&P Cosmetics); marked as a reviewed functional cosmetic under the Cosmetics Act.",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1100/3ae20eca-1aed-449f-b09a-f21c5a72b833.png",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210000167",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Ingredient list includes Niacinamide, Arbutin and Charcoal Powder (seller label)",
+        "Ten sheets per pack, convenient to compare with single-sheet masks"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "sheet_mask"
+      ],
+      "provenance": "official_seller_page (title, Korean name, category, size, ingredients from the listing); price_krw=null (only USD shown on Global, not converted)"
+    },
+    {
+      "id": "beauty-roundlab-1025-dokdo-toner-500ml",
+      "kind": "product",
+      "category": "beauty",
+      "title": "ROUND LAB 1025 Dokdo Toner 500ml (+100ml)",
+      "subtitle": "라운드랩 1025 독도 토너 · 500ml (+100ml 기획)",
+      "description": "Listed by the seller under Skincare > Moisturizers > Toner, wiped on with a cotton pad after cleansing. The checked listing is a 500ml bottle with a free 100ml toner. Seller label: made in South Korea (Cosmax / Seorin Company).",
+      "image_url": "https://cdn-image.oliveyoung.com/prdtImg/1446/22ca30e5-be29-41e1-ad26-914648f94b5c.jpg",
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Global product page (500ml + 100ml gift)",
+          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210002626",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Ingredient list includes Sea Water, Chondrus Crispus Extract, Panthenol and Allantoin (seller label)",
+        "Sold as a large bundle, so no single-bottle price is shown"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "toner",
+        "bundle_sku"
+      ],
+      "provenance": "official_seller_page (title, Korean name, category, size, ingredients from the listing); price_krw=null (only USD shown on Global, not converted); bundle listing (500ml + 100ml)"
+    },
+    {
       "id": "beauty-guide-tax-refund-visitkorea",
       "kind": "guide",
       "category": "beauty",
@@ -189,22 +429,56 @@
       "provenance": "official_public_portal"
     },
     {
+      "id": "medical-guide-kmedi-dispute-mediation",
+      "kind": "guide",
+      "category": "medical",
+      "title": "Medical dispute mediation for foreign patients",
+      "subtitle": "한국의료분쟁조정중재원 외국인 조정 신청 안내",
+      "description": "The Korea Medical Dispute Mediation and Arbitration Agency explains how foreign patients apply for mediation: online, by e-mail or by fax if living in Korea, and by e-mail or fax if living abroad. Counseling center +82-2-1670-2545 or +82-2-6210-0080, kmedi@k-medi.or.kr (as posted on the official page).",
+      "image_url": null,
+      "price_krw": null,
+      "location": null,
+      "sources": [
+        {
+          "label": "K-medi – Guidance for mediation application (English)",
+          "url": "https://www.k-medi.or.kr/eng/lay1/S239T385C453/contents.do",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Know the official channel for a medical dispute before a hospital visit"
+      ],
+      "country_codes": [],
+      "tags": [
+        "official_guide",
+        "patient_rights",
+        "dispute_mediation"
+      ],
+      "provenance": "official_public_guide"
+    },
+    {
       "id": "medical-place-medicalkorea-info-center-seoul",
       "kind": "place",
       "category": "medical",
       "title": "Medical Korea Information Center (Seoul)",
       "subtitle": "메디컬코리아 안내센터 · 서울역 공항철도 B2",
-      "description": "A public information desk for international patients. Daily 09:00–18:00; English, Chinese, Japanese and Korean; +82-2-1577-7129. The Incheon Airport T1 desk (Gate 7, 1F) is open daily 09:00–21:00, +82-32-743-3506/3507. Hours as posted on the official page.",
+      "description": "A public information desk for international patients at Airport Railroad Seoul Station B2 (English address: B2, Seoul Station Airport Railroad, 378 Cheongpa-ro, Yongsan-gu, Seoul). Daily 09:00–18:00; English, Chinese, Japanese and Korean; +82-2-1577-7129. The Incheon Airport T1 desk (Gate 7, 1F) is open daily 09:00–21:00, +82-32-743-3506/3507. Hours as posted on the official page.",
       "image_url": null,
       "price_krw": null,
       "location": {
         "name": "Medical Korea Information Center (Seoul)",
-        "address": "B2, Seoul Station Airport Railroad, 378 Cheongpa-ro, Yongsan-gu, Seoul"
+        "address": "서울특별시 용산구 청파로 378"
       },
       "sources": [
         {
           "label": "Medical Korea – Information Center (Seoul / Incheon Airport)",
           "url": "https://www.medicalkorea.or.kr/en/convenient",
+          "checked_at": "2026-10-24"
+        },
+        {
+          "label": "Ministry of Health and Welfare press release (Korean address, B2 floor)",
+          "url": "https://www.mohw.go.kr/board.es?mid=a10503000000&bid=0027&act=view&list_no=1484406",
           "checked_at": "2026-10-24"
         }
       ],
@@ -214,11 +488,162 @@
       ],
       "country_codes": [],
       "tags": [
+        "dermatology",
+        "checkup",
+        "dental",
         "official_guide",
         "help_desk",
         "seoul"
       ],
-      "provenance": "official_public_portal; location.address=official_page_2026-10-24; lat/lng omitted (not verified)"
+      "provenance": "official_public_portal; location.address=Korean road address from the official MOHW press release ('서울특별시 용산구 청파로 378, 공항철도 서울역 지하2층'; floor kept in description); hours from Medical Korea page; lat/lng omitted (server geocodes at runtime)"
+    },
+    {
+      "id": "beauty-place-oliveyoung-myeongdong-town",
+      "kind": "place",
+      "category": "beauty",
+      "title": "OLIVE YOUNG Myeongdong Town",
+      "subtitle": "올리브영 명동 타운",
+      "description": "Official store page: open 10:00-22:30 every day including holidays (hours may change). Myeongdong Station exit 8 (Line 4) or Euljiro 1-ga Station exit 5 (Line 2). Listed services: tax refund, simple payment (WeChat Pay, Alipay, etc.), gift wrapping, gift cards, foreign-language support; a GTF tax refund desk on 2F.",
+      "image_url": null,
+      "price_krw": null,
+      "location": {
+        "name": "OLIVE YOUNG Myeongdong Town",
+        "address": "서울특별시 중구 명동길 53"
+      },
+      "sources": [
+        {
+          "label": "OLIVE YOUNG Myeongdong Town official page (Korean)",
+          "url": "https://myeongdongtown.oliveyoung.com/ko/",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Official store page lists tax refund and foreign-language support for visitors"
+      ],
+      "country_codes": [],
+      "tags": [
+        "skincare",
+        "makeup",
+        "hair",
+        "shopping",
+        "tax_refund",
+        "neighborhoods",
+        "myeongdong"
+      ],
+      "provenance": "official_store_page; location.address=official_korean_page_2026-10-24; lat/lng omitted (server geocodes at runtime)"
+    },
+    {
+      "id": "beauty-place-myeongdong-tourist-information-center",
+      "kind": "place",
+      "category": "beauty",
+      "title": "Myeong-dong Tourist Information Center",
+      "subtitle": "명동관광정보센터",
+      "description": "A tourist information center for travel, shopping and attractions in Seoul. 09:00-18:00; closed on Seollal and Chuseok days. Korean, English, Japanese and Chinese. +82-2-778-0333; 1330 Travel Hotline +82-2-1330. English address: 66, Eulji-ro, Jung-gu, Seoul.",
+      "image_url": null,
+      "price_krw": null,
+      "location": {
+        "name": "Myeong-dong Tourist Information Center",
+        "address": "서울특별시 중구 을지로 66"
+      },
+      "sources": [
+        {
+          "label": "VISITKOREA (Korean) – 명동관광정보센터",
+          "url": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=c493158e-10a5-4916-8767-67ef351a4b78",
+          "checked_at": "2026-10-24"
+        },
+        {
+          "label": "VISITKOREA (English) – Myeong-dong Tourist Information Center",
+          "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=63293",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Free help with shopping-area directions and travel questions in Myeongdong"
+      ],
+      "country_codes": [],
+      "tags": [
+        "neighborhoods",
+        "tourist_info",
+        "official_guide",
+        "myeongdong"
+      ],
+      "provenance": "official_public_guide (Korea Tourism Organization); category=beauty only because the enum has no travel value (it is a tourist info center, not a store); location.address=official_korean_page_2026-10-24 (page shows '서울특별시 중구 을지로 66 (을지로2가)'); lat/lng omitted (server geocodes at runtime)"
+    },
+    {
+      "id": "beauty-place-hikr-ground-tourist-information",
+      "kind": "place",
+      "category": "beauty",
+      "title": "HiKR Ground (KTO Seoul Center)",
+      "subtitle": "하이커 그라운드 · 한국관광공사 서울센터",
+      "description": "Korea Tourism Organization's tourism promotion center with a tourist information center on 5F (10:00-19:00). 1F/5F 10:00-20:00; exhibition floors 2F-4F Tue-Sun 10:00-20:00; closed Mondays. +82-2-729-9497. Free entry (separate fees may apply). English address: 40 Cheonggyecheon-ro, Jung-gu, Seoul.",
+      "image_url": null,
+      "price_krw": null,
+      "location": {
+        "name": "HiKR Ground",
+        "address": "서울특별시 중구 청계천로 40"
+      },
+      "sources": [
+        {
+          "label": "VISITKOREA – HiKR Ground (address in Korean and English)",
+          "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=31124",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Official tourist information desk near Cheonggyecheon, between Myeongdong and Gwanghwamun"
+      ],
+      "country_codes": [],
+      "tags": [
+        "neighborhoods",
+        "tourist_info",
+        "official_guide"
+      ],
+      "provenance": "official_public_guide (Korea Tourism Organization); category=beauty only because the enum has no travel value; location.address=Korean address printed on the official page 2026-10-24 (page adds '한국관광공사 서울센터'); hours differ by floor as posted; lat/lng omitted (server geocodes at runtime)"
+    },
+    {
+      "id": "medical-place-gangnam-medical-tour-center",
+      "kind": "place",
+      "category": "medical",
+      "title": "Gangnam Medical Tour Center",
+      "subtitle": "강남메디컬투어센터",
+      "description": "A medical tourism information center run by Gangnam-gu Office for international visitors: partner-hospital information, interpretation links, tax refund, airport pickup, nearby sightseeing and hotel booking. Weekdays 10:00-18:00, closed weekends and public holidays. English, Chinese, Japanese, Russian. Tel 1661-2230. Near Apgujeong Station exit 6 (Line 3). Medical decisions and bookings are made by each hospital.",
+      "image_url": null,
+      "price_krw": null,
+      "location": {
+        "name": "Gangnam Medical Tour Center",
+        "address": "서울특별시 강남구 압구정로 161"
+      },
+      "sources": [
+        {
+          "label": "Gangnam-gu Office – Gangnam Medical Tour Center (Korean)",
+          "url": "https://www.gangnam.go.kr/contents/medicaltour/1/view.do?mid=ID02_010406",
+          "checked_at": "2026-10-24"
+        },
+        {
+          "label": "Gangnam Medical Tour Center official site (Korean)",
+          "url": "https://medicaltour.gangnam.go.kr/content/397/view.do?lang=ko&cid=397",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "sponsorship": "unknown",
+      "reasons": [
+        "Public (district office) help desk with interpreters before visiting a clinic in Gangnam"
+      ],
+      "country_codes": [],
+      "tags": [
+        "dermatology",
+        "checkup",
+        "dental",
+        "official_guide",
+        "help_desk",
+        "interpretation",
+        "neighborhoods",
+        "gangnam"
+      ],
+      "provenance": "official_public_portal (Gangnam-gu Office); 'partner hospitals' are the district's listed partners, not a quality ranking; location.address=official_korean_page_2026-10-24 (page writes '서울시 강남구 압구정로 161, 강남메디컬투어센터 1층'); lat/lng omitted (server geocodes at runtime)"
     }
   ]
 }

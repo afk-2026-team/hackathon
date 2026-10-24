@@ -24,15 +24,13 @@ from app.schemas.discovery import (
     ReferenceProduct,
 )
 from app.services.discovery import CatalogUnavailable
+from app.services.discovery_i18n import KoCatalog, Lang, form_label, ko_for, localize_item, localize_source, msg, ui_lang
 
 DATA_DIR = Path(__file__).resolve().parents[1] / "data"
 REFERENCE_PATH_ENV = "DISCOVERY_REFERENCE_PATH"
 FACTS_PATH_ENV = "DISCOVERY_FACTS_PATH"
 
-NOTICE = (
-    "This compares label information only (listed ingredients, size, listed price) from the linked pages. "
-    "It does not mean the products work the same way or are clinically equivalent. Check the package before buying."
-)
+NOTICE = msg("en", "cmp.notice")
 
 M = TypeVar("M", bound=BaseModel)
 
@@ -74,32 +72,57 @@ def _norm(s: str) -> str:
     return " ".join(s.casefold().split())
 
 
-def _candidate(item: CatalogItem, facts: ProductFacts | None) -> CandidateFacts:
+def _price_fact(p: PriceFact | None, basis: str | None, ko: KoCatalog | None) -> PriceFact | None:
+    if p is None or ko is None:
+        return p
+    return p.model_copy(update={"basis": basis or p.basis, "source": localize_source(p.source, ko)})
+
+
+def _localize_ref(ref: ReferenceProduct, ko: KoCatalog | None) -> ReferenceProduct:
+    """기준 제품의 설명·출처 라벨을 요청 언어로 바꾼다. 제품명·성분명은 공식 표기 그대로 둔다."""
+    if ko is None:
+        return ref
+    tr = ko.references.get(ref.id)
+    return ref.model_copy(update={
+        "form": form_label(ref.form, ko),
+        "ingredients_basis": (tr.ingredients_basis if tr and tr.ingredients_basis else ref.ingredients_basis),
+        "price": _price_fact(ref.price, tr.price_basis if tr else None, ko),
+        "sources": [localize_source(s, ko) for s in ref.sources],
+    })
+
+
+def _candidate(item: CatalogItem, facts: ProductFacts | None, lang: Lang = "en", ko: KoCatalog | None = None) -> CandidateFacts:
+    tr = ko.facts.get(item.id) if (ko and facts) else None
     price = None
     if item.price_krw is not None and facts and facts.price_source and facts.price_basis:
-        price = PriceFact(amount=item.price_krw, currency="KRW", basis=facts.price_basis, source=facts.price_source)
+        basis = tr.price_basis if tr and tr.price_basis else facts.price_basis
+        price = PriceFact(amount=item.price_krw, currency="KRW", basis=basis, source=localize_source(facts.price_source, ko))
     elif item.list_price is not None:
         # 원화 확인가가 없으면 카탈로그의 공식 표시가(통화 그대로)를 쓴다. 통화가 다르면 _price 가 비교하지 않는다
-        price = item.list_price
+        price = _price_fact(item.list_price, None, ko)
+    if facts:
+        ingredients_basis = tr.ingredients_basis if tr and tr.ingredients_basis else facts.ingredients_basis
+    else:
+        ingredients_basis = msg(lang, "cmp.no_label_info")
     return CandidateFacts(
         id=item.id,
         title=item.title,
-        form=facts.form if facts else None,
+        form=form_label(facts.form, ko) if facts else None,
         volume_ml=facts.volume_ml if facts else None,
         key_ingredients=facts.key_ingredients if facts else None,
         ingredients_complete=facts.ingredients_complete if facts else False,
-        ingredients_basis=facts.ingredients_basis if facts else "No label information recorded for this candidate yet.",
+        ingredients_basis=ingredients_basis,
         price=price,
-        sources=(facts.sources if facts and facts.sources else item.sources),
+        sources=([localize_source(s, ko) for s in facts.sources] if facts and facts.sources else item.sources),
     )
 
 
-def _ingredients(cur: ReferenceProduct, cand: CandidateFacts, sources) -> tuple[list[ComparePoint], list[ComparePoint], list[ComparePoint]]:
+def _ingredients(cur: ReferenceProduct, cand: CandidateFacts, sources, lang: Lang = "en") -> tuple[list[ComparePoint], list[ComparePoint], list[ComparePoint]]:
     common, diff, unverified = [], [], []
     if cur.key_ingredients is None or cand.key_ingredients is None:
         unverified.append(ComparePoint(
             attribute="key_ingredients", current=cur.key_ingredients, candidate=cand.key_ingredients,
-            basis="Listed ingredients are not recorded for one of the products.", sources=sources,
+            basis=msg(lang, "cmp.ing_missing"), sources=sources,
         ))
         return common, diff, unverified
     cur_map = {_norm(i): i for i in cur.key_ingredients}
@@ -108,7 +131,7 @@ def _ingredients(cur: ReferenceProduct, cand: CandidateFacts, sources) -> tuple[
     if shared:
         common.append(ComparePoint(
             attribute="key_ingredients", current=[cur_map[_norm(i)] for i in shared], candidate=shared,
-            basis="Both labels list these ingredient names. Amounts and formulas are not compared.", sources=sources,
+            basis=msg(lang, "cmp.ing_common"), sources=sources,
         ))
     # 목록이 전성분일 때만 상대 쪽에 '없다'고 말할 수 있다
     cur_only = [v for k, v in cur_map.items() if k not in cand_map] if cand.ingredients_complete else []
@@ -116,7 +139,7 @@ def _ingredients(cur: ReferenceProduct, cand: CandidateFacts, sources) -> tuple[
     if cur_only or cand_only:
         diff.append(ComparePoint(
             attribute="key_ingredients", current=cur_only or None, candidate=cand_only or None,
-            basis="Listed on one label but not on the other's full ingredient list.", sources=sources,
+            basis=msg(lang, "cmp.ing_diff"), sources=sources,
         ))
     if not (cur.ingredients_complete and cand.ingredients_complete):
         unverified.append(ComparePoint(
@@ -124,51 +147,54 @@ def _ingredients(cur: ReferenceProduct, cand: CandidateFacts, sources) -> tuple[
             # 상대 목록이 일부일 때, 이쪽에만 보이는 성분은 상대 제품에 있는지 확인할 수 없다
             current=None if cand.ingredients_complete else [v for k, v in cur_map.items() if k not in cand_map] or None,
             candidate=None if cur.ingredients_complete else [v for k, v in cand_map.items() if k not in cur_map] or None,
-            basis="At least one list is partial, so an ingredient missing here may still be in the product.", sources=sources,
+            basis=msg(lang, "cmp.ing_partial"), sources=sources,
         ))
     return common, diff, unverified
 
 
-def _scalar(attr, cur_val, cand_val, label: str, sources) -> tuple[str, ComparePoint]:
+def _scalar(attr, cur_val, cand_val, label: str, sources, lang: Lang = "en") -> tuple[str, ComparePoint]:
+    # 영어는 문장 중간에서 소문자로 쓴다(기존 문장과 동일). 한국어는 대소문자가 없다
+    label_lower = label.lower() if lang == "en" else label
     if cur_val is None or cand_val is None:
-        return "unverified", ComparePoint(attribute=attr, current=cur_val, candidate=cand_val, basis=f"{label} is not recorded for one of the products.", sources=sources)
+        return "unverified", ComparePoint(attribute=attr, current=cur_val, candidate=cand_val, basis=msg(lang, "cmp.scalar_missing", label=label), sources=sources)
     same = _norm(str(cur_val)) == _norm(str(cand_val))
-    basis = f"Same {label.lower()} on both pages." if same else f"Different {label.lower()} on the pages."
+    basis = msg(lang, "cmp.scalar_same" if same else "cmp.scalar_diff", label_lower=label_lower)
     return ("common" if same else "differences"), ComparePoint(attribute=attr, current=cur_val, candidate=cand_val, basis=basis, sources=sources)
 
 
-def _price(cur: ReferenceProduct | None, cand: CandidateFacts) -> PriceComparison:
+def _price(cur: ReferenceProduct | None, cand: CandidateFacts, lang: Lang = "en") -> PriceComparison:
     cp, kp = (cur.price if cur else None), cand.price
     if cp is None or kp is None:
-        return PriceComparison(current=cp, candidate=kp, comparable=False, note="A listed price is missing for one of the products.")
+        return PriceComparison(current=cp, candidate=kp, comparable=False, note=msg(lang, "cmp.price_missing"))
     if cp.currency != kp.currency:
-        return PriceComparison(current=cp, candidate=kp, comparable=False,
-                               note="Prices are in different currencies and are shown as listed, without conversion.")
+        return PriceComparison(current=cp, candidate=kp, comparable=False, note=msg(lang, "cmp.price_currency"))
     if cur is None or cur.volume_ml is None or cand.volume_ml is None:
-        return PriceComparison(current=cp, candidate=kp, comparable=False, note="Same currency, but a size is missing, so price per ml is not compared.")
+        return PriceComparison(current=cp, candidate=kp, comparable=False, note=msg(lang, "cmp.price_no_size"))
     if cur.volume_ml != cand.volume_ml:
         # 단위 가격(ml당)은 계산하지 않는다. 용량이 다르면 표시 가격끼리 비교하지 않는다
-        return PriceComparison(current=cp, candidate=kp, comparable=False, note="Same currency but different sizes, so listed prices are not compared.")
-    return PriceComparison(current=cp, candidate=kp, comparable=True, note="Same currency and same size. Prices are listed values and may change.")
+        return PriceComparison(current=cp, candidate=kp, comparable=False, note=msg(lang, "cmp.price_diff_size"))
+    return PriceComparison(current=cp, candidate=kp, comparable=True, note=msg(lang, "cmp.price_same"))
 
 
-def _country(country: str, cur: ReferenceProduct | None, item: CatalogItem) -> CountryContext:
+def _country(country: str, cur: ReferenceProduct | None, item: CatalogItem, lang: Lang = "en") -> CountryContext:
     reasons = []
     if cur and country in cur.market_codes:
-        reasons.append(f"The {cur.brand} details come from its official page for {country}.")
+        reasons.append(msg(lang, "cmp.country_ref", brand=cur.brand, country=country))
     if country in item.country_codes:
-        reasons.append(f"Our sources link this candidate to {country}: {', '.join(s.label for s in item.sources)}.")
-    tail = " Your country is not used to guess skin type, preferences or treatment suitability."
+        reasons.append(msg(lang, "cmp.country_item", country=country, labels=", ".join(s.label for s in item.sources)))
+    tail = msg(lang, "cmp.country_tail")
     if reasons:
         return CountryContext(country=country, status="supported", explanation=" ".join(reasons) + tail)
-    return CountryContext(country=country, status="insufficient",
-                          explanation=f"We have no sourced purchase or product information specific to {country} for this comparison." + tail)
+    return CountryContext(country=country, status="insufficient", explanation=msg(lang, "cmp.country_none", country=country) + tail)
 
 
 def compare(req: CompareRequest, catalog: Catalog, refs: ReferenceCatalog, facts: ProductFactsCatalog, now: datetime | None = None) -> CompareResponse:
+    lang = ui_lang(req.profile.language)
+    ko = ko_for(lang)
     item = next((i for i in catalog.items if i.id == req.candidate_id), None)
     if item is None or item.kind != "product":
         raise CompareNotFound("candidate product not found")
+    item = localize_item(item, ko)
     cur: ReferenceProduct | None = None
     if req.current_product_id is not None:
         cur = next((r for r in refs.items if r.id == req.current_product_id), None)
@@ -178,17 +204,20 @@ def compare(req: CompareRequest, catalog: Catalog, refs: ReferenceCatalog, facts
         # 자유 입력은 제품명 또는 '브랜드 제품명'과 정확히 같을 때만 기준 제품으로 본다(유사도 추측 없음)
         name = _norm(req.current_product_name)
         cur = next((r for r in refs.items if name in {_norm(r.title), _norm(f"{r.brand} {r.title}")}), None)
-    cand = _candidate(item, next((f for f in facts.items if f.id == item.id), None))
+    if cur is not None:
+        cur = _localize_ref(cur, ko)
+    cand = _candidate(item, next((f for f in facts.items if f.id == item.id), None), lang, ko)
 
     common, diff, unverified = [], [], []
     if cur is not None:
         sources = cur.sources + cand.sources
-        c, d, u = _ingredients(cur, cand, sources)
+        c, d, u = _ingredients(cur, cand, sources, lang)
         common += c
         diff += d
         unverified += u
-        for attr, label, a, b in (("form", "Product form", cur.form, cand.form), ("volume_ml", "Size (ml)", cur.volume_ml, cand.volume_ml)):
-            bucket, point = _scalar(attr, a, b, label, sources)
+        attrs = (("form", msg(lang, "cmp.attr_form"), cur.form, cand.form), ("volume_ml", msg(lang, "cmp.attr_volume"), cur.volume_ml, cand.volume_ml))
+        for attr, label, a, b in attrs:
+            bucket, point = _scalar(attr, a, b, label, sources, lang)
             {"common": common, "differences": diff, "unverified": unverified}[bucket].append(point)
 
     stamp = (now or datetime.now(timezone.utc)).isoformat(timespec="seconds")
@@ -199,8 +228,8 @@ def compare(req: CompareRequest, catalog: Catalog, refs: ReferenceCatalog, facts
         common=common,
         differences=diff,
         unverified=unverified,
-        price=_price(cur, cand),
-        country_context=_country(req.profile.country.upper(), cur, item),
-        notice=NOTICE,
+        price=_price(cur, cand, lang),
+        country_context=_country(req.profile.country.upper(), cur, item, lang),
+        notice=msg(lang, "cmp.notice"),
         generated_at=stamp,
     )

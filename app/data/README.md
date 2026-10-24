@@ -23,7 +23,7 @@
 | `country_codes` | 해당 국가와의 관련성을 뒷받침하는 출처가 있을 때만 값을 넣습니다. 현재는 모두 `[]`이며, 국가 선호를 지어내지 않습니다. 따라서 API의 `country_context`는 대부분 `insufficient`가 맞습니다. |
 | `provenance` | 출처 종류와 값별 예외를 적습니다(예: `price_krw=browser_observed_…`, `location=null(…)`). |
 
-## 현재 항목 (291)
+## 현재 항목 (491)
 
 배열 순서는 큐레이션 순서이며 인기·측정 순위가 아닙니다.
 
@@ -41,7 +41,9 @@
   - beauty: 올리브영 명동 타운 — `서울특별시 중구 명동길 53` (공식 매장 페이지)
   - 관광안내(category=beauty): 명동관광정보센터 — `서울특별시 중구 을지로 66` (VISITKOREA 국문), 하이커 그라운드(한국관광공사 서울센터, 5층 관광안내센터) — `서울특별시 중구 청계천로 40`
 
-- **medical place +196 (2026-10-24 대량 보강):** 외국인환자 유치 등록 의료기관 — 피부과 66·치과 75·상급종합/종합병원 55(서울 155·부산 32·제주 9). 출처: KHIDI 외국인환자 유치기관 현황(2026-07-21)·Medical Korea 영문 목록(data.go.kr, 이용허락범위 제한 없음), HIRA 전국 병의원 현황(공공누리 1유형 — 출처 표시 의무, 좌표), NHIS 검진기관(checkup 근거). `lat`/`lng` 는 HIRA 공식 좌표. `international_clinic` 태그는 "정부 등록" 사실이며 국제진료센터 운영 여부는 확인하지 않음(화면 라벨: 외국인환자 유치 등록). 성형외과는 기획 범위 미정으로 보류. 영문명은 공식 목록 원문 그대로(오타 포함). 상세: [sources_hospitals.md](sources_hospitals.md)
+- **medical place +196 (2026-10-24 대량 보강):** 외국인환자 유치 등록 의료기관 — 피부과 66·치과 75·상급종합/종합병원 55(서울 155·부산 32·제주 9). 출처: KHIDI 외국인환자 유치기관 현황(2026-07-21)·Medical Korea 영문 목록(data.go.kr, 이용허락범위 제한 없음), HIRA 전국 병의원 현황(공공누리 1유형 — 출처 표시 의무, 좌표), NHIS 검진기관(checkup 근거). `lat`/`lng` 는 HIRA 공식 좌표. `international_clinic` 태그는 "정부 등록" 사실이며 국제진료센터 운영 여부는 확인하지 않음(화면 라벨: 외국인환자 유치 등록). 영문명은 공식 목록 원문 그대로(오타 포함). 상세: [sources_hospitals.md](sources_hospitals.md)
+
+- **medical place +200 성형외과 (2026-10-24, 사용자 결정으로 포함 — 기획안 §2·§7 의 의료 범위 [미정] 중 성형외과를 넣기로 함):** 위와 같은 출처·매칭 규칙. 판정은 KHIDI 상호명 '성형외과' + HIRA 종별 의원·병원 + HIRA 성형외과 전문의 1명 이상. 서울 183(강남 135·서초 46 등)·부산 13·제주 4, 좌표 HIRA 공식 값, 태그 `plastic_surgery`. 기존 종합병원 33곳에도 HIRA 성형외과 전문의 근거로 `plastic_surgery` 태그 추가. 시술 효과·가격·후기는 넣지 않음. 상세: [sources_hospitals.md](sources_hospitals.md) "성형외과 추가" 절
 
 ## 필드 추가
 - `list_price`(선택): 원화 가격을 확인하지 못했을 때 판매처에 표시된 다른 통화 가격 `{amount, currency, basis, source}`. 환산해 `price_krw` 에 넣지 않는다. 화면은 통화 그대로 보여 주고 ECB 기준율 환산을 '약'으로 덧붙인다.

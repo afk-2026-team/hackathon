@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react'
 import type { SearchProps } from './contracts'
 import type { BlogResponse, CatalogItem } from '../lib/types'
 import { ApiError, fetchBlogReviews, fetchCatalog } from '../lib/api'
-import { fill, useT } from '../lib/i18n'
+import { fill, useLang, useT } from '../lib/i18n'
 import { SponsorBadge, SubBar } from '../components/Common'
 import { EmptyState, ErrorState, LoadingState } from '../components/States'
 import { ItemRow } from '../components/explore/ItemRow'
@@ -55,6 +55,7 @@ function plain(text: string): string {
 
 export function Search({ profile, onBack, onOpen }: SearchProps) {
   const t = useT()
+  const lang = useLang()
   const inputRef = useRef<HTMLInputElement>(null)
   const [tab, setTab] = useState<Tab>('catalog')
   const [query, setQuery] = useState('')
@@ -71,13 +72,13 @@ export function Search({ profile, onBack, onOpen }: SearchProps) {
   useEffect(() => {
     let alive = true
     setCatalog({ status: 'loading' })
-    fetchCatalog()
+    fetchCatalog(lang)
       .then((c) => alive && setCatalog({ status: 'ready', data: c.items }))
       .catch((e: unknown) => alive && setCatalog({ status: 'error', message: e instanceof Error ? e.message : 'Search is unavailable.', noKey: false }))
     return () => {
       alive = false
     }
-  }, [catalogTry])
+  }, [catalogTry, lang])
 
   // 블로그는 제출된 검색어가 바뀌었고 블로그 탭을 보고 있을 때만 부른다(타이핑마다 호출하지 않음).
   useEffect(() => {

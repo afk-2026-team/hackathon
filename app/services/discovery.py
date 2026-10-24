@@ -20,6 +20,7 @@ from app.schemas.discovery import (
     ReferenceCatalog,
     ReferenceProduct,
 )
+from app.services.discovery_i18n import Lang, localize_catalog, msg, ui_lang
 
 # 카탈로그 정본은 데이터 worker 소유 파일이다. 테스트·로컬 실험은 환경변수로 경로만 바꾼다.
 DEFAULT_CATALOG_PATH = Path(__file__).resolve().parents[1] / "data" / "discovery_catalog.json"
@@ -96,7 +97,7 @@ def _label_reasons(ref: ReferenceProduct, facts: ProductFacts | None) -> tuple[i
 
 
 def _match(item: CatalogItem, profile: Profile, country: str, ref: ReferenceProduct | None = None,
-           facts: ProductFacts | None = None) -> tuple[int, list[str]] | None:
+           facts: ProductFacts | None = None, lang: Lang = "en") -> tuple[int, list[str]] | None:
     """후보 하나를 판정한다. 제외면 None, 포함이면 (일치 점수, 사람이 읽는 근거 문장).
 
     근거 문장은 카탈로그에 실제로 있는 값(태그·가격·출처)과 기록된 표시사항만 인용한다. 성별·연령은 읽지 않는다.
@@ -109,14 +110,13 @@ def _match(item: CatalogItem, profile: Profile, country: str, ref: ReferenceProd
         if item.price_krw is None and item.list_price is not None:
             # 판매처 표시가(외화)는 환산하지 않는다 — 원화 예산 필터에서 빼지 않고 비교하지 않았음을 밝힌다
             lp = item.list_price
-            reasons.append(f"Seller lists {lp.currency} {lp.amount:,.2f}. A Korean store price is not confirmed, "
-                           f"so it was not compared with your KRW budget.")
+            reasons.append(msg(lang, "reco.list_price", currency=lp.currency, amount=f"{lp.amount:,.2f}"))
         elif item.price_krw is None:
-            reasons.append("Price not listed in our sources, so it was not checked against your budget.")
+            reasons.append(msg(lang, "reco.price_unlisted"))
         elif item.price_krw > prefs.budget_krw:
             return None
         else:
-            reasons.append(f"Listed price ₩{item.price_krw:,.0f} is within your budget of ₩{prefs.budget_krw:,.0f}.")
+            reasons.append(msg(lang, "reco.within_budget", price=f"{item.price_krw:,.0f}", budget=f"{prefs.budget_krw:,.0f}"))
 
     tags = {_norm(t): t for t in item.tags}
     if prefs and prefs.interests:
@@ -124,7 +124,7 @@ def _match(item: CatalogItem, profile: Profile, country: str, ref: ReferenceProd
         hits = [tags.get(_norm(i), item.category) for i in prefs.interests if _norm(i) in tags or _norm(i) == item.category]
         if hits:
             score += len(hits)
-            reasons.append(f"Matches your interests: {', '.join(hits)}.")
+            reasons.append(msg(lang, "reco.interests", hits=", ".join(hits)))
 
     label_score, label_reasons = _label_reasons(ref, facts) if ref is not None else (0, [])
     if label_reasons:
@@ -136,12 +136,12 @@ def _match(item: CatalogItem, profile: Profile, country: str, ref: ReferenceProd
         if overlap:
             score += 1
             # 단어가 겹친다는 사실만 말한다. 같은 효능·성분의 대체품이라고 표현하지 않는다.
-            reasons.append(f"Shares words with your current product: {', '.join(sorted(overlap))}.")
+            reasons.append(msg(lang, "reco.shares_words", words=", ".join(sorted(overlap))))
 
     if country in item.country_codes:
         score += 1
         labels = ", ".join(s.label for s in item.sources)
-        reasons.append(f"Our sources link this to {country}: {labels}.")
+        reasons.append(msg(lang, "reco.country_sources", country=country, labels=labels))
 
     return score, reasons
 
@@ -150,13 +150,16 @@ def recommend(request: RecommendationRequest, catalog: Catalog, now: datetime | 
               refs: ReferenceCatalog | None = None, facts: ProductFactsCatalog | None = None) -> RecommendationResponse:
     profile = request.profile
     country = profile.country.upper()
+    lang = ui_lang(profile.language)
+    # 항목 문장을 먼저 요청 언어로 바꾼 뒤, 서버 근거 문장을 같은 언어로 덧붙인다
+    catalog = localize_catalog(catalog, lang)
     pool = [i for i in catalog.items if request.category == "all" or i.category == request.category]
     ref = _reference_for(profile.preferences.current_product if profile.preferences else None, refs)
     facts_by_id = {f.id: f for f in facts.items} if facts is not None else {}
 
     ranked: list[tuple[int, int, CatalogItem]] = []
     for position, item in enumerate(pool):
-        result = _match(item, profile, country, ref, facts_by_id.get(item.id) if ref is not None else None)
+        result = _match(item, profile, country, ref, facts_by_id.get(item.id) if ref is not None else None, lang)
         if result is None:
             continue
         score, reasons = result
@@ -173,15 +176,13 @@ def recommend(request: RecommendationRequest, catalog: Catalog, now: datetime | 
         context = CountryContext(
             country=country,
             status="supported",
-            explanation=f"{len(supported)} of {len(items)} results have sources connected to {country}. "
-            "Other results come from general sources. Your country is not used to guess skin type or treatment suitability.",
+            explanation=msg(lang, "reco.supported", n=len(supported), total=len(items), country=country),
         )
     else:
         context = CountryContext(
             country=country,
             status="insufficient",
-            explanation=f"We have no sourced information specific to {country} yet, so these results come from general sources. "
-            "Your country is not used to guess skin type or treatment suitability.",
+            explanation=msg(lang, "reco.insufficient", country=country),
         )
 
     if ref is not None and country in ref.market_codes:

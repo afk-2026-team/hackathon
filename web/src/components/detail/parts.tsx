@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { CatalogItem } from '../../lib/types'
-import { fill, useT } from '../../lib/i18n'
+import { fill, useLang, useT } from '../../lib/i18n'
+import { tagLabel } from '../../lib/tagLabels'
 import { Glyph } from '../Glyph'
 import { SourceList } from '../Common'
 
@@ -9,6 +10,13 @@ import { SourceList } from '../Common'
 /** subtitle 의 '·' 앞부분 = 한국어 이름(매장·기관 검색어). 비면 영어 제목으로. */
 export function koreanName(item: Pick<CatalogItem, 'subtitle' | 'title'>): string {
   return item.subtitle.split('·')[0].trim() || item.title
+}
+
+/** 제목 옆에 둘 부제. 제목이 이미 한국어 이름(한국어 모드)이면 이름을 반복하지 않고 '·' 뒤 정보(용량 등)만 남긴다. */
+export function subtitleBesideTitle(item: Pick<CatalogItem, 'subtitle' | 'title'>): string {
+  if (!item.subtitle) return ''
+  const [name, ...rest] = item.subtitle.split('·')
+  return name.trim() === item.title.trim() ? rest.join('·').trim() : item.subtitle
 }
 
 /** 큰 대표 이미지. Thumb 과 같은 규칙: 없거나 깨지면 실제 사진처럼 보이지 않는 카테고리 도형. */
@@ -57,11 +65,12 @@ export function Reasons({ reasons }: { reasons: string[] }) {
 
 export function Tags({ tags }: { tags: string[] }) {
   const t = useT()
+  const lang = useLang()
   if (tags.length === 0) return null
   return (
     <div className="dt-tags" aria-label={t('detail.tags')}>
       {tags.map((tag) => (
-        <span key={tag} className="dt-tag">#{tag}</span>
+        <span key={tag} className="dt-tag">#{tagLabel(tag, lang)}</span>
       ))}
     </div>
   )

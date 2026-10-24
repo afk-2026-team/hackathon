@@ -45,7 +45,11 @@ export function regionOf(item: Pick<CatalogItem, 'location'>): string | null {
   if (!addr) return null
   const words = addr.split(/[\s,]+/).filter(Boolean)
   const gu = words.find((w) => /^[가-힣]+(구|군)$/.test(w))
-  if (gu) return gu
+  if (gu) {
+    // 서울 밖 광역시는 같은 이름의 구(중구·남구 등)가 있어 도시명을 붙인다. 예: '부산광역시 중구' → '부산 중구'
+    const metro = words[0]?.match(/^([가-힣]+)광역시$/)
+    return metro ? `${metro[1]} ${gu}` : gu
+  }
   const si = words.find((w, i) => /^[가-힣]+시$/.test(w) && !CITY.test(w) && i <= 2)
   if (si) return si
   const city = words.find((w) => /^[가-힣]+광역시$/.test(w))
@@ -58,8 +62,18 @@ export function regionOf(item: Pick<CatalogItem, 'location'>): string | null {
   return null
 }
 
+const METRO_EN: Record<string, string> = { 부산: 'Busan', 대구: 'Daegu', 인천: 'Incheon', 광주: 'Gwangju', 대전: 'Daejeon', 울산: 'Ulsan' }
+const OTHER_GU_EN: Record<string, string> = {
+  남구: 'Nam-gu', 동구: 'Dong-gu', 서구: 'Seo-gu', 북구: 'Buk-gu', 해운대구: 'Haeundae-gu', 수영구: 'Suyeong-gu', 부산진구: 'Busanjin-gu',
+  동래구: 'Dongnae-gu', 금정구: 'Geumjeong-gu', 사상구: 'Sasang-gu', 영도구: 'Yeongdo-gu', 연제구: 'Yeonje-gu', 사하구: 'Saha-gu', 기장군: 'Gijang-gun',
+  제주시: 'Jeju-si', 서귀포시: 'Seogwipo-si',
+}
+
 export function regionLabel(region: string, lang: string): string {
-  return lang === 'ko' ? region : GU_EN[region] ?? region
+  if (lang === 'ko') return region
+  const [city, gu] = region.split(' ')
+  if (gu && METRO_EN[city]) return `${METRO_EN[city]} ${GU_EN[gu] ?? OTHER_GU_EN[gu] ?? gu}`
+  return GU_EN[region] ?? OTHER_GU_EN[region] ?? region
 }
 
 /** 한 번 계산해 두는 항목별 필터 키(수백 개여도 렌더마다 주소를 다시 파싱하지 않게). */

@@ -2,6 +2,7 @@ import type { CatalogItem } from '../../lib/types'
 import { fill, useLang, useT } from '../../lib/i18n'
 import { fieldKey, itemFields, regionOf, regionLabel } from './facets'
 import { CategoryBadge, Price, SponsorBadge, Thumb } from '../Common'
+import { subtitleBesideTitle } from '../detail/parts'
 import '../../styles/explore.css'
 
 // Explore·Search 가 함께 쓰는 목록 행.
@@ -34,7 +35,7 @@ function ProductRow({ item, currency, curation, qty = 0, onOpen, onAdd }: ItemRo
         <Thumb item={item} size={76} />
         <span className="ex-row__info">
           <span className="ex-row__title">{item.title}</span>
-          {item.subtitle && <span className="ex-row__sub" lang="ko">{item.subtitle}</span>}
+          {subtitleBesideTitle(item) && <span className="ex-row__sub" lang="ko">{subtitleBesideTitle(item)}</span>}
           <Price krw={item.price_krw} list={item.list_price} currency={currency} size="sm" />
           <span className="ex-row__badges">
             <SponsorBadge value={item.sponsorship} />
@@ -71,7 +72,7 @@ function PlaceCard({ item, currency, curation, inTrip, onOpen }: ItemRowProps) {
             {fields.map((f) => <span key={f} className="badge badge--medical badge--field">{t(fieldKey(f))}</span>)}
           </span>
           <span className="ex-card__title">{item.title}</span>
-          {item.subtitle && <span className="ex-card__sub" lang="ko">{item.subtitle}</span>}
+          {subtitleBesideTitle(item) && <span className="ex-card__sub" lang="ko">{subtitleBesideTitle(item)}</span>}
           {address && <span className="ex-card__addr">{address}</span>}
           {item.price_krw != null && <Price krw={item.price_krw} list={item.list_price} currency={currency} size="sm" />}
           <span className="ex-row__badges">

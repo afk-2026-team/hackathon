@@ -162,6 +162,7 @@ a:hover { text-decoration: underline; }
 .price--md strong { font-size: 16px; }
 .price--lg strong { font-size: 22px; letter-spacing: -0.02em; }
 .price__fx { font-size: 12px; color: var(--g5); font-weight: 500; }
+.price__src { flex-basis: 100%; font-size: 11px; color: var(--g4); font-weight: 500; }
 .price--none { font-size: 13px; color: var(--g4); font-weight: 500; }
 
 /* ── 상태(로딩·오류·빈 화면) ── */

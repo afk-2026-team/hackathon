@@ -65,7 +65,7 @@ function ProductRow({ item, currency, onOpen }: { item: CatalogItem; currency: s
         <span className="home-row__info">
           {item.subtitle && <span className="home-row__sub">{item.subtitle}</span>}
           <span className="home-row__title">{item.title}</span>
-          <Price krw={item.price_krw} currency={currency} size="sm" />
+          <Price krw={item.price_krw} list={item.list_price} currency={currency} size="sm" />
           <span className="home-row__badges">
             <SponsorBadge value={item.sponsorship} />
           </span>

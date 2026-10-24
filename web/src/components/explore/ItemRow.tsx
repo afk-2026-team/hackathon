@@ -34,7 +34,7 @@ function ProductRow({ item, currency, curation, qty = 0, onOpen, onAdd }: ItemRo
         <span className="ex-row__info">
           <span className="ex-row__title">{item.title}</span>
           {item.subtitle && <span className="ex-row__sub" lang="ko">{item.subtitle}</span>}
-          <Price krw={item.price_krw} currency={currency} size="sm" />
+          <Price krw={item.price_krw} list={item.list_price} currency={currency} size="sm" />
           <span className="ex-row__badges">
             <SponsorBadge value={item.sponsorship} />
             {qty > 0 && <span className="badge badge--beauty">{fill(t('explore.inCart'), { n: qty })}</span>}
@@ -67,7 +67,7 @@ function PlaceCard({ item, currency, curation, inTrip, onOpen }: ItemRowProps) {
           <span className="ex-card__title">{item.title}</span>
           {item.subtitle && <span className="ex-card__sub" lang="ko">{item.subtitle}</span>}
           {address && <span className="ex-card__addr">{address}</span>}
-          {item.price_krw != null && <Price krw={item.price_krw} currency={currency} size="sm" />}
+          {item.price_krw != null && <Price krw={item.price_krw} list={item.list_price} currency={currency} size="sm" />}
           <span className="ex-row__badges">
             <SponsorBadge value={item.sponsorship} />
             {inTrip && <span className="badge badge--medical">{t('explore.inTrip')}</span>}

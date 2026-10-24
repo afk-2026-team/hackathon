@@ -16,6 +16,14 @@ export interface ItemLocation {
   address?: string
 }
 
+// 판매처에 표시된 가격(통화 그대로). 원화 가격이 없을 때 쓰며 환산값이 아니다.
+export interface ListPrice {
+  amount: number
+  currency: string
+  basis: string
+  source: Source
+}
+
 export interface CatalogItem {
   id: string
   kind: 'product' | 'place' | 'guide'
@@ -25,6 +33,7 @@ export interface CatalogItem {
   description: string
   image_url: string | null
   price_krw: number | null
+  list_price?: ListPrice | null
   location: ItemLocation | null
   sources: Source[]
   sponsorship: Sponsorship

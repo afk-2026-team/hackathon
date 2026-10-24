@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from 'react'
-import type { CatalogItem, Source, Sponsorship } from '../lib/types'
+import type { CatalogItem, ListPrice, Source, Sponsorship } from '../lib/types'
 import { fill, useLang, useT } from '../lib/i18n'
 import { convertKrw, formatKrw, formatMoney, fxSourceLine, useFx } from '../lib/currency'
 import { Glyph } from './Glyph'
@@ -30,13 +30,29 @@ export function Thumb({ item, size = 80 }: { item: Pick<CatalogItem, 'image_url'
   )
 }
 
-/** 원화 가격 + 선택 통화 환산(ECB 기준율, 출처는 title 로). 환율이 없으면 원화만. */
-export function Price({ krw, currency, size = 'md' }: { krw: number | null; currency: string; size?: 'sm' | 'md' | 'lg' }) {
+/** 원화 가격 + 선택 통화 환산(ECB 기준율, 출처는 title 로). 환율이 없으면 원화만.
+ *  원화 가격이 없고 판매처 표시 가격(list)이 있으면 그 통화 그대로 보여 주고, 출처를 함께 적는다. */
+export function Price({ krw, currency, size = 'md', list }: { krw: number | null; currency: string; size?: 'sm' | 'md' | 'lg'; list?: ListPrice | null }) {
   const t = useT()
   const lang = useLang()
   const fx = useFx()
-  if (krw == null) return <span className={`price price--${size} price--none`}>{t('common.priceUnlisted')}</span>
   const ready = fx.status === 'ready' ? fx.fx : null
+  if (krw == null && list) {
+    // 표시 통화 → 원화 → 내 통화(같은 ECB 기준율). 같은 통화면 환산하지 않는다.
+    const rate = ready?.rates?.[list.currency]
+    const asKrw = list.currency === 'KRW' ? list.amount : typeof rate === 'number' && rate > 0 ? list.amount / rate : null
+    const converted = asKrw != null && currency !== list.currency ? (currency === 'KRW' ? asKrw : convertKrw(asKrw, currency, ready)) : null
+    return (
+      <span className={`price price--${size}`}>
+        <strong>{formatMoney(list.amount, list.currency, lang)}</strong>
+        {converted != null && ready && (
+          <span className="price__fx" title={fxSourceLine(ready)}>{fill(t('common.approx'), { amount: formatMoney(converted, currency, lang) })}</span>
+        )}
+        <span className="price__src" title={list.basis}>{fill(t('common.listedAt'), { seller: list.source.label })}</span>
+      </span>
+    )
+  }
+  if (krw == null) return <span className={`price price--${size} price--none`}>{t('common.priceUnlisted')}</span>
   const converted = convertKrw(krw, currency, ready)
   return (
     <span className={`price price--${size}`}>

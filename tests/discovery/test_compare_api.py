@@ -173,7 +173,8 @@ def test_shipped_data_files_validate_and_cerave_illiyoon_compare(monkeypatch):
 
 def test_existing_catalog_contract_unchanged(cmp_client):
     item = cmp_client.get("/v1/discovery/catalog").json()["items"][0]
-    assert set(item) == set(FIXTURE_ITEMS[0])
+    # list_price 는 2026-10-24 추가된 선택 필드(원화가 없을 때 판매처 표시 통화 가격). 기존 필드는 그대로여야 한다.
+    assert set(item) - {"list_price"} == set(FIXTURE_ITEMS[0])
 
 
 @pytest.mark.parametrize("name,matched", [("brand a cream", True), ("  BrandA   Brand A Cream ", True), ("brand a", False), ("Brand A Creamy", False)])

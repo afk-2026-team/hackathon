@@ -34,7 +34,7 @@ export function ProductDetail({ item, profile, onBack, onAddCart, onAddTrip, onO
           <SponsorBadge value={item.sponsorship} />
         </div>
         <h1 className="dt-title">{item.title}</h1>
-        <Price krw={item.price_krw} currency={profile.currency} size="lg" />
+        <Price krw={item.price_krw} list={item.list_price} currency={profile.currency} size="lg" />
       </section>
 
       <section className="dt-store" aria-labelledby="dt-store-h">

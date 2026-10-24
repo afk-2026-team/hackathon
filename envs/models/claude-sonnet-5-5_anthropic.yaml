@@ -1,0 +1,11 @@
+# 모델 선언 yaml (1개 = 모델 1개). 키 값이 아니라 환경변수 '이름'만 갖는다.
+model_name: claude-sonnet-5-5
+provider: anthropic                # app/models/llm_loader.py 분기 키
+base_url: "https://api.anthropic.com"
+api_key_env: ASH_ANTHROPIC_API_KEY   # 팀 Infisical dev /app (서비스 ash_workflow)
+sampling:                          # 프로필 override 가 덮어쓸 수 있는 범위 = 이 블록의 키
+  # temperature 는 두지 않는다: haiku 가 400 "`temperature` is deprecated for this model." 로 거부했다(2026-10-24 실측). 같은 세대라 넣지 않는다
+  max_tokens: 4096                 # haiku·sonnet·opus 3종 일괄 4096(2026-10-24 interview Q2)
+limits:
+  timeout_seconds: 120
+  max_retries: 2

@@ -5,7 +5,7 @@ base_url: "https://api.anthropic.com"
 api_key_env: ASH_ANTHROPIC_API_KEY   # 팀 Infisical dev /app (서비스 ash_workflow)
 sampling:                          # 프로필 override 가 덮어쓸 수 있는 범위 = 이 블록의 키
   # temperature 는 두지 않는다: 이 모델은 400 "`temperature` is deprecated for this model." 로 거부한다(2026-10-24 실측)
-  max_tokens: 1024
+  max_tokens: 4096                 # haiku·sonnet·opus 3종 일괄 4096(2026-10-24 interview Q2)
 limits:
   timeout_seconds: 120
   max_retries: 2

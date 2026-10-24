@@ -9,6 +9,7 @@ from app.graph.builder import build_graph
 from app.knowledge.okf import load_bundle
 from app.models.classifier_loader import build_classifier, load_classifier_spec
 from app.models.llm_loader import build_llm, load_model_spec
+from app.models.pseudo_jev import build_pseudo_jev
 from app.prompts.loader import load_workflow_prompts
 from app.utils.config import resolve_path
 from app.utils.logger import AGENT_LOGGER_NAME
@@ -24,10 +25,19 @@ class ProfileRuntime:
     knowledge_count: int  # 기동 시 읽은 OKF concept 수
 
 
+def build_judge(config: dict, prompts: dict):
+    """판정기 스위치(jev.mode) — 고르지 않은 쪽은 만들지 않는다(pseudo_jev 면 ASH_JEV_KEY 를 읽지 않는다)."""
+    jev = config["jev"]
+    if jev["mode"] == "jev":
+        return build_classifier(load_classifier_spec(jev["model_path"]))
+    spec = load_model_spec(jev["pseudo_model_path"], {})
+    return build_pseudo_jev(build_llm(spec), prompts["pseudo_jev_system"], spec["model_name"])
+
+
 def build_registry(config: dict) -> dict[str, ProfileRuntime]:
     """기동 게이트 — 프로필 전부를 기동 시 1회 컴파일한다(W7). 하나라도 실패하면 예외가 그대로 올라가 기동이 멈춘다."""
     prompts = load_workflow_prompts(config)
-    classifier = build_classifier(load_classifier_spec(config["jev"]["model_path"]))
+    classifier = build_judge(config, prompts)
     concepts = load_bundle(resolve_path(config["knowledge"]["bundle_path"]))
     if not concepts:  # 근거 없이 조언자를 띄우지 않는다
         raise ValueError(f"knowledge.bundle_path 에 concept 이 없다: {config['knowledge']['bundle_path']} — 크롤러를 먼저 실행한다")

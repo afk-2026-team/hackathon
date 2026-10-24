@@ -27,7 +27,7 @@ FINISH_REASONS = {"end_turn": "stop", "stop_sequence": "stop", "max_tokens": "le
 PROB_FORMAT = "{:.2f}"
 
 
-async def jev_judge(state: AgentState, *, classifier, questions: dict, decline_labels: list[str]) -> dict:
+async def jev_judge(state: AgentState, *, classifier, questions: dict, decline_labels: list[str], judge: str) -> dict:
     question = state["messages"][-1].text
     answers = await classifier.ainvoke({"state": question, "questions": questions})
     category = answers.choices[CATEGORY_QID]
@@ -36,7 +36,7 @@ async def jev_judge(state: AgentState, *, classifier, questions: dict, decline_l
     medical = answers.nouls[MEDICAL_INTENT_QID].noul
     route = DECLINE if category.choice in decline_labels else RESPOND
     logger.info(
-        f"[JevJudge] ✅ category={category.choice} confidence={PROB_FORMAT.format(category.confidence)} "
+        f"[JevJudge] ✅ judge={judge} category={category.choice} confidence={PROB_FORMAT.format(category.confidence)} "
         f"purchase_intent={PROB_FORMAT.format(intent)} content_kind={kind} medical_intent={PROB_FORMAT.format(medical)} route={route}"
     )
     return {

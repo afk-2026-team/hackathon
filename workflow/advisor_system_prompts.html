@@ -136,15 +136,16 @@ pre.orig, pre.sample { white-space: pre-wrap; word-break: break-word; }
     <div class="arrow">→</div>
     <div class="node"><b>retrieve</b><span>근거 최대 5건(LLM 없음)<br>→ <b>④</b>의 [Retrieved evidence]</span></div>
     <div class="arrow">→</div>
-    <div class="node hl"><b>Haiku</b><span>system = <b>③</b>, human = <b>④</b><br>거절이면 system = <b>⑤</b></span></div>
+    <div class="node hl"><b>Sonnet</b><span>system = <b>③</b>, human = <b>④</b><br>거절이면 system = <b>⑤</b></span></div>
   </div>
-  <table><thead><tr><th>#</th><th>파일</th><th>종류</th><th>읽는 쪽</th></tr></thead><tbody><tr><td>①</td><td><code>HOME_REQUEST</code></td><td><span class="badge frame" style="margin:0">코드 속 문장 틀</span></td><td>Jev(판단) → 그다음 Haiku(질문 자리)</td></tr><tr><td>②</td><td><code>jev_questions.yaml</code></td><td><span class="badge judge" style="margin:0">판단 질문(Jev)</span></td><td>Jev(TypeSafe 판단 모델) — Haiku 는 이 파일을 보지 않는다</td></tr><tr><td>③</td><td><code>respond_system.yaml</code></td><td><span class="badge system" style="margin:0">시스템 프롬프트</span></td><td>Haiku — respond 노드의 system 메시지</td></tr><tr><td>④</td><td><code>respond_turn.yaml + format_evidence()</code></td><td><span class="badge frame" style="margin:0">매 턴 입력 틀</span></td><td>Haiku — respond 노드의 사용자(human) 메시지</td></tr><tr><td>⑤</td><td><code>decline_system.yaml</code></td><td><span class="badge system" style="margin:0">시스템 프롬프트</span></td><td>Haiku — decline 노드의 system 메시지</td></tr></tbody></table>
+  <table><thead><tr><th>#</th><th>파일</th><th>종류</th><th>읽는 쪽</th></tr></thead><tbody><tr><td>①</td><td><code>HOME_REQUEST</code></td><td><span class="badge frame" style="margin:0">코드 속 문장 틀</span></td><td>Jev(판단) → 그다음 Sonnet(질문 자리)</td></tr><tr><td>②</td><td><code>jev_questions.yaml</code></td><td><span class="badge judge" style="margin:0">판단 질문(Jev)</span></td><td>Jev(TypeSafe 판단 모델) — Sonnet 는 이 파일을 보지 않는다</td></tr><tr><td>③</td><td><code>respond_system.yaml</code></td><td><span class="badge system" style="margin:0">시스템 프롬프트</span></td><td>Sonnet — respond 노드의 system 메시지</td></tr><tr><td>④</td><td><code>respond_turn.yaml + format_evidence()</code></td><td><span class="badge frame" style="margin:0">매 턴 입력 틀</span></td><td>Sonnet — respond 노드의 사용자(human) 메시지</td></tr><tr><td>⑤</td><td><code>decline_system.yaml</code></td><td><span class="badge system" style="margin:0">시스템 프롬프트</span></td><td>Sonnet — decline 노드의 system 메시지</td></tr></tbody></table>
+  <div class="callout"><strong>2026-10-24 갱신</strong>응답 모델이 Haiku 에서 Sonnet(<code>kbeauty-sonnet</code>)으로 바뀌었다. Jev 를 못 쓸 때 켜는 <code>jev.mode: pseudo_jev</code> 에서는 Sonnet 이 <code>app/prompts/pseudo_jev_system.yaml</code>(시스템 프롬프트)과 ② 질문으로 Jev 출력을 흉내 낸다. 그 프롬프트의 해설은 이 페이지에 아직 없다.</div>
 </section>
 
 <section id="p1">
   <h2><span class="num">①</span>HOME_REQUEST<span class="badge frame">코드 속 문장 틀</span></h2>
   <p class="src">원문 위치: <code>app/api/v1/inputs.py#HOME_REQUEST</code></p>
-  <dl class="facts"><dt>누가 읽나</dt><dd>Jev(판단) → 그다음 Haiku(질문 자리)</dd><dt>언제 쓰이나</dt><dd>질문 없이 프로필만 온 Home 모드에서만. 질문이 있으면 쓰지 않는다.</dd><dt>출력에 미치는 영향</dt><dd>Home 추천의 '질문'이 된다. 언어·국가만 들어가고 성별·연령은 넣지 않는다.</dd></dl>
+  <dl class="facts"><dt>누가 읽나</dt><dd>Jev(판단) → 그다음 Sonnet(질문 자리)</dd><dt>언제 쓰이나</dt><dd>질문 없이 프로필만 온 Home 모드에서만. 질문이 있으면 쓰지 않는다.</dd><dt>출력에 미치는 영향</dt><dd>Home 추천의 '질문'이 된다. 언어·국가만 들어가고 성별·연령은 넣지 않는다.</dd></dl>
   <div class="pair">
     <div><span class="label">원문 (English · 저장소 파일 그대로)</span><pre class="orig" data-src="app/api/v1/inputs.py#HOME_REQUEST"><code>[Home feed] A traveler visiting Korea (country: {country}, language: {language}) just finished onboarding. Recommend K-beauty products, skin clinics, and review videos for the top of their home screen.</code></pre></div>
     <div><span class="label">한글 번역</span><div class="ko"><p>[Home 피드] 한국을 방문하는 여행자(국가: {country}, 언어: {language})가 막 온보딩을 마쳤습니다. 이 사람의 홈 화면 맨 위에 보여줄 K-뷰티 제품, 피부과, 리뷰 영상을 추천하세요.</p></div></div>
@@ -155,7 +156,7 @@ pre.orig, pre.sample { white-space: pre-wrap; word-break: break-word; }
 <section id="p2">
   <h2><span class="num">②</span>jev_questions.yaml<span class="badge judge">판단 질문(Jev)</span></h2>
   <p class="src">원문 위치: <code>app/prompts/jev_questions.yaml</code></p>
-  <dl class="facts"><dt>누가 읽나</dt><dd>Jev(TypeSafe 판단 모델) — Haiku 는 이 파일을 보지 않는다</dd><dt>언제 쓰이나</dt><dd>모든 요청의 첫 단계</dd><dt>출력에 미치는 영향</dt><dd>출력 문장을 직접 쓰지는 않지만, ‘어떤 근거 5건이 Haiku 에게 가는지’와 ‘거절(decline)로 갈지’를 정한다.</dd></dl>
+  <dl class="facts"><dt>누가 읽나</dt><dd>Jev(TypeSafe 판단 모델). <code>jev.mode: pseudo_jev</code> 이면 Pseudo_JEV(Sonnet)가 같은 파일을 읽는다 — 응답 모델은 이 파일을 보지 않는다</dd><dt>언제 쓰이나</dt><dd>모든 요청의 첫 단계</dd><dt>출력에 미치는 영향</dt><dd>출력 문장을 직접 쓰지는 않지만, ‘어떤 근거 5건이 Haiku 에게 가는지’와 ‘거절(decline)로 갈지’를 정한다.</dd></dl>
   <div class="pair">
     <div><span class="label">원문 (English · 저장소 파일 그대로)</span><pre class="orig" data-src="app/prompts/jev_questions.yaml"><code>name: jev_questions
 description: &gt;-
@@ -203,7 +204,7 @@ questions:
 <section id="p3">
   <h2><span class="num">③</span>respond_system.yaml<span class="badge system">시스템 프롬프트</span></h2>
   <p class="src">원문 위치: <code>app/prompts/respond_system.yaml</code></p>
-  <dl class="facts"><dt>누가 읽나</dt><dd>Haiku — respond 노드의 system 메시지</dd><dt>언제 쓰이나</dt><dd>범위 안 질문(Home 포함)마다</dd><dt>출력에 미치는 영향</dt><dd><b>어드바이저 문장의 모양을 거의 다 정한다.</b> 역할, 근거 제한, 인용 형식, 의료 경계, 빈 결과 처리, 길이·언어.</dd></dl>
+  <dl class="facts"><dt>누가 읽나</dt><dd>응답 모델(Sonnet) — respond 노드의 system 메시지</dd><dt>언제 쓰이나</dt><dd>범위 안 질문(Home 포함)마다</dd><dt>출력에 미치는 영향</dt><dd><b>어드바이저 문장의 모양을 거의 다 정한다.</b> 역할, 근거 제한, 인용 형식, 의료 경계, 빈 결과 처리, 길이·언어.</dd></dl>
   <div class="pair">
     <div><span class="label">원문 (English · 저장소 파일 그대로)</span><pre class="orig" data-src="app/prompts/respond_system.yaml"><code>name: respond_system
 description: respond 노드 system 프롬프트 — 프로필·Jev 판단·retrieve 근거로 Home 최상단 조언(자연어+근거 ID)을 쓴다
@@ -238,7 +239,7 @@ content: |-
 <section id="p4">
   <h2><span class="num">④</span>respond_turn.yaml + format_evidence()<span class="badge frame">매 턴 입력 틀</span></h2>
   <p class="src">원문 위치: <code>app/prompts/respond_turn.yaml</code></p>
-  <dl class="facts"><dt>누가 읽나</dt><dd>Haiku — respond 노드의 사용자(human) 메시지</dd><dt>언제 쓰이나</dt><dd>범위 안 질문마다, ③과 함께</dd><dt>출력에 미치는 영향</dt><dd>Haiku 가 이번 턴에 보는 사실 전부다. ③이 말하는 블록 이름·플래그(results, relaxed, unverified…)가 모두 여기서 들어온다 → ③과 ④는 함께 고쳐야 한다.</dd></dl>
+  <dl class="facts"><dt>누가 읽나</dt><dd>응답 모델(Sonnet) — respond 노드의 사용자(human) 메시지</dd><dt>언제 쓰이나</dt><dd>범위 안 질문마다, ③과 함께</dd><dt>출력에 미치는 영향</dt><dd>Haiku 가 이번 턴에 보는 사실 전부다. ③이 말하는 블록 이름·플래그(results, relaxed, unverified…)가 모두 여기서 들어온다 → ③과 ④는 함께 고쳐야 한다.</dd></dl>
   <div class="pair">
     <div><span class="label">원문 (English · 저장소 파일 그대로)</span><pre class="orig" data-src="app/prompts/respond_turn.yaml"><code>name: respond_turn
 description: respond 노드 현재 턴 human 메시지 템플릿 — 턴마다 바뀌는 프로필·판단·근거·질문만 담는다(spec §2.4 캐싱 규칙)
@@ -273,7 +274,7 @@ relaxed: false
 <section id="p5">
   <h2><span class="num">⑤</span>decline_system.yaml<span class="badge system">시스템 프롬프트</span></h2>
   <p class="src">원문 위치: <code>app/prompts/decline_system.yaml</code></p>
-  <dl class="facts"><dt>누가 읽나</dt><dd>Haiku — decline 노드의 system 메시지</dd><dt>언제 쓰이나</dt><dd>②에서 category = out_of_scope 일 때만(retrieve 를 건너뜀)</dd><dt>출력에 미치는 영향</dt><dd>범위 밖 질문을 한두 문장으로 정중히 거절하고 대신 물어볼 예시 질문을 하나 제안한다.</dd></dl>
+  <dl class="facts"><dt>누가 읽나</dt><dd>응답 모델(Sonnet) — decline 노드의 system 메시지</dd><dt>언제 쓰이나</dt><dd>②에서 category = out_of_scope 일 때만(retrieve 를 건너뜀)</dd><dt>출력에 미치는 영향</dt><dd>범위 밖 질문을 한두 문장으로 정중히 거절하고 대신 물어볼 예시 질문을 하나 제안한다.</dd></dl>
   <div class="pair">
     <div><span class="label">원문 (English · 저장소 파일 그대로)</span><pre class="orig" data-src="app/prompts/decline_system.yaml"><code>name: decline_system
 description: decline 노드 system 프롬프트 — 범위밖 질의를 정중히 안내한다

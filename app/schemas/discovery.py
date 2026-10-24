@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 # 계약 정본: docs/plan/plan_26102413_42_12_온보딩부터_앱구현.md "공통 API 계약"
 # 필드 추가·rename 은 계약 변경이다 — 화면·데이터 worker 와 컨트롤러에 먼저 알린다.
@@ -80,4 +80,122 @@ class CountryContext(_Strict):
 class RecommendationResponse(_Strict):
     items: list[CatalogItem]
     country_context: CountryContext
+    generated_at: str
+
+
+# ── 제품 비교 (current product vs 한국 후보) ──
+# 표시사항(성분 표기·용량·표시 가격)만 비교한다. 효능·임상 동등성은 이 계약에 담을 자리가 없다.
+
+CompareAttribute = Literal["key_ingredients", "volume_ml", "form"]
+
+
+class PriceFact(_Strict):
+    amount: float = Field(ge=0)
+    currency: str = Field(pattern=r"^[A-Z]{3}$")
+    basis: str = Field(min_length=1)  # 어떤 페이지의 어떤 값인지(용량 미표기 등 한계 포함)
+    source: Source
+
+
+class ReferenceProduct(_Strict):
+    """사용자가 '지금 쓰는 제품'으로 고르는 해외 제품. 공식 페이지에서 확인한 값만 둔다."""
+
+    id: str = Field(min_length=1)
+    brand: str = Field(min_length=1)
+    title: str = Field(min_length=1)
+    form: str | None
+    volume_ml: float | None = Field(ge=0)
+    key_ingredients: list[str] | None
+    ingredients_complete: bool  # false 면 목록에 없는 성분을 '없음'으로 말하지 않는다
+    ingredients_basis: str
+    price: PriceFact | None
+    market_codes: list[str] = Field(default_factory=list)  # 출처 페이지가 그 국가 공식 페이지일 때만
+    sources: list[Source] = Field(min_length=1)
+    provenance: str = Field(min_length=1)
+
+
+class ReferenceCatalog(_Strict):
+    items: list[ReferenceProduct]
+
+
+class ProductFacts(_Strict):
+    """카탈로그 후보의 비교용 표시사항. 카탈로그 id 와 1:1, 없으면 모두 미확인."""
+
+    id: str = Field(min_length=1)
+    form: str | None
+    volume_ml: float | None = Field(ge=0)
+    key_ingredients: list[str] | None
+    ingredients_complete: bool
+    ingredients_basis: str
+    price_basis: str | None = None
+    price_source: Source | None = None
+    sources: list[Source]
+    provenance: str = Field(min_length=1)
+
+
+class ProductFactsCatalog(_Strict):
+    items: list[ProductFacts]
+
+
+class CompareRequest(_Strict):
+    profile: Profile
+    candidate_id: str = Field(min_length=1, max_length=200)
+    current_product_id: str | None = Field(default=None, min_length=1, max_length=200)
+    current_product_name: str | None = Field(default=None, min_length=1, max_length=200)
+
+    @model_validator(mode="after")
+    def _needs_current(self) -> "CompareRequest":
+        if self.current_product_id is None and self.current_product_name is None:
+            raise ValueError("current_product_id or current_product_name is required")
+        return self
+
+
+class CandidateFacts(_Strict):
+    id: str
+    title: str
+    form: str | None
+    volume_ml: float | None
+    key_ingredients: list[str] | None
+    ingredients_complete: bool
+    ingredients_basis: str
+    price: PriceFact | None
+    sources: list[Source]
+
+
+class ComparePoint(_Strict):
+    attribute: CompareAttribute
+    current: str | float | list[str] | None
+    candidate: str | float | list[str] | None
+    basis: str
+    sources: list[Source]
+
+
+class PriceComparison(_Strict):
+    current: PriceFact | None
+    candidate: PriceFact | None
+    comparable: bool  # 같은 통화·같은 용량 근거가 있을 때만 true. 환율 환산은 하지 않는다
+    note: str
+
+
+class CompareResponse(_Strict):
+    current: ReferenceProduct | None
+    current_status: Literal["matched", "unknown"]
+    candidate: CandidateFacts
+    common: list[ComparePoint]
+    differences: list[ComparePoint]
+    unverified: list[ComparePoint]
+    price: PriceComparison
+    country_context: CountryContext
+    notice: str
+    generated_at: str
+
+
+# ── 비교 설명 (LLM 요약, 실패 시 사실 문장) ──
+
+
+class ExplainResponse(_Strict):
+    text: str
+    mode: Literal["llm", "fallback"]
+    fallback_reason: Literal["llm_unavailable", "timeout", "validation_failed", "llm_error"] | None
+    sources: list[Source]
+    notice: str
     generated_at: str

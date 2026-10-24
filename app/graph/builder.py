@@ -11,12 +11,13 @@ from langgraph.graph.state import CompiledStateGraph
 
 from app.graph import nodes as N
 from app.graph.state import AgentState
+from app.knowledge.okf import Concept
 from app.utils.logger import AGENT_LOGGER_NAME
 
 logger = logging.getLogger(AGENT_LOGGER_NAME)
 
 
-def build_graph(llm: BaseChatModel, classifier, config: dict, prompts: dict) -> CompiledStateGraph:
+def build_graph(llm: BaseChatModel, classifier, config: dict, prompts: dict, concepts: list[Concept]) -> CompiledStateGraph:
     """서빙 계층과의 단일 진입점(W2). knob 을 읽어 노드·엣지·checkpointer 를 정하고, 노드에는 필요한 값만 주입한다(W3·W4)."""
     router, multi_turn = config["router"], config["multi_turn"]
     questions = prompts["jev_questions"]
@@ -32,6 +33,7 @@ def build_graph(llm: BaseChatModel, classifier, config: dict, prompts: dict) -> 
         N.JEV_JUDGE,
         partial(N.jev_judge, classifier=classifier, questions=questions, decline_labels=router["decline_labels"]),
     )
+    graph.add_node(N.RETRIEVE, partial(N.retrieve, concepts=concepts, top_n=config["knowledge"]["top_n"]))
     graph.add_node(
         N.RESPOND,
         partial(
@@ -44,10 +46,11 @@ def build_graph(llm: BaseChatModel, classifier, config: dict, prompts: dict) -> 
     graph.add_edge(START, N.JEV_JUDGE)
     if router["branching_enabled"]:
         graph.add_node(N.DECLINE, partial(N.decline, llm=llm, system_prompt=prompts["decline_system"]))
-        graph.add_conditional_edges(N.JEV_JUDGE, N.route_after_judge, [N.RESPOND, N.DECLINE])
+        graph.add_conditional_edges(N.JEV_JUDGE, N.route_after_judge, [N.RETRIEVE, N.DECLINE])
         graph.add_edge(N.DECLINE, END)
     else:
-        graph.add_edge(N.JEV_JUDGE, N.RESPOND)
+        graph.add_edge(N.JEV_JUDGE, N.RETRIEVE)
+    graph.add_edge(N.RETRIEVE, N.RESPOND)
     graph.add_edge(N.RESPOND, END)
 
     checkpointer = InMemorySaver() if multi_turn["enabled"] else None

@@ -1,0 +1,44 @@
+{
+  "items": [
+    {
+      "id": "ref-cerave-moisturizing-cream",
+      "brand": "CeraVe",
+      "title": "CeraVe Moisturizing Cream",
+      "form": "cream",
+      "volume_ml": null,
+      "key_ingredients": [
+        "Ceramide NP",
+        "Ceramide AP",
+        "Ceramide EOP",
+        "Cholesterol",
+        "Phytosphingosine",
+        "Sodium Hyaluronate",
+        "Petrolatum",
+        "Dimethicone"
+      ],
+      "ingredients_complete": false,
+      "ingredients_basis": "Selected from the full ingredient list on the brand's official US product page. The brand notes the package is the most current list.",
+      "price": {
+        "amount": 14.99,
+        "currency": "USD",
+        "basis": "Price shown on the brand's official US product page. The page text does not state which size this price is for.",
+        "source": {
+          "label": "CeraVe US official product page",
+          "url": "https://www.cerave.com/skincare/moisturizers/moisturizing-cream",
+          "checked_at": "2026-10-24"
+        }
+      },
+      "market_codes": [
+        "US"
+      ],
+      "sources": [
+        {
+          "label": "CeraVe US official product page (ingredients, price)",
+          "url": "https://www.cerave.com/skincare/moisturizers/moisturizing-cream",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "provenance": "official_brand_page; volume_ml=null(size not stated in page text); key_ingredients=subset of listed full ingredients"
+    }
+  ]
+}

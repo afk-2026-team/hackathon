@@ -1,0 +1,18 @@
+{
+  "items": [
+    {
+      "id": "beauty-illiyoon-ceramide-ato-concentrate-cream-75ml",
+      "form": "cream",
+      "volume_ml": 75,
+      "key_ingredients": ["Ceramide NP", "Cholesterol", "Phytosphingosine"],
+      "ingredients_complete": false,
+      "ingredients_basis": "Ingredients named on the seller's label (OLIVE YOUNG Global), as recorded in the catalog on 2026-10-24. The full list was not re-verified, so missing items are not treated as absent.",
+      "price_basis": "Korean OLIVE YOUNG store price seen in a browser on 2026-10-24. It may change.",
+      "price_source": {"label": "OLIVE YOUNG Korea listing", "url": "https://www.oliveyoung.co.kr/store/goods/getGoodsDetail.do?goodsNo=A000000233237", "checked_at": "2026-10-24"},
+      "sources": [
+        {"label": "OLIVE YOUNG Global product info (ingredients, size)", "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA251034628", "checked_at": "2026-10-24"}
+      ],
+      "provenance": "official_seller_page; volume_ml=product name; key_ingredients=seller label subset"
+    }
+  ]
+}

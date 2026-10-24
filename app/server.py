@@ -64,6 +64,7 @@ def create_app(config: dict) -> FastAPI:
             "nodes": {pid: rt.nodes for pid, rt in registry.items()},
             "multi_turn": {pid: rt.multi_turn for pid, rt in registry.items()},
             "branching_enabled": config["router"]["branching_enabled"],
+            "knowledge_count": {pid: rt.knowledge_count for pid, rt in registry.items()},
         }
 
     app.include_router(v1_router, prefix="/v1")

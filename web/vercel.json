@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/v1/:path*", "destination": "https://jinseonmi-api.vercel.app/v1/:path*" },
+    { "source": "/health", "destination": "https://jinseonmi-api.vercel.app/health" },
+    { "source": "/((?!assets/|v1/|health$).*)", "destination": "/index.html" }
+  ]
+}

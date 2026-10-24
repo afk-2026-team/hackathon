@@ -132,6 +132,7 @@ MESSAGES: dict[Lang, dict[str, str]] = {
         "reco.list_price": "Seller lists {currency} {amount}. A Korean store price is not confirmed, so it was not compared with your KRW budget.",
         "reco.within_budget": "Listed price ₩{price} is within your budget of ₩{budget}.",
         "reco.interests": "Matches your interests: {hits}.",
+        "reco.question_match": "Matches words in your question: {hits} (catalog tags; not a ranking of quality or popularity).",
         "reco.shares_words": "Shares words with your current product: {words}.",
         "reco.country_sources": "Our sources link this to {country}: {labels}.",
         "reco.supported": "{n} of {total} results have sources connected to {country}. "
@@ -182,6 +183,7 @@ MESSAGES: dict[Lang, dict[str, str]] = {
         "reco.list_price": "판매처 표시가는 {currency} {amount}예요. 국내 원화 가격은 확인되지 않아 원화 예산과 비교하지 않았어요.",
         "reco.within_budget": "표시 가격(₩{price})이 예산(₩{budget}) 안이에요.",
         "reco.interests": "관심사와 일치해요: {hits}.",
+        "reco.question_match": "질문의 단어와 일치해요: {hits} (카탈로그 태그 기준이며 품질·인기 순위가 아니에요).",
         "reco.shares_words": "지금 쓰는 제품과 겹치는 단어가 있어요: {words}.",
         "reco.country_sources": "{country} 관련 출처: {labels}.",
         "reco.supported": "결과 {total}개 중 {n}개에 {country} 관련 출처가 있어요. "

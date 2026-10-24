@@ -20,6 +20,8 @@
 | `plan/` | Planner — 목표·범위·단계·리스크·AC | interview 승인 직후 | `title`·`upstream` | interview 문서 |
 | `devlog/` | Builder — 실행 서사·결정·재현 명령·최종 상태 | 작업 중·후 | `title`·`upstream` | plan 문서 |
 | `checklist/` | Validator — AC 별 판정·증거·실패 라우팅 | 실행 후 | `title`·`upstream`·`verdict`(`PASS`/`FAIL`/`PARKED`) | devlog 문서 |
+| `strategy/` | 팀 전략 기록 — 팀 논의의 확정 방향·쟁점·확인 과제(사람 원문) | 팀 논의 후 | `title` | 없음 |
+| `research/` | 외부 조사 — strategy·plan 의 질문에 대한 웹·문헌 근거(출처 URL·등급 필수) | 조사 후 | `title`·`upstream`·`researched_at`·`method` | strategy 문서(또는 plan) |
 
 - `upstream` 값은 **프로젝트 루트 상대 경로 문자열 하나**다(예 `docs/plan/plan_26102411_검색_기능.md`).
 - 서고 입고 때 `upstream` 이 없거나 가리키는 파일이 없으면 카드에 `needs_review` 와 사유(`upstream.missing`·`upstream.not_found`)가 붙는다. 입고는 멈추지 않는다.
@@ -39,6 +41,7 @@
 |---|---|---|
 | `docs/*/example.md` | 추적 | 양식 배포용 |
 | `docs/*/*` (그 밖) | 비추적 | `.gitignore` 의 `docs/*/*` + `!docs/*/example.md` |
+| `docs/strategy/*`·`docs/research/*` | 추적 | 팀 공유 대상 — `.gitignore` 의 `!docs/strategy/**`·`!docs/research/**` 예외 |
 | `__llm-wiki/contract.json`·`receipt.json` | 추적 | 서고 계약·소유 기록 |
 | `__llm-wiki/` 그 밖(카드·index·log·캐시) | 비추적 | 원문에서 재생성 가능 |
 

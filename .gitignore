@@ -13,3 +13,8 @@ seed/
 envs/**/*.env
 envs/**/*.env.*
 !envs/**/*.env.example
+# 팀 공유 문서(전략·외부 조사)는 실물도 추적
+!docs/strategy/
+!docs/strategy/**
+!docs/research/
+!docs/research/**

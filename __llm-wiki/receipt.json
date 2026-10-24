@@ -53,7 +53,7 @@
   "__llm-wiki/cards/docs/devlog/devlog_26102414_온보딩_통합검증.md.card.md": "3acd1d43ea316f911a979b112d41546603497a902df7483c3a1ee27f25b428ef",
   "__llm-wiki/cards/docs/devlog/devlog_26102414_조언자_OKF_크롤링DB_워크플로우.md.card.md": "72adec8638cc327990624c4e72373a17bc66f9da833c331db83881d03cc05fc6",
   "__llm-wiki/cards/docs/devlog/devlog_26102414_화면_인증_시간제한_로그아웃확인.md.card.md": "3d108a6c210f282217f91c0eef9cdafdc1033a8f3e545164da6faa514c27a795",
-  "__llm-wiki/cards/docs/devlog/devlog_26102415_05_41_E2E_연결모듈.md.card.md": "d4fc8a894e79dc77739c566326854d1809cb940802345593358781a628ec01ed",
+  "__llm-wiki/cards/docs/devlog/devlog_26102415_05_41_E2E_연결모듈.md.card.md": "71328793a5b94631720e2086b4e9d5572a69870a27be3006009719fe355d636f",
   "__llm-wiki/cards/docs/devlog/devlog_26102415_08_20_화면_프론트브랜치_통합.md.card.md": "158440aaf979cb81614f42ac4642b2181c165cfc6ae1bf64e187c1ad009d8e28",
   "__llm-wiki/cards/docs/devlog/devlog_26102415_어드바이저_시스템프롬프트_해설.md.card.md": "0c1286749d904ea1c109a0043b75f1157a2c8de279240c623095349fd83daa48",
   "__llm-wiki/cards/docs/devlog/devlog_26102415_진선미_API_명세.md.card.md": "2a58fe6d5d9f1a8bb2b2e4097d2875033ad1653b1ce9860587562f35616f1894",
@@ -105,6 +105,6 @@
   "__llm-wiki/cards/docs/strategy/strategy_26102413_통합플랫폼_최종기획안.md.card.md": "1be39eec64dc04fbc9830aecb7f9e5ce99e2398ce615d2ae3d2457867dceebc1",
   "__llm-wiki/contract.json": "079c396f916cdc974c84bc8e989fc6d7e377b3e1e4f614899a4acbfb43028c26",
   "__llm-wiki/index.md": "5a9a9fcd65f35dfcb2e7df6c14f399d918c582ea013d393a98313fdd01c6175c",
-  "__llm-wiki/log.md": "5b3a111e228de13fd181d2c54533ccb14631ed1c72cdb0650f3ad02d211cc5f5"
+  "__llm-wiki/log.md": "68f907ef9808b52e332d58012da15be37cb27547903c6bc22d71ad4813e606a5"
  }
 }

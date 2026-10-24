@@ -90,6 +90,7 @@ function renderDetail(item: CatalogItem, lang: Lang = 'en', over: Partial<Detail
     onBack: vi.fn(),
     onAddCart: vi.fn(),
     onAddTrip: vi.fn(),
+    onSetCurrent: vi.fn(),
     onOpenCart: vi.fn(),
     onGoTrip: vi.fn(),
     cartQty: 0,

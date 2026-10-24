@@ -2,7 +2,7 @@
 
 네 명 모두 같은 Infisical 프로젝트의 공유 키를 사용한다. 프로젝트·경로·환경·키 이름의 정본은 `envs/infisical.config.json`이다.
 
-1. 외부 키가 필요한 앱 실행은 `node scripts/secrets.mjs run --env dev --services <사용할 서비스> -- <앱 명령>`으로 한다. `claude`, `supabase`, `nebius`, `naver`, `youtube`, `ash_workflow` 중 필요한 것만 선택한다. 서비스 옵션을 생략하면 모두 선택된다. 공개 카탈로그만 쓸 때 `app.discovery_server`는 키 없이 실행하며, Google 로그인까지 사용할 때는 `--services supabase`로 실행한다. 프론트에 비밀값을 주입하지 않는다.
+1. 외부 키가 필요한 앱 실행은 `node scripts/secrets.mjs run --env dev --services <사용할 서비스> -- <앱 명령>`으로 한다. `claude`, `supabase`, `nebius`, `naver`, `naver_maps`, `youtube`, `ash_workflow` 중 필요한 것만 선택한다. 서비스 옵션을 생략하면 모두 선택된다. 공개 카탈로그만 쓸 때 `app.discovery_server`는 키 없이 실행하며, Google 로그인까지 사용할 때는 `--services supabase`로 실행한다. 프론트에 비밀값을 주입하지 않는다.
 2. Node/TypeScript 서버 코드에서는 `src/server/secrets.mjs`의 `getSecret`, `getServiceSecrets`를 사용한다. 요청마다 Infisical을 호출하거나 서비스별로 조회·캐시 코드를 새로 만들지 않는다. Python 등은 같은 실행기로 주입받은 환경변수를 사용한다.
 3. 연결 점검은 `node scripts/secrets.mjs check --env dev`로 한다. 키 값 대신 `OK/MISSING/INVALID`만 보고한다. 인증 실패나 누락이면 멈추며 로컬 `.env`·기존 프로세스 값·샘플 키로 몰래 대체하지 않는다.
 4. 비밀값은 코드·대화·노션·오류·스크린샷·Git에 넣지 않는다. `env`, `printenv`, `console.log(process.env)`, raw `infisical export` 출력, 값을 담은 셸 인자도 사용하지 않는다. 공통 실행기는 export 출력을 메모리에서만 처리한다.

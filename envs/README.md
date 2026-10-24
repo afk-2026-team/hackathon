@@ -39,7 +39,8 @@ node scripts/secrets.mjs check --env dev --services nebius
 | `claude` | `ANTHROPIC_API_KEY`, `CLAUDE_API_MODEL` |
 | `supabase` | `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_SECRET_KEY`, `SUPABASE_STORAGE_BUCKET` |
 | `nebius` | `NEBIUS_API_KEY`, `NEBIUS_BASE_URL`, `NEBIUS_EMBEDDING_MODEL`, `NEBIUS_EMBEDDING_DIMENSIONS` |
-| `naver` | `NAVER_CLIENT_ID`, `NAVER_CLIENT_SECRET`, `NAVER_API_BASE_URL` |
+| `naver` | `NAVER_CLIENT_ID`, `NAVER_CLIENT_SECRET`, `NAVER_API_BASE_URL` (NAVER API HUB: 블로그 검색) |
+| `naver_maps` | `NAVER_MAPS_CLIENT_ID`, `NAVER_MAPS_CLIENT_SECRET` (NAVER Cloud Maps: 지오코딩·지도 JS. 클라이언트 ID 는 도메인 제한 공개 식별자라 `/v1/maps/config` 로만 브라우저에 전달) |
 | `youtube` | `YOUTUBE_API_KEY` |
 | `ash_workflow` | `ASH_ANTHROPIC_API_KEY`, `ASH_JEV_KEY` |
 

@@ -21,7 +21,9 @@
   "__llm-wiki/cards/docs/checklist/checklist_26102414_온보딩_통합검증.md.card.md": "89c0d24d8705ee308990d495c8f7fac1d177c7ac42e29d9c7c792eb346b30195",
   "__llm-wiki/cards/docs/checklist/checklist_26102414_조언자_OKF_크롤링DB_워크플로우.md.card.md": "5ecfe7e85944e8022c11a8e31862330b5d918e2257f9c1839e66f52dfbae5577",
   "__llm-wiki/cards/docs/checklist/checklist_26102414_화면_인증_시간제한_로그아웃확인.md.card.md": "ed56faef539481dfb8376f3243e604c9ae2f67bf752e40d37584047b42de278b",
+  "__llm-wiki/cards/docs/checklist/checklist_26102415_19_23_프론트_백엔드_E2E_통합_재검증.md.card.md": "ea5b9150c64c31d814b6cf212c120909acb929a033cde82ba32b8d82937c2c46",
   "__llm-wiki/cards/docs/checklist/checklist_26102415_어드바이저_시스템프롬프트_해설.md.card.md": "60b06d8376562d3c31732172d1c27d116555c0add211713db4159da4d15757ac",
+  "__llm-wiki/cards/docs/checklist/checklist_26102415_프론트_백엔드_E2E_통합_검증.md.card.md": "48d578b2069a1ca53d26961800a1b6c20296ec2d76d8eb5f66f68ac094f717dc",
   "__llm-wiki/cards/docs/devlog/devlog_26102410_13_19_envs_키폴더_추적차단.md.card.md": "2e5932c58b7a3716d27189388db2324d7c992df0e959714af94d2da1fea9760c",
   "__llm-wiki/cards/docs/devlog/devlog_26102410_54_50_프로젝트_헌장_목표.md.card.md": "7f45ce3088697b6808485f8b8cf661eb0e1efe66e3abb0183a12c24872943b75",
   "__llm-wiki/cards/docs/devlog/devlog_26102410_SDD서고환경_설치.md.card.md": "dff325910f50522fef7c863d382ab85ecc4b5b752d5e21f6bf91deec6be5624d",
@@ -50,7 +52,10 @@
   "__llm-wiki/cards/docs/devlog/devlog_26102414_온보딩_통합검증.md.card.md": "3acd1d43ea316f911a979b112d41546603497a902df7483c3a1ee27f25b428ef",
   "__llm-wiki/cards/docs/devlog/devlog_26102414_조언자_OKF_크롤링DB_워크플로우.md.card.md": "72adec8638cc327990624c4e72373a17bc66f9da833c331db83881d03cc05fc6",
   "__llm-wiki/cards/docs/devlog/devlog_26102414_화면_인증_시간제한_로그아웃확인.md.card.md": "3d108a6c210f282217f91c0eef9cdafdc1033a8f3e545164da6faa514c27a795",
+  "__llm-wiki/cards/docs/devlog/devlog_26102415_05_41_E2E_연결모듈.md.card.md": "d4fc8a894e79dc77739c566326854d1809cb940802345593358781a628ec01ed",
+  "__llm-wiki/cards/docs/devlog/devlog_26102415_08_20_화면_프론트브랜치_통합.md.card.md": "158440aaf979cb81614f42ac4642b2181c165cfc6ae1bf64e187c1ad009d8e28",
   "__llm-wiki/cards/docs/devlog/devlog_26102415_어드바이저_시스템프롬프트_해설.md.card.md": "0c1286749d904ea1c109a0043b75f1157a2c8de279240c623095349fd83daa48",
+  "__llm-wiki/cards/docs/devlog/devlog_26102415_진선미_API_명세.md.card.md": "2a58fe6d5d9f1a8bb2b2e4097d2875033ad1653b1ce9860587562f35616f1894",
   "__llm-wiki/cards/docs/interview/interview_26102409_SDD서고환경_설치.md.card.md": "9814f11313635b90a3a003a65d1da754550e076933ac7f5b29321a76e84098ea",
   "__llm-wiki/cards/docs/interview/interview_26102410_38_32_Infisical_연결_셋업.md.card.md": "07d4233d5e42092f7d9c6b9cc9636040a02d89c1e664df79376c3d6a6ad37381",
   "__llm-wiki/cards/docs/interview/interview_26102410_53_39_프로젝트_헌장_목표.md.card.md": "6facaf466c386b809a77bf848d57c71db85679fc7110fef606a5ae7af129e915",
@@ -66,6 +71,7 @@
   "__llm-wiki/cards/docs/interview/interview_26102413_Infisical_라이브서버_전환.md.card.md": "c6943319be937341738572bd00483369b2405b9c09cb8d7642d045dd732108f5",
   "__llm-wiki/cards/docs/interview/interview_26102413_최종기획안_공유.md.card.md": "3026932551d169ac7a6b0312f4f657616332c355c5766a1b1c231a6a7c8983a5",
   "__llm-wiki/cards/docs/interview/interview_26102414_43_06_Crawling_DB_README_Supabase_매뉴얼.md.card.md": "9a25f60b0ee76c621a677cf7e1f322c25d93879b3b98faa7d66ec3368414b1e7",
+  "__llm-wiki/cards/docs/interview/interview_26102414_54_33_프론트_브랜치_백엔드_E2E_통합.md.card.md": "d52902a04f913f001ee6588178906234fd0e599220f9f4edd1a7b1e94880a363",
   "__llm-wiki/cards/docs/interview/interview_26102414_제품비교_API.md.card.md": "9b5d8e1116020d391e92c44812832e636fa2797c201e8da086db98753b674c1b",
   "__llm-wiki/cards/docs/interview/interview_26102414_조언자_OKF_크롤링DB_워크플로우.md.card.md": "2b4281ecda7df84223e081367c188315510c19a388f970cb89960812258df845",
   "__llm-wiki/cards/docs/interview/interview_26102415_어드바이저_시스템프롬프트_해설.md.card.md": "f94aa6b381e6f83dea8e9697b324fcd96685ed03ae36f2cd59ad954035df5ae0",
@@ -88,6 +94,7 @@
   "__llm-wiki/cards/docs/plan/plan_26102414_09_18_조언자_OKF_크롤링DB_워크플로우.md.card.md": "7258ef015cee8b77bcaa5136f6e0e9691945b0362cf6427d629b290c80f88b4c",
   "__llm-wiki/cards/docs/plan/plan_26102414_45_16_Crawling_DB_README_Supabase_매뉴얼.md.card.md": "d30c6b9b413bf419fb9407dce5cf1428d1925c279a1a9faabefddfc7ed235809",
   "__llm-wiki/cards/docs/plan/plan_26102414_47_32_Crawling_DB_README_Supabase_매뉴얼.md.card.md": "33931b0dd63070ab5ac7276058a7c9b90d0ddaa10414f1d428587551866ea9c9",
+  "__llm-wiki/cards/docs/plan/plan_26102414_54_34_프론트_브랜치_백엔드_E2E_통합.md.card.md": "06a1f62d6ef611bc250d36af6554c572eace8776aa6768dba2c1d813eaf6bc6b",
   "__llm-wiki/cards/docs/plan/plan_26102414_56_24_Crawling_DB_README_Supabase_매뉴얼.md.card.md": "97c137f8ac3d2a51de4d4f997fc87e7387cd792c4252082b3e2b7f84822332f8",
   "__llm-wiki/cards/docs/plan/plan_26102414_제품비교_API.md.card.md": "f11b66a4fdaca5aeb1664c9ebc397a6d809ebea0ad5fb8bf00fa7412dcee212e",
   "__llm-wiki/cards/docs/plan/plan_26102414_조언자_OKF_크롤링DB_워크플로우.md.card.md": "a32c89af2e8e1c2735a5173687f643795e3493d684b1b4033af375b18e74988f",
@@ -96,7 +103,7 @@
   "__llm-wiki/cards/docs/strategy/strategy_26102411_K뷰티_제품_구체화.md.card.md": "97685d309597ae3888751f79d610a9b53546d1d65537faa2a0c4860fced03121",
   "__llm-wiki/cards/docs/strategy/strategy_26102413_통합플랫폼_최종기획안.md.card.md": "1be39eec64dc04fbc9830aecb7f9e5ce99e2398ce615d2ae3d2457867dceebc1",
   "__llm-wiki/contract.json": "079c396f916cdc974c84bc8e989fc6d7e377b3e1e4f614899a4acbfb43028c26",
-  "__llm-wiki/index.md": "b5712663ed24632e08b05dca3218d055cde6281178a8c1412fec6c9d885010f3",
-  "__llm-wiki/log.md": "cc31af63bda70e9bee1b4cc738ca2f83a09466bfa341e832b62aea4c458cce31"
+  "__llm-wiki/index.md": "4bfce96bdac57de1429af4b3d03d2c082d0b89c13f80d4fe719de2b49875a774",
+  "__llm-wiki/log.md": "5492ee62424ba2e787dc7f5d4b2de4bcaf96d8d268253c18b605d97783a7ba71"
  }
 }

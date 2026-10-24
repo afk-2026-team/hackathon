@@ -2,10 +2,10 @@ import { useState } from 'react'
 import type { DetailProps } from '../../screens/contracts'
 import { fill, useLang, useT } from '../../lib/i18n'
 import { CategoryBadge, Price, SponsorBadge, SubBar } from '../Common'
+import { ComparePanel } from '../ComparePanel'
 import { BlogReviews } from './BlogReviews'
 import { VideoShelf } from './VideoShelf'
 import { CartButton, HeroImage, Reasons, Sources, Tags, koreanName } from './parts'
-import { ComparePanel } from '../ComparePanel'
 
 // 뷰티 제품 상세(상품 상세 톤: 큰 이미지 → 이름·가격 → 블록 섹션 → 하단 고정 구매 바).
 export function ProductDetail({ item, profile, onBack, onAddCart, onAddTrip, onOpenCart, onGoTrip, cartQty, inTrip, currentProduct, onSetCurrent }: DetailProps) {
@@ -59,15 +59,11 @@ export function ProductDetail({ item, profile, onBack, onAddCart, onAddTrip, onO
         </section>
       )}
       <Reasons reasons={item.reasons} />
-      {onSetCurrent && (
-        <>
-          <div className="divider" />
-          <section className="dt-sec">
-            {/* 지금 쓰는 제품 → 한국 후보: 서버가 확인한 공통점·차이·가격·비교 요약만 보여준다 */}
-            <ComparePanel profile={profile} item={item} currentName={currentProduct} onSetCurrent={onSetCurrent} />
-          </section>
-        </>
-      )}
+      <div className="divider" />
+      {/* 지금 쓰는 제품과 표시사항(성분·용량·가격) 비교 — 팀 비교 API(/v1/discovery/compare·explain) */}
+      <div className="compare-wrap">
+        <ComparePanel profile={profile} item={item} currentName={currentProduct} onSetCurrent={onSetCurrent} />
+      </div>
       <div className="divider" />
       <VideoShelf query={lang === 'en' ? `${item.title} review` : ko} lang={lang} />
       <div className="divider" />

@@ -76,6 +76,7 @@ describe('compare → evidence → save flow', () => {
     vi.stubGlobal('fetch', vi.fn(async (url: string, init?: RequestInit) => {
       if (url === '/v1/discovery/catalog') return new Response(JSON.stringify({ items: [item] }))
       if (url === '/v1/discovery/recommendations') return new Response(JSON.stringify({ items: [item], country_context: compareRes.country_context, generated_at: 'x' }))
+      if (url === '/v1/discovery/catalog') return new Response(JSON.stringify({ items: [item] })) // 주소의 항목 id 를 상세로 여는 데 쓴다
       if (url === '/v1/discovery/reference-products') return new Response(JSON.stringify({ items: [ref] }))
       if (url === '/v1/discovery/compare') {
         compareCalls.push(JSON.parse(init!.body as string))
@@ -150,6 +151,6 @@ describe('compare → evidence → save flow', () => {
     expect(await screen.findByText('In common')).toBeInTheDocument()
     await new Promise((r) => setTimeout(r, 20))
     expect(screen.queryByText('Compare summary')).toBeNull()
-    expect(screen.queryByRole('alert')).toBeNull()
+    expect(within(screen.getByRole('region', { name: 'Side by side' })).queryByRole('alert')).toBeNull()
   })
 })

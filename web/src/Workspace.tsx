@@ -20,6 +20,21 @@ import { CartSheet } from './components/CartSheet'
 import { Tutorial } from './components/Tutorial'
 import { Toast } from './components/Common'
 
+// 화면 주소: #home, #explore, #trip, #explore/<itemId>(상세). 새로고침·공유·발표 캡처 때 같은 화면으로 돌아온다.
+export function parseHash(hash: string): { tab: Tab; itemId: string | null } {
+  const [head, id] = hash.replace(/^#\/?/, '').split('/')
+  const tab: Tab = head === 'explore' || head === 'trip' ? head : 'home'
+  let itemId: string | null = null
+  if (tab === 'explore' && id) {
+    try {
+      itemId = decodeURIComponent(id)
+    } catch {
+      itemId = null // 잘못된 % 인코딩은 무시하고 목록만 연다
+    }
+  }
+  return { tab, itemId }
+}
+
 // 탭 위에 겹치는 화면. 뒤로 가기는 맨 위 하나를 걷어낸다.
 type View = { type: 'detail'; item: CatalogItem } | { type: 'search' } | { type: 'settings' } | { type: 'edit' }
 
@@ -37,8 +52,10 @@ export function Workspace({ ns, uiLang, account, onSignIn, onSignOut, onResetDon
   const [profile, setProfileState] = useState<Profile | null>(() => loadProfile(ns))
   const [cart, setCartState] = useState<CartLine[]>(() => loadCart(ns))
   const [trip, setTripState] = useState<TripEntry[]>(() => loadTrip(ns))
-  const [tab, setTab] = useState<Tab>('home')
+  const [tab, setTab] = useState<Tab>(() => parseHash(window.location.hash).tab)
   const [stack, setStack] = useState<View[]>([])
+  // 주소에 담긴 상세 항목 id. 카탈로그를 받은 뒤 상세로 연다.
+  const [pendingId, setPendingId] = useState<string | null>(() => parseHash(window.location.hash).itemId)
   const [cartOpen, setCartOpen] = useState(false)
   const [category, setCategory] = useState<CategoryFilter>('all')
   const [extraDays, setExtraDays] = useState(0)
@@ -53,6 +70,42 @@ export function Workspace({ ns, uiLang, account, onSignIn, onSignOut, onResetDon
       .catch(() => {})
     return () => {
       alive = false
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!pendingId) return
+    const item = catalog.get(pendingId)
+    if (item) {
+      setStack([{ type: 'detail', item }])
+      setPendingId(null)
+    }
+  }, [catalog, pendingId])
+
+  // 탭·상세 이동을 주소에 남겨 브라우저 뒤로 가기로 돌아올 수 있게 한다(첫 진입은 교체).
+  const top = stack[stack.length - 1]
+  const detailId = top?.type === 'detail' ? top.item.id : null
+  useEffect(() => {
+    if (pendingId) return // 딥링크를 해석하기 전에는 주소를 덮지 않는다
+    const next = detailId ? `#explore/${encodeURIComponent(detailId)}` : `#${tab}`
+    if (window.location.hash === next) return
+    if (window.location.hash) window.history.pushState(null, '', next)
+    else window.history.replaceState(null, '', next)
+  }, [tab, detailId, pendingId])
+
+  useEffect(() => {
+    const onNavigate = () => {
+      const h = parseHash(window.location.hash)
+      setCartOpen(false)
+      setTab(h.tab)
+      setStack([])
+      setPendingId(h.itemId)
+    }
+    window.addEventListener('popstate', onNavigate)
+    window.addEventListener('hashchange', onNavigate)
+    return () => {
+      window.removeEventListener('popstate', onNavigate)
+      window.removeEventListener('hashchange', onNavigate)
     }
   }, [])
 
@@ -79,7 +132,6 @@ export function Workspace({ ns, uiLang, account, onSignIn, onSignOut, onResetDon
   if (!profile || !payload) {
     return <Onboarding uiLang={uiLang} onComplete={(p) => setProfile(p)} />
   }
-  const top = stack[stack.length - 1]
   if (top?.type === 'edit') {
     return (
       <Onboarding

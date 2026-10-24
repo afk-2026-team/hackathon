@@ -232,7 +232,7 @@
 - **chat/completions:** `{model, messages[], stream?, metadata?}`이며 응답은 OpenAI `chat.completion` 형식이다.
 - **출력 텍스트:** 모델 자유 문장이다. 구조화된 상품 카드·출처 필드는 **없다.** 화면 카드는 discovery 계열 응답으로 그려야 한다.
 
-[형식 예시 — 코드 스키마 기준, 이번 작업에서 8000 서버 실호출은 하지 않음]
+[형식 예시 — 코드 스키마 기준의 요청·응답 모양이다. 실제 호출 결과(5173 → A 프록시 → B, 200·8.6초·completed)는 위 "A 프록시 규칙"의 실측 항목에 적었다]
 
 ```json
 {"model": "kbeauty-haiku", "metadata": {"profile": {"language": "en", "country": "US"}}}

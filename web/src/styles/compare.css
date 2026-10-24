@@ -1,39 +1,44 @@
-/* 비교 패널(ComparePanel) 전용. 새 셸 토큰을 쓰고, 이 컴포넌트 클래스로만 범위를 제한한다. */
-.compare { --line: var(--g2); --soft: var(--g05); --muted: var(--g5); --ink-2: var(--g7); --blue: var(--link); --blue-soft: var(--beauty-bg); --radius: var(--r); }
-.link-btn { border: 0; background: none; padding: 4px 0; color: var(--blue); font-weight: 600; font-size: 14px; }
-.unknown { color: var(--muted); font-style: normal; }
-.compare { border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; display: flex; flex-direction: column; gap: 12px; }
-.compare--ask { background: var(--soft); border-color: transparent; }
-.compare .section-title { margin: 0; }
+/* 제품 비교(지금 쓰는 제품 vs 한국 후보). 팀 비교 기능(ComparePanel)을 진선미 토큰으로 옮긴 스타일.
+   한국 후보 쪽은 뷰티 민트로 강조한다. 모든 클래스는 .compare 아래로 범위를 묶는다. */
+.compare-wrap { padding: 20px 0; }
+.compare { margin: 0 16px; border: 1px solid var(--g15); border-radius: var(--r); padding: 16px; display: flex; flex-direction: column; gap: 12px; background: #fff; }
+.compare--ask { background: var(--beauty-bg); border-color: transparent; }
+.compare .section-title { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: -0.02em; }
+.compare .note { padding: 10px 12px; font-size: 12px; }
+.compare .link-btn { padding: 4px 0; color: var(--beauty-ink); font-weight: 600; font-size: 13px; }
+.compare .unknown { color: var(--g4); font-style: normal; }
+.compare .partial { font-style: normal; font-size: 11px; color: var(--g4); }
+.compare strong { overflow-wrap: anywhere; }
 .compare__head { display: flex; justify-content: space-between; align-items: center; }
 .compare__form { display: flex; gap: 8px; }
-.compare__form input { flex: 1; min-width: 0; font: inherit; font-size: 16px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 999px; background: #fff; }
+.compare__form input { flex: 1; min-width: 0; font-size: 16px; height: 44px; padding: 0 14px; border: 1px solid var(--g2); border-radius: var(--r-sm); background: #fff; }
+.compare__form input:focus { outline: none; border-color: var(--ink); }
+.compare__form .btn { height: 44px; }
 .compare__names { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: center; }
 .compare__names > div { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.compare__names small, .compare__cell small { color: var(--muted); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
+.compare__names small, .compare__cell small { color: var(--g5); font-size: 11px; font-weight: 600; letter-spacing: 0.02em; }
 .compare__names strong { font-size: 14px; line-height: 1.35; }
-.compare__candidate strong { color: var(--blue); }
-.compare__arrow { color: var(--muted); }
-.compare__sub { font-size: 13px; font-weight: 700; color: var(--ink-2); margin: 4px 0 6px; }
+.compare__candidate strong { color: var(--beauty-ink); }
+.compare__arrow { color: var(--g4); }
+.compare__sub { font-size: 13px; font-weight: 700; color: var(--g7); margin: 4px 0 6px; }
 .compare__rows { margin: 0; display: flex; flex-direction: column; gap: 8px; }
-.compare__row { background: var(--soft); border-radius: 12px; padding: 10px 12px; }
-.compare__row dt { font-size: 12px; font-weight: 700; color: var(--ink-2); margin-bottom: 6px; }
+.compare__row { background: var(--g05); border-radius: var(--r-sm); padding: 10px 12px; }
+.compare__row dt { font-size: 12px; font-weight: 700; color: var(--g7); margin-bottom: 6px; }
 .compare__row dd { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; font-size: 14px; }
 .compare__cell { display: flex; flex-direction: column; gap: 2px; min-width: 0; overflow-wrap: anywhere; }
 .compare__cell--candidate { font-weight: 600; }
-.compare__src { grid-column: 1 / -1; font-size: 12px; }
-.compare__price { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; font-size: 14px; margin: 0; }
-.compare__price > span:first-child { color: var(--muted); font-size: 12px; font-weight: 600; min-width: 72px; }
-.compare__price a { font-size: 12px; }
-.compare__status { color: var(--ink-2); font-size: 14px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
-.partial { font-style: normal; font-size: 11px; color: var(--muted); }
-.compare__basis { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 2px 10px; font-size: 12px; line-height: 1.45; color: var(--ink-2); }
+.compare__basis { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 2px 10px; font-size: 12px; line-height: 1.45; color: var(--g6); }
 .compare__basis a { white-space: nowrap; }
+.compare__price { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; font-size: 14px; margin: 0; }
+.compare__price > span:first-child { color: var(--g5); font-size: 12px; font-weight: 600; min-width: 72px; }
+.compare__price a { font-size: 12px; }
 .compare__price .compare__basis { flex-basis: 100%; }
 .compare__price + .compare__price { margin-top: 10px; }
-.compare__summary { background: var(--blue-soft); border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; }
+.compare__status { color: var(--g7); font-size: 14px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.compare__summary { background: var(--beauty-bg); border-radius: var(--r-sm); padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; }
 .compare__summary p { font-size: 14px; line-height: 1.55; color: var(--ink); }
-.compare__summary .compare__sub { margin: 0; color: var(--blue); }
-.compare .note { display: block; padding: 0; background: none; color: var(--g6); font-size: 12px; }
-.compare .reasons { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6; color: var(--g7); }
-.compare .section-title { font-size: 15px; font-weight: 700; }
+.compare__summary .compare__sub { margin: 0; color: var(--beauty-ink); }
+
+@media (max-width: 380px) {
+  .compare__row dd { grid-template-columns: 1fr; }
+}

@@ -70,7 +70,7 @@ export interface MapsConfig {
 }
 
 export interface GeocodeResult {
-  address: string
+  address: string | null // 도로명 → 지번 순으로 있는 값(둘 다 없으면 null)
   road_address: string | null
   jibun_address: string | null
   english_address: string | null

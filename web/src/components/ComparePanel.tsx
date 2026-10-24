@@ -5,6 +5,7 @@ import type { CompareRow, PointAttribute } from '../lib/compare'
 import { formatMoney, type PriceFact } from '../lib/compare'
 import { useCompare, useReferences } from '../lib/useCompare'
 import { useT } from '../lib/i18n'
+import '../styles/compare.css'
 
 interface Props {
   profile: ProfilePayload

@@ -3,7 +3,7 @@ import type { ExploreProps } from './contracts'
 import type { CatalogItem, CategoryFilter } from '../lib/types'
 import { useRecommendations } from '../lib/useRecommendations'
 import { INTERESTS, countryName } from '../lib/options'
-import { fill, useLang, useT, type Key } from '../lib/i18n'
+import { fill, useT, type Key } from '../lib/i18n'
 import { EmptyState, ErrorState, LoadingState } from '../components/States'
 import { ItemRow } from '../components/explore/ItemRow'
 import '../styles/explore.css'
@@ -17,19 +17,8 @@ const CATS: { c: CategoryFilter; key: Key }[] = [
   { c: 'beauty', key: 'explore.tabBeauty' },
   { c: 'medical', key: 'explore.tabMedical' },
 ]
-const INTEREST_KO: Record<string, string> = {
-  skincare: '스킨케어',
-  makeup: '메이크업',
-  hair: '헤어',
-  dermatology: '피부과 방문',
-  checkup: '건강검진',
-  dental: '치과',
-  neighborhoods: '동네 탐방',
-}
-
 export function Explore({ profile, category, onCategory, onOpen, onAddCart, onSearch, cartQty, tripIds }: ExploreProps) {
   const t = useT()
-  const lang = useLang()
   const { state, retry } = useRecommendations(profile, category)
   const [lane, setLane] = useState<Lane>('real')
   // null = 아직 사용자가 건드리지 않음 → 프로필 관심사를 미리 선택한 상태로 본다.
@@ -97,7 +86,7 @@ export function Explore({ profile, category, onCategory, onOpen, onAddCart, onSe
             <div className="hscroll ex-chips" role="group" aria-label={t('explore.interests')}>
               {available.map((x) => (
                 <button key={x.code} type="button" aria-pressed={selected.has(x.code)} className={`chip${selected.has(x.code) ? ' is-on' : ''}`} onClick={() => toggle(x.code)}>
-                  {lang === 'ko' ? INTEREST_KO[x.code] ?? x.label : x.label}
+                  {t(`shell.i.${x.code}` as Key)}
                 </button>
               ))}
             </div>

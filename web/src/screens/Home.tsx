@@ -12,7 +12,6 @@ import '../styles/shell.css'
 
 // 섹션별 상한. 나머지는 '전체 보기'로 해당 카테고리 Explore 에서 본다. 순서는 서버가 준 그대로(관심사 정렬 포함) 유지한다.
 const PICKS_LIMIT = 6
-const MEDICAL_LIMIT = 6
 const PLACES_LIMIT = 8
 const TAX_TAG = 'tax_refund'
 
@@ -80,33 +79,6 @@ function ProductRow({ item, currency, onOpen }: { item: CatalogItem; currency: s
   )
 }
 
-/** 강남언니 병원 카드 톤의 의료·안내 카드(코랄 강조). */
-function GuideCard({ item, onOpen }: { item: CatalogItem; onOpen: (i: CatalogItem) => void }) {
-  const t = useT()
-  return (
-    <li>
-      <button type="button" className={`home-card home-card--${item.category}`} onClick={() => onOpen(item)}>
-        <Thumb item={item} size={64} />
-        <span className="home-card__info">
-          <span className="home-card__badges">
-            <CategoryBadge category={item.category} />
-            {item.kind === 'guide' && <span className="badge badge--outline">{t('shell.home.official')}</span>}
-            <SponsorBadge value={item.sponsorship} hideUnknown />
-          </span>
-          <span className="home-card__title">{item.title}</span>
-          {subtitleBesideTitle(item) && <span className="home-card__sub">{subtitleBesideTitle(item)}</span>}
-          {item.location?.address && (
-            <span className="home-card__addr"><PinIcon />{item.location.address}</span>
-          )}
-          {(item.sources?.length ?? 0) > 0 && (
-            <span className="home-card__src">{t('common.sources')} {(item.sources?.length ?? 0)}</span>
-          )}
-        </span>
-      </button>
-    </li>
-  )
-}
-
 function PlaceCard({ item, onOpen }: { item: CatalogItem; onOpen: (i: CatalogItem) => void }) {
   return (
     <li>
@@ -151,8 +123,7 @@ export function Home({ profile, onOpen, onBrowse, onSearch, onGoTrip, tripCount,
   const natural = items?.filter((i) => i.sponsorship !== 'sponsored') ?? []
   const sponsored = items?.filter((i) => i.sponsorship === 'sponsored') ?? []
   const picks = natural.filter((i) => i.kind === 'product' && i.category === 'beauty')
-  // 의료 섹션: 공식 안내·의료 상품·병원(진료 분야/병원 태그가 있는 의료 place). 그 밖의 place 는 장소 섹션.
-  const guides = natural.filter((i) => i.kind === 'guide' || (i.kind === 'product' && i.category === 'medical') || isClinic(i))
+  // 홈에는 의료·공식 안내 섹션을 두지 않는다(사용자 요청). 병원은 장소 섹션에도 넣지 않고 '의료' 바로가기(탐색)로 본다.
   const places = natural.filter((i) => i.kind === 'place' && !isClinic(i))
 
   return (
@@ -230,19 +201,6 @@ export function Home({ profile, onOpen, onBrowse, onSearch, onGoTrip, tripCount,
             </section>
           )}
 
-          {guides.length > 0 && (
-            <>
-              <div className="divider" />
-              <section className="sec home-sec" aria-label={t('shell.home.medical')}>
-                <SectionHead title={t('shell.home.medical')} sub={t('shell.home.medicalSub')} onMore={() => onBrowse('medical')} />
-                <ul className="home-cards">
-                  {guides.slice(0, MEDICAL_LIMIT).map((i) => (
-                    <GuideCard key={i.id} item={i} onOpen={onOpen} />
-                  ))}
-                </ul>
-              </section>
-            </>
-          )}
 
           {places.length > 0 && (
             <>

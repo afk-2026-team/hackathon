@@ -16,6 +16,9 @@ logger = logging.getLogger(AGENT_LOGGER_NAME)
 # 결과 model 이름 접두어 — 로그·응답에서 Jev 측정값과 Sonnet 추정값을 구분한다(workflow.md §6)
 PSEUDO_PREFIX = "pseudo-jev/"
 SUPPORTED_TYPES = ("choice", "noul")  # Score 질문은 아직 쓰지 않는다 — 들어오면 조립 시 거부
+# API 측 스키마 제약 디코딩. function_calling 은 claude-sonnet-5-5 가 강제 tool 호출을 지원하지 않아
+# tool 을 안 부르면 OutputParserException 이 난다(2026-10-24 실측 UserWarning)
+STRUCTURED_METHOD = "json_schema"
 
 
 def judgment_schema(questions: dict) -> type[BaseModel]:
@@ -79,11 +82,14 @@ class PseudoJevClassifier:
 
     async def ainvoke(self, request: dict, config=None, **kwargs) -> ClassifierResponse:
         questions = request["questions"]
-        structured = self.llm.with_structured_output(judgment_schema(questions))
+        structured = self.llm.with_structured_output(judgment_schema(questions), method=STRUCTURED_METHOD)
         judgment = await structured.ainvoke(
             [SystemMessage(self.system_prompt), HumanMessage(render_request(request["state"], questions))], config=config
         )
-        return to_response(judgment.model_dump(), questions, self.model_name)
+        response = to_response(judgment.model_dump(), questions, self.model_name)
+        # 판정 전체를 남긴다 — Jev 형식인지 사후 판정하고, 추정값(pseudo-jev/)임을 로그에서 구분한다
+        logger.info(f"[PseudoJev] ✅ {response.model_dump_json()}")
+        return response
 
 
 def build_pseudo_jev(llm: BaseChatModel, system_prompt: str, model_name: str) -> PseudoJevClassifier:

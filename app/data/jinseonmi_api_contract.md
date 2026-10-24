@@ -9,13 +9,13 @@
 
 | 호스트 | 실행 | 포함 라우트 | 비고 |
 |---|---|---|---|
-| **A. discovery_server** `127.0.0.1:8001` | `node scripts/secrets.mjs run --env dev --services supabase,naver,naver_maps,youtube,ash_workflow -- uv run --frozen python -m app.discovery_server` | discovery·auth·maps·evidence·fx·`/health`, `web/dist`가 있으면 SPA | Vite dev(5173)의 `/v1` 프록시 대상. 키가 없어도 뜨며, 키가 필요한 라우트만 503을 준다 |
+| **A. discovery_server** `127.0.0.1:8001` | `node scripts/secrets.mjs run --env dev --services supabase,naver,naver_maps,youtube,ash_workflow -- uv run --frozen python -m app.discovery_server` | discovery·auth·maps·evidence·fx·`/health`, **`POST /v1/responses`(B로 넘기는 명시 프록시, §3.10)**, `web/dist`가 있으면 SPA | Vite dev(5173)의 `/v1` 프록시 대상. 키가 없어도 뜨며, 키가 필요한 라우트만 503을 준다. 프록시는 B가 꺼져 있으면 503 |
 | **B. app.serve** `0.0.0.0:8000` | `node scripts/secrets.mjs run --env dev --services ash_workflow -- uv run python -m app.serve` | `/v1/chat/completions`, `/v1/responses`, `/v1/models`, discovery·auth, `/health` | 기동 시 Jev·Claude 키가 필수이고 없으면 기동을 거부한다. **maps·evidence·fx는 없다** |
 
 - **오류 형식:**
   - A: `{"error": {"message", "param"}}`
   - B: OpenAI envelope `{"error": {"message", "type", "param", "code"}}`. 단 B에서도 discovery의 422 메시지는 chat 예시가 붙은 B 핸들러를 탄다.
-- **현재 실행 중인 8001:** 머지 전 코드다. `/openapi.json` 기준 maps·evidence·fx가 없으므로 컨트롤러가 재시작해야 노출된다.
+- **8001 재시작 반영(2026-10-24 15시대, 컨트롤러):** `/openapi.json`에 maps·geocode·fx·`/v1/responses`가 노출된다.
 
 ## 1. 엔드포인트 목록
 
@@ -34,7 +34,7 @@
 | 11 | GET | `/v1/evidence/videos?query=&lang=&max=` | A | 없음(서버 youtube 키) | 구현 |
 | 12 | GET | `/v1/fx?base=KRW` | A | 없음(키 불필요) | 구현 |
 | 13 | POST | `/v1/chat/completions` | B | 없음 | 구현(OpenAI 호환) |
-| 14 | POST | `/v1/responses` | B | 없음 | 구현(OpenAI Responses 호환) |
+| 14 | POST | `/v1/responses` | B 직접 · A 프록시 | 없음 | 구현(OpenAI Responses 호환). A는 `app/api/v1/assistant_proxy.py`가 검증 후 B로 전달 |
 | 15 | GET | `/v1/models` | B | 없음 | 구현 |
 | — | POST | `/v1/inputs/prepare` | — | — | **미구현.** `app/api/v1/inputs.py`는 라우트가 아니라 chat·responses 공용 입력 매핑 헬퍼다 |
 | — | — | session·state·질문-응답 저장 API | — | — | **미구현.** 별도 세션 엔드포인트나 서버 측 대화 저장소가 없다(§4) |
@@ -45,16 +45,23 @@
 |---|---|---|---|
 | `country` | `country`(필수, alpha-2, 예 `US`·`XX`) | `country`(대문자로 정규화) | 국가로 피부·취향·시술 적합성을 추정하지 않는다 |
 | `language` | `language`(필수, 2~35자) | `language`(소문자, `-` 앞만 사용) | |
-| `currency` | `currency`(필수, ISO 4217 3자) | 전달 안 됨 | responses는 currency를 읽지 않는다 |
+| `currency` | `currency`(필수, ISO 4217 3자) | B 직접: 선택 수신·검증(§2-1) · A 프록시: 받지 않음 | UI 경로에서는 보내지 않는다 |
 | `gender` | `gender?`(받지만 계산에 미사용) | `gender`(프로필에 저장, Home 요청 문장에는 미사용) | |
 | `age_range` | `age_range?`(받지만 미사용) | **`age_band`** | **필드명 불일치.** 어댑터가 `age_range`를 `age_band`로 바꿔야 한다 |
-| `preferences.interests[]` | `preferences.interests` | 전달 안 됨 | 태그·카테고리 정확 일치만 사용 |
-| `preferences.budget_krw` | `preferences.budget_krw`(≥0) | 전달 안 됨 | recommendations는 예산 초과를 제외, explain은 within/above |
-| `preferences.current_product` | `preferences.current_product`(≤200자, 단어 겹침) / compare·explain은 `current_product_id`(목록) 또는 `current_product_name` | 전달 안 됨 | 이름이 기준 제품명과 정확히 같으면 서버가 matched로 본다 |
+| `preferences.interests[]` | `preferences.interests` | B 직접: 평탄 `interests` 수신·검증 · A 프록시: 받지 않음 → UI는 Home `input` 문장으로 전달 | 태그·카테고리 정확 일치만 사용 |
+| `preferences.budget_krw` | `preferences.budget_krw`(≥0) | B 직접: 평탄 `budget_krw` 수신·검증 · A 프록시: 받지 않음 → UI는 Home `input` 문장으로 전달 | recommendations는 예산 초과를 제외, explain은 within/above |
+| `preferences.current_product` | `preferences.current_product`(≤200자, 단어 겹침) / compare·explain은 `current_product_id`(목록) 또는 `current_product_name` | B 직접: 평탄 `current_product` 수신·검증 · A 프록시: 받지 않음 → UI는 Home `input` 문장으로 전달 | 이름이 기준 제품명과 정확히 같으면 서버가 matched로 본다 |
 | (session) | 없음 | `X-Thread-Id` 헤더 — `multi_turn.enabled=false`라 지금은 불필요. 켜면 필수(없으면 400) | 별도 session_id 필드는 없다 |
 
 - **discovery 요청은 extra 필드를 금지한다**(`extra="forbid"`). 모르는 키를 보내면 422다.
-- **`/v1/responses`·chat 요청은 extra를 허용하고 무시한다.**
+- **B의 `/v1/responses`·chat 요청은 extra를 허용하고 무시한다. A 프록시는 extra를 금지한다(422).**
+
+### 2-1. AI 경로별 선호 전달 (중복 없음)
+
+| 경로 | `metadata.profile`에 실리는 것 | 관심사·예산·현재 제품 | 근거 |
+|---|---|---|---|
+| **UI (5173 → A 프록시 → B)** | `language`·`country`·`gender?`·`age_band?`(UI `age_range`를 변환) | 질문이 없을 때 `web/src/lib/assistant.ts` `homeQuestion`이 `input` 문장으로 보낸다: `[Home] I'm interested in … My budget is about KRW … I currently use … What K-beauty products or clinics should I look at first on my trip to Korea?` 선호가 없으면 `input: null`로 B의 Home 요청을 쓴다. 성별·연령은 문장에 넣지 않는다 | A 프록시의 `AssistantProfile`이 4필드 외에는 422로 막으므로 metadata와 문장에 이중으로 실리지 않는다 |
+| **B 직접 호출(서버 간·테스트)** | 위 4필드 + 선택 `currency`(ISO 4217 3자)·`interests`(문자열 ≤10개·각 ≤40자)·`budget_krw`(0 < n ≤ 100,000,000, 정수화)·`current_product`(≤200자). 형식이 틀리면 400(`param=metadata.profile.<field>`) | `input` 없이 오면 Home 요청 문장 끝에 ` Their stated preferences: interests …; budget about KRW …; currently uses ….`를 붙인다. respond 턴의 `[Profile]` 줄에도 표시된다 | `app/api/v1/inputs.py` `PREFERENCE_FIELDS`, `app/graph/nodes.py` `PROFILE_KEYS`. B에 반영되려면 8000 재시작이 필요하다 |
 
 ## 3. 상세
 
@@ -208,7 +215,7 @@
 {"error": {"message": "Invalid request: query.base — Input should be 'KRW'", "param": "query.base"}}
 ```
 
-### 3.10 POST /v1/responses (B만) · POST /v1/chat/completions (B만)
+### 3.10 POST /v1/responses (B 직접 · A 프록시) · POST /v1/chat/completions (B만)
 - **요청 `/v1/responses`:**
   - `{model:"kbeauty-haiku", input?: string | ChatMessage[], stream?: bool, metadata?: {profile?: {language,country,gender,age_band}}}`
   - extra 필드는 허용하고 무시한다. input이 목록이면 마지막 항목이 `role:"user"`여야 한다(아니면 400).
@@ -216,6 +223,12 @@
 - **응답:** `{id:"resp_…", object:"response", created_at, status: completed|incomplete, model, output:[{type:"message", id, status, role:"assistant", content:[{type:"output_text", text, annotations:[]}]}], incomplete_details|null, metadata}`
   - `stream=true`면 SSE로 `response.created` → `response.output_item.added`·`content_part.added`·`output_text.delta`… → `response.completed|incomplete`를 보낸다.
 - **오류:** 없는 model은 404 `model_not_found`, 형식 오류는 400(OpenAI envelope)이다.
+- **A 프록시(`app/api/v1/assistant_proxy.py`) 규칙:**
+  - 요청: `{model?: string(기본 JINSEONMI_AI_MODEL 또는 "kbeauty-haiku"), input?: string|null(≤2000자, 앞뒤 공백 제거), stream?: false, metadata: {profile: {language(2~8자), country(2자), gender?(≤32자), age_band?(≤16자)}}}`
+  - `stream=true`, extra 필드(프로필 안 포함), 2000자 초과, `metadata` 누락은 B 호출 전에 422로 막는다. 오류 형식은 A의 `{"error": {"message", "param"}}`다.
+  - 업스트림은 `JINSEONMI_AI_UPSTREAM`(기본 `http://127.0.0.1:8000`), 시간 상한 60초다. `X-Thread-Id`가 오면 그대로 넘긴다.
+  - 실패 매핑: B 미기동 503, 시간 초과 504, 읽을 수 없거나 `object≠"response"`인 응답 502. B의 4xx·5xx는 상태를 유지하고 B의 `error.message`를 담는다(UI는 이 문구를 `detail`로만 보관하고 사용자 문구는 따로 쓴다).
+  - 실측(2026-10-24): `5173/v1/responses` → A → B 200, 8.6초, `status:"completed"`.
 - **chat/completions:** `{model, messages[], stream?, metadata?}`이며 응답은 OpenAI `chat.completion` 형식이다.
 - **출력 텍스트:** 모델 자유 문장이다. 구조화된 상품 카드·출처 필드는 **없다.** 화면 카드는 discovery 계열 응답으로 그려야 한다.
 
@@ -235,8 +248,8 @@
 2. **session·state·질문-응답 저장 없음.**
    - `/v1/responses`는 요청마다 독립적이다(multi_turn off). `previous_response_id`는 받지만 무시한다(extra 허용).
    - 대화 이어 가기가 필요하면 multi_turn 설정과 `X-Thread-Id`(서버 메모리, 재시작 시 소멸)가 필요하다.
-3. **호스트가 나뉜다.** Vite 프록시가 8001 하나라면 `/v1/responses`는 404다. 8000을 별도 프록시하거나 라우터를 합치는 결정이 필요하다(컨트롤러).
-4. **필드명 불일치:** UI·discovery는 `age_range`, responses는 `age_band`를 쓴다.
+3. **호스트 분리는 A 프록시로 해결했다.** A의 `POST /v1/responses`가 B로 넘긴다(§3.10). B 라우터를 A에 직접 합치지 않은 이유는 `app.state.registry`·lifespan 의존 때문이다. chat/completions·models는 여전히 B에만 있다.
+4. **필드명 불일치:** UI·discovery는 `age_range`, responses는 `age_band`를 쓴다. `web/src/lib/assistant.ts` `toAssistantProfile`이 변환한다.
 5. **responses 출력은 자유 텍스트다.** 출처·카드 구조가 없으므로 사실 근거 UI는 compare·explain·evidence로 그린다.
 6. **geocode는 주소 검색이다.** 장소명은 빈 결과가 나올 수 있다.
 7. **카탈로그 건수:** 머지 작업 트리는 20건이다(beauty product 11, beauty place 3, beauty guide 1, medical guide 3, medical place 2). main `62e7291`은 7건이다. 예시의 recommendations는 beauty와 예산 30,000원 조건이라 15건이 나왔다. compare 대상 표시사항(성분·용량)은 ILLIYOON 1건만 있고, 나머지 product는 `unverified`로 나온다.

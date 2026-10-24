@@ -794,8 +794,8 @@
       "category": "medical",
       "title": "Gangnam Severance Hospital",
       "subtitle": "연세대학교 의과대학 강남세브란스병원",
-      "description": "A tertiary general hospital in Gangnam-gu, Seoul (HIRA classification: 상급종합). Registered with KHIDI as a medical institution that attracts foreign patients (registration M-2009-01-01-0773; status 'maintained' in the list dated 2026-07-21). HIRA data lists specialist doctors in dermatology and dentistry among its departments. English address in the Medical Korea listing: 211, Eonju-ro, Gangnam-gu, Seoul. Medical decisions and bookings are made by the institution.",
-      "image_url": null,
+      "description": "A tertiary general hospital in Gangnam-gu, Seoul (HIRA classification: 상급종합). Registered with KHIDI as a medical institution that attracts foreign patients (registration M-2009-01-01-0773; status 'maintained' in the list dated 2026-07-21). HIRA data lists specialist doctors in dermatology and dentistry among its departments. English address in the Medical Korea listing: 211, Eonju-ro, Gangnam-gu, Seoul. Medical decisions and bookings are made by the institution. Official English site: the hospital says its International Health Care Center has operated since 2003; treatment appointments +82-2-2019-3600/3690 (gnseverance2@yuhs.ac). Official address in English: 211 Eonju-ro, Gangnam-gu, Seoul 06273. The official directions page lists a hospital shuttle from Dogok (Line 3) Exit 2 and Hanti (Suin-Bundang Line) Exit 7 on weekdays and Saturday mornings, not on Sundays or public holidays. Language support is as stated by the hospital and was not verified by us.",
+      "image_url": "https://gs.severance.healthcare/_res/yuhs/_share/img/hospital-en/img-hospital-sev3@2x.png",
       "price_krw": null,
       "location": {
         "name": "Gangnam Severance Hospital",
@@ -823,6 +823,21 @@
           "label": "HIRA – Nationwide hospitals and pharmacies (data.go.kr, 2026-09)",
           "url": "https://www.data.go.kr/data/15051059/fileData.do",
           "checked_at": "2026-10-24"
+        },
+        {
+          "label": "Gangnam Severance Hospital – Contact Us (official)",
+          "url": "https://gs.severance.healthcare/gs-en/patients/contact.do",
+          "checked_at": "2026-10-24"
+        },
+        {
+          "label": "Gangnam Severance Hospital – Maps & Directions (official)",
+          "url": "https://gs.severance.healthcare/gs-en/about/map.do",
+          "checked_at": "2026-10-24"
+        },
+        {
+          "label": "Gangnam Severance Hospital official English site (International Health Care Center since 2003)",
+          "url": "https://gs.severance.healthcare/gs-en/index.do",
+          "checked_at": "2026-10-24"
         }
       ],
       "sponsorship": "unknown",
@@ -840,7 +855,7 @@
         "gangnam",
         "plastic_surgery"
       ],
-      "provenance": "official_public_datasets(KHIDI foreign-patient institution list 2026-07-21 + KHIDI Medical Korea English listing 2025-09-24: data.go.kr '이용허락범위 제한 없음'; HIRA 병원정보서비스 2026.9: KOGL type 1); title=Medical Korea English listing; subtitle=KHIDI Korean name; match: KHIDI Korean name->HIRA by exact name within province; HIRA->Medical Korea English listing by building number+district; lat/lng=HIRA 병원정보서비스 2026.9 좌표(Y)/좌표(X); address trimmed from '서울특별시 강남구 언주로 211, 강남세브란스병원 (도곡동)'; dept tags=HIRA 진료과목정보 2026.9; no ranking, prices or reviews"
+      "provenance": "official_public_datasets(KHIDI foreign-patient institution list 2026-07-21 + KHIDI Medical Korea English listing 2025-09-24: data.go.kr '이용허락범위 제한 없음'; HIRA 병원정보서비스 2026.9: KOGL type 1); title=Medical Korea English listing; subtitle=KHIDI Korean name; match: KHIDI Korean name->HIRA by exact name within province; HIRA->Medical Korea English listing by building number+district; lat/lng=HIRA 병원정보서비스 2026.9 좌표(Y)/좌표(X); address trimmed from '서울특별시 강남구 언주로 211, 강남세브란스병원 (도곡동)'; dept tags=HIRA 진료과목정보 2026.9; no ranking, prices or reviews; official_site_enrich 2026-10-24: description facts from gs.severance.healthcare/gs-en home, contact and map pages; image_url=official site card (alt 'Gangnam Severance Hospital'), rights with YUHS, demo reference only"
     },
     {
       "id": "medical-kangbuk-samsung-hospital",
@@ -2294,8 +2309,8 @@
       "category": "medical",
       "title": "Severance Hospital",
       "subtitle": "연세대학교 의과대학 세브란스병원",
-      "description": "A tertiary general hospital in Seodaemun-gu, Seoul (HIRA classification: 상급종합). Registered with KHIDI as a medical institution that attracts foreign patients (registration M-2009-01-01-0356; status 'maintained' in the list dated 2026-07-21). HIRA data lists specialist doctors in dermatology among its departments. English address in the Medical Korea listing: 50-1, Yonsei-ro, Seodaemun-gu, Seoul. Medical decisions and bookings are made by the institution.",
-      "image_url": null,
+      "description": "A tertiary general hospital in Seodaemun-gu, Seoul (HIRA classification: 상급종합). Registered with KHIDI as a medical institution that attracts foreign patients (registration M-2009-01-01-0356; status 'maintained' in the list dated 2026-07-21). HIRA data lists specialist doctors in dermatology among its departments. English address in the Medical Korea listing: 50-1, Yonsei-ro, Seodaemun-gu, Seoul. Medical decisions and bookings are made by the institution. Official English site: an International Health Care Center for foreign patients is on the 3rd floor (appointments +82-2-2228-5800/5810, ihcc@yuhs.ac). Official address in English: 50-1 Yonsei-ro, Seodaemun-gu, Seoul 03722. Nearest subway on the official directions page: Sinchon Station (Line 2), Exit 1, about a 15-minute walk. Language support is as stated by the hospital and was not verified by us.",
+      "image_url": "https://sev.severance.healthcare/_res/yuhs/_share/img/hospital-en/img-hospital-sev1@2x.png",
       "price_krw": null,
       "location": {
         "name": "Severance Hospital",
@@ -2323,6 +2338,16 @@
           "label": "HIRA – Nationwide hospitals and pharmacies (data.go.kr, 2026-09)",
           "url": "https://www.data.go.kr/data/15051059/fileData.do",
           "checked_at": "2026-10-24"
+        },
+        {
+          "label": "Severance Hospital – Contact Us (International Health Care Center, official)",
+          "url": "https://sev.severance.healthcare/sev-en/patients/contact.do",
+          "checked_at": "2026-10-24"
+        },
+        {
+          "label": "Severance Hospital – Maps & Directions (official)",
+          "url": "https://sev.severance.healthcare/sev-en/about/map.do",
+          "checked_at": "2026-10-24"
         }
       ],
       "sponsorship": "unknown",
@@ -2338,7 +2363,7 @@
         "seoul",
         "plastic_surgery"
       ],
-      "provenance": "official_public_datasets(KHIDI foreign-patient institution list 2026-07-21 + KHIDI Medical Korea English listing 2025-09-24: data.go.kr '이용허락범위 제한 없음'; HIRA 병원정보서비스 2026.9: KOGL type 1); title=Medical Korea English listing; subtitle=KHIDI Korean name; match: KHIDI Korean name->HIRA by exact name within province; HIRA->Medical Korea English listing by building number+district; lat/lng=HIRA 병원정보서비스 2026.9 좌표(Y)/좌표(X); address trimmed from '서울특별시 서대문구 연세로 50-1, (신촌동)'; dept tags=HIRA 진료과목정보 2026.9; no ranking, prices or reviews"
+      "provenance": "official_public_datasets(KHIDI foreign-patient institution list 2026-07-21 + KHIDI Medical Korea English listing 2025-09-24: data.go.kr '이용허락범위 제한 없음'; HIRA 병원정보서비스 2026.9: KOGL type 1); title=Medical Korea English listing; subtitle=KHIDI Korean name; match: KHIDI Korean name->HIRA by exact name within province; HIRA->Medical Korea English listing by building number+district; lat/lng=HIRA 병원정보서비스 2026.9 좌표(Y)/좌표(X); address trimmed from '서울특별시 서대문구 연세로 50-1, (신촌동)'; dept tags=HIRA 진료과목정보 2026.9; no ranking, prices or reviews; official_site_enrich 2026-10-24: description facts from sev.severance.healthcare/sev-en contact and map pages; image_url=official site card (alt 'Severance Hospital'), rights with YUHS, demo reference only"
     },
     {
       "id": "medical-sung-ae-medical-foundation",
@@ -7909,7 +7934,7 @@
       "category": "medical",
       "title": "Myeongdong Gowoonsesang Dermatology",
       "subtitle": "명동고운세상피부과의원",
-      "description": "A clinic in Jung-gu, Seoul (HIRA classification: 의원). Registered with KHIDI as a medical institution that attracts foreign patients (registration M-2017-01-08-4801; status 'maintained' in the list dated 2026-07-21). HIRA lists dermatology among its departments (1 dermatology specialist(s) reported). English address in the Medical Korea listing: 308-311, 3F, 131, Toegye-ro, Jung-gu, Seoul, Republic of Korea. Medical decisions and bookings are made by the institution.",
+      "description": "A clinic in Jung-gu, Seoul (HIRA classification: 의원). Registered with KHIDI as a medical institution that attracts foreign patients (registration M-2017-01-08-4801; status 'maintained' in the list dated 2026-07-21). HIRA lists dermatology among its departments (1 dermatology specialist(s) reported). English address in the Medical Korea listing: 308-311, 3F, 131, Toegye-ro, Jung-gu, Seoul, Republic of Korea. Medical decisions and bookings are made by the institution. Official clinic site (Korean): Myeongdong branch on the 3rd floor of the Sinil Building, 131 Toegye-ro, at Myeongdong Station (Line 4) Exits 8 and 9; phone 02-755-5411. Hours as posted: Mon, Tue, Wed, Fri 10:00–19:30 (lunch 13:00–14:00), Sat 10:00–15:00; closed Thu, Sun and public holidays. The branch site has a Chinese-language page. Language support is as stated by the clinic and was not verified by us.",
       "image_url": null,
       "price_krw": null,
       "location": {
@@ -7938,6 +7963,16 @@
           "label": "HIRA – Nationwide hospitals and pharmacies (data.go.kr, 2026-09)",
           "url": "https://www.data.go.kr/data/15051059/fileData.do",
           "checked_at": "2026-10-24"
+        },
+        {
+          "label": "Gowoonsesang Dermatology – Myeongdong branch directions and hours (official, Korean)",
+          "url": "https://www.gowoonss.com/bbs/content.php?co_id=map2",
+          "checked_at": "2026-10-24"
+        },
+        {
+          "label": "Gowoonsesang Dermatology – Myeongdong branch Chinese page (official)",
+          "url": "https://www.gowoonss.com/bbs/content.php?co_id=myungdong_12",
+          "checked_at": "2026-10-24"
         }
       ],
       "sponsorship": "unknown",
@@ -7954,7 +7989,7 @@
         "seoul",
         "jung_gu"
       ],
-      "provenance": "official_public_datasets(KHIDI foreign-patient institution list 2026-07-21 + KHIDI Medical Korea English listing 2025-09-24: data.go.kr '이용허락범위 제한 없음'; HIRA 병원정보서비스 2026.9: KOGL type 1); title=Medical Korea English listing; subtitle=KHIDI Korean name; match: KHIDI Korean name->HIRA by exact name within province; HIRA->Medical Korea English listing by phone+district; lat/lng=HIRA 병원정보서비스 2026.9 좌표(Y)/좌표(X); address trimmed from '서울특별시 중구 퇴계로 131, 3층 308~311호 (충무로2가, 신일빌딩)'; dept tags=HIRA 진료과목정보 2026.9; no ranking, prices or reviews"
+      "provenance": "official_public_datasets(KHIDI foreign-patient institution list 2026-07-21 + KHIDI Medical Korea English listing 2025-09-24: data.go.kr '이용허락범위 제한 없음'; HIRA 병원정보서비스 2026.9: KOGL type 1); title=Medical Korea English listing; subtitle=KHIDI Korean name; match: KHIDI Korean name->HIRA by exact name within province; HIRA->Medical Korea English listing by phone+district; lat/lng=HIRA 병원정보서비스 2026.9 좌표(Y)/좌표(X); address trimmed from '서울특별시 중구 퇴계로 131, 3층 308~311호 (충무로2가, 신일빌딩)'; dept tags=HIRA 진료과목정보 2026.9; no ranking, prices or reviews; official_site_enrich 2026-10-24: address/exit/phone/hours transcribed from the official directions image https://www.gowoonss.com/img/map/map2/myungdong_map_cont_new.jpg on co_id=map2; image_url stays null"
     },
     {
       "id": "medical-ohsujin-dermatology-clinic",
@@ -17165,8 +17200,8 @@
       "category": "medical",
       "title": "Grand Plastic Surgery",
       "subtitle": "그랜드성형외과의원",
-      "description": "A clinic in Gangnam-gu, Seoul (HIRA classification: 의원). Registered with KHIDI as a medical institution that attracts foreign patients (registration M-2019-01-08-5376; status 'maintained' in the list dated 2026-07-21). HIRA lists plastic surgery among its departments (2 plastic surgery specialist(s) reported). English address in the Medical Korea listing: 841, Nonhyeon-ro, Gangnam-gu, Seoul, Korea. Medical decisions and bookings are made by the institution.",
-      "image_url": null,
+      "description": "A clinic in Gangnam-gu, Seoul (HIRA classification: 의원). Registered with KHIDI as a medical institution that attracts foreign patients (registration M-2019-01-08-5376; status 'maintained' in the list dated 2026-07-21). HIRA lists plastic surgery among its departments (2 plastic surgery specialist(s) reported). English address in the Medical Korea listing: 841, Nonhyeon-ro, Gangnam-gu, Seoul, Korea. Medical decisions and bookings are made by the institution. Official sites: 6th floor, Miso Building, 841 Nonhyeon-ro, Gangnam-gu, Seoul; the Korean site gives 173 m from Apgujeong Station (Line 3) Exit 4. English contact +82-10-9132-6546, Grandps.en@gmail.com. Hours as posted: Mon–Fri 10:00–19:00, Sat 10:00–17:00, closed Sundays and public holidays. The site has English, Chinese, Japanese, Thai and other language versions; language support at the clinic was not verified by us.",
+      "image_url": "https://www.grandsurgery.com/images/meta.jpg",
       "price_krw": null,
       "location": {
         "name": "Grand Plastic Surgery",
@@ -17194,6 +17229,16 @@
           "label": "HIRA – Nationwide hospitals and pharmacies (data.go.kr, 2026-09)",
           "url": "https://www.data.go.kr/data/15051059/fileData.do",
           "checked_at": "2026-10-24"
+        },
+        {
+          "label": "Grand Plastic Surgery official English site (address, hours, contact)",
+          "url": "https://eng.grandsurgery.com/",
+          "checked_at": "2026-10-24"
+        },
+        {
+          "label": "Grand Plastic Surgery official Korean site (논현로 841, 압구정역 4번 출구 173m)",
+          "url": "https://www.grandsurgery.com/",
+          "checked_at": "2026-10-24"
         }
       ],
       "sponsorship": "unknown",
@@ -17210,7 +17255,7 @@
         "seoul",
         "gangnam"
       ],
-      "provenance": "official_public_datasets(KHIDI foreign-patient institution list 2026-07-21 + KHIDI Medical Korea English listing 2025-09-24: data.go.kr '이용허락범위 제한 없음'; HIRA 병원정보서비스 2026.9: KOGL type 1); title=Medical Korea English listing; subtitle=KHIDI Korean name; match: KHIDI Korean name->HIRA by exact name within province; HIRA->Medical Korea English listing by phone+district; lat/lng=HIRA 병원정보서비스 2026.9 좌표(Y)/좌표(X); address trimmed from '서울특별시 강남구 논현로 841, 제이비 미소빌딩 6층 601호 (신사동)'; dept tags=HIRA 진료과목정보 2026.9; no ranking, prices or reviews"
+      "provenance": "official_public_datasets(KHIDI foreign-patient institution list 2026-07-21 + KHIDI Medical Korea English listing 2025-09-24: data.go.kr '이용허락범위 제한 없음'; HIRA 병원정보서비스 2026.9: KOGL type 1); title=Medical Korea English listing; subtitle=KHIDI Korean name; match: KHIDI Korean name->HIRA by exact name within province; HIRA->Medical Korea English listing by phone+district; lat/lng=HIRA 병원정보서비스 2026.9 좌표(Y)/좌표(X); address trimmed from '서울특별시 강남구 논현로 841, 제이비 미소빌딩 6층 601호 (신사동)'; dept tags=HIRA 진료과목정보 2026.9; no ranking, prices or reviews; official_site_enrich 2026-10-24: facts from grandsurgery.com and eng.grandsurgery.com footer/contact blocks; brand awards on the site deliberately not used; image_url=official og:image logo"
     },
     {
       "id": "medical-hivom-plastic-surgery-clinic",
@@ -21511,8 +21556,8 @@
       "category": "medical",
       "title": "View Plastic Surgery",
       "subtitle": "뷰성형외과의원",
-      "description": "A clinic in Gangnam-gu, Seoul (HIRA classification: 의원). Registered with KHIDI as a medical institution that attracts foreign patients (registration M-2009-01-08-0329; status 'maintained' in the list dated 2026-07-21). HIRA lists plastic surgery among its departments (14 plastic surgery specialist(s) reported). English address in the Medical Korea listing: 107, Bongeunsa-ro, Gangnam-gu, Seoul, Korea. Medical decisions and bookings are made by the institution.",
-      "image_url": null,
+      "description": "A clinic in Gangnam-gu, Seoul (HIRA classification: 의원). Registered with KHIDI as a medical institution that attracts foreign patients (registration M-2009-01-08-0329; status 'maintained' in the list dated 2026-07-21). HIRA lists plastic surgery among its departments (14 plastic surgery specialist(s) reported). English address in the Medical Korea listing: 107, Bongeunsa-ro, Gangnam-gu, Seoul, Korea. Medical decisions and bookings are made by the institution. Official English site: 107 Bongeunsa-ro, Gangnam-gu, Seoul; nearest subway Sinnonhyeon Station (Line 9); Tel +82-2-539-1177, eng_viewps@viewclinic.com. Hours as posted: weekdays 10:00–19:00, Friday until 21:00, Saturday 10:00–17:00. The clinic says it offers multilingual consultation and interpretation for international patients; this was not verified by us.",
+      "image_url": "https://www.viewplasticsurgery.com/wp-content/uploads/2026/06/default-og.jpg",
       "price_krw": null,
       "location": {
         "name": "View Plastic Surgery",
@@ -21540,6 +21585,16 @@
           "label": "HIRA – Nationwide hospitals and pharmacies (data.go.kr, 2026-09)",
           "url": "https://www.data.go.kr/data/15051059/fileData.do",
           "checked_at": "2026-10-24"
+        },
+        {
+          "label": "VIEW Plastic Surgery official English site (contact, hours, international patient services)",
+          "url": "https://www.viewplasticsurgery.com/",
+          "checked_at": "2026-10-24"
+        },
+        {
+          "label": "VIEW Plastic Surgery official Korean site (address 서울 강남구 봉은사로 107)",
+          "url": "https://www.viewclinic.com/",
+          "checked_at": "2026-10-24"
         }
       ],
       "sponsorship": "unknown",
@@ -21556,7 +21611,7 @@
         "seoul",
         "gangnam"
       ],
-      "provenance": "official_public_datasets(KHIDI foreign-patient institution list 2026-07-21 + KHIDI Medical Korea English listing 2025-09-24: data.go.kr '이용허락범위 제한 없음'; HIRA 병원정보서비스 2026.9: KOGL type 1); title=Medical Korea English listing; subtitle=KHIDI Korean name; match: KHIDI Korean name->HIRA by exact name within province; HIRA->Medical Korea English listing by phone+district; lat/lng=HIRA 병원정보서비스 2026.9 좌표(Y)/좌표(X); address trimmed from '서울특별시 강남구 봉은사로 107, B1층, 1층 일부, 3~5층, 7, 8, 10~14층 (논현동)'; dept tags=HIRA 진료과목정보 2026.9; no ranking, prices or reviews"
+      "provenance": "official_public_datasets(KHIDI foreign-patient institution list 2026-07-21 + KHIDI Medical Korea English listing 2025-09-24: data.go.kr '이용허락범위 제한 없음'; HIRA 병원정보서비스 2026.9: KOGL type 1); title=Medical Korea English listing; subtitle=KHIDI Korean name; match: KHIDI Korean name->HIRA by exact name within province; HIRA->Medical Korea English listing by phone+district; lat/lng=HIRA 병원정보서비스 2026.9 좌표(Y)/좌표(X); address trimmed from '서울특별시 강남구 봉은사로 107, B1층, 1층 일부, 3~5층, 7, 8, 10~14층 (논현동)'; dept tags=HIRA 진료과목정보 2026.9; no ranking, prices or reviews; official_site_enrich 2026-10-24: facts from viewplasticsurgery.com home (contact block, concierge section); marketing claims on the site (rankings, awards) deliberately not used; image_url=official og:image logo"
     },
     {
       "id": "medical-wannabe-plastic-surgery",

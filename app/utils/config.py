@@ -14,13 +14,14 @@ LOG_LEVELS = ("DEBUG", "INFO", "WARNING", "ERROR")
 PORT_RANGE = range(1, 65536)
 
 # 키 계약(spec §4.1·§6.5) — 여기와 envs/agent_config.yaml 을 함께 바꾼다. 모르는 키는 기동 거부(K3).
-TOP_KEYS = {"AGENT_NAME", "log_level", "server", "profiles", "jev", "router", "prompt", "multi_turn"}
+TOP_KEYS = {"AGENT_NAME", "log_level", "server", "profiles", "jev", "router", "prompt", "multi_turn", "knowledge"}
 BLOCK_KEYS = {
     "server": {"host", "port", "serving_type"},
     "jev": {"model_path", "questions_prompt"},
     "router": {"branching_enabled", "decline_labels"},
     "prompt": {"respond_system", "respond_turn", "decline_system"},
     "multi_turn": {"enabled", "thread_header"},
+    "knowledge": {"bundle_path", "top_n"},
 }
 PROFILE_KEYS = {"id", "llm"}
 PROFILE_LLM_KEYS = {"path", "override"}
@@ -81,6 +82,9 @@ def validate_config(config: dict) -> None:
     _is_bool("router.branching_enabled", config["router"]["branching_enabled"])
     if not isinstance(config["router"]["decline_labels"], list):
         raise ValueError("router.decline_labels 는 라벨 목록이어야 한다(비우려면 [])")
+    top_n = config["knowledge"]["top_n"]
+    if not isinstance(top_n, int) or isinstance(top_n, bool) or top_n < 1:
+        raise ValueError(f"knowledge.top_n 은 1 이상 정수: {top_n!r}")
     _is_bool("multi_turn.enabled", config["multi_turn"]["enabled"])
     header = config["multi_turn"]["thread_header"]
     if not isinstance(header, str) or not header.strip():

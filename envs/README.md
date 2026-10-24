@@ -1,50 +1,90 @@
-# envs/ — API 키·환경변수 보관 폴더
+# 팀 공통 시크릿 매니저
 
-이 폴더에는 외부 서비스 API 키 같은 비밀값을 `*.env` 파일로 둡니다.
-**키 파일은 git이 추적하지 않으므로 원격 저장소로 푸시되지 않습니다.** 이 README와 키 이름만 적은 양식 파일만 추적합니다.
+키 값은 **Infisical**에 둡니다. 앱 시작 시 한 번 읽어 해당 프로세스에만 전달하며 `.env` 파일을 만들지 않습니다. 네 명의 Claude 모두 같은 실행기·서버 모듈을 사용합니다.
 
-## 추적 규칙
+## 처음 한 번
 
-| 경로 | git | 예 |
-|---|---|---|
-| `envs/README.md` | 추적 | 이 문서 |
-| `envs/**/*.env.example` | 추적 | `openai.env.example` — 키 **이름**만, 값은 비움 |
-| `envs/**/*.env` | **비추적** | `openai.env`, `.env`, `sub/prod.env` |
-| `envs/**/*.env.*` | **비추적** | `openai.env.local`, `prod.env.bak` |
+1. Infisical 초대를 수락하고 `afk-2026-team` 조직의 `afk-sparks-rag` 프로젝트에 참여합니다.
+2. Node.js 24 이상과 [Infisical CLI](https://infisical.com/docs/cli/overview)를 설치합니다. 로컬 확인 버전은 CLI `0.44.8`입니다.
+3. **hackathon 저장소**에서 자기 계정으로 로그인합니다. Cloud US를 선택합니다.
 
-규칙 정본은 루트 `.gitignore` 의 `# API KEY 폴더` 절입니다.
-
-## 파일명 규칙
-
-```
-envs/<서비스|용도>.env            # 실제 키 (비추적)
-envs/<서비스|용도>.env.example    # 양식 (추적)
+```sh
+infisical login
+node scripts/secrets.mjs check --env dev
 ```
 
-- 이름은 소문자·숫자·`_`·`-` 로 짓습니다(예: `openai.env`, `google_drive.env`).
-- 같은 서비스의 환경별 값은 하위 폴더나 접미사로 나눕니다(예: `prod/openai.env`, `openai.env.local`). 둘 다 비추적입니다.
+프로젝트와 `/app` 경로는 `infisical.config.json`에 연결되어 있어 `infisical init`을 다시 할 필요가 없습니다. 점검은 이름과 `OK/MISSING/INVALID`만 출력하며 유료 API를 호출하지 않습니다.
 
-## 새 키 추가하기
+## 앱 실행
 
-1. 양식이 있으면 복사합니다: `cp envs/openai.env.example envs/openai.env`
-2. `envs/openai.env` 에 값을 채웁니다.
-   ```dotenv
-   OPENAI_API_KEY=sk-...
-   ```
-3. 다른 사람도 필요한 키라면 값을 비운 양식 `envs/openai.env.example` 을 함께 만들어 커밋합니다.
-   ```dotenv
-   OPENAI_API_KEY=
-   ```
+```sh
+# Node 앱: 앱의 package.json에 dev 스크립트가 생긴 뒤 사용
+node scripts/secrets.mjs run --env dev --services claude,supabase -- node --run dev
 
-## 푸시 전 확인
+# Python 앱: 실제 앱 파일에 맞게 명령 변경
+node scripts/secrets.mjs run --env dev --services claude,naver,youtube -- python app.py
 
-```bash
-git check-ignore -v envs/openai.env   # 규칙이 출력되면 비추적(정상)
-git ls-files envs                     # README.md 와 *.env.example 만 나와야 함
+# 특정 서비스만 확인
+node scripts/secrets.mjs check --env dev --services nebius
 ```
 
-## 주의
+`--services`를 생략하면 등록 서비스 전체를 사용합니다. 선택한 서비스의 필수 설정이 없거나 잘못됐으면 앱을 시작하지 않습니다. 이 저장소에는 아직 앱 실행 스크립트가 없으므로 위 앱 명령은 실제 구현에 맞춰 지정합니다. Windows에서는 셸 배치 파일인 `npm.cmd` 대신 `node --run dev`처럼 직접 실행할 수 있는 명령을 사용합니다.
 
-- `.gitignore` 는 **아직 추적되지 않은 파일만** 막습니다. 키 파일을 실수로 `git add -f` 했거나 이미 커밋했다면 `git rm --cached <파일>` 로 추적을 끊고, 노출된 키는 해당 서비스에서 **폐기·재발급**하세요(이력에 남은 값은 지워지지 않습니다).
-- `*.env.example` 과 이 README에는 실제 값을 절대 적지 않습니다.
-- 이 폴더는 서고(`__llm-wiki`) 색인 대상이 아닙니다.
+| 서비스 | 등록 설정 |
+| --- | --- |
+| `claude` | `ANTHROPIC_API_KEY`, `CLAUDE_API_MODEL` |
+| `supabase` | `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_SECRET_KEY`, `SUPABASE_STORAGE_BUCKET` |
+| `nebius` | `NEBIUS_API_KEY`, `NEBIUS_BASE_URL`, `NEBIUS_EMBEDDING_MODEL`, `NEBIUS_EMBEDDING_DIMENSIONS` |
+| `naver` | `NAVER_CLIENT_ID`, `NAVER_CLIENT_SECRET`, `NAVER_API_BASE_URL` |
+| `youtube` | `YOUTUBE_API_KEY` |
+
+키를 수정하면 앱을 재시작합니다. 개인 키 override는 사용하지 않으며 네 명 모두 공유 값을 읽습니다. `dev`와 `prod`는 현재 같은 외부 자원·크레딧·할당량을 공유합니다.
+
+## 서버 코드에서 읽기
+
+```js
+// 파일 위치에 맞게 상대 경로 조정. 서버 전용입니다.
+import { getServiceSecrets, getSecret, getPublicConfig } from "../src/server/secrets.mjs";
+
+const { ANTHROPIC_API_KEY, CLAUDE_API_MODEL } = getServiceSecrets("claude");
+// 위 값을 Anthropic SDK의 apiKey와 요청의 model에 전달합니다.
+const youtubeKey = getSecret("YOUTUBE_API_KEY");
+// 키나 설정 객체를 console.log / 응답 JSON에 넣지 않습니다.
+const browserConfig = getPublicConfig();
+// SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY 두 항목만 반환합니다.
+```
+
+TypeScript 타입 선언도 제공합니다. 프론트엔드는 이 서버 모듈을 직접 import하지 않고 필요한 공개 설정만 서버에서 전달받습니다. 서버 키를 `NEXT_PUBLIC_`·`VITE_`로 만들지 않습니다. Supabase 공개 키 사용 시에도 테이블 접근 권한은 별도로 설정해야 합니다.
+
+Python은 같은 실행기로 시작한 뒤 `os.environ["ANTHROPIC_API_KEY"]`처럼 읽습니다. Infisical 조회 로직을 Python 앱에 또 만들 필요는 없습니다.
+
+## 배포·CI
+
+Node와 Infisical CLI가 설치된 실행 환경에서 사용할 수 있습니다. 배포 플랫폼의 비밀 환경변수에 **한 방식**을 설정합니다.
+
+| 인증 방식 | 비밀 환경변수 |
+| --- | --- |
+| 발급된 단기 토큰 | `INFISICAL_TOKEN` |
+| Universal Auth | `INFISICAL_CLIENT_ID`와 `INFISICAL_CLIENT_SECRET` |
+
+```sh
+node scripts/secrets.mjs run --env prod --services claude,supabase -- node --run start
+```
+
+Universal Auth는 시작할 때 토큰을 받아 메모리에서 사용합니다. 인증 정보는 하위 앱에 전달하지 않습니다. 읽기 실패 시 이전 키를 재사용하지 않습니다. 로그인·네트워크·권한·만료를 확인한 뒤 다시 실행하세요. 이 변경은 배포 플랫폼 연결이나 키 유효기간 연장을 수행하지 않습니다. 서버리스 플랫폼에서 CLI를 실행할 수 없다면 그 플랫폼의 Infisical 동기화 방식으로 같은 설정 이름을 주입해야 합니다.
+
+## 새 설정 추가·검증
+
+1. 실제 값은 Infisical의 해당 환경 `/app`에 등록합니다.
+2. `infisical.config.json`의 서비스와 타입을 갱신합니다. 키 값은 넣지 않습니다.
+3. Node/TypeScript 공통 타입 `src/server/secrets.d.mts`를 맞춥니다.
+4. 테스트와 해당 환경의 `check`를 실행합니다.
+
+```sh
+node --test tests/secrets/*.test.mjs
+node scripts/secrets.mjs check --env dev
+```
+
+`.gitignore`는 사고 예방용이며 이미 커밋한 비밀값을 지우지 않습니다. 실제 키가 노출됐다면 해당 키를 폐기·재발급해야 합니다.
+
+공식 참고: [CLI 문서](https://infisical.com/docs/cli/reference), [Universal Auth 로그인](https://infisical.com/docs/api-reference/endpoints/universal-auth/login). 설정 정본은 `infisical.config.json`, Claude 공통 규칙은 `../.claude/rules/secrets.md`입니다.

@@ -1,0 +1,33 @@
+{
+  "projectId": "4043883c-5c6f-4f4c-8f31-35143578a818",
+  "domain": "https://app.infisical.com/api",
+  "secretPath": "/app",
+  "environments": ["dev", "prod"],
+  "services": {
+    "claude": {
+      "ANTHROPIC_API_KEY": "string",
+      "CLAUDE_API_MODEL": "string"
+    },
+    "supabase": {
+      "SUPABASE_URL": "https",
+      "SUPABASE_PUBLISHABLE_KEY": "string",
+      "SUPABASE_SECRET_KEY": "string",
+      "SUPABASE_STORAGE_BUCKET": "string"
+    },
+    "nebius": {
+      "NEBIUS_API_KEY": "string",
+      "NEBIUS_BASE_URL": "https",
+      "NEBIUS_EMBEDDING_MODEL": "string",
+      "NEBIUS_EMBEDDING_DIMENSIONS": "positive-integer"
+    },
+    "naver": {
+      "NAVER_CLIENT_ID": "string",
+      "NAVER_CLIENT_SECRET": "string",
+      "NAVER_API_BASE_URL": "https"
+    },
+    "youtube": {
+      "YOUTUBE_API_KEY": "string"
+    }
+  },
+  "publicKeys": ["SUPABASE_URL", "SUPABASE_PUBLISHABLE_KEY"]
+}

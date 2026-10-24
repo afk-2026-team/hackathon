@@ -27,9 +27,13 @@
 - 승인된 interview 범위 밖의 비가역·외부 행동(배포·대량 삭제·원격 push·외부 발행)은 하지 않는다 — 필요하면 interview 를 재개한다.
 - 외부 스킬·플러그인·MCP 는 사용자 검수 없이 설치하지 않는다.
 - 비밀값·개인 경로·사설 주소를 추적 파일에 적지 않는다.
+- 시크릿 정본은 팀 Infisical이다. 네 명 모두 `scripts/secrets.mjs` 실행기와 `src/server/secrets.mjs` 접근 모듈을 사용한다. 개별 `.env` 복사·별도 조회 코드·키 출력은 만들지 않는다. 상세 규칙은 `.claude/rules/secrets.md`를 따른다.
 
 ## 명령
 
+- 시크릿 점검(값 미출력): `node scripts/secrets.mjs check --env dev`
+- 앱 실행: `node scripts/secrets.mjs run --env dev --services claude,supabase -- node --run dev` (실제 앱 명령에 맞게 변경)
+- 시크릿 테스트: `node --test tests/secrets/*.test.mjs`
 - 지식 조회: `node .claude/skills/wiki-desk/src/cli.ts query --terms "<핵심어>" --terms "<동의어>"`
 - 문서 이름: `node .claude/skills/wiki-desk/src/cli.ts name --type <interview|plan|devlog|checklist> --topic <주제>`
 - 서고 입고: `node .claude/skills/wiki-desk/src/cli.ts sync --apply` → `… check`
@@ -43,3 +47,4 @@
 
 - 작업수행규칙: `.claude/rules/workflow.md` · 문서발행규칙: `.claude/rules/docs.md`
 - 사서: `.claude/skills/wiki-desk/SKILL.md` · 환경 명세: `seed/spec.md`(비추적 로컬 사본)
+- 시크릿 사용법: `envs/README.md` · 설정 계약: `envs/infisical.config.json`

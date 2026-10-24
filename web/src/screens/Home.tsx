@@ -1,4 +1,3 @@
-import { HomeAssistant } from '../components/HomeAssistant'
 import { useEffect, useState, type ReactNode } from 'react'
 import type { HomeProps } from './contracts'
 import type { CatalogItem } from '../lib/types'
@@ -7,7 +6,6 @@ import { useRecommendations } from '../lib/useRecommendations'
 import { fill, useT, type Key } from '../lib/i18n'
 import { EmptyState, ErrorState, LoadingState } from '../components/States'
 import { CategoryBadge, Price, SponsorBadge, Thumb } from '../components/Common'
-import { CountryNote } from '../components/CountryNote'
 import { isClinic } from '../components/explore/facets'
 import '../styles/shell.css'
 
@@ -191,8 +189,6 @@ export function Home({ profile, onOpen, onBrowse, onSearch, onGoTrip, tripCount,
         ))}
       </nav>
 
-      <HomeAssistant profile={profile} onBrowse={() => onBrowse('all')} />
-
       {(tripCount > 0 || cartCount > 0) && (
         <button type="button" className="home-trip" onClick={onGoTrip}>
           <span className="home-trip__icon" aria-hidden="true">
@@ -208,12 +204,6 @@ export function Home({ profile, onOpen, onBrowse, onSearch, onGoTrip, tripCount,
 
       {state.status === 'ready' && (
         <>
-          {state.data.country_context && (
-            <div className="home-country">
-              <CountryNote ctx={state.data.country_context} />
-            </div>
-          )}
-
           {natural.length === 0 && (
             <EmptyState
               title={t('shell.home.emptyTitle')}

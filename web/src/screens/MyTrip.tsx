@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import type { MyTripProps } from './contracts'
 import { geocode } from '../lib/api'
 import { fill, useT } from '../lib/i18n'
-import { useNaverMaps } from '../lib/naverMaps'
+import { currentPosition, useNaverMaps } from '../lib/naverMaps'
 import { clearStart, loadStart, saveStart, type StartPoint as Start } from '../lib/storage'
 import type { ItemLocation } from '../lib/types'
 import { EmptyState } from '../components/States'
@@ -65,6 +65,17 @@ export function MyTrip({ ns, profile, trip, cart, days, onMove, onDay, onRemove,
   const [start, setStart] = useState<Start | null>(() => loadStart(ns))
   const [day, setDay] = useState(1)
   const [geo, setGeo] = useState<Record<string, Coords | null>>({})
+  // 숙소가 없을 때 쓰는 현재 위치(사용자가 누를 때만 묻고, 이 화면 메모리에만 둔다 — 저장하지 않음)
+  const [here, setHere] = useState<Coords | null>(null)
+  const [hereState, setHereState] = useState<'idle' | 'locating' | 'denied'>('idle')
+  const startFromHere = async () => {
+    setHereState('locating')
+    const pos = await currentPosition()
+    if (pos) {
+      setHere(pos)
+      setHereState('idle')
+    } else setHereState('denied')
+  }
 
   useEffect(() => setStart(loadStart(ns)), [ns])
   const sel = Math.min(Math.max(day, 1), Math.max(days, 1))
@@ -107,14 +118,20 @@ export function MyTrip({ ns, profile, trip, cart, days, onMove, onDay, onRemove,
   )
 
   const stayPin = t('trip.startPin')
+  const herePin = t('trip.herePin')
+  // 숙소가 있으면 숙소, 없으면 현재 위치(선택 시)를 출발지로 쓴다. 둘 다 없으면 장소끼리만 잇는다.
+  const origin = useMemo(
+    () => (start ? { label: start.label, lat: start.lat, lng: start.lng } : here ? { label: herePin, lat: here.lat, lng: here.lng } : null),
+    [start, here, herePin],
+  )
   const points: MapPoint[] = useMemo(() => {
     const pts: MapPoint[] = []
-    if (start) pts.push({ key: 'start', lat: start.lat, lng: start.lng, kind: 'start', label: stayPin, title: start.label })
+    if (origin) pts.push({ key: 'start', lat: origin.lat, lng: origin.lng, kind: 'start', label: start ? stayPin : herePin, title: origin.label })
     stops.forEach((s, i) => {
       if (s.coords) pts.push({ key: s.entry.entry_id, ...s.coords, kind: s.entry.category, label: String(i + 1), title: s.entry.title })
     })
     return pts
-  }, [start, stops, stayPin])
+  }, [origin, start, stops, stayPin, herePin])
 
   if (trip.length === 0) {
     return (
@@ -140,6 +157,24 @@ export function MyTrip({ ns, profile, trip, cart, days, onMove, onDay, onRemove,
       </header>
       <div className="trip-pad trip-stack">
         <StartPoint key={start ? `${start.lat},${start.lng}` : 'none'} value={start} onChange={changeStart} />
+        {!start && (
+          <div className="trip-here card">
+            {here ? (
+              <>
+                <p className="trip-here__on">{t('trip.hereOn')}</p>
+                <button type="button" className="btn btn--text" onClick={() => setHere(null)}>{t('trip.hereOff')}</button>
+              </>
+            ) : (
+              <>
+                <p className="trip-muted">{t(hereState === 'denied' ? 'trip.hereDenied' : 'trip.hereLead')}</p>
+                <button type="button" className="btn btn--ghost btn--small" disabled={hereState === 'locating'} onClick={() => void startFromHere()}>
+                  {t(hereState === 'locating' ? 'trip.hereLocating' : 'trip.hereStart')}
+                </button>
+              </>
+            )}
+            <p className="trip-fine">{t('trip.hereNote')}</p>
+          </div>
+        )}
         <TripMap status={maps.status} points={points} day={sel} />
         <DayPlan
           days={days}
@@ -151,7 +186,8 @@ export function MyTrip({ ns, profile, trip, cart, days, onMove, onDay, onRemove,
           }}
           stops={stops}
           checklist={checklist}
-          start={start}
+          start={origin}
+          startKind={start ? 'stay' : 'here'}
           onMove={onMove}
           onDay={onDay}
           onRemove={onRemove}

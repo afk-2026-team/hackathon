@@ -231,25 +231,12 @@ describe('integrated home', () => {
     expect(await screen.findByText('There are no sponsored items on display right now.')).toBeInTheDocument()
   })
 
-  it('explains insufficient country evidence, in our own words on the Korean screen', async () => {
-    stubApi([natural], 'insufficient')
-    const { unmount } = guestHome()
-    expect(await screen.findByText('Not enough country-specific evidence')).toBeInTheDocument()
-    expect(screen.getByText(/rely on general sources/)).toBeInTheDocument()
-    unmount()
-    localStorage.clear()
+  it('shows neither a country-evidence notice nor the AI assistant on Home', async () => {
     stubApi([natural], 'insufficient')
     guestHome('ko')
-    expect(await screen.findByText('국가별 근거가 부족해요')).toBeInTheDocument()
-    expect(screen.getByText(/공통인 근거를 기반으로/)).toBeInTheDocument()
-    expect(screen.getByText('서버 설명 원문')).toBeInTheDocument() // 영어 원문은 접힌 상세로만
-  })
-
-  it('does not flag missing country evidence when the server supports the country', async () => {
-    stubApi([natural], 'supported')
-    guestHome()
     await screen.findByText('Natural Cream')
-    expect(screen.queryByText('Not enough country-specific evidence')).toBeNull()
+    expect(screen.queryByText('국가별 근거가 부족해요')).toBeNull()
+    expect(screen.queryByText('여행에 대해 물어보세요')).toBeNull()
   })
 
   it('category shortcuts move to Explore and My Trip; search opens the search view', async () => {

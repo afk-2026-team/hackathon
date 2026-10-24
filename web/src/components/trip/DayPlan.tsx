@@ -18,7 +18,9 @@ interface Props {
   onAddDay: () => void
   stops: Stop[]
   checklist: TripEntry[]
-  start: StartPoint | null
+  // 출발지: 저장한 숙소 또는 이번 화면에서만 쓰는 현재 위치. 길찾기 링크·경로의 첫 지점이 된다.
+  start: Pick<StartPoint, 'label' | 'lat' | 'lng'> | null
+  startKind?: 'stay' | 'here'
   onMove: (entryId: string, dir: -1 | 1) => void
   onDay: (entryId: string, day: number) => void
   onRemove: (entryId: string) => void
@@ -113,7 +115,7 @@ export function DayPlan(p: Props) {
           {p.stops.map((s, i) => {
             const prev = i === 0 ? null : p.stops[i - 1]
             const from: GeoPoint | null = i === 0 ? startGeo : prev?.coords ? { name: prev.entry.location!.name, ...prev.coords } : null
-            const fromName = i === 0 ? (p.start ? t('trip.fromStart') : null) : fill(t('trip.fromPrev'), { name: prev!.entry.title })
+            const fromName = i === 0 ? (p.start ? t(p.startKind === 'here' ? 'trip.fromHere' : 'trip.fromStart') : null) : fill(t('trip.fromPrev'), { name: prev!.entry.title })
             const link = segmentLink(from, s)
             const km = from && s.coords ? straightLineKm(from, s.coords) : null
             const loc = s.entry.location!

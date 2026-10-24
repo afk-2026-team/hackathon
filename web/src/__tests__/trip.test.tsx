@@ -321,4 +321,20 @@ describe('My Trip navigation', () => {
     await act(async () => { await new Promise((r) => setTimeout(r, 20)) })
     expect(f.mock.calls.filter(([u]) => String(u).startsWith('/v1/maps/directions'))).toHaveLength(1)
   })
+
+  it('connects the map from the current location when no stay is set, without saving the location', async () => {
+    mockFetch({ config: { provider: 'naver', enabled: true, client_id: 'public-id' } })
+    const made = installFakeNaver()
+    const getCurrentPosition = vi.fn((ok: PositionCallback) => ok({ coords: { latitude: 37.5665, longitude: 126.978 } } as GeolocationPosition))
+    vi.stubGlobal('navigator', { ...navigator, geolocation: { getCurrentPosition } })
+    const user = userEvent.setup()
+    render(<MyTrip {...props({ trip: [place('1')] })} />)
+    await user.click(await screen.findByRole('button', { name: 'Start from my current location' }))
+    expect(getCurrentPosition).toHaveBeenCalledTimes(1)
+    expect(await screen.findByText('Starting from your current location.')).toBeInTheDocument()
+    expect(await screen.findByText('From your current location')).toBeInTheDocument()
+    await act(async () => { await new Promise((r) => setTimeout(r, 20)) })
+    expect(made.polylines.length).toBeGreaterThan(0) // 장소 1곳이어도 출발점과 이어진다
+    expect(Object.keys(localStorage).some((k) => k.endsWith('/start'))).toBe(false) // 현재 위치는 저장하지 않음
+  })
 })

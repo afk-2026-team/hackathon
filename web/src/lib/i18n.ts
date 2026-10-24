@@ -1,4 +1,8 @@
 import { createContext, useContext, useEffect } from 'react'
+import * as shellStrings from '../strings/shell'
+import * as exploreStrings from '../strings/explore'
+import * as detailStrings from '../strings/detail'
+import * as tripStrings from '../strings/trip'
 
 // 실제 지원하는 UI 언어는 영어·한국어 두 가지다. 진입·온보딩·메뉴의 핵심 라벨부터 번역한다.
 export type Lang = 'en' | 'ko'
@@ -7,7 +11,7 @@ export const UI_LANGS: { code: Lang; name: string }[] = [
   { code: 'ko', name: '한국어' },
 ]
 
-const en = {
+const coreEn = {
   brand: 'Jinseonmi',
   'entry.title': 'Beauty, clinics and neighborhoods in one plan',
   'entry.lead': 'Start with your Google account, or look around right away without signing in.',
@@ -46,6 +50,18 @@ const en = {
   'common.continue': 'Continue',
   'common.back': 'Back',
   'common.cancel': 'Cancel',
+  'common.retry': 'Try again',
+  'common.loading': 'Loading',
+  'common.close': 'Close',
+  'common.beauty': 'Beauty',
+  'common.medical': 'Medical',
+  'common.sponsored': 'Sponsored',
+  'common.sponsorUnknown': 'Sponsorship unknown',
+  'common.noSponsor': 'No sponsorship found',
+  'common.sources': 'Sources',
+  'common.checkedOn': 'checked {date}',
+  'common.priceUnlisted': 'Price not listed',
+  'common.approx': '≈ {amount}',
   'nav.home': 'Home',
   'nav.explore': 'Explore',
   'nav.trip': 'My Trip',
@@ -56,9 +72,12 @@ const en = {
   'settings.signOut': 'Sign out',
   'settings.edit': 'Edit profile',
 }
-type Key = keyof typeof en
 
-const ko: Record<Key, string> = {
+// 영역별 문구(web/src/strings/*)를 합친다. 영역 파일은 각 화면 담당이 소유한다.
+const en = { ...coreEn, ...shellStrings.en, ...exploreStrings.en, ...detailStrings.en, ...tripStrings.en }
+export type Key = keyof typeof en
+
+const coreKo: Record<keyof typeof coreEn, string> = {
   brand: '진선미',
   'entry.title': '뷰티, 병원, 동네 경험을 한 번에 계획하세요',
   'entry.lead': 'Google 계정으로 시작하거나, 로그인 없이 바로 둘러보세요.',
@@ -97,6 +116,18 @@ const ko: Record<Key, string> = {
   'common.continue': '계속',
   'common.back': '이전',
   'common.cancel': '취소',
+  'common.retry': '다시 시도',
+  'common.loading': '불러오는 중',
+  'common.close': '닫기',
+  'common.beauty': '뷰티',
+  'common.medical': '의료',
+  'common.sponsored': '협찬',
+  'common.sponsorUnknown': '협찬 여부 확인 못 함',
+  'common.noSponsor': '협찬 없음 확인',
+  'common.sources': '출처',
+  'common.checkedOn': '{date} 확인',
+  'common.priceUnlisted': '가격 정보 없음',
+  'common.approx': '약 {amount}',
   'nav.home': '홈',
   'nav.explore': '탐색',
   'nav.trip': '내 여행',
@@ -107,6 +138,8 @@ const ko: Record<Key, string> = {
   'settings.signOut': '로그아웃',
   'settings.edit': '프로필 수정',
 }
+
+const ko: Record<Key, string> = { ...coreKo, ...shellStrings.ko, ...exploreStrings.ko, ...detailStrings.ko, ...tripStrings.ko }
 
 const dict: Record<Lang, Record<Key, string>> = { en, ko }
 
@@ -131,4 +164,11 @@ export function DocTitle() {
 export function useT() {
   const lang = useContext(LangContext)
   return (key: Key) => translate(lang, key)
+}
+
+export const useLang = () => useContext(LangContext)
+
+/** '{n}개' 같은 자리표시자를 채운다. 예: fill(t('trip.count'), { n: 3 }) */
+export function fill(text: string, vars: Record<string, string | number>): string {
+  return text.replace(/\{(\w+)\}/g, (m, k: string) => (k in vars ? String(vars[k]) : m))
 }

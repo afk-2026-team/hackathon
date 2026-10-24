@@ -138,10 +138,11 @@ export function DayPlan(p: Props) {
                   <div className="trip-stop__body">
                     <div className="trip-row">
                       <CategoryBadge category={s.entry.category} />
-                      <span className="badge badge--outline">{t('trip.planned')}</span>
+                      <span className="badge badge--outline">{t(s.entry.source === 'suggested' ? 'trip.suggest.tag' : 'trip.planned')}</span>
                     </div>
                     <button type="button" className="trip-stop__title" onClick={() => p.onOpenItem(s.entry.item_id)}>{s.entry.title}</button>
                     {loc.address && <p className="trip-muted">{loc.address}</p>}
+                    {s.entry.source === 'suggested' && s.entry.category === 'medical' && <p className="trip-note">{t('trip.suggest.medical')}</p>}
                     {!s.coords && !s.pending && (
                       <p className="trip-note">
                         {t('trip.noCoords')} ·{' '}

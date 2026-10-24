@@ -1,10 +1,11 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { CatalogItem, CategoryFilter } from './lib/types'
-import { fetchCatalog } from './lib/api'
+import { fetchCatalog, fetchRecommendations } from './lib/api'
+import { suggestTrip } from './lib/suggestedTrip'
 import { refreshCartFromCatalog } from './lib/cartTotals'
 import { reorderDay } from './lib/tripOrder'
 import {
-  clearAll, loadCart, loadProfile, loadTrip, saveCart, saveProfile, saveTrip, toPayload,
+  clearAll, isTripSeeded, loadCart, loadProfile, loadTrip, markTripSeeded, saveCart, saveProfile, saveTrip, toPayload,
   type CartLine, type Namespace, type Profile, type TripEntry,
 } from './lib/storage'
 import { DocTitle, LangContext, toLang, type Lang } from './lib/i18n'
@@ -48,6 +49,8 @@ interface WorkspaceProps {
   onSignOut: () => void
   onResetDone: () => void
 }
+
+const SUGGEST_TIMEOUT_MS = 5000 // 추천 API 대기 상한. 넘으면 카탈로그 기본 코스
 
 // 계정 공간(ns) 하나의 앱 화면. ns 가 바뀌면 key 로 새로 마운트되어 데이터가 섞이지 않는다.
 export function Workspace({ ns, uiLang, account, onSignIn, onSignOut, onResetDone }: WorkspaceProps) {
@@ -126,6 +129,30 @@ export function Workspace({ ns, uiLang, account, onSignIn, onSignOut, onResetDon
 
   const payload = useMemo(() => (profile ? toPayload(profile) : null), [profile])
   const tripIds = useMemo(() => new Set(trip.map((e) => e.item_id)), [trip])
+
+  // My Trip 첫 진입: 저장 일정이 비어 있고 아직 채운 적이 없을 때만 추천 일정을 한 번 채운다.
+  // 서버 추천이 실패하거나 늦으면 받은 카탈로그로 기본 코스를 만든다. 사용자가 그새 담은 일정은 덮지 않는다.
+  const tripRef = useRef(trip)
+  tripRef.current = trip
+  const [suggesting, setSuggesting] = useState(false)
+  useEffect(() => {
+    if (tab !== 'trip' || catalog.size === 0 || !payload || isTripSeeded(ns)) return
+    markTripSeeded(ns)
+    if (tripRef.current.length > 0) return
+    setSuggesting(true)
+    const prefs = payload.preferences
+    const apply = (ranked: CatalogItem[] | null) => {
+      setSuggesting(false)
+      if (tripRef.current.length > 0) return
+      const entries = suggestTrip({ catalog: [...catalog.values()], ranked, interests: prefs?.interests, budgetKrw: prefs?.budget_krw })
+      if (entries.length === 0) return
+      saveTrip(ns, entries)
+      setTripState(entries)
+    }
+    const timeout = new Promise<never>((_, reject) => setTimeout(() => reject(new Error('timeout')), SUGGEST_TIMEOUT_MS))
+    Promise.race([fetchRecommendations(payload, 'all'), timeout]).then((r) => apply(r.items), () => apply(null))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tab, catalog, payload])
   const cartQty = useMemo(() => Object.fromEntries(cart.map((l) => [l.item_id, l.qty])), [cart])
   const cartCount = cart.reduce((n, l) => n + l.qty, 0)
   // 담은 시점의 제목이 저장돼 있으므로, 표시할 때는 현재 화면 언어의 카탈로그 제목으로 바꾼다(없으면 저장된 제목)
@@ -291,6 +318,7 @@ export function Workspace({ ns, uiLang, account, onSignIn, onSignOut, onResetDon
           ) : (
             <MyTrip
               onReorderDay={(d, ids) => setTrip(reorderDay(trip, d, ids))}
+              suggesting={suggesting}
               ns={ns}
               profile={payload}
               trip={shownTrip}

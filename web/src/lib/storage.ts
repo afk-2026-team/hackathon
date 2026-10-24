@@ -4,7 +4,7 @@ import type { CatalogItem, ListPrice, Preferences, ProfilePayload } from './type
 // 저장 공간은 계정별로 나뉜다: 'guest' 또는 'user:<id>'. 서로의 프로필·카트·여행이 섞이지 않는다.
 export type Namespace = 'guest' | `user:${string}`
 const PREFIX = 'korea-locally'
-export const keyFor = (ns: Namespace, name: 'profile' | 'cart' | 'trip' | 'start') => `${PREFIX}/${ns}/${name}`
+export const keyFor = (ns: Namespace, name: 'profile' | 'cart' | 'trip' | 'start' | 'trip_seeded') => `${PREFIX}/${ns}/${name}`
 export const ENTRY_KEY = `${PREFIX}/entry`
 // 계정 분리 이전 형식(guest 로 옮긴다)
 const OLD_KEYS = { profile: `${PREFIX}/profile`, cart: `${PREFIX}/cart`, trip: `${PREFIX}/trip` } as const
@@ -63,6 +63,8 @@ export interface TripEntry {
   category: CatalogItem['category']
   location: CatalogItem['location']
   day: number
+  // 'suggested' = 첫 진입 때 앱이 채운 추천 일정(사용자가 직접 담은 항목과 구분). 없으면 사용자가 담은 것.
+  source?: 'suggested'
 }
 
 const isStr = (v: unknown): v is string => typeof v === 'string' && v.length > 0
@@ -171,9 +173,13 @@ export const saveCart = (ns: Namespace, c: CartLine[], s: Storage = localStorage
 export const loadTrip = (ns: Namespace, s: Storage = localStorage) => loadList(keyFor(ns, 'trip'), isTripEntry, s)
 export const saveTrip = (ns: Namespace, t: TripEntry[], s: Storage = localStorage) => safeSet(s, keyFor(ns, 'trip'), JSON.stringify(t))
 
+// 추천 일정은 계정 공간마다 한 번만 채운다. 사용자가 전부 지워도 다시 채우지 않는다.
+export const isTripSeeded = (ns: Namespace, s: Storage = localStorage) => safeGet(s, keyFor(ns, 'trip_seeded')) != null
+export const markTripSeeded = (ns: Namespace, s: Storage = localStorage) => safeSet(s, keyFor(ns, 'trip_seeded'), new Date().toISOString())
+
 /** 지정한 계정 공간만 지운다. 다른 계정·게스트 데이터는 그대로 둔다. */
 export function clearAll(ns: Namespace, s: Storage = localStorage): void {
-  for (const n of ['profile', 'cart', 'trip', 'start'] as const) safeRemove(s, keyFor(ns, n))
+  for (const n of ['profile', 'cart', 'trip', 'start', 'trip_seeded'] as const) safeRemove(s, keyFor(ns, n))
 }
 
 // ── 출발지(숙소). 사용자가 지오코딩 후보에서 직접 고른 값만 저장한다(담당 F). ──

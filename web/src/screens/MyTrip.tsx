@@ -7,7 +7,7 @@ import { formatMoney } from '../lib/currency'
 import { currentPosition, useNaverMaps } from '../lib/naverMaps'
 import { clearStart, loadStart, saveStart, type StartPoint as Start } from '../lib/storage'
 import type { ItemLocation } from '../lib/types'
-import { EmptyState } from '../components/States'
+import { EmptyState, LoadingState } from '../components/States'
 import { Price } from '../components/Common'
 import { StartPoint } from '../components/trip/StartPoint'
 import { TripMap, type MapPoint } from '../components/trip/TripMap'
@@ -68,7 +68,7 @@ function ShoppingSummary({ cart, currency, onOpenCart }: Pick<MyTripProps, 'cart
   )
 }
 
-export function MyTrip({ ns, profile, trip, cart, days, onMove, onDay, onRemove, onAddDay, onExplore, onOpenItem, onOpenCart, onReorderDay }: MyTripProps) {
+export function MyTrip({ ns, profile, trip, cart, days, onMove, onDay, onRemove, onAddDay, onExplore, onOpenItem, onOpenCart, onReorderDay, suggesting }: MyTripProps) {
   const t = useT()
   const maps = useNaverMaps()
   const [start, setStart] = useState<Start | null>(() => loadStart(ns))
@@ -148,11 +148,11 @@ export function MyTrip({ ns, profile, trip, cart, days, onMove, onDay, onRemove,
         <header className="sec trip-head">
           <h1 className="trip-h1">{t('trip.title')}</h1>
         </header>
-        <EmptyState
+        {suggesting ? <LoadingState label={t('trip.suggest.loading')} /> : <EmptyState
           title={t('trip.emptyTitle')}
           body={t('trip.emptyBody')}
           action={<button type="button" className="btn btn--primary" onClick={onExplore}>{t('trip.explore')}</button>}
-        />
+        />}
         {cart.length > 0 && <div className="trip-pad"><ShoppingSummary cart={cart} currency={profile.currency} onOpenCart={onOpenCart} /></div>}
       </div>
     )
@@ -165,6 +165,12 @@ export function MyTrip({ ns, profile, trip, cart, days, onMove, onDay, onRemove,
         <p className="trip-muted">{t('trip.lead')}</p>
       </header>
       <div className="trip-pad trip-stack">
+        {trip.some((e) => e.source === 'suggested') && (
+          <section className="trip-suggested card" aria-labelledby="trip-suggested-h" data-testid="trip-suggested">
+            <span className="badge trip-suggested__badge" id="trip-suggested-h">{t('trip.suggest.badge')}</span>
+            <p className="trip-muted">{t('trip.suggest.body')}</p>
+          </section>
+        )}
         <StartPoint key={start ? `${start.lat},${start.lng}` : 'none'} value={start} onChange={changeStart} />
         {!start && (
           <div className="trip-here card">

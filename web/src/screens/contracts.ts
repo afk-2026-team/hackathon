@@ -69,6 +69,7 @@ export interface MyTripProps {
   onOpenItem: (itemId: string) => void
   onOpenCart: () => void
   onReorderDay?: (day: number, orderedItemIds: string[]) => void // 서버 방문 순서 제안을 그날에 적용
+  suggesting?: boolean // 첫 진입 추천 일정을 만드는 중(빈 화면 대신 준비 중 표시)
 }
 
 export interface TopbarProps {

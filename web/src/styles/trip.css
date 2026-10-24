@@ -93,3 +93,8 @@
 .trip-here > p { flex: 1 1 220px; margin: 0; }
 .trip-here .trip-fine { flex-basis: 100%; }
 .trip-here__on { font-weight: 700; color: var(--ink); }
+
+/* 첫 진입 추천 일정 안내 */
+.trip-suggested { padding: 14px 16px; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.trip-suggested > p { margin: 0; }
+.trip-suggested__badge { background: var(--ink); color: #fff; }

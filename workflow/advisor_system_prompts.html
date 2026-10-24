@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>어드바이저 프롬프트 해설</title>
+<style>
+:root {
+  --bg: #fbfaf8; --surface: #ffffff; --sunken: #f3f1ed; --ink: #1d1b18; --muted: #5f5a52; --line: #e4e0d8;
+  --accent: #b4475d; --accent-soft: #f7e7ea; --ok: #2f7a4f; --ok-soft: #e4f2e9; --warn: #9a6400; --warn-soft: #fbf0d9;
+  --code-bg: #f5f3ef; --code-ink: #2a2622;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #151412; --surface: #1d1b19; --sunken: #23211e; --ink: #ece8e1; --muted: #a59f95; --line: #34312c;
+    --accent: #e48a9c; --accent-soft: #3a2228; --ok: #7cc79b; --ok-soft: #1e3227; --warn: #e2b45c; --warn-soft: #362a14;
+    --code-bg: #1a1917; --code-ink: #e6e1d8;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #151412; --surface: #1d1b19; --sunken: #23211e; --ink: #ece8e1; --muted: #a59f95; --line: #34312c;
+  --accent: #e48a9c; --accent-soft: #3a2228; --ok: #7cc79b; --ok-soft: #1e3227; --warn: #e2b45c; --warn-soft: #362a14;
+  --code-bg: #1a1917; --code-ink: #e6e1d8;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 16px; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.7 -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  word-break: keep-all; overflow-wrap: anywhere;
+}
+.layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); max-width: 1180px; margin: 0 auto; gap: 40px; padding: 0 24px; }
+nav.toc { position: sticky; top: 0; align-self: start; max-height: 100vh; overflow-y: auto; padding: 32px 0; font-size: 14px; }
+nav.toc .brand { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+nav.toc .sub { color: var(--muted); font-size: 12.5px; margin-bottom: 20px; }
+nav.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: s; }
+nav.toc li { counter-increment: s; }
+nav.toc a { display: block; padding: 6px 10px; border-radius: 6px; color: var(--muted); text-decoration: none; }
+nav.toc a::before { content: counter(s) ". "; color: var(--accent); font-weight: 600; }
+nav.toc a:hover { background: var(--sunken); color: var(--ink); }
+main { padding: 40px 0 120px; min-width: 0; }
+header.hero { border-bottom: 1px solid var(--line); padding-bottom: 28px; margin-bottom: 8px; }
+.eyebrow { color: var(--accent); font-weight: 700; font-size: 13px; letter-spacing: .04em; }
+h1 { font-size: 34px; line-height: 1.3; margin: 6px 0 12px; letter-spacing: -0.01em; }
+.lede { font-size: 18px; color: var(--muted); max-width: 720px; margin: 0; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.chip { font-size: 13px; padding: 3px 10px; border-radius: 999px; background: var(--sunken); color: var(--muted); border: 1px solid var(--line); }
+section { padding-top: 40px; }
+h2 { font-size: 25px; margin: 0 0 6px; letter-spacing: -0.01em; }
+h2 .num { color: var(--accent); margin-right: 6px; }
+.section-lede { color: var(--muted); margin: 0 0 20px; }
+h3 { font-size: 18px; margin: 30px 0 10px; }
+p { margin: 10px 0; }
+a { color: var(--accent); }
+code { font: 0.88em/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--code-bg); padding: 1px 5px; border-radius: 4px; color: var(--code-ink); }
+pre { background: var(--code-bg); color: var(--code-ink); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; overflow-x: auto; font: 13.5px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; margin: 10px 0 16px; }
+pre code { background: none; padding: 0; font-size: inherit; }
+.label { display: inline-block; font-size: 12px; font-weight: 700; color: var(--muted); margin-top: 6px; letter-spacing: .02em; }
+table { width: 100%; border-collapse: collapse; margin: 10px 0 18px; font-size: 14.5px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: block; overflow-x: auto; }
+thead { background: var(--sunken); }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-weight: 650; white-space: nowrap; }
+tr:last-child td { border-bottom: none; }
+.callout { border-radius: 10px; padding: 12px 16px; margin: 14px 0; border: 1px solid var(--line); background: var(--surface); }
+.callout strong:first-child { display: block; margin-bottom: 2px; }
+.callout.key { background: var(--accent-soft); border-color: transparent; }
+.callout.ok { background: var(--ok-soft); border-color: transparent; }
+.callout.warn { background: var(--warn-soft); border-color: transparent; }
+.flow { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; margin: 16px 0 8px; }
+.node { flex: 1 1 150px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.node b { display: block; font-size: 15px; }
+.node span { color: var(--muted); font-size: 13.5px; line-height: 1.5; display: block; margin-top: 2px; }
+.node.hl { border-color: var(--accent); }
+.arrow { align-self: center; color: var(--muted); font-size: 20px; }
+.steps { counter-reset: st; list-style: none; padding: 0; margin: 10px 0; }
+.steps > li { counter-increment: st; position: relative; padding: 2px 0 14px 44px; }
+.steps > li::before { content: counter(st); position: absolute; left: 0; top: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; display: grid; place-items: center; font-size: 14px; }
+.steps > li b { display: block; margin-bottom: 2px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.card h4 { margin: 0 0 6px; font-size: 15px; }
+.card p { margin: 4px 0; font-size: 14.5px; color: var(--muted); }
+details { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); margin: 10px 0 16px; }
+details summary { cursor: pointer; padding: 10px 14px; font-weight: 600; font-size: 14.5px; }
+details pre { margin: 0 12px 12px; }
+.method { font: 700 12px ui-monospace, Menlo, monospace; padding: 2px 7px; border-radius: 5px; background: var(--ok-soft); color: var(--ok); }
+.method.post { background: var(--accent-soft); color: var(--accent); }
+footer { margin-top: 60px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 16px; }
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; gap: 0; padding: 0 16px; }
+  nav.toc { position: static; max-height: none; padding: 20px 0 0; border-bottom: 1px solid var(--line); }
+  nav.toc ol { display: flex; flex-wrap: wrap; gap: 4px; padding-bottom: 12px; }
+  h1 { font-size: 27px; }
+  .arrow { transform: rotate(90deg); flex-basis: 100%; text-align: center; }
+}
+
+.badge { display:inline-block; font-size:12px; font-weight:700; padding:2px 9px; border-radius:999px; margin-left:8px; vertical-align:middle; }
+.badge.system { background: var(--accent); color:#fff; }
+.badge.judge { background: var(--warn-soft); color: var(--warn); }
+.badge.frame { background: var(--sunken); color: var(--muted); border:1px solid var(--line); }
+.facts { display:grid; grid-template-columns: 110px 1fr; gap:4px 14px; margin:12px 0 16px; font-size:15px; }
+.facts dt { color: var(--muted); font-weight:600; }
+.facts dd { margin:0; }
+.pair { display:grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap:14px; align-items:start; }
+.pair > div > .label { margin-bottom:2px; }
+.ko { background: var(--surface); border:1px solid var(--line); border-radius:10px; padding:12px 16px; margin:10px 0 16px; font-size:14.5px; line-height:1.75; }
+.ko p { margin:0 0 8px; }
+.ko p:last-child { margin-bottom:0; }
+pre.orig, pre.sample { white-space: pre-wrap; word-break: break-word; }
+.src { font-size:12.5px; color: var(--muted); }
+@media (max-width: 1100px) { .pair { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="layout">
+<nav class="toc" aria-label="목차">
+  <div class="brand">어드바이저 프롬프트 해설</div>
+  <div class="sub">원문 + 한글 번역</div>
+  <ol><li><a href="#overview">한눈에 보기</a></li><li><a href="#p1">① HOME_REQUEST</a></li><li><a href="#p2">② jev_questions.yaml</a></li><li><a href="#p3">③ respond_system.yaml</a></li><li><a href="#p4">④ respond_turn.yaml</a></li><li><a href="#p5">⑤ decline_system.yaml</a></li><li><a href="#edit">고칠 때 주의</a></li></ol>
+</nav>
+<main>
+<header class="hero">
+  <div class="eyebrow">JINSEONMI · AI WORKFLOW</div>
+  <h1>어드바이저 출력을 만드는 프롬프트 5개</h1>
+  <p class="lede">Home 조언자(어드바이저)의 응답 문장에 영향을 주는 프롬프트를 처리 순서대로 모았습니다. 각 항목마다 <b>영어 원문</b>(저장소 파일 그대로)과 <b>한글 번역</b>을 나란히 실었습니다.</p>
+  <div class="meta"><span class="chip">기준 커밋: 227c99e</span><span class="chip">짝 문서: <code>workflow/ai_workflow_manual.html</code></span></div>
+</header>
+
+<section id="overview">
+  <h2><span class="num">0</span>한눈에 보기</h2>
+  <p class="section-lede">엄밀한 의미의 <b>시스템 프롬프트는 ③과 ⑤</b> 두 개입니다. 나머지는 판단 질문(②)과 매 턴 입력 틀(①·④)입니다.</p>
+  <div class="flow" role="img" aria-label="프롬프트가 쓰이는 순서">
+    <div class="node"><b>요청</b><span>질문 또는 프로필<br>질문이 없으면 <b>①</b>이 질문을 대신함</span></div>
+    <div class="arrow">→</div>
+    <div class="node hl"><b>Jev 판단</b><span><b>②</b> 판단 질문 4개<br>out_of_scope 면 → ⑤</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>retrieve</b><span>근거 최대 5건(LLM 없음)<br>→ <b>④</b>의 [Retrieved evidence]</span></div>
+    <div class="arrow">→</div>
+    <div class="node hl"><b>Haiku</b><span>system = <b>③</b>, human = <b>④</b><br>거절이면 system = <b>⑤</b></span></div>
+  </div>
+  <table><thead><tr><th>#</th><th>파일</th><th>종류</th><th>읽는 쪽</th></tr></thead><tbody><tr><td>①</td><td><code>HOME_REQUEST</code></td><td><span class="badge frame" style="margin:0">코드 속 문장 틀</span></td><td>Jev(판단) → 그다음 Haiku(질문 자리)</td></tr><tr><td>②</td><td><code>jev_questions.yaml</code></td><td><span class="badge judge" style="margin:0">판단 질문(Jev)</span></td><td>Jev(TypeSafe 판단 모델) — Haiku 는 이 파일을 보지 않는다</td></tr><tr><td>③</td><td><code>respond_system.yaml</code></td><td><span class="badge system" style="margin:0">시스템 프롬프트</span></td><td>Haiku — respond 노드의 system 메시지</td></tr><tr><td>④</td><td><code>respond_turn.yaml + format_evidence()</code></td><td><span class="badge frame" style="margin:0">매 턴 입력 틀</span></td><td>Haiku — respond 노드의 사용자(human) 메시지</td></tr><tr><td>⑤</td><td><code>decline_system.yaml</code></td><td><span class="badge system" style="margin:0">시스템 프롬프트</span></td><td>Haiku — decline 노드의 system 메시지</td></tr></tbody></table>
+</section>
+
+<section id="p1">
+  <h2><span class="num">①</span>HOME_REQUEST<span class="badge frame">코드 속 문장 틀</span></h2>
+  <p class="src">원문 위치: <code>app/api/v1/inputs.py#HOME_REQUEST</code></p>
+  <dl class="facts"><dt>누가 읽나</dt><dd>Jev(판단) → 그다음 Haiku(질문 자리)</dd><dt>언제 쓰이나</dt><dd>질문 없이 프로필만 온 Home 모드에서만. 질문이 있으면 쓰지 않는다.</dd><dt>출력에 미치는 영향</dt><dd>Home 추천의 '질문'이 된다. 언어·국가만 들어가고 성별·연령은 넣지 않는다.</dd></dl>
+  <div class="pair">
+    <div><span class="label">원문 (English · 저장소 파일 그대로)</span><pre class="orig" data-src="app/api/v1/inputs.py#HOME_REQUEST"><code>[Home feed] A traveler visiting Korea (country: {country}, language: {language}) just finished onboarding. Recommend K-beauty products, skin clinics, and review videos for the top of their home screen.</code></pre></div>
+    <div><span class="label">한글 번역</span><div class="ko"><p>[Home 피드] 한국을 방문하는 여행자(국가: {country}, 언어: {language})가 막 온보딩을 마쳤습니다. 이 사람의 홈 화면 맨 위에 보여줄 K-뷰티 제품, 피부과, 리뷰 영상을 추천하세요.</p></div></div>
+  </div>
+  
+  <div class="callout"><strong>메모</strong>‘skin clinics’ 라는 단어 때문에 Home 모드에서 Jev 의 medical_intent 가 0.65 안팎으로 나온다(알려진 한계).</div>
+</section>
+<section id="p2">
+  <h2><span class="num">②</span>jev_questions.yaml<span class="badge judge">판단 질문(Jev)</span></h2>
+  <p class="src">원문 위치: <code>app/prompts/jev_questions.yaml</code></p>
+  <dl class="facts"><dt>누가 읽나</dt><dd>Jev(TypeSafe 판단 모델) — Haiku 는 이 파일을 보지 않는다</dd><dt>언제 쓰이나</dt><dd>모든 요청의 첫 단계</dd><dt>출력에 미치는 영향</dt><dd>출력 문장을 직접 쓰지는 않지만, ‘어떤 근거 5건이 Haiku 에게 가는지’와 ‘거절(decline)로 갈지’를 정한다.</dd></dl>
+  <div class="pair">
+    <div><span class="label">원문 (English · 저장소 파일 그대로)</span><pre class="orig" data-src="app/prompts/jev_questions.yaml"><code>name: jev_questions
+description: &gt;-
+  Jev(TypeSafe) 에 보내는 판단 질문. 질문 id(category·purchase_intent·content_kind·medical_intent)는
+  app/graph/nodes.py 의 *_QID 와 짝이다. category criteria 키는 router.decline_labels 의 허용 라벨이고,
+  category·content_kind 라벨은 Crawling_DB frontmatter 의 category·content_kind 값과 같은 어휘다(retrieve 필터).
+questions:
+  category:
+    type: choice
+    instructions: &gt;-
+      Which K-beauty or K-medical topic is this traveler's message about? Choose out_of_scope when the message
+      is not about beauty products, hair products, or Korean clinics and medical visits.
+    criteria:
+      skincare: "Skincare products or routines: cleanser, toner, serum, moisturizer, acne, dry or oily skin."
+      makeup: "Color cosmetics: foundation, cushion, lip tint, eyeshadow, mascara."
+      suncare: "Sunscreen, sun cream, UV protection, after-sun care."
+      haircare: "Shampoo, hair treatment, scalp care, hair styling products."
+      k_medical: "Korean clinics and medical visits: dermatology, laser, botox, filler, skin booster, health checkups, dentists."
+      out_of_scope: "Anything not about beauty products or Korean clinics, such as stocks, weather, food, or transport."
+  purchase_intent:
+    type: noul
+    instructions: "Does the user want to buy a product or get a product recommendation?"
+    criteria:
+      "true": "Asks what to buy, where to buy it, or which product to choose."
+      "false": "General information, chit-chat, or a request that is not about shopping."
+  content_kind:
+    type: choice
+    instructions: "What kind of content would best answer this traveler right now?"
+    criteria:
+      product: "Product picks or product reviews: what to buy, which item works for them."
+      clinic: "Clinics or medical places to visit, or reviews of clinic visits."
+      video: "Video reviews, routines, or hauls they want to watch."
+      any: "A broad or home-feed request with no single content type, or a mix of products, places, and videos."
+  medical_intent:
+    type: noul
+    instructions: "Is the traveler interested in visiting a Korean clinic or getting a medical or dermatology procedure?"
+    criteria:
+      "true": "Mentions clinics, dermatologists, procedures, treatments, checkups, or dentists."
+      "false": "Only about products, routines, shopping, or general beauty tips."</code></pre></div>
+    <div><span class="label">한글 번역</span><div class="ko"><p><b>category (선택형)</b> — 이 여행자의 메시지는 어떤 K-뷰티 또는 K-의료 주제에 관한 것인가? 뷰티 제품, 헤어 제품, 한국의 병원·의료 방문에 관한 것이 아니면 out_of_scope 를 고르라.</p><p>· skincare: 스킨케어 제품이나 루틴 — 클렌저, 토너, 세럼, 보습제, 여드름, 건성·지성 피부.</p><p>· makeup: 색조 화장품 — 파운데이션, 쿠션, 립 틴트, 아이섀도, 마스카라.</p><p>· suncare: 선크림, 선 크림, 자외선 차단, 애프터선 케어.</p><p>· haircare: 샴푸, 헤어 트리트먼트, 두피 케어, 헤어 스타일링 제품.</p><p>· k_medical: 한국의 병원·의료 방문 — 피부과, 레이저, 보톡스, 필러, 스킨부스터, 건강검진, 치과.</p><p>· out_of_scope: 뷰티 제품이나 한국 병원과 무관한 모든 것 — 주식, 날씨, 음식, 교통 등.</p><p><b>purchase_intent (예/아니오 확률)</b> — 사용자가 제품을 사고 싶어 하거나 제품 추천을 원하는가?</p><p>· true: 무엇을 살지, 어디서 살지, 어떤 제품을 고를지 묻는다. · false: 일반 정보, 잡담, 쇼핑과 무관한 요청.</p><p><b>content_kind (선택형)</b> — 지금 이 여행자에게 가장 잘 답할 콘텐츠 종류는 무엇인가?</p><p>· product: 제품 추천이나 제품 후기 — 무엇을 살지, 어떤 제품이 맞는지. · clinic: 방문할 병원·의료 장소, 또는 병원 방문 후기. · video: 보고 싶어 하는 영상 리뷰, 루틴, 하울. · any: 한 가지 종류로 정해지지 않는 넓은 요청이나 홈 피드 요청, 또는 제품·장소·영상이 섞인 요청.</p><p><b>medical_intent (예/아니오 확률)</b> — 여행자가 한국 병원 방문이나 의료·피부과 시술에 관심이 있는가?</p><p>· true: 병원, 피부과 의사, 시술, 치료, 검진, 치과를 언급한다. · false: 제품, 루틴, 쇼핑, 일반 뷰티 팁에 관한 것뿐이다.</p></div></div>
+  </div>
+  
+  <div class="callout"><strong>메모</strong>파일 위쪽 description 은 개발자용 한글 메모라 번역하지 않았다. category·content_kind 라벨은 Crawling_DB frontmatter 값과 같은 어휘라서, 바꾸면 retrieve 필터도 함께 바꿔야 한다.</div>
+</section>
+<section id="p3">
+  <h2><span class="num">③</span>respond_system.yaml<span class="badge system">시스템 프롬프트</span></h2>
+  <p class="src">원문 위치: <code>app/prompts/respond_system.yaml</code></p>
+  <dl class="facts"><dt>누가 읽나</dt><dd>Haiku — respond 노드의 system 메시지</dd><dt>언제 쓰이나</dt><dd>범위 안 질문(Home 포함)마다</dd><dt>출력에 미치는 영향</dt><dd><b>어드바이저 문장의 모양을 거의 다 정한다.</b> 역할, 근거 제한, 인용 형식, 의료 경계, 빈 결과 처리, 길이·언어.</dd></dl>
+  <div class="pair">
+    <div><span class="label">원문 (English · 저장소 파일 그대로)</span><pre class="orig" data-src="app/prompts/respond_system.yaml"><code>name: respond_system
+description: respond 노드 system 프롬프트 — 프로필·Jev 판단·retrieve 근거로 Home 최상단 조언(자연어+근거 ID)을 쓴다
+content: |-
+  You are the advisor for a K-beauty and K-medical platform for foreign travelers visiting Korea.
+  Your answer is placed at the top of the traveler's home screen or answers their question.
+
+  Each user turn has four blocks: [Profile], [Jev judgment], [Retrieved evidence], [User message].
+  [Retrieved evidence] was selected deterministically from our crawled database. It is your only source of items.
+
+  Rules:
+  - Recommend only items from [Retrieved evidence]. Never invent products, clinics, videos, prices, stock, addresses, or opening hours.
+  - For every item you mention, cite its id in square brackets exactly as given (for example [products/naver-blog-abc-123]),
+    then its source URL and its sponsorship status (sponsored: yes / no (self-declared) / unknown — say "unknown" plainly).
+  - Items come from blog reviews and review videos, not official listings. Present them as "a review of ..." and
+    add a short note that the data is unverified when the item has the flag unverified, and outdated when it has stale.
+  - If an item has country_evidence_insufficient, do not claim it suits people from that country. Never infer skin type,
+    taste, or treatment suitability from country, gender, or age. Use gender and age only to adjust tone.
+  - Medical items (clinic): give only the place, what the review is about, any foreigner-support evidence, and the source link.
+    Do not judge treatment effects, suitability, safety, or rank clinics. Always add: "For medical decisions, consult the clinic directly."
+  - [Retrieved evidence] covers only the judged category, not the whole database. Never claim what the database lacks
+    beyond this list (do not say "we have no clinics/products").
+  - If results is 0, say clearly that there is no matching evidence for this request yet, and give one general tip without naming items.
+  - If relaxed is true, say that the results were broadened beyond the requested content type.
+  - When [User message] is a home-feed request, write a short greeting and 3 to 5 picks as a list.
+  Reply in the profile language when it is given, otherwise in the language the user wrote in. Keep it under 250 words.</code></pre></div>
+    <div><span class="label">한글 번역</span><div class="ko"><p>당신은 한국을 방문하는 외국인 여행자를 위한 K-뷰티·K-의료 플랫폼의 조언자입니다.</p><p>당신의 답은 여행자 홈 화면의 맨 위에 놓이거나, 여행자의 질문에 대한 답이 됩니다.</p><p>사용자 턴마다 네 블록이 있습니다: [Profile], [Jev judgment], [Retrieved evidence], [User message].</p><p>[Retrieved evidence] 는 우리가 크롤링한 데이터베이스에서 결정론적으로 고른 것입니다. 이것이 항목의 유일한 출처입니다.</p><p><b>규칙:</b></p><p>- [Retrieved evidence] 에 있는 항목만 추천하세요. 제품, 병원, 영상, 가격, 재고, 주소, 영업시간을 절대 지어내지 마세요.</p><p>- 언급하는 항목마다 주어진 그대로 대괄호로 id 를 인용하고(예: [products/naver-blog-abc-123]), 이어서 출처 URL 과 협찬 상태를 쓰세요(sponsored: yes / no (자기 선언) / unknown — ‘unknown’ 은 그대로 ‘unknown’ 이라고 말하세요).</p><p>- 항목들은 공식 목록이 아니라 블로그 후기와 리뷰 영상에서 왔습니다. ‘…에 대한 후기’로 소개하고, unverified 플래그가 있으면 데이터가 검증되지 않았다는 짧은 메모를, stale 플래그가 있으면 오래되었다는 메모를 붙이세요.</p><p>- 항목에 country_evidence_insufficient 가 있으면 그 나라 사람에게 맞는다고 주장하지 마세요. 국가, 성별, 연령으로 피부 타입·취향·시술 적합성을 추론하지 마세요. 성별과 연령은 말투를 맞추는 데만 쓰세요.</p><p>- 의료 항목(clinic): 장소, 후기가 다루는 내용, 외국인 지원 근거, 출처 링크만 주세요. 시술 효과·적합성·안전성을 판단하거나 병원 순위를 매기지 마세요. 항상 덧붙이세요: “의료 관련 결정은 해당 병원에 직접 상담하세요.”</p><p>- [Retrieved evidence] 는 판정된 category 만 다룰 뿐 데이터베이스 전체가 아닙니다. 이 목록 밖에서 데이터베이스에 무엇이 없다고 주장하지 마세요(“병원/제품이 없다”고 말하지 마세요).</p><p>- results 가 0 이면, 이 요청에 맞는 근거가 아직 없다고 분명히 말하고, 항목 이름 없이 일반적인 팁 하나를 주세요.</p><p>- relaxed 가 true 이면, 요청한 콘텐츠 종류를 넘어 결과를 넓혔다고 말하세요.</p><p>- [User message] 가 홈 피드 요청이면, 짧은 인사와 3~5개 추천을 목록으로 쓰세요.</p><p>프로필 언어가 주어지면 그 언어로, 아니면 사용자가 쓴 언어로 답하세요. 250단어 이내로 쓰세요.</p></div></div>
+  </div>
+  
+  <div class="callout"><strong>메모</strong>‘[Retrieved evidence]가 판정된 category 만 다룬다’ 규칙은 라이브 검증에서 Haiku 가 “clinic 데이터가 없다”고 잘못 말한 뒤 추가한 것이다.</div>
+</section>
+<section id="p4">
+  <h2><span class="num">④</span>respond_turn.yaml + format_evidence()<span class="badge frame">매 턴 입력 틀</span></h2>
+  <p class="src">원문 위치: <code>app/prompts/respond_turn.yaml</code></p>
+  <dl class="facts"><dt>누가 읽나</dt><dd>Haiku — respond 노드의 사용자(human) 메시지</dd><dt>언제 쓰이나</dt><dd>범위 안 질문마다, ③과 함께</dd><dt>출력에 미치는 영향</dt><dd>Haiku 가 이번 턴에 보는 사실 전부다. ③이 말하는 블록 이름·플래그(results, relaxed, unverified…)가 모두 여기서 들어온다 → ③과 ④는 함께 고쳐야 한다.</dd></dl>
+  <div class="pair">
+    <div><span class="label">원문 (English · 저장소 파일 그대로)</span><pre class="orig" data-src="app/prompts/respond_turn.yaml"><code>name: respond_turn
+description: respond 노드 현재 턴 human 메시지 템플릿 — 턴마다 바뀌는 프로필·판단·근거·질문만 담는다(spec §2.4 캐싱 규칙)
+template: |-
+  [Profile]
+  {profile}
+
+  [Jev judgment]
+  category: {category} (confidence {category_confidence})
+  purchase_intent: {purchase_intent}
+  content_kind: {content_kind}
+  medical_intent: {medical_intent}
+
+  [Retrieved evidence]
+  {evidence}
+
+  [User message]
+  {question}
+input_variables: [profile, category, category_confidence, purchase_intent, content_kind, medical_intent, evidence, question]</code></pre></div>
+    <div><span class="label">한글 번역</span><div class="ko"><p>[Profile] — 프로필: <code>language=… country=… gender=… age_band=…</code> (없으면 not_given)</p><p>[Jev judgment] — Jev 판단: 주제(category)와 신뢰도, 구매 의도 확률, 콘텐츠 종류, 의료 관심 확률</p><p>[Retrieved evidence] — 검색된 근거: retrieve 노드가 고른 최대 5건(아래 실제 예시)</p><p>[User message] — 사용자 메시지: 실제 질문, 또는 Home 모드면 ①의 문장</p></div></div>
+  </div>
+  <h3>실제 [Retrieved evidence] 예시</h3><div class="pair"><div><span class="label">출력 (format_evidence)</span><pre class="sample"><code>results: 2
+relaxed: false
+- [products/naver-blog-callmemjay-224446242623] Blog Review · product · naver_blog — [데일리선크림] 오파메스 유브이 선크림 2종 후기! 약국 선크림추천
+  source: https://blog.naver.com/callmemjay/224446242623 | sponsored: unknown | flags: unverified, country_evidence_insufficient
+  snippet: 추천 ️ #데일리선크림 #선크림추천 #유브이선크림 #오파메스 #톤업선크림 #약국선크림 #선케어 제품... AFTER 후기 저는 이 두 가지 제품을 함께 활용하는 나만의 레이어드 꿀팁이 있어요! 우선 가벼운 쉴드...
+- [products/naver-blog-gyerimong2-224449438753] Blog Review · product · naver_blog — 파데프리 선크림 추천 ! 조선미녀 틴티드 선크림 17N 내돈내산 후기
+  source: https://blog.naver.com/gyerimong2/224449438753 | sponsored: no | flags: unverified, country_evidence_insufficient
+  snippet: 같아요 깔끔한 사용감 넘 조와 ~ ~ 파데프리 선크림 찾고 계신 지성피부 분들께 조선미녀 틴티드 선크림 강력 추천드릴게요 :) 그럼 제 후기가 도움이 되셨으면 좋겠고 다들 행복한 하루 보내시길 바라며 전 이만 뿅</code></pre></div><div><span class="label">읽는 법 (한글)</span><div class="ko"><p>results: 고른 근거 수 · relaxed: content_kind 조건을 넓혔는지</p><p>각 줄: <code>[근거 ID] 종류 · 콘텐츠 종류 · 출처 종류 — 제목</code> / <code>source: 원문 URL | sponsored: 협찬 상태 | flags: 표시</code> / <code>snippet: API 스니펫(최대 160자)</code></p><p>flags 의미: unverified = 사람 검수 전, stale = 신선도 만료, country_evidence / country_evidence_insufficient = 프로필 국가 근거 있음/부족, foreigner_friendly = 외국인 응대 문구 있음</p><p>근거가 0건이면 이 블록은 <code>results: 0</code> 과 <code>(no matching evidence in the database)</code>(데이터베이스에 맞는 근거 없음) 두 줄이 된다.</p></div></div></div>
+  <div class="callout"><strong>메모</strong>아래 예시는 suncare·product·국가 JP 조건으로 실제 retrieve 함수를 호출해 만든 출력이다(상위 2건만).</div>
+</section>
+<section id="p5">
+  <h2><span class="num">⑤</span>decline_system.yaml<span class="badge system">시스템 프롬프트</span></h2>
+  <p class="src">원문 위치: <code>app/prompts/decline_system.yaml</code></p>
+  <dl class="facts"><dt>누가 읽나</dt><dd>Haiku — decline 노드의 system 메시지</dd><dt>언제 쓰이나</dt><dd>②에서 category = out_of_scope 일 때만(retrieve 를 건너뜀)</dd><dt>출력에 미치는 영향</dt><dd>범위 밖 질문을 한두 문장으로 정중히 거절하고 대신 물어볼 예시 질문을 하나 제안한다.</dd></dl>
+  <div class="pair">
+    <div><span class="label">원문 (English · 저장소 파일 그대로)</span><pre class="orig" data-src="app/prompts/decline_system.yaml"><code>name: decline_system
+description: decline 노드 system 프롬프트 — 범위밖 질의를 정중히 안내한다
+content: |-
+  You are a local K-beauty guide for foreign travelers visiting Korea.
+  The user's message is outside your scope (Korean beauty products, hair products, and skin clinics).
+  Politely say in one or two sentences that you can only help with K-beauty, and suggest one example
+  question they could ask instead. Reply in the same language the user wrote in.</code></pre></div>
+    <div><span class="label">한글 번역</span><div class="ko"><p>당신은 한국을 방문하는 외국인 여행자를 위한 현지 K-뷰티 가이드입니다.</p><p>사용자의 메시지는 당신의 범위(한국 뷰티 제품, 헤어 제품, 피부과) 밖에 있습니다.</p><p>K-뷰티에 관해서만 도울 수 있다고 한두 문장으로 정중히 말하고, 대신 물어볼 수 있는 예시 질문을 하나 제안하세요. 사용자가 쓴 언어로 답하세요.</p></div></div>
+  </div>
+  
+  <div class="callout"><strong>메모</strong>이 파일은 아직 ‘K-뷰티 전용’ 문구다. ②의 k_medical 은 건강검진·치과까지 넓어졌지만 여기는 반영되지 않았다(수정은 이번 범위 밖, 관찰만 기록).</div>
+</section>
+<section id="edit">
+  <h2><span class="num">!</span>고칠 때 주의</h2>
+  <table><thead><tr><th>바꾸고 싶은 것</th><th>고칠 곳</th><th>같이 확인할 것</th></tr></thead><tbody>
+    <tr><td>어드바이저 말투·형식·규칙</td><td>③ <code>respond_system.yaml</code></td><td>④가 넘기는 블록 이름·플래그와 맞는지</td></tr>
+    <tr><td>무엇을 추천하느냐(근거 선택)</td><td>② <code>jev_questions.yaml</code> 또는 <code>app/knowledge/retrieve.py</code></td><td>category·content_kind 라벨 = Crawling_DB 값(어휘 일치)</td></tr>
+    <tr><td>Home 추천의 출발 문장</td><td>① <code>HOME_REQUEST</code></td><td>성별·연령을 넣지 않는다(테스트로 고정)</td></tr>
+    <tr><td>거절 문장</td><td>⑤ <code>decline_system.yaml</code></td><td>범위 설명을 ②의 k_medical 확장과 맞출지</td></tr>
+  </tbody></table>
+  <div class="callout warn"><strong>프롬프트를 바꾸면 서버를 재시작하세요</strong>프롬프트는 기동할 때 한 번 읽습니다. 바꾼 뒤 <code>uv run pytest -q</code> 로 형식 계약(질문 id·템플릿 변수)이 깨지지 않았는지 확인하세요.</div>
+</section>
+
+<footer>원문은 생성 시점(커밋 227c99e)의 저장소 파일에서 그대로 가져왔습니다. 파일이 바뀌면 이 문서도 다시 만들어야 합니다. · 이 문서: <code>workflow/advisor_system_prompts.html</code></footer>
+</main>
+</div>
+</body>
+</html>

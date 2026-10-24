@@ -4,7 +4,7 @@ import type { CatalogItem, Preferences, ProfilePayload } from './types'
 // 저장 공간은 계정별로 나뉜다: 'guest' 또는 'user:<id>'. 서로의 프로필·카트·여행이 섞이지 않는다.
 export type Namespace = 'guest' | `user:${string}`
 const PREFIX = 'korea-locally'
-export const keyFor = (ns: Namespace, name: 'profile' | 'cart' | 'trip') => `${PREFIX}/${ns}/${name}`
+export const keyFor = (ns: Namespace, name: 'profile' | 'cart' | 'trip' | 'start') => `${PREFIX}/${ns}/${name}`
 export const ENTRY_KEY = `${PREFIX}/entry`
 // 계정 분리 이전 형식(guest 로 옮긴다)
 const OLD_KEYS = { profile: `${PREFIX}/profile`, cart: `${PREFIX}/cart`, trip: `${PREFIX}/trip` } as const
@@ -171,5 +171,41 @@ export const saveTrip = (ns: Namespace, t: TripEntry[], s: Storage = localStorag
 
 /** 지정한 계정 공간만 지운다. 다른 계정·게스트 데이터는 그대로 둔다. */
 export function clearAll(ns: Namespace, s: Storage = localStorage): void {
-  for (const n of ['profile', 'cart', 'trip'] as const) safeRemove(s, keyFor(ns, n))
+  for (const n of ['profile', 'cart', 'trip', 'start'] as const) safeRemove(s, keyFor(ns, n))
 }
+
+// ── 출발지(숙소). 사용자가 지오코딩 후보에서 직접 고른 값만 저장한다(담당 F). ──
+export interface StartPoint {
+  label: string
+  address: string
+  lat: number
+  lng: number
+  coords_source: 'naver_maps_geocode'
+}
+
+const inRange = (v: unknown, lim: number): v is number => typeof v === 'number' && Number.isFinite(v) && Math.abs(v) <= lim
+
+export function parseStart(v: unknown): StartPoint | null {
+  if (!v || typeof v !== 'object') return null
+  const o = v as Record<string, unknown>
+  if (!isStr(o.label) || !isStr(o.address) || !inRange(o.lat, 90) || !inRange(o.lng, 180)) return null
+  if (o.coords_source !== 'naver_maps_geocode') return null
+  return { label: o.label, address: o.address, lat: o.lat, lng: o.lng, coords_source: 'naver_maps_geocode' }
+}
+
+/** 손상·모르는 형태는 지우고 null(fail-closed). */
+export function loadStart(ns: Namespace, s: Storage = localStorage): StartPoint | null {
+  const raw = readJson(s, keyFor(ns, 'start'))
+  if (raw === undefined) {
+    if (safeGet(s, keyFor(ns, 'start')) != null) safeRemove(s, keyFor(ns, 'start'))
+    return null
+  }
+  const v = parseStart(raw)
+  if (!v) safeRemove(s, keyFor(ns, 'start'))
+  return v
+}
+export function saveStart(ns: Namespace, v: StartPoint, s: Storage = localStorage): void {
+  const ok = parseStart(v)
+  if (ok) safeSet(s, keyFor(ns, 'start'), JSON.stringify(ok))
+}
+export const clearStart = (ns: Namespace, s: Storage = localStorage) => safeRemove(s, keyFor(ns, 'start'))

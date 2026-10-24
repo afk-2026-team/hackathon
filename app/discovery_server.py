@@ -2,11 +2,14 @@
 
 실행: uv run python -m app.discovery_server   (기본 127.0.0.1:8001)
 auth 까지 쓰려면: node scripts/secrets.mjs run --env dev --services supabase -- uv run python -m app.discovery_server
+지도·블로그·숏폼까지: node scripts/secrets.mjs run --env dev --services supabase,naver,naver_maps,youtube -- uv run python -m app.discovery_server
+  (키 없는 서비스의 엔드포인트는 503 안내를 돌려준다. /v1/maps/config 는 enabled:false, /v1/fx 는 키 없이 동작)
 web/dist 가 있으면 같은 포트에서 SPA 정적 파일도 서빙한다. 기존 채팅 서버(app.serve)와 키 설정은 건드리지 않는다.
 """
 
 from __future__ import annotations
 
+import logging
 import os
 from pathlib import Path
 
@@ -18,10 +21,32 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from app.api.v1.auth import router as auth_router
 from app.api.v1.discovery import router as discovery_router
+from app.api.v1.evidence import router as evidence_router
+from app.api.v1.fx import router as fx_router
+from app.api.v1.maps import router as maps_router
 
 HOST = os.environ.get("DISCOVERY_HOST", "127.0.0.1")
 PORT = int(os.environ.get("DISCOVERY_PORT", "8001"))
 WEB_DIST = Path(__file__).resolve().parents[1] / "web" / "dist"
+# httpx 는 INFO 로 요청 URL 을 남긴다 — 외부 키가 쿼리에 섞일 여지를 막기 위해 WARNING 이상만
+logging.getLogger("httpx").setLevel(logging.WARNING)
+logging.getLogger("httpcore").setLevel(logging.WARNING)
+REDACTED_QUERY_PATHS = ("/v1/maps/geocode",)  # 질의가 사용자 숙소 주소일 수 있는 경로 — 접근 로그에서 쿼리 문자열을 지운다
+
+
+class _RedactQueryFilter(logging.Filter):
+    """uvicorn 접근 로그 args = (client, method, path?query, http_version, status)."""
+
+    def filter(self, record: logging.LogRecord) -> bool:
+        args = record.args
+        if isinstance(args, tuple) and len(args) >= 3 and isinstance(args[2], str):
+            path, sep, _ = args[2].partition("?")
+            if sep and path in REDACTED_QUERY_PATHS:
+                record.args = (*args[:2], f"{path}?<redacted>", *args[3:])
+        return True
+
+
+logging.getLogger("uvicorn.access").addFilter(_RedactQueryFilter())
 
 
 def _error(status: int, message: str, param: str | None = None, headers: dict[str, str] | None = None) -> JSONResponse:
@@ -47,6 +72,9 @@ def create_discovery_app(web_dist: Path | None = WEB_DIST) -> FastAPI:
 
     app.include_router(discovery_router, prefix="/v1")
     app.include_router(auth_router, prefix="/v1")  # 공개 설정과 서버 측 세션 검증. 키는 실행기가 주입한 환경값만 읽는다
+    app.include_router(maps_router, prefix="/v1")  # 지도 공개 설정·지오코딩(naver_maps)
+    app.include_router(evidence_router, prefix="/v1")  # 블로그(naver)·숏폼(youtube) 근거
+    app.include_router(fx_router, prefix="/v1")  # ECB 기준율, 키 불필요
 
     if web_dist is not None:
         root = web_dist.resolve()

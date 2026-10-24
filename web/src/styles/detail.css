@@ -1,0 +1,92 @@
+/* 상세·근거(E) 전용. 공통 토큰·클래스(styles.css)를 재사용하고 접두사 .dt- 만 쓴다. */
+
+/* 하단 내비(60px) 위에 고정 바(약 72px)가 올라가므로 본문 아래 여백을 확보한다. */
+.dt-page { padding-bottom: 88px; }
+
+/* 대표 이미지: 정사각, 제품 사진은 contain */
+.dt-hero { position: relative; width: 100%; aspect-ratio: 1 / 1; max-height: 420px; display: grid; place-items: center; background: var(--g05); border-bottom: 1px solid var(--g1); overflow: hidden; }
+.dt-hero img { width: 100%; height: 100%; object-fit: contain; }
+.dt-page--medical .dt-hero, .dt-page--beauty .dt-hero:has(.glyph) { aspect-ratio: 600 / 260; }
+.dt-hero--medical { background: var(--medical-bg); }
+
+/* 이름·가격 헤드 */
+.dt-head { padding: 20px 16px 16px; display: flex; flex-direction: column; gap: 8px; }
+.dt-badges { display: flex; flex-wrap: wrap; gap: 4px; }
+.dt-title { font-size: 20px; font-weight: 700; line-height: 1.35; letter-spacing: -0.02em; color: var(--ink); }
+
+/* 한국어 매장명 카드 — 매장에서 화면을 그대로 보여줄 수 있게 크게 */
+.dt-store { margin: 0 16px 20px; padding: 16px; border-radius: var(--r); background: var(--beauty-bg); border: 1px solid #c7eee9; }
+.dt-store__h { font-size: 14px; font-weight: 700; color: var(--beauty-ink); }
+.dt-store__lead { font-size: 12px; color: #3e7f77; margin-top: 2px; }
+.dt-store__row { display: flex; align-items: center; gap: 12px; margin-top: 12px; }
+.dt-store__name { flex: 1; font-size: 22px; font-weight: 800; line-height: 1.35; color: var(--ink); letter-spacing: -0.02em; word-break: keep-all; }
+
+/* 블록 섹션 */
+.dt-sec { padding: 24px 16px; }
+.dt-sec--tight { padding-top: 0; }
+.dt-sec h2, .dt-h2 { font-size: 17px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
+.dt-sec .sec-h h2 { margin-bottom: 0; }
+.dt-body { font-size: 14px; line-height: 1.7; color: var(--g8); white-space: pre-line; }
+.dt-gap { margin-bottom: 12px; }
+.dt-src { margin-top: 12px; }
+.dt-link { color: var(--link); font-size: 13px; font-weight: 600; }
+
+.dt-reasons { display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; }
+.dt-reasons li { position: relative; padding: 12px 14px 12px 38px; border-radius: var(--r-sm); background: var(--g05); font-size: 14px; line-height: 1.55; color: var(--g8); }
+.dt-reasons li::before { content: ""; position: absolute; left: 14px; top: 16px; width: 14px; height: 14px; border-radius: 50%; background: var(--beauty) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12l4 4 8-8' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 10px no-repeat; }
+.dt-page--medical .dt-reasons li::before { background-color: var(--medical); }
+
+.dt-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.dt-tag { height: 28px; padding: 0 10px; border-radius: 6px; background: var(--g1); font-size: 13px; color: var(--g7); display: inline-flex; align-items: center; }
+
+/* 숏폼: 세로 9:16 카드 가로 스크롤 */
+.dt-shelf { padding-bottom: 4px; gap: 10px; scroll-snap-type: x mandatory; }
+.dt-shelf::-webkit-scrollbar { display: none; }
+.dt-vcard { flex: 0 0 132px; display: flex; flex-direction: column; gap: 6px; scroll-snap-align: start; }
+.dt-vcard__btn { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: pointer; }
+.dt-vcard__thumb { position: relative; display: block; width: 100%; aspect-ratio: 9 / 16; border-radius: var(--r-sm); overflow: hidden; background: var(--g15); }
+.dt-vcard__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.dt-vcard__play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 40px; height: 40px; border-radius: 50%; background: rgba(19, 21, 23, 0.55); color: #fff; display: grid; place-items: center; }
+.dt-vcard__meta { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; }
+.dt-vcard__title { font-size: 13px; font-weight: 600; line-height: 1.35; color: var(--g8); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.dt-vcard__sub { font-size: 11px; color: var(--g5); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+
+.dt-player { padding: 0 16px; display: flex; flex-direction: column; gap: 10px; }
+.dt-player__frame { width: min(100%, 340px); margin: 0 auto; aspect-ratio: 9 / 16; max-height: 62dvh; border-radius: var(--r); overflow: hidden; background: #000; }
+.dt-player__frame iframe { width: 100%; height: 100%; border: 0; }
+.dt-player__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+
+/* 블로그 후기 */
+.dt-blog { display: flex; flex-direction: column; }
+.dt-blog__item { padding: 14px 0; border-bottom: 1px solid var(--g1); display: flex; flex-direction: column; gap: 6px; }
+.dt-blog__item:first-child { padding-top: 0; }
+.dt-blog__badges { display: flex; gap: 4px; }
+.dt-blog__title { font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.4; }
+.dt-blog__excerpt { font-size: 13px; color: var(--g6); line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.dt-blog__meta { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 12px; color: var(--g5); }
+.dt-blog__meta .dt-link { margin-left: auto; font-size: 12px; }
+
+/* 의료·장소 헤드 */
+.dt-phead { padding: 20px 16px 16px; display: flex; flex-direction: column; gap: 8px; }
+.dt-phead__ko { display: flex; flex-direction: column; gap: 2px; font-size: 16px; font-weight: 600; color: var(--g8); }
+.dt-phead__addr { display: flex; align-items: center; gap: 6px; margin-top: 6px; font-size: 13px; color: var(--g7); }
+.dt-phead__addr svg { flex: none; color: var(--g5); }
+.dt-page--medical .dt-phead__addr svg { color: var(--medical); }
+.dt-notice { padding: 0 16px 16px; }
+
+/* 지도 */
+.dt-map { display: flex; flex-direction: column; gap: 10px; }
+.dt-map__wrap { position: relative; }
+.dt-map__box { height: 180px; border-radius: var(--r-sm); overflow: hidden; background: var(--g1); }
+.dt-map__loading { position: absolute; inset: 0; display: grid; place-items: center; }
+.dt-map__coords { display: flex; flex-direction: column; gap: 2px; }
+.dt-map__addr { font-size: 13px; color: var(--g7); }
+.dt-map__links { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* 하단 고정 바: 하단 내비 바로 위 */
+.dt-bar { position: fixed; z-index: 35; left: 50%; transform: translateX(-50%); bottom: calc(var(--nav-h) + env(safe-area-inset-bottom)); width: 100%; max-width: var(--app-w); display: flex; gap: 8px; padding: 10px 12px; background: #fff; box-shadow: 0 -4px 12px rgba(19, 21, 23, 0.06); }
+.dt-bar__sub { flex: 0 0 auto; padding: 0 14px; font-size: 14px; }
+.dt-bar__sub--on { border-color: var(--beauty); color: var(--beauty-ink); }
+.dt-bar__main { flex: 1; flex-direction: column; gap: 0; line-height: 1.2; }
+.dt-bar__main--medical { background: linear-gradient(90deg, var(--medical), #ff8a3d); }
+.dt-bar__qty { font-size: 11px; font-weight: 600; opacity: 0.9; }

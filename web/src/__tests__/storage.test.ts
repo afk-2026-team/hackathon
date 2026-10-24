@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { clearAll, keyFor, loadCart, loadEntry, loadProfile, migrateLegacy, migrateProfile, saveCart, saveProfile, toPayload } from '../lib/storage'
+import { clearAll, clearStart, keyFor, loadCart, loadEntry, loadProfile, loadStart, migrateLegacy, migrateProfile, saveCart, saveProfile, saveStart, toPayload } from '../lib/storage'
 
 const base = { version: 1 as const, country: 'US', language: 'en', currency: 'USD', gender: null, age_range: null, preferences: null, onboarded_at: 'x', tutorial_done: true }
 
@@ -40,5 +40,38 @@ describe('profile storage', () => {
     const broken = { getItem: () => { throw new Error('denied') }, setItem: () => { throw new Error('denied') }, removeItem: () => { throw new Error('denied') } } as unknown as Storage
     expect(loadProfile('guest', broken)).toBeNull()
     expect(() => saveProfile('guest', base, broken)).not.toThrow()
+  })
+})
+
+describe('trip start point storage', () => {
+  const stay = { label: 'Hotel', address: 'Road 1', lat: 37.55, lng: 126.97, coords_source: 'naver_maps_geocode' as const }
+
+  it('saves and loads a picked stay per account space', () => {
+    saveStart('guest', stay)
+    expect(loadStart('guest')).toEqual(stay)
+    expect(loadStart('user:abc')).toBeNull()
+    clearStart('guest')
+    expect(loadStart('guest')).toBeNull()
+  })
+
+  it('drops corrupt or unknown-shaped stays (fail-closed)', () => {
+    localStorage.setItem(keyFor('guest', 'start'), '{bad')
+    expect(loadStart('guest')).toBeNull()
+    expect(localStorage.getItem(keyFor('guest', 'start'))).toBeNull()
+    for (const bad of [{ ...stay, lat: 999 }, { ...stay, lng: 'x' }, { ...stay, coords_source: 'guess' }, { ...stay, label: '' }]) {
+      localStorage.setItem(keyFor('guest', 'start'), JSON.stringify(bad))
+      expect(loadStart('guest')).toBeNull()
+      expect(localStorage.getItem(keyFor('guest', 'start'))).toBeNull()
+    }
+    saveStart('guest', { ...stay, lat: Number.NaN })
+    expect(localStorage.getItem(keyFor('guest', 'start'))).toBeNull()
+  })
+
+  it('clearAll also removes the stay', () => {
+    saveStart('user:abc', stay)
+    saveStart('guest', stay)
+    clearAll('user:abc')
+    expect(loadStart('user:abc')).toBeNull()
+    expect(loadStart('guest')).toEqual(stay)
   })
 })

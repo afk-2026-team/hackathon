@@ -1,17 +1,11 @@
 import type { DetailProps } from './contracts'
-import { SourceList, SubBar } from '../components/Common'
+import { ProductDetail } from '../components/detail/ProductDetail'
+import { PlaceDetail } from '../components/detail/PlaceDetail'
+import '../styles/detail.css'
 
-// 담당: 상세·근거(E). 임시 골격.
-export function ItemDetail({ item, onBack, onAddCart, onAddTrip }: DetailProps) {
-  return (
-    <>
-      <SubBar title={item.title} onBack={onBack} />
-      <section className="sec">
-        <p>{item.description}</p>
-        <SourceList sources={item.sources} />
-        <button type="button" className="btn btn--primary" onClick={() => onAddCart(item)}>Add to cart</button>
-        <button type="button" className="btn btn--ghost" onClick={() => onAddTrip(item)}>Add to My Trip</button>
-      </section>
-    </>
-  )
+// 담당: 상세·근거(E). 뷰티 제품은 상품 상세 레이아웃, 의료·장소·안내는 기관 상세 레이아웃.
+export function ItemDetail(props: DetailProps) {
+  const { item } = props
+  if (item.kind === 'product' && item.category === 'beauty') return <ProductDetail {...props} />
+  return <PlaceDetail {...props} />
 }

@@ -2,6 +2,7 @@ import type { CartLine, TripEntry } from '../lib/storage'
 import { formatKrw, mapLinks } from '../lib/format'
 import { EmptyState } from '../components/States'
 import { Glyph } from '../components/Glyph'
+import { useT } from '../lib/i18n'
 
 interface Props {
   trip: TripEntry[]
@@ -15,28 +16,30 @@ interface Props {
 }
 
 export function MyTrip({ trip, cart, onMove, onDay, onRemove, onAddDay, days, onExplore }: Props) {
+  const t = useT()
+  const dayLabel = (d: number) => (t('trip.day') === 'Day' ? `Day ${d}` : `${d}${t('trip.day')}`)
   const dayList = Array.from({ length: days }, (_, i) => i + 1)
   return (
     <div className="screen trip">
       <header className="screen__head">
-        <h1>My Trip</h1>
-        <p className="lead">Your saved places, arranged by day. Times and visits are confirmed with each place.</p>
+        <h1>{t('trip.title')}</h1>
+        <p className="lead">{t('trip.lead')}</p>
       </header>
 
       {trip.length === 0 ? (
         <EmptyState
-          title="Nothing saved yet"
-          body="Save clinics, shops or guides from Explore and they’ll show up here."
-          action={<button type="button" className="btn btn--primary" onClick={onExplore}>Go to Explore</button>}
+          title={t('trip.empty')}
+          body={t('trip.emptyBody')}
+          action={<button type="button" className="btn btn--primary" onClick={onExplore}>{t('trip.goExplore')}</button>}
         />
       ) : (
         dayList.map((d) => {
           const entries = trip.filter((e) => e.day === d)
           return (
             <section key={d} className="day" aria-labelledby={`day-${d}`}>
-              <h2 id={`day-${d}`} className="section-title">Day {d}</h2>
+              <h2 id={`day-${d}`} className="section-title">{dayLabel(d)}</h2>
               {entries.length === 0 ? (
-                <p className="note">No plans for this day.</p>
+                <p className="note">{t('trip.noPlans')}</p>
               ) : (
                 <ol className="day__list">
                   {entries.map((e, idx) => {
@@ -60,10 +63,10 @@ export function MyTrip({ trip, cart, onMove, onDay, onRemove, onAddDay, days, on
                           <button type="button" aria-label={`Move ${e.title} down`} disabled={idx === entries.length - 1} onClick={() => onMove(e.entry_id, 1)}>↓</button>
                           <select aria-label={`Day for ${e.title}`} value={e.day} onChange={(ev) => onDay(e.entry_id, Number(ev.target.value))}>
                             {dayList.map((x) => (
-                              <option key={x} value={x}>Day {x}</option>
+                              <option key={x} value={x}>{dayLabel(x)}</option>
                             ))}
                           </select>
-                          <button type="button" className="danger" aria-label={`Remove ${e.title}`} onClick={() => onRemove(e.entry_id)}>Remove</button>
+                          <button type="button" className="danger" aria-label={`Remove ${e.title}`} onClick={() => onRemove(e.entry_id)}>{t('trip.remove')}</button>
                         </div>
                       </li>
                     )
@@ -75,20 +78,24 @@ export function MyTrip({ trip, cart, onMove, onDay, onRemove, onAddDay, days, on
         })
       )}
       {trip.length > 0 && (
-        <button type="button" className="btn btn--ghost" onClick={onAddDay}>Add a day</button>
+        <button type="button" className="btn btn--ghost" onClick={onAddDay}>{t('trip.addDay')}</button>
       )}
 
       {cart.length > 0 && (
         <section className="shopping" aria-labelledby="shopping-title">
-          <h2 id="shopping-title" className="section-title">Shopping list</h2>
+          <h2 id="shopping-title" className="section-title">{t('list.title')}</h2>
           <ul>
             {cart.map((l) => (
               <li key={l.item_id}>
                 <span>{l.title} × {l.qty}</span>
-                <span>{l.price_krw != null ? formatKrw(l.price_krw * l.qty) : 'Not listed'}</span>
+                <span>{l.price_krw != null ? formatKrw(l.price_krw * l.qty) : t('detail.notListed')}</span>
               </li>
             ))}
           </ul>
+          <p className="cart__total">
+            <span>{t('list.total')}</span>
+            <strong>{formatKrw(cart.reduce((s, l) => s + (l.price_krw ?? 0) * l.qty, 0))}</strong>
+          </p>
         </section>
       )}
     </div>

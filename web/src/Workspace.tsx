@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import type { CatalogItem, CategoryFilter } from './lib/types'
 import {
   clearAll, loadCart, loadProfile, loadTrip, saveCart, saveProfile, saveTrip, toPayload,
@@ -16,6 +16,21 @@ import { Tutorial } from './components/Tutorial'
 
 type Overlay = null | 'settings' | 'edit'
 
+// 화면 주소: #home, #explore, #explore/<itemId>, #trip (발표 캡처·새로고침 복원용)
+export function parseHash(hash: string): { tab: Tab; itemId: string | null } {
+  const [head, id] = hash.replace(/^#\/?/, '').split('/')
+  const tab: Tab = head === 'explore' || head === 'trip' ? head : 'home'
+  let itemId: string | null = null
+  if (tab === 'explore' && id) {
+    try {
+      itemId = decodeURIComponent(id)
+    } catch {
+      itemId = null // 잘못된 % 인코딩은 무시하고 목록만 연다
+    }
+  }
+  return { tab, itemId }
+}
+
 interface WorkspaceProps {
   ns: Namespace
   uiLang: Lang
@@ -30,7 +45,8 @@ export function Workspace({ ns, uiLang, account, onSignIn, onSignOut, onResetDon
   const [profile, setProfileState] = useState<Profile | null>(() => loadProfile(ns))
   const [cart, setCartState] = useState<CartLine[]>(() => loadCart(ns))
   const [trip, setTripState] = useState<TripEntry[]>(() => loadTrip(ns))
-  const [tab, setTab] = useState<Tab>('home')
+  const [tab, setTab] = useState<Tab>(() => parseHash(window.location.hash).tab)
+  const [selectedId, setSelectedId] = useState<string | null>(() => parseHash(window.location.hash).itemId)
   const [overlay, setOverlay] = useState<Overlay>(null)
   const [category, setCategory] = useState<CategoryFilter>('all')
   const [selected, setSelected] = useState<CatalogItem | null>(null)
@@ -38,6 +54,36 @@ export function Workspace({ ns, uiLang, account, onSignIn, onSignOut, onResetDon
 
   const payload = useMemo(() => (profile ? toPayload(profile) : null), [profile])
   const tripIds = useMemo(() => new Set(trip.map((e) => e.item_id)), [trip])
+
+  useEffect(() => {
+    const next = tab === 'explore' && (selected?.id ?? selectedId) ? `#explore/${encodeURIComponent(selected?.id ?? selectedId!)}` : `#${tab}`
+    // 탭·항목 이동은 기록에 남겨 브라우저 뒤로가기로 돌아올 수 있게 한다(첫 진입은 교체)
+    if (window.location.hash !== next) {
+      if (window.location.hash) window.history.pushState(null, '', next)
+      else window.history.replaceState(null, '', next)
+    }
+  }, [tab, selected, selectedId])
+
+  useEffect(() => {
+    const onHash = () => {
+      const h = parseHash(window.location.hash)
+      setOverlay(null)
+      setTab(h.tab)
+      setSelectedId(h.itemId)
+      setSelected((cur) => (h.itemId && cur?.id === h.itemId ? cur : null))
+    }
+    window.addEventListener('popstate', onHash)
+    window.addEventListener('hashchange', onHash)
+    return () => {
+      window.removeEventListener('popstate', onHash)
+      window.removeEventListener('hashchange', onHash)
+    }
+  }, [])
+
+  const select = (i: CatalogItem | null) => {
+    setSelected(i)
+    setSelectedId(i?.id ?? null)
+  }
 
   const setProfile = (p: Profile) => {
     saveProfile(ns, p)
@@ -115,7 +161,7 @@ export function Workspace({ ns, uiLang, account, onSignIn, onSignOut, onResetDon
       <header className="topbar">
         <button type="button" className="brand" onClick={() => goTab('home')}>{translate(lang, 'brand')}</button>
         <DocTitle />
-        <button type="button" className="icon-btn" aria-label="Settings" onClick={() => setOverlay('settings')}>
+        <button type="button" className="icon-btn" aria-label={translate(lang, 'settings.title')} onClick={() => setOverlay('settings')}>
           <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
             <path fill="currentColor" d="M12 8.5a3.5 3.5 0 110 7 3.5 3.5 0 010-7zm8.2 2.2l-1.7-.3a6.9 6.9 0 00-.7-1.6l1-1.4-1.9-1.9-1.4 1a6.9 6.9 0 00-1.6-.7l-.3-1.7h-2.7l-.3 1.7a6.9 6.9 0 00-1.6.7l-1.4-1-1.9 1.9 1 1.4a6.9 6.9 0 00-.7 1.6l-1.7.3v2.6l1.7.3c.2.6.4 1.1.7 1.6l-1 1.4 1.9 1.9 1.4-1c.5.3 1 .5 1.6.7l.3 1.7h2.7l.3-1.7c.6-.2 1.1-.4 1.6-.7l1.4 1 1.9-1.9-1-1.4c.3-.5.5-1 .7-1.6l1.7-.3z" />
           </svg>
@@ -148,25 +194,28 @@ export function Workspace({ ns, uiLang, account, onSignIn, onSignOut, onResetDon
           <Home
             profile={payload}
             onOpen={(i) => {
-              setSelected(i)
+              select(i)
               goTab('explore')
             }}
             onBrowse={(c) => {
               setCategory(c)
-              setSelected(null)
+              select(null)
               goTab('explore')
             }}
           />
         ) : tab === 'explore' ? (
           <Explore
             profile={payload}
+            currentProduct={profile.preferences?.current_product}
+            onSetCurrent={(name) => setProfile({ ...profile, preferences: { ...(profile.preferences ?? {}), current_product: name } })}
+            selectedId={selectedId}
             category={category}
             onCategory={(c) => {
               setCategory(c)
-              setSelected(null)
+              select(null)
             }}
             selected={selected}
-            onSelect={setSelected}
+            onSelect={select}
             cart={cart}
             tripIds={tripIds}
             onAddCart={addCart}

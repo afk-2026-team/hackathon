@@ -29,6 +29,8 @@ Google 로그인까지 사용할 때는 첫 번째 터미널에서 다음 명령
 node scripts/secrets.mjs run --env dev --services supabase -- uv run python -m app.discovery_server
 ```
 
+Google 로그인과 Claude 비교 요약을 함께 사용할 때는 `--services supabase,ash_workflow`로 실행합니다. 모델 키가 없거나 응답을 사용할 수 없어도 출처가 있는 비교 사실은 표시됩니다.
+
 Google 제공자가 설정되지 않았거나 인증 서버 연결에 실패해도 게스트로 시작할 수 있습니다. 설정된 브라우저 주소를 일관되게 사용합니다. `localhost`와 `127.0.0.1`은 서로 다른 저장소와 로그인 세션을 사용합니다.
 
 ## 구성과 작업 경계
@@ -38,6 +40,7 @@ Google 제공자가 설정되지 않았거나 인증 서버 연결에 실패해�
 | `web/` | 온보딩, 프로필, Home·Explore·My Trip, 담기·일정, 튜토리얼 |
 | `web/src/auth/` | 화면에서 분리한 Google 로그인·콜백·세션 관리 |
 | `app/api/v1/discovery.py`, `app/services/discovery.py` | 국가·개인 조건을 받는 탐색 API |
+| `app/services/discovery_compare.py`, `app/services/discovery_explain.py` | 현재 제품 비교와 확인된 사실을 이용한 짧은 요약 |
 | `app/api/v1/auth.py`, `app/services/auth.py` | 공개 인증 설정과 서버 측 사용자 확인 |
 | `app/schemas/discovery.py` | 프론트·백엔드 공통 데이터 계약 |
 | `app/data/` | 출처가 있는 후보와 확인 시점 |
@@ -46,6 +49,12 @@ Google 제공자가 설정되지 않았거나 인증 서버 연결에 실패해�
 | `scripts/secrets.mjs`, `src/server/secrets.mjs` | 팀 공통 Infisical 접근 |
 
 첫 구현은 브라우저에 프로필·담은 항목·일정을 저장합니다. 게스트와 Google 계정별 저장 공간을 구분하며, 다른 기기 간 동기화는 별도 작업입니다. 국가별 근거가 부족하면 공통 후보와 부족 상태를 반환하며, 국적·성별·연령으로 피부나 의료 적합성을 추정하지 않습니다.
+
+## 현재 제품 비교
+
+Explore의 제품 상세에서 현재 쓰는 제품을 선택하거나 이름을 입력합니다. 등록된 제품과 일치하면 표시 성분·제형·용량·가격을 출처와 함께 비교하며, 확인되지 않은 정보는 비워 둡니다. 일부 성분 목록에 없는 성분을 제품에 없다고 판정하지 않고, 통화 또는 용량이 다르거나 용량이 없으면 가격 우열을 계산하지 않습니다.
+
+현재 확인된 비교 데이터는 CeraVe Moisturizing Cream과 ILLIYOON 75ml에 한정됩니다. 모델은 서버가 준비한 사실을 선택해 요약하며 제품의 효능이나 의료 적합성을 판정하지 않습니다. API 계약과 응답 형식은 [비교 API 안내](app/data/discovery_api_contract.md)를 참고합니다.
 
 ## Google 로그인 연결
 
@@ -64,7 +73,7 @@ node scripts/secrets.mjs check --env dev --services ash_workflow
 node scripts/secrets.mjs run --env dev --services ash_workflow -- uv run python -m app.serve
 ```
 
-이 채팅 서버는 기존 모델 설정을 사용합니다. 탐색 서버 실행에 Claude 키를 넣을 필요는 없습니다. 키를 프론트에 넣거나 `.env`로 복사하지 않습니다. [팀 시크릿 사용법](envs/README.md)을 참고합니다.
+이 채팅 서버는 기존 모델 설정을 사용합니다. 탐색·비교 사실 조회는 Claude 키 없이도 실행되며, 모델을 사용하는 비교 요약에만 `ash_workflow`가 필요합니다. 키를 프론트에 넣거나 `.env`로 복사하지 않습니다. [팀 시크릿 사용법](envs/README.md)을 참고합니다.
 
 ## 확인 명령
 

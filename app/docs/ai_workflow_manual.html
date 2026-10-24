@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Workflow 매뉴얼</title>
+<style>
+:root {
+  --bg: #fbfaf8; --surface: #ffffff; --sunken: #f3f1ed; --ink: #1d1b18; --muted: #5f5a52; --line: #e4e0d8;
+  --accent: #b4475d; --accent-soft: #f7e7ea; --ok: #2f7a4f; --ok-soft: #e4f2e9; --warn: #9a6400; --warn-soft: #fbf0d9;
+  --code-bg: #f5f3ef; --code-ink: #2a2622;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #151412; --surface: #1d1b19; --sunken: #23211e; --ink: #ece8e1; --muted: #a59f95; --line: #34312c;
+    --accent: #e48a9c; --accent-soft: #3a2228; --ok: #7cc79b; --ok-soft: #1e3227; --warn: #e2b45c; --warn-soft: #362a14;
+    --code-bg: #1a1917; --code-ink: #e6e1d8;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #151412; --surface: #1d1b19; --sunken: #23211e; --ink: #ece8e1; --muted: #a59f95; --line: #34312c;
+  --accent: #e48a9c; --accent-soft: #3a2228; --ok: #7cc79b; --ok-soft: #1e3227; --warn: #e2b45c; --warn-soft: #362a14;
+  --code-bg: #1a1917; --code-ink: #e6e1d8;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 16px; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.7 -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  word-break: keep-all; overflow-wrap: anywhere;
+}
+.layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); max-width: 1180px; margin: 0 auto; gap: 40px; padding: 0 24px; }
+nav.toc { position: sticky; top: 0; align-self: start; max-height: 100vh; overflow-y: auto; padding: 32px 0; font-size: 14px; }
+nav.toc .brand { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+nav.toc .sub { color: var(--muted); font-size: 12.5px; margin-bottom: 20px; }
+nav.toc ol { list-style: none; padding: 0; margin: 0; counter-reset: s; }
+nav.toc li { counter-increment: s; }
+nav.toc a { display: block; padding: 6px 10px; border-radius: 6px; color: var(--muted); text-decoration: none; }
+nav.toc a::before { content: counter(s) ". "; color: var(--accent); font-weight: 600; }
+nav.toc a:hover { background: var(--sunken); color: var(--ink); }
+main { padding: 40px 0 120px; min-width: 0; }
+header.hero { border-bottom: 1px solid var(--line); padding-bottom: 28px; margin-bottom: 8px; }
+.eyebrow { color: var(--accent); font-weight: 700; font-size: 13px; letter-spacing: .04em; }
+h1 { font-size: 34px; line-height: 1.3; margin: 6px 0 12px; letter-spacing: -0.01em; }
+.lede { font-size: 18px; color: var(--muted); max-width: 720px; margin: 0; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.chip { font-size: 13px; padding: 3px 10px; border-radius: 999px; background: var(--sunken); color: var(--muted); border: 1px solid var(--line); }
+section { padding-top: 40px; }
+h2 { font-size: 25px; margin: 0 0 6px; letter-spacing: -0.01em; }
+h2 .num { color: var(--accent); margin-right: 6px; }
+.section-lede { color: var(--muted); margin: 0 0 20px; }
+h3 { font-size: 18px; margin: 30px 0 10px; }
+p { margin: 10px 0; }
+a { color: var(--accent); }
+code { font: 0.88em/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--code-bg); padding: 1px 5px; border-radius: 4px; color: var(--code-ink); }
+pre { background: var(--code-bg); color: var(--code-ink); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; overflow-x: auto; font: 13.5px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; margin: 10px 0 16px; }
+pre code { background: none; padding: 0; font-size: inherit; }
+.label { display: inline-block; font-size: 12px; font-weight: 700; color: var(--muted); margin-top: 6px; letter-spacing: .02em; }
+table { width: 100%; border-collapse: collapse; margin: 10px 0 18px; font-size: 14.5px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: block; overflow-x: auto; }
+thead { background: var(--sunken); }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-weight: 650; white-space: nowrap; }
+tr:last-child td { border-bottom: none; }
+.callout { border-radius: 10px; padding: 12px 16px; margin: 14px 0; border: 1px solid var(--line); background: var(--surface); }
+.callout strong:first-child { display: block; margin-bottom: 2px; }
+.callout.key { background: var(--accent-soft); border-color: transparent; }
+.callout.ok { background: var(--ok-soft); border-color: transparent; }
+.callout.warn { background: var(--warn-soft); border-color: transparent; }
+.flow { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; margin: 16px 0 8px; }
+.node { flex: 1 1 150px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.node b { display: block; font-size: 15px; }
+.node span { color: var(--muted); font-size: 13.5px; line-height: 1.5; display: block; margin-top: 2px; }
+.node.hl { border-color: var(--accent); }
+.arrow { align-self: center; color: var(--muted); font-size: 20px; }
+.steps { counter-reset: st; list-style: none; padding: 0; margin: 10px 0; }
+.steps > li { counter-increment: st; position: relative; padding: 2px 0 14px 44px; }
+.steps > li::before { content: counter(st); position: absolute; left: 0; top: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; display: grid; place-items: center; font-size: 14px; }
+.steps > li b { display: block; margin-bottom: 2px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.card h4 { margin: 0 0 6px; font-size: 15px; }
+.card p { margin: 4px 0; font-size: 14.5px; color: var(--muted); }
+details { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); margin: 10px 0 16px; }
+details summary { cursor: pointer; padding: 10px 14px; font-weight: 600; font-size: 14.5px; }
+details pre { margin: 0 12px 12px; }
+.method { font: 700 12px ui-monospace, Menlo, monospace; padding: 2px 7px; border-radius: 5px; background: var(--ok-soft); color: var(--ok); }
+.method.post { background: var(--accent-soft); color: var(--accent); }
+footer { margin-top: 60px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 16px; }
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; gap: 0; padding: 0 16px; }
+  nav.toc { position: static; max-height: none; padding: 20px 0 0; border-bottom: 1px solid var(--line); }
+  nav.toc ol { display: flex; flex-wrap: wrap; gap: 4px; padding-bottom: 12px; }
+  h1 { font-size: 27px; }
+  .arrow { transform: rotate(90deg); flex-basis: 100%; text-align: center; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+<nav class="toc" aria-label="목차">
+  <div class="brand">AI Workflow 매뉴얼</div>
+  <div class="sub">Home 조언자 · app.serve</div>
+  <ol>
+    <li><a href="#overview">한눈에 보기</a></li>
+    <li><a href="#api">API 목록</a></li>
+    <li><a href="#input">IN — 보내는 데이터</a></li>
+    <li><a href="#output">OUT — 받는 데이터</a></li>
+    <li><a href="#examples">실제 예제</a></li>
+    <li><a href="#setup">다른 PC에서 실행</a></li>
+    <li><a href="#troubleshoot">문제 해결</a></li>
+    <li><a href="#data">데이터(Crawling_DB)</a></li>
+  </ol>
+</nav>
+
+<main>
+<header class="hero">
+  <div class="eyebrow">JINSEONMI · AI WORKFLOW</div>
+  <h1>Home 조언자 AI 서버 사용 설명서</h1>
+  <p class="lede">온보딩에서 받은 프로필(언어·국가·성별·연령대)이나 사용자 질문을 보내면, 크롤링 DB에서 근거를 골라 <b>근거 ID가 붙은 추천 문장</b>을 돌려주는 서버입니다. 이 문서 하나로 호출 방법과 응답 읽는 법, 다른 PC에서 실행하는 방법을 모두 알 수 있습니다.</p>
+  <div class="meta">
+    <span class="chip">대상: 팀원 · 서버를 호출하는 Claude Code</span>
+    <span class="chip">서버: <code>app.serve</code> · 포트 8000</span>
+    <span class="chip">예시 실측: 2026-10-24</span>
+  </div>
+</header>
+
+<!-- 1 -->
+<section id="overview">
+  <h2><span class="num">1</span>한눈에 보기</h2>
+  <p class="section-lede">요청 하나가 서버 안에서 거치는 길입니다. LLM은 마지막 단계(Haiku)에서만 씁니다.</p>
+  <div class="flow" role="img" aria-label="요청 처리 흐름">
+    <div class="node"><b>요청</b><span>질문 또는 프로필<br><code>/v1/chat/completions</code><br><code>/v1/responses</code></span></div>
+    <div class="arrow">→</div>
+    <div class="node hl"><b>① Jev 판단</b><span>무슨 주제인가(category)<br>어떤 콘텐츠인가(content_kind)<br>의료 관심(medical_intent)</span></div>
+    <div class="arrow">→</div>
+    <div class="node hl"><b>② retrieve</b><span>Crawling_DB에서 조건에 맞는 근거 <b>최대 5건</b>을 규칙으로 고름(LLM 없음)</span></div>
+    <div class="arrow">→</div>
+    <div class="node hl"><b>③ Haiku 응답</b><span>고른 근거만 써서 답하고 항목마다 <code>[근거 ID]</code>를 붙임</span></div>
+  </div>
+  <p style="color:var(--muted);font-size:14px;margin-top:4px">범위 밖 질문(주식·날씨 등)은 ①에서 바로 <b>decline</b>(정중한 거절)으로 가고 ②는 건너뜁니다.</p>
+
+  <div class="grid2" style="margin-top:18px">
+    <div class="card"><h4>무엇을 보내나</h4><p>OpenAI 형식의 요청에 <code>metadata.profile</code>을 더합니다. 질문 없이 프로필만 보내면 <b>Home 추천</b>을 만듭니다.</p></div>
+    <div class="card"><h4>무엇을 받나</h4><p>OpenAI 형식의 응답입니다. 본문은 자연어이고, 추천 항목마다 <code>[products/…]</code> 같은 근거 ID, 출처 URL, 협찬 상태가 들어 있습니다.</p></div>
+    <div class="card"><h4>지키는 원칙</h4><p>성별·연령으로 피부나 의료 적합성을 판단하지 않습니다. 근거가 없으면 없다고 말합니다. 의료는 장소 안내만 합니다.</p></div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="api">
+  <h2><span class="num">2</span>API 목록</h2>
+  <p class="section-lede">기본 주소는 <code>http://localhost:8000</code>입니다. 인증 헤더는 없습니다(로컬 개발 서버).</p>
+  <table>
+    <thead><tr><th>메서드</th><th>경로</th><th>하는 일</th><th>언제 쓰나</th></tr></thead>
+    <tbody>
+      <tr><td><span class="method">GET</span></td><td><code>/health</code></td><td>서버 상태, 그래프 노드, 읽어 들인 근거 수</td><td>서버가 떴는지 확인할 때</td></tr>
+      <tr><td><span class="method">GET</span></td><td><code>/v1/models</code></td><td>사용 가능한 model 목록(현재 <code>kbeauty-haiku</code>)</td><td>요청에 넣을 model 이름을 확인할 때</td></tr>
+      <tr><td><span class="method post">POST</span></td><td><code>/v1/chat/completions</code></td><td>OpenAI Chat Completions 형식. 일반·스트리밍</td><td><b>기본으로 이것을 쓰세요</b></td></tr>
+      <tr><td><span class="method post">POST</span></td><td><code>/v1/responses</code></td><td>OpenAI Responses API 형식. 일반·스트리밍. 그래프는 위와 같음</td><td>Responses 형식 클라이언트를 쓸 때</td></tr>
+    </tbody>
+  </table>
+  <div class="callout"><strong>참고</strong>같은 라우터에 <code>/v1/discovery</code>·<code>/v1/auth</code>도 있습니다. 이것은 탐색 앱(<code>app.discovery_server</code>, 포트 8001) 담당이라 이 문서에서는 다루지 않습니다. 저장소 <code>README.md</code>를 보세요.</div>
+</section>
+
+<!-- 3 -->
+<section id="input">
+  <h2><span class="num">3</span>IN — 보내는 데이터</h2>
+  <p class="section-lede">무엇을 보내느냐에 따라 서버가 두 가지 모드로 동작합니다.</p>
+
+  <h3>3-1. 모드는 이렇게 정해집니다</h3>
+  <table>
+    <thead><tr><th>보낸 것</th><th>모드</th><th>서버가 하는 일</th></tr></thead>
+    <tbody>
+      <tr><td>질문(마지막 user 메시지) <b>있음</b></td><td>질문 모드</td><td>질문으로 판단합니다. 프로필이 있으면 근거 고르기와 말투에 함께 씁니다.</td></tr>
+      <tr><td>질문 <b>없음</b> + 프로필 <b>있음</b></td><td><b>Home 모드</b></td><td>서버가 <b>언어·국가만으로</b> "Home 추천 요청" 문장을 만들어 판단합니다. 온보딩 직후 Home 최상단용입니다.</td></tr>
+      <tr><td>둘 다 없음</td><td>—</td><td><code>400</code> 오류</td></tr>
+    </tbody>
+  </table>
+
+  <h3>3-2. 프로필(profile) — 모두 선택 항목</h3>
+  <table>
+    <thead><tr><th>키</th><th>형식</th><th>예</th><th>어디에 쓰나</th></tr></thead>
+    <tbody>
+      <tr><td><code>language</code></td><td>ISO 639-1 (대소문자 무관, <code>en-US</code> → <code>en</code>)</td><td><code>en</code>, <code>ja</code>, <code>zh</code></td><td>Jev 판단, 근거 점수, 응답 언어</td></tr>
+      <tr><td><code>country</code></td><td>ISO 3166-1 2자리 (자동 대문자)</td><td><code>US</code>, <code>JP</code>, <code>SG</code></td><td>Jev 판단, 근거 점수, "국가 근거 부족" 표시</td></tr>
+      <tr><td><code>gender</code></td><td>자유 문자열</td><td><code>female</code></td><td><b>말투에만</b> 사용</td></tr>
+      <tr><td><code>age_band</code></td><td>자유 문자열</td><td><code>20s</code></td><td><b>말투에만</b> 사용</td></tr>
+    </tbody>
+  </table>
+  <div class="callout key"><strong>성별·연령은 판단에 쓰지 않습니다</strong>Jev(판단 모델)에는 아예 전달되지 않고, 근거 고르기에도 쓰지 않습니다. Haiku가 말투를 맞출 때만 봅니다. 국가만으로 피부 타입이나 시술 적합성을 단정하지도 않습니다(기획안 §5-1).</div>
+
+  <p>프로필은 두 가지 방법 중 편한 쪽으로 보내면 됩니다.</p>
+  <div class="grid2">
+    <div><span class="label">방법 A — 객체(권장)</span>
+<pre><code>"metadata": {
+  "profile": {
+    "language": "en", "country": "US",
+    "gender": "female", "age_band": "20s"
+  }
+}</code></pre></div>
+    <div><span class="label">방법 B — 평탄한 문자열 키(OpenAI SDK 규격)</span>
+<pre><code>"metadata": {
+  "language": "en",
+  "country": "JP"
+}</code></pre></div>
+  </div>
+
+  <h3>3-3. <code>POST /v1/chat/completions</code> 본문</h3>
+  <table>
+    <thead><tr><th>필드</th><th>필수</th><th>설명</th></tr></thead>
+    <tbody>
+      <tr><td><code>model</code></td><td>✅</td><td><code>"kbeauty-haiku"</code> (목록은 <code>/v1/models</code>)</td></tr>
+      <tr><td><code>messages</code></td><td></td><td>배열. <b>마지막 메시지만</b> 질문으로 씁니다. 마지막은 <code>role: "user"</code>여야 합니다. <code>system</code> 메시지는 무시합니다. content는 문자열 또는 <code>[{"type":"text","text":"…"}]</code>. Home 모드는 <code>[]</code></td></tr>
+      <tr><td><code>stream</code></td><td></td><td><code>true</code>면 SSE 스트리밍(기본 <code>false</code>)</td></tr>
+      <tr><td><code>metadata</code></td><td></td><td>프로필(위 3-2)</td></tr>
+      <tr><td>그 밖</td><td></td><td><code>temperature</code>·<code>max_tokens</code>·<code>stream_options</code> 등은 받기만 하고 무시합니다</td></tr>
+    </tbody>
+  </table>
+
+  <h3>3-4. <code>POST /v1/responses</code> 본문</h3>
+  <table>
+    <thead><tr><th>필드</th><th>필수</th><th>설명</th></tr></thead>
+    <tbody>
+      <tr><td><code>model</code></td><td>✅</td><td><code>"kbeauty-haiku"</code></td></tr>
+      <tr><td><code>input</code></td><td></td><td>문자열(질문) 또는 메시지 배열(마지막 user 메시지만 사용, 내용 파트 <code>input_text</code> 지원). 생략하면 Home 모드</td></tr>
+      <tr><td><code>stream</code></td><td></td><td><code>true</code>면 Responses 이벤트 스트림</td></tr>
+      <tr><td><code>metadata</code></td><td></td><td>프로필. 응답의 <code>metadata</code>로 그대로 돌려줍니다</td></tr>
+      <tr><td>그 밖</td><td></td><td><code>instructions</code>·<code>tools</code> 등은 무시합니다</td></tr>
+    </tbody>
+  </table>
+  <div class="callout"><strong>멀티턴</strong>기본은 꺼져 있습니다(요청마다 독립). <code>envs/agent_config.yaml</code>의 <code>multi_turn.enabled: true</code>로 켜면 요청 헤더 <code>X-Thread-Id</code>가 필수가 됩니다.</div>
+</section>
+
+<!-- 4 -->
+<section id="output">
+  <h2><span class="num">4</span>OUT — 받는 데이터</h2>
+  <p class="section-lede">응답 봉투(JSON 모양)는 OpenAI 형식과 같습니다. 이 서버만의 약속은 <b>본문 텍스트 안</b>에 있습니다.</p>
+
+  <h3>4-1. 응답 봉투</h3>
+  <div class="grid2">
+    <div><span class="label">chat/completions (일반)</span>
+<pre><code>{
+  "id": "chatcmpl-…",
+  "object": "chat.completion",
+  "created": 1792820904,
+  "model": "kbeauty-haiku",
+  "choices": [{
+    "index": 0,
+    "message": {"role": "assistant",
+                "content": "← 본문"},
+    "finish_reason": "stop"   // 또는 "length"
+  }]
+}</code></pre></div>
+    <div><span class="label">responses (일반)</span>
+<pre><code>{
+  "id": "resp_…",
+  "object": "response",
+  "created_at": 1792820912,
+  "status": "completed",     // 또는 "incomplete"
+  "model": "kbeauty-haiku",
+  "output": [{
+    "type": "message", "role": "assistant",
+    "content": [{"type": "output_text",
+                 "text": "← 본문",
+                 "annotations": []}]
+  }],
+  "metadata": {"language": "en", "country": "JP"}
+}</code></pre></div>
+  </div>
+  <table>
+    <thead><tr><th>스트리밍</th><th>순서</th></tr></thead>
+    <tbody>
+      <tr><td>chat/completions</td><td><code>data: {chat.completion.chunk}</code> 여러 개 → 첫 chunk만 <code>role</code> 포함 → 마지막 chunk는 <code>delta: {}</code> + <code>finish_reason</code> → <code>data: [DONE]</code></td></tr>
+      <tr><td>responses</td><td><code>response.created</code> → <code>response.output_item.added</code> → <code>response.content_part.added</code> → <code>response.output_text.delta</code>(여러 개) → <code>response.output_text.done</code> → <code>response.content_part.done</code> → <code>response.output_item.done</code> → <code>response.completed</code>. 모든 이벤트에 1부터 늘어나는 <code>sequence_number</code></td></tr>
+    </tbody>
+  </table>
+
+  <h3>4-2. 본문 읽는 법 — 이 서버의 약속</h3>
+  <table>
+    <thead><tr><th>본문 속 표시</th><th>뜻</th><th>클라이언트가 할 일</th></tr></thead>
+    <tbody>
+      <tr><td><code>[products/naver-blog-…]</code><br><code>[clinics/…]</code> <code>[videos/youtube-…]</code></td><td><b>근거 ID</b>(concept ID). 이 응답이 실제로 고른 DB 항목</td><td>정규식으로 뽑아 카드 UI와 연결합니다. 파일은 <code>Crawling_DB/&lt;ID&gt;.md</code></td></tr>
+      <tr><td><code>Source: https://…</code></td><td>원문 링크(블로그 글·영상)</td><td>그대로 링크로 보여줍니다</td></tr>
+      <tr><td><code>Sponsored: yes / no (self-declared) / unknown</code></td><td>협찬 표시. <code>no</code>는 작성자 자기 선언(예: 내돈내산)이고, <code>unknown</code>은 확인 못 함</td><td><code>unknown</code>을 "협찬 아님"으로 바꾸지 마세요</td></tr>
+      <tr><td>Unverified · outdated</td><td>사람 검수 전(<code>status: draft</code>) · 신선도 만료(<code>stale_after</code> 지남)</td><td>배지로 표시합니다</td></tr>
+      <tr><td>country evidence insufficient</td><td>프로필 국가에 맞는다는 근거가 데이터에 없음</td><td>"국가 근거 부족" 표시</td></tr>
+      <tr><td>"consult the clinic directly"</td><td>의료 항목에 항상 붙는 고정 안내</td><td>지우지 마세요(장소 안내만 하고 효과·적합성은 판단하지 않음)</td></tr>
+      <tr><td>"no matching evidence" / "broadened"</td><td>조건에 맞는 근거 0건 / 콘텐츠 종류 조건을 넓혀서 찾음</td><td>빈 상태 UI를 보여줍니다</td></tr>
+    </tbody>
+  </table>
+  <span class="label">근거 ID 뽑기(정규식)</span>
+<pre><code>\[((?:products|clinics|videos)/[A-Za-z0-9_.\-]+)\]</code></pre>
+  <div class="callout warn"><strong>문장은 매번 달라집니다</strong>본문은 LLM이 쓰므로 표현·순서가 호출마다 바뀝니다. 기계적으로 의존할 것은 <b>근거 ID</b>뿐입니다. 근거 ID는 항상 서버가 고른 목록 안에서만 나옵니다. 어떤 ID를 골랐는지는 서버 로그 <code>[Retrieve] ✅ … ids=[…]</code>에서 확인할 수 있습니다.</div>
+
+  <h3>4-3. 근거 ID로 상세 정보 얻기</h3>
+  <p>ID에 <code>.md</code>를 붙인 파일의 맨 위 YAML에 카드에 쓸 값이 다 들어 있습니다. 필드 설명은 <code>Crawling_DB/README.md</code>에 있습니다.</p>
+<pre><code>Crawling_DB/clinics/naver-blog-khshi001-224435086306.md
+  title · description(스니펫) · resource(원문 URL) · category · content_kind · source_kind
+  sponsored(+evidence) · foreigner_friendly(+evidence) · country_signals · language_signals
+  status: draft · stale_after · sources[origin].author · last_modified(게시일)</code></pre>
+
+  <h3>4-4. 오류</h3>
+  <p>오류는 항상 OpenAI 오류 형식 <code>{"error": {"message", "type", "param", "code"}}</code>입니다.</p>
+  <table>
+    <thead><tr><th>상태</th><th>언제</th><th><code>type</code> / <code>code</code></th></tr></thead>
+    <tbody>
+      <tr><td><code>400</code></td><td>질문도 프로필도 없음, 마지막 메시지가 user가 아님, 본문 형식 오류</td><td><code>invalid_request_error</code></td></tr>
+      <tr><td><code>404</code></td><td>없는 model 이름</td><td><code>invalid_request_error</code> / <code>model_not_found</code></td></tr>
+      <tr><td><code>500</code></td><td>Jev·Haiku 호출 실패 등. 스트리밍이어도 첫 토큰 전에 실패하면 SSE 대신 500 JSON</td><td><code>server_error</code></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 5 -->
+<section id="examples">
+  <h2><span class="num">5</span>실제 예제</h2>
+  <p class="section-lede">아래 응답은 <b>2026-10-24T14:48:24+09:00</b>에 로컬 서버에 실제로 보내 받은 것입니다. 본문 문장은 호출마다 달라집니다.</p>
+
+  <h3>① 서버 확인</h3>
+<pre><code>curl -s http://localhost:8000/health</code></pre>
+<pre><code>{
+  "status": "ok",
+  "profile_count": 1,
+  "models": [
+    "kbeauty-haiku"
+  ],
+  "nodes": {
+    "kbeauty-haiku": [
+      "jev_judge",
+      "retrieve",
+      "respond",
+      "decline"
+    ]
+  },
+  "multi_turn": {
+    "kbeauty-haiku": false
+  },
+  "branching_enabled": true,
+  "knowledge_count": {
+    "kbeauty-haiku": 30
+  }
+}</code></pre>
+
+  <h3>② Home 모드 — 온보딩 직후, 질문 없이 프로필만</h3>
+<pre><code>curl -s http://localhost:8000/v1/chat/completions \
+  -H 'Content-Type: application/json' \
+  -d '{"model":"kbeauty-haiku","messages":[],
+       "metadata":{"profile":{"language":"en","country":"US","gender":"female","age_band":"20s"}}}'</code></pre>
+  <details open><summary>실측 응답 보기</summary>
+<pre><code>{
+  "id": "chatcmpl-8b1bb7201bbb499c8b93f8784cfa03b0",
+  "object": "chat.completion",
+  "created": 1792820904,
+  "model": "kbeauty-haiku",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "Welcome to Korea! Here are a few starting points for skincare shopping. These are reviews and videos, not official listings.\n\n1. **Locals vs. tourists at Olive Young** [videos/youtube-1zkDpIjIEvo]\n   Review video of a shopping visit to the Central Gangnam Olive Young branch.\n   Source: https://www.youtube.com/watch?v=1zkDpIjIEvo | Sponsored: no (self-declared)\n\n2. **Top 4 products Koreans buy at Olive Young** [videos/youtube-FfA8cAuZksc]\n   Review video on popular Olive Young products.\n   Source: https://www.youtube.com/watch?v=FfA8cAuZksc | Sponsored: unknown\n\n3. **Must-buys from Olive Young** [videos/youtube-a_RyH4UAqD4]\n   Review video listing skincare items shoppers pick up in Korea.\n   Source: https://www.youtube.com/watch?v=a_RyH4UAqD4 | Sponsored: unknown\n\n4. **Olive Young moisturizer and cushion picks (Korean)** [products/naver-blog-choihoodie-224451614933]\n   Blog review covering moisturizer and cushion picks, tied to the October Olive Young Day sale.\n   Source: https://blog.naver.com/choihoodie/224451614933 | Sponsored: unknown\n\n5. **Let Me Skin cleansing toner (Korean)** [products/naver-blog-dpqmsduwk77-224447135632]\n   Blog review of a pad-based cleansing toner.\n   Source: https://blog.naver.com/dpqmsduwk77/224447135632 | Sponsored: unknown\n\n**Please note:** All of these are unverified, and the sources don't include evidence about skin types or US shoppers, so I can't say which items suit you specifically. Check event dates and prices directly with the store. No skin clinic reviews matched this request yet."
+      },
+      "finish_reason": "stop"
+    }
+  ]
+}</code></pre></details>
+  <p style="font-size:14px;color:var(--muted)">이때 서버 로그: <code>[Retrieve] ✅ 5건 relaxed=False ids=['videos/youtube-1zkDpIjIEvo', 'videos/youtube-FfA8cAuZksc', 'videos/youtube-a_RyH4UAqD4', 'products/naver-blog-choihoodie-224451614933', 'products/naver-blog-dpqmsduwk77-224447135632']</code></p>
+
+  <h3>③ Responses API — 질문 + 평탄한 metadata</h3>
+<pre><code>curl -s http://localhost:8000/v1/responses \
+  -H 'Content-Type: application/json' \
+  -d '{"model":"kbeauty-haiku","input":"Which sunscreen do Koreans actually use?",
+       "metadata":{"language":"en","country":"JP"}}'</code></pre>
+  <details><summary>실측 응답 보기</summary>
+<pre><code>{
+  "id": "resp_55bf5aaea5d9494bb51b03c6474cc180",
+  "object": "response",
+  "created_at": 1792820912,
+  "status": "completed",
+  "model": "kbeauty-haiku",
+  "output": [
+    {
+      "type": "message",
+      "id": "msg_ffdbfdf76b214171a8275bb90ea4b56d",
+      "status": "completed",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Our database can't show what most Koreans actually use. It has three Korean blog reviews, each one person's experience, not a usage survey. Here they are:\n\n1. **Oh My Mes UV sunscreen, 2-product review** [products/naver-blog-callmemjay-224446242623]\n   Source: https://blog.naver.com/callmemjay/224446242623\n   Sponsored: unknown\n   The blogger describes layering two sunscreens as a daily routine and calls them pharmacy-available daily sunscreens. *Unverified. Evidence on country-specific suitability is insufficient.*\n\n2. **Josun Beauty tinted sunscreen 17N, \"no-makeup\" review** [products/naver-blog-gyerimong2-224449438753]\n   Source: https://blog.naver.com/gyerimong2/224449438753\n   Sponsored: no (self-declared)\n   The blogger recommends it to people with oily skin who want a base-free sunscreen, and describes a clean feel. *Unverified. Evidence on country-specific suitability is insufficient.*\n\n3. **Dalba tone-up sunscreen review** [products/naver-blog-hyuk220312-224439957577]\n   Source: https://blog.naver.com/hyuk220312/224439957577\n   Sponsored: unknown\n   The blogger says it feels light and not heavy around the eyes, and suits daily use before foundation. *Unverified. Evidence on country-specific suitability is insufficient.*\n\nTo see what's popular in Korea, look at current bestseller rankings at Korean drugstores or beauty retailers, and compare several recent reviews rather than relying on one.",
+          "annotations": []
+        }
+      ]
+    }
+  ],
+  "incomplete_details": null,
+  "metadata": {
+    "language": "en",
+    "country": "JP"
+  }
+}</code></pre></details>
+
+  <h3>④ 스트리밍 (chat/completions)</h3>
+<pre><code>curl -sN http://localhost:8000/v1/chat/completions \
+  -H 'Content-Type: application/json' \
+  -d '{"model":"kbeauty-haiku","messages":[{"role":"user","content":"Recommend a toner pad"}],"stream":true}'</code></pre>
+  <details><summary>실측 스트림(앞·뒤 일부)</summary>
+<pre><code>data: {"id": "chatcmpl-c81eba06672445a4bf752cb4f3329a32", "object": "chat.completion.chunk", "created": 1792820929, "model": "kbeauty-haiku", "choices": [{"index": 0, "delta": {"role": "assistant", "content": "Here"}, "finish_reason": null}]}
+
+data: {"id": "chatcmpl-c81eba06672445a4bf752cb4f3329a32", "object": "chat.completion.chunk", "created": 1792820929, "model": "kbeauty-haiku", "choices": [{"index": 0, "delta": {"content": " is"}, "finish_reason": null}]}
+
+data: {"id": "chatcmpl-c81eba06672445a4bf752cb4f3329a32", "object": "chat.completion.chunk", "created": 1792820929, "model": "kbeauty-haiku", "choices": [{"index": 0, "delta": {"content": " one to"}, "finish_reason": null}]}
+
+…  (토큰마다 chunk 가 이어짐)
+
+data: {"id": "chatcmpl-c81eba06672445a4bf752cb4f3329a32", "object": "chat.completion.chunk", "created": 1792820929, "model": "kbeauty-haiku", "choices": [{"index": 0, "delta": {}, "finish_reason": "stop"}]}
+
+data: [DONE]</code></pre></details>
+
+  <h3>⑤ 범위 밖 질문 → decline</h3>
+<pre><code>curl -s http://localhost:8000/v1/chat/completions \
+  -H 'Content-Type: application/json' \
+  -d '{"model":"kbeauty-haiku","messages":[{"role":"user","content":"오늘 주식 뭐 사?"}]}'</code></pre>
+<pre><code>{
+  "id": "chatcmpl-ed399b53594b48c1846b600adbb48b51",
+  "object": "chat.completion",
+  "created": 1792820917,
+  "model": "kbeauty-haiku",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "죄송하지만 저는 한국 뷰티(화장품, 헤어 제품, 피부과 클리닉) 관련 질문만 도와드릴 수 있어요. 대신 \"지성 피부에 맞는 한국 선크림 추천해 주세요\"처럼 물어보시면 기꺼이 안내해 드릴게요!"
+      },
+      "finish_reason": "stop"
+    }
+  ]
+}</code></pre>
+
+  <h3>⑥ 오류 예</h3>
+  <span class="label">없는 model → 404</span>
+<pre><code>{
+  "error": {
+    "message": "Model not found: nope. 사용 가능한 model: ['kbeauty-haiku']",
+    "type": "invalid_request_error",
+    "param": "model",
+    "code": "model_not_found"
+  }
+}</code></pre>
+  <span class="label">질문도 프로필도 없음 → 400</span>
+<pre><code>{
+  "error": {
+    "message": "사용자 발화나 metadata.profile 중 하나는 있어야 한다. 예: {\"messages\": [], \"metadata\": {\"profile\": {\"language\": \"en\", \"country\": \"US\"}}}",
+    "type": "invalid_request_error",
+    "param": "messages",
+    "code": null
+  }
+}</code></pre>
+
+  <h3>⑦ Python (표준 라이브러리만) — 근거 ID까지 뽑기</h3>
+<pre><code>import json
+import re
+import urllib.request
+
+BASE = "http://localhost:8000"
+CONCEPT_ID = re.compile(r"\[((?:products|clinics|videos)/[A-Za-z0-9_.\-]+)\]")
+
+
+def ask(profile: dict, question: str | None = None) -&gt; dict:
+    body = {
+        "model": "kbeauty-haiku",
+        "messages": [{"role": "user", "content": question}] if question else [],
+        "metadata": {"profile": profile},
+    }
+    req = urllib.request.Request(
+        f"{BASE}/v1/chat/completions",
+        data=json.dumps(body).encode(),
+        headers={"Content-Type": "application/json"},
+    )
+    with urllib.request.urlopen(req, timeout=120) as r:
+        return json.load(r)
+
+
+reply = ask({"language": "en", "country": "JP"}, "Any dermatology clinic in Gangnam for foreigners?")
+text = reply["choices"][0]["message"]["content"]
+print("finish_reason:", reply["choices"][0]["finish_reason"])
+print("cited concept ids:", CONCEPT_ID.findall(text))</code></pre>
+  <span class="label">실행 결과 (2026-10-24)</span>
+<pre><code>finish_reason: stop
+cited concept ids: ['clinics/naver-blog-khshi001-224435086306', 'clinics/naver-blog-godlina8835-224450635735', 'clinics/naver-blog-ogn0120-224450127283', 'clinics/naver-blog-on_curation-224444090613', 'clinics/naver-blog-rich_ways-224381878262']</code></pre>
+
+  <h3>⑧ OpenAI Python SDK를 쓴다면</h3>
+  <p style="font-size:14px;color:var(--muted)">이 프로젝트 의존성에는 없습니다(<code>pip install openai</code> 별도). 아래는 형태 예시이며 이번에 실행 검증하지 않았습니다. SDK의 metadata는 문자열 값만 받으므로 <b>방법 B(평탄한 키)</b>로 보냅니다.</p>
+<pre><code>from openai import OpenAI
+
+client = OpenAI(base_url="http://localhost:8000/v1", api_key="unused")  # 로컬 서버는 키를 보지 않음
+
+chat = client.chat.completions.create(
+    model="kbeauty-haiku",
+    messages=[{"role": "user", "content": "Best cushion foundation in Korea?"}],
+    metadata={"language": "en", "country": "SG"},
+)
+print(chat.choices[0].message.content)
+
+resp = client.responses.create(model="kbeauty-haiku", input="Toner pad picks?", metadata={"language": "en"})
+print(resp.output_text)</code></pre>
+
+  <div class="callout ok"><strong>Claude Code가 호출할 때 요약 계약</strong>
+  ① <code>GET /health</code>로 <code>knowledge_count &gt; 0</code>인지 확인합니다.
+  ② <code>POST /v1/chat/completions</code>에 <code>model: "kbeauty-haiku"</code>와 <code>metadata.profile</code>을 보냅니다(질문이 없으면 <code>messages: []</code>).
+  ③ <code>choices[0].message.content</code>를 받습니다.
+  ④ 정규식으로 근거 ID를 뽑고 <code>Crawling_DB/&lt;ID&gt;.md</code> frontmatter로 카드를 구성합니다.
+  ⑤ <code>finish_reason == "length"</code>면 잘린 응답이므로 다시 요청합니다.
+  ⑥ 오류는 <code>error.type</code>으로 분기합니다.</div>
+</section>
+
+<!-- 6 -->
+<section id="setup">
+  <h2><span class="num">6</span>다른 PC에서 실행하기</h2>
+  <p class="section-lede">macOS · Linux · Windows(WSL 권장) 기준입니다. 처음 한 번만 1~5단계를 하고, 그다음부터는 6단계만 하면 됩니다.</p>
+
+  <ol class="steps">
+    <li><b>준비물 설치</b>
+      Git, <a href="https://docs.astral.sh/uv/">uv</a>(Python 3.12+를 알아서 받아 줍니다), Node.js 24 이상, <a href="https://infisical.com/docs/cli/overview">Infisical CLI</a>를 설치합니다.
+<pre><code># uv — macOS / Linux / WSL
+curl -LsSf https://astral.sh/uv/install.sh | sh
+# uv — Windows PowerShell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+# 확인
+uv --version &amp;&amp; node --version &amp;&amp; infisical --version</code></pre></li>
+    <li><b>Infisical 초대 수락</b>
+      팀 조직 <code>afk-2026-team</code>의 프로젝트 <code>afk-sparks-rag</code> 초대를 수락합니다. 초대가 없으면 프로젝트 관리자에게 요청하세요. <b>키를 메신저로 받거나 <code>.env</code> 파일을 만들지 않습니다</b>(팀 규칙).</li>
+    <li><b>저장소 받기와 Python 의존성 설치</b>
+<pre><code>git clone https://github.com/afk-2026-team/hackathon.git
+cd hackathon
+uv sync                      # .venv 생성 + pyproject.toml/uv.lock 대로 설치(개발 도구 포함)
+uv run pytest -q             # 키 없이 도는 테스트 — 전부 passed 면 설치 OK</code></pre></li>
+    <li><b>Infisical 로그인과 키 점검</b> (Cloud US 선택)
+<pre><code>infisical login
+node scripts/secrets.mjs check --env dev --services ash_workflow
+# ASH_ANTHROPIC_API_KEY: OK
+# ASH_JEV_KEY: OK          ← 둘 다 OK 여야 합니다. 값은 출력되지 않습니다</code></pre></li>
+    <li><b>데이터 확인</b> (저장소에 들어 있으므로 내려받을 것은 없습니다)
+<pre><code>uv run python -m app.knowledge.validate Crawling_DB
+# product=15 clinic=10 video=5 total=30</code></pre></li>
+    <li><b>서버 실행</b> — 키는 실행기가 이 프로세스에만 넣어 줍니다
+<pre><code>node scripts/secrets.mjs run --env dev --services ash_workflow -- uv run python -m app.serve
+# 다른 터미널에서
+curl -s http://localhost:8000/health</code></pre></li>
+  </ol>
+
+  <h3>명령 모음</h3>
+  <table>
+    <thead><tr><th>하고 싶은 일</th><th>명령</th></tr></thead>
+    <tbody>
+      <tr><td>의존성 설치·갱신</td><td><code>uv sync</code></td></tr>
+      <tr><td>전체 테스트</td><td><code>uv run pytest -q</code></td></tr>
+      <tr><td>키 점검(값 미출력)</td><td><code>node scripts/secrets.mjs check --env dev</code></td></tr>
+      <tr><td>AI 서버 실행</td><td><code>node scripts/secrets.mjs run --env dev --services ash_workflow -- uv run python -m app.serve</code></td></tr>
+      <tr><td>DB 구조 검증</td><td><code>uv run python -m app.knowledge.validate Crawling_DB</code></td></tr>
+      <tr><td>Supabase 스냅샷 해시 검증</td><td><code>node scripts/secrets.mjs run --env dev --services supabase -- uv run python -m crawler.upload_supabase --verify</code></td></tr>
+      <tr><td>시크릿 실행기 테스트</td><td><code>node --test tests/secrets/*.test.mjs</code></td></tr>
+    </tbody>
+  </table>
+
+  <h3>설정 파일 — 바꿀 일이 있을 때</h3>
+  <table>
+    <thead><tr><th>파일</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td><code>envs/agent_config.yaml</code></td><td>포트(8000), model id, 근거 폴더(<code>knowledge.bundle_path</code>)·개수(<code>top_n: 5</code>), decline 분기, 멀티턴</td></tr>
+      <tr><td><code>envs/models/*.yaml</code></td><td>Haiku·Jev 모델 선언. 키는 <b>이름만</b> 적혀 있음</td></tr>
+      <tr><td><code>app/prompts/*.yaml</code></td><td>Jev 판단 질문, Haiku 시스템 프롬프트</td></tr>
+      <tr><td><code>envs/infisical.config.json</code></td><td>Infisical 프로젝트·서비스·키 이름 정본</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 7 -->
+<section id="troubleshoot">
+  <h2><span class="num">7</span>문제 해결</h2>
+  <table>
+    <thead><tr><th>증상</th><th>원인</th><th>해결</th></tr></thead>
+    <tbody>
+      <tr><td><code>check</code>에서 <code>MISSING</code> 또는 인증 실패</td><td>로그인 안 됨 · 초대 미수락 · 토큰 만료</td><td><code>infisical login</code> 다시 하기, 관리자에게 접근권 확인. 로컬 키로 대체하지 마세요</td></tr>
+      <tr><td>서버가 뜨자마자 종료: "knowledge.bundle_path 에 concept 이 없다"</td><td><code>Crawling_DB</code>가 비었거나 경로가 다름</td><td>저장소 루트에서 실행하는지 확인, <code>git status</code>로 폴더 확인</td></tr>
+      <tr><td><code>404 model_not_found</code></td><td>model 이름 오타</td><td><code>GET /v1/models</code>로 확인(<code>kbeauty-haiku</code>)</td></tr>
+      <tr><td><code>400</code> "사용자 발화나 metadata.profile 중 하나는 있어야 한다"</td><td>Home 모드인데 프로필이 비었음</td><td><code>metadata.profile</code>에 language·country 중 하나 이상</td></tr>
+      <tr><td><code>500 server_error</code></td><td>Jev·Anthropic 호출 실패(네트워크·키·할당량)</td><td>서버 터미널의 Traceback 확인. <code>dev</code>와 <code>prod</code>는 같은 크레딧을 공유합니다</td></tr>
+      <tr><td>응답이 중간에 끊김(<code>finish_reason: "length"</code>)</td><td>토큰 한도</td><td><code>agent_config.yaml</code> 프로필 <code>override.max_tokens</code>(현재 2048)</td></tr>
+      <tr><td><code>Address already in use</code></td><td>8000 포트 사용 중</td><td>이전 서버 종료 또는 <code>server.port</code> 변경</td></tr>
+      <tr><td>Home 추천이 한 종류에만 몰림</td><td>Home 문장에서 Jev가 category를 하나로 정함(알려진 한계)</td><td>후속 과제. 질문 모드로 범위를 좁혀 보완</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 8 -->
+<section id="data">
+  <h2><span class="num">8</span>데이터 — Crawling_DB</h2>
+  <p class="section-lede">서버가 근거로 쓰는 DB입니다. 지금은 <b>동결된 예제</b>입니다.</p>
+  <div class="grid2">
+    <div class="card"><h4>로컬 (서버가 읽는 곳)</h4><p><code>Crawling_DB/</code> — OKF v0.2 마크다운 30건(제품 후기 15 · 피부과 후기 10 · 리뷰 영상 5). 구조 설명은 <code>Crawling_DB/README.md</code>.</p></div>
+    <div class="card"><h4>Supabase (불변 스냅샷)</h4><p>Storage 버킷 <code>rag-documents</code>(비공개) → <code>crawling_db/example-v1/</code>. 35개 파일 + <code>manifest.json</code>(sha256). 덮어쓰지 않습니다.</p></div>
+    <div class="card"><h4>성격</h4><p>2026-10-24에 실제 API(Naver 블로그·YouTube)로 1회 수집했습니다. 블로그 후기라 검증되지 않은 개인 의견이며, 협찬 미표시 광고가 섞여 있을 수 있습니다.</p></div>
+  </div>
+</section>
+
+<footer>
+  이 문서: <code>app/docs/ai_workflow_manual.html</code> · 근거 문서 체인: <code>docs/interview/interview_26102414_43_06_…</code> → plan → devlog → checklist ·
+  키 값은 이 문서 어디에도 적지 않습니다(키 이름만).
+</footer>
+</main>
+</div>
+</body>
+</html>

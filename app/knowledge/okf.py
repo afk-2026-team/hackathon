@@ -9,6 +9,8 @@ import yaml
 # OKF v0.2 (seed/knowledge-catalog/okf/SPEC.md) — 예약 파일·필수 키는 §3.1·§4.1, 수명주기 값은 §5.4
 OKF_VERSION = "0.2"
 RESERVED_FILES = ("index.md", "log.md")
+# 사람용 번들 안내 파일 — OKF 예약 파일은 아니지만 concept 도 아니다(Crawling_DB/README.md)
+GUIDE_FILES = ("README.md",)
 STATUSES = ("draft", "stable", "deprecated")
 FRONTMATTER_FENCE = "---"
 
@@ -54,7 +56,7 @@ def parse_instant(value) -> datetime:
 
 
 def concept_paths(root: Path) -> list[Path]:
-    return sorted(p for p in root.rglob("*.md") if p.name not in RESERVED_FILES)
+    return sorted(p for p in root.rglob("*.md") if p.name not in RESERVED_FILES + GUIDE_FILES)
 
 
 def load_bundle(root: str | Path) -> list[Concept]:
